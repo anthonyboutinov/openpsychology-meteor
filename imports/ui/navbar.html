@@ -1,34 +1,46 @@
 <template name="navbar">
 
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#"><img src="/assets/logo.png">Открытая психология</a>
-      </div>
+  <header role="banner">
+    <nav class="navbar navbar-inverse navbar-primary" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse">
+          <ul class="nav navbar-nav navbar-center">
+            <li>
+              <a href="#">
+                <img class="logo-navbar-middle" src="/assets/logo.png" alt="Открытая психология логотип"><div class="logo-navbar-middle">Открытая<br>психология</div>
+                <div class="clearfix"></div><div class="logo-navbar-heading">Мероприятия, посвященные личностному развитию в Казани и Республике Татарстан</div>
+              </a>
+            </li>
+          </ul>
+          <div class="position-relative">
+            <ul class="nav navbar-nav navbar-center">
+              <li class="active"><a href="#">Тренинги</a></li>
+              <li><a href="#">Семинары</a></li>
+              <li><a href="#">Образование</a></li>
+              <li><a href="#">Мероприятия онлайн</a></li>
+              <li><a href="#">Статьи</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              {{#if currentUser}}
+              <li><a href="/signout" title="Выход">Выйти</a></li>
+              {{else}}
+              <li><a href="/signin" title="Войти на сайт или зарегистрироваться"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a></li>
+              {{/if}}
+            </ul>
+          </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-          <li><a href="#">Link</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          {{#if currentUser}}
-          <li><a href="/logout" title="Выход">Выход</a></li>
-          {{else}}
-          <li><a href="/login" title="Вход">Вход</a></li>
-          <li><a href="/register" title="Регистрация">Регистрация</a></li>
-          {{/if}}
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  </header><!-- header role="banner" -->
 
 </template>

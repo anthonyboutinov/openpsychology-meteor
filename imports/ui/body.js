@@ -3,6 +3,7 @@ import { Tasks } from '../api/tasks.js';
 
 import './body.html';
 import './navbar.html';
+import './footer.html';
 
 Template.body.helpers({
   tasks() {
