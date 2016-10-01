@@ -50,22 +50,26 @@ a:hover, a i:hover, button:hover, input[type="submit"]:hover {
   bottom: 0;
 }
 
-img.logo-navbar-middle {
+.logo-navbar-middle {
   width: 64px;
   margin-right: 12px;
+  margin-left: 12px;
   display: inline-block;
-  vertical-align: top;
+  vertical-align: middle;
 }
-div.logo-navbar-middle {
+.logo-navbar-left {
   display: inline-block;
   font-size: 2.25rem;
   color: white;
-  padding-top: 8px;
+  vertical-align: middle;
+  text-align: right;
 }
 
-.logo-navbar-heading {
+.logo-navbar-right {
   max-width: 300px;
-  margin-top: 10px;
+  vertical-align: middle;
+  text-align: left;
+  display: inline-block;
   color: gainsboro;
 }
 
@@ -134,9 +138,6 @@ div.logo-navbar-middle {
 }
 
 .nav-inverse {
-    > li > a {
-      color: #c5c5c5;
-    }
    > li > a:hover, > li > a:focus {
      color: #fff;
       background-color: transparent;
@@ -173,6 +174,13 @@ footer.primary {
 
   padding-top: $grid-gutter-width;
   padding-bottom: $grid-gutter-width;
+
+  a {
+    color: #d1d1d1;
+    &:hover, &:focus, &:active {
+      color: white;
+    }
+  }
 
   .logo {
     margin-bottom: 10px;
