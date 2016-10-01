@@ -1,0 +1,53 @@
+<template name="page">
+
+  <section class="container">
+
+    <div class="row section-heading">
+      <div class="col-sm-8 col-sm-offset-2">
+        <h3>Новое и интересное</h3>
+        <h1 class="light">Рекомендованные мероприятия</h1>
+        <h4>Взгляните на мероприятия из нашей подборки</h4>
+      </div>
+    </div>
+
+    <div class="row m-t-60">
+
+      {{#each loopCount 2}}
+      <div class="col-sm-6 col-md-4 m-b-60">
+        <div class="row">
+          <div class="col-sm-4 col-sm-nopadding-right">
+            <img class="img-responsive boxshadow-lighter" src="http://placehold.it/150x150" alt="">
+          </div>
+          <div class="col-sm-8">
+            <h5 class="block-title hint-text">Семинар</h5>
+            <h4 class="">Jar Jar Thinks</h4>
+            <div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <h3 class="inline no-margin">800 ₽</h3>
+              <a class="btn btn-sm btn-default all-caps m-b-10 m-l-10" href="#">Подробнее</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+
+      {{#each loopCount 8}}
+      <div class="col-sm-6 col-md-4 m-b-60">
+        <img class="img-responsive m-b-10" src="http://placehold.it/380x160" alt="">
+        <h5 class="block-title hint-text">Семинар</h5>
+        <h4 class="">Jar Jar Thinks</h4>
+        <div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <h3 class="inline no-margin">800 ₽</h3>
+          <a class="btn btn-sm btn-default all-caps m-b-10 m-l-10" href="#">Подробнее</a>
+        </div>
+      </div>
+      {{/each}}
+
+    </div>
+
+
+
+  </section>
+
+</template>
