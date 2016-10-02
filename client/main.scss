@@ -134,6 +134,32 @@ a:hover, a i:hover, button:hover, input[type="submit"]:hover {
 
 
 
+
+
+
+
+
+.meteor-status {
+  background-color: rgba(50, 50, 50, 0.90);
+  left: auto;
+  right: 15px;
+  top: 15px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  a {
+    &, &:hover, &:active {
+      text-decoration: underline;
+      color: white;
+    }
+  }
+}
+
+
+
+
+
+
 .block-title {
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -249,6 +275,10 @@ footer.primary {
   color: $gray;
 }
 
+.v-middle {
+  vertical-align: middle;
+}
+
 
 
 
@@ -259,6 +289,20 @@ footer.primary {
   padding-right: 0;
 }
 
+.profile-pic {
+  border-radius: 50%;
+}
+
+.link-nonvisual {
+  color: $text-color;
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+  &:active {
+    text-decoration: underline;
+  }
+}
+
 
 
 
@@ -267,6 +311,14 @@ footer.primary {
 }
 
 
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section-lighter {
+  background-color: #fafafa;
+}
 
 
 .section-heading {
