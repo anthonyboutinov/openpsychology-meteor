@@ -1,0 +1,48 @@
+.navbar-primary {
+  border-radius: 0;
+}
+
+.navbar-primary .navbar-center {
+  width: 100%;
+  float: none;
+  text-align: center;
+  > li {
+    display: inline-block;
+    float: none;
+    > a {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
+
+
+
+.navbar-primary .navbar-right {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.logo-navbar-middle {
+  width: 64px;
+  margin-right: 12px;
+  margin-left: 12px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.logo-navbar-left {
+  display: inline-block;
+  font-size: 2.25rem;
+  color: white;
+  vertical-align: middle;
+  text-align: right;
+}
+
+.logo-navbar-right {
+  max-width: 300px;
+  vertical-align: middle;
+  text-align: left;
+  display: inline-block;
+  color: gainsboro;
+}
