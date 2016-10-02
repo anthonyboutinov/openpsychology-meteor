@@ -6,10 +6,21 @@
   background-color: #fafafa;
 }
 
+.section-inverse {
+  background-color: #2e2e2e;
+  // Gradient: http://colorzilla.com/gradient-editor/#2b2b2b+0,2e2e2e+15,2e2e2e+80,2a2a2a+100
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzJiMmIyYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjE1JSIgc3RvcC1jb2xvcj0iIzJlMmUyZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjgwJSIgc3RvcC1jb2xvcj0iIzJlMmUyZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyYTJhMmEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, rgba(43,43,43,1) 0%, rgba(46,46,46,1) 15%, rgba(46,46,46,1) 80%, rgba(42,42,42,1) 100%);
+  background: -webkit-linear-gradient(top, rgba(43,43,43,1) 0%,rgba(46,46,46,1) 15%,rgba(46,46,46,1) 80%,rgba(42,42,42,1) 100%);
+  background: linear-gradient(to bottom, rgba(43,43,43,1) 0%,rgba(46,46,46,1) 15%,rgba(46,46,46,1) 80%,rgba(42,42,42,1) 100%);
+
+  color: $gray-lighter;
+}
+
 
 .section-heading {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   h3, h1, h4 {
     text-align: center;
   }

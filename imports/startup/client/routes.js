@@ -6,13 +6,18 @@ Router.configure({
 Router.route('/', function () {
   this.layout('defaultLayout');
   this.render('home');
-  this.render('navbar', {to: 'navbar'});
-  this.render('footer', {to: 'footer'});
 });
 
 Router.route('/list', function () {
   this.layout('defaultLayout');
   this.render('list');
-  this.render('navbar', {to: 'navbar'});
-  this.render('footer', {to: 'footer'});
 });
+
+Router.route('/search', function() {
+  this.layout('defaultLayout', {
+    data: {
+      showSearchbar: true
+    },
+  });
+  this.render('list');
+})

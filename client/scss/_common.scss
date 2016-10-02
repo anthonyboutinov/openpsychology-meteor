@@ -6,6 +6,16 @@
   display: inline;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
+
+
+.img-external-noalpha {
+  background-color: #ccc;
+}
+
 
 .m-r-char {
   margin-right: 0.4em;
@@ -48,6 +58,9 @@
 }
 .p-t-30 {
   padding-top: 30px;
+}
+.p-b-30 {
+  padding-bottom: 30px;
 }
 .p-r-10 {
   padding-right: 10px;

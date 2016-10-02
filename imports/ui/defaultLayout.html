@@ -1,9 +1,13 @@
 <template name="defaultLayout">
 
-  {{> yield "navbar"}}
+  {{> navbar}}
+
+  {{#if showSearchbar}}
+    {{> searchbar}}
+  {{/if}}
 
   {{> yield}}
 
-  {{> yield "footer"}}
+  {{> footer}}
 
 </template>

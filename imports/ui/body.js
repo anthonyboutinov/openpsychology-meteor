@@ -7,8 +7,11 @@ import './navbar.html';
 import './footer.html';
 import './home.html';
 import './home.js';
-
 import './list.html';
+import './list.js';
+import './searchbar.html';
+import './searchbar.js';
 
 Template.body.helpers({
+
 });
