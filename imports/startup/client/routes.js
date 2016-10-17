@@ -8,16 +8,20 @@ Router.route('/', function () {
   this.render('home');
 });
 
-Router.route('/list', function () {
-  this.layout('defaultLayout');
-  this.render('list');
-});
-
-Router.route('/search', function() {
+Router.route('/search/:category', function() {
+  // var category;
+  // if (this.params.category == "all") {
+  //   // catetory = ...
+  // } else {
+  //   category = Categories.findOne({urlName: this.params.category});
+  // }
+  var category = "t";
   this.layout('defaultLayout', {
     data: {
-      showSearchbar: true
+      category: category,
+      searchbarSupported: true,
+      showSearchbar: this.params.query.sb,
     },
   });
   this.render('list');
-})
+});

@@ -1,12 +1,15 @@
 Template.defaultLayout.events({
   "click #showSearchbar": function(event, template){
-    event.preventDefault();
-    TemplateVar.set('showSearchbar', true);
+    if (this.searchbarSupported) {
+      event.preventDefault();
+      Router.go(Router.current().route.path(this) + "?sb=true");
+    } else {
+      event.preventDefault();
+      Router.go("/search/all?sb=true")
+    }
+
   },
   "click .hideSearchbar": function(event, template) {
-    template.$(".animated-slide-down").css("max-height", 0);
-    setTimeout(function () {
-      TemplateVar.set(template, 'showSearchbar', false);
-    }, 1000);
+    Router.go(Router.current().route.path(this) + "?sb=false");
   }
 });
