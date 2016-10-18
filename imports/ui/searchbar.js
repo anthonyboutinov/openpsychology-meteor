@@ -1,3 +1,5 @@
+import { Categories } from '../api/categories.js';
+
 let animateSearchbarOnAndOff = function(showSearchbar) {
   if (showSearchbar) {
     this.$(".animated-slide-down").css("max-height", this.$(".animated-slide-down")[0].scrollHeight); // TODO: requires update on window resize
@@ -17,7 +19,10 @@ Template.searchbar.helpers({
     }
 
     return this.showSearchbar;
-  }
+  },
+  "categories": function() {
+    return Categories.find({}, {sort: {order: 1}});
+  },
 });
 
 

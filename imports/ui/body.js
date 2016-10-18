@@ -16,6 +16,8 @@ import './list.html';
 import './list.js';
 import './searchbar.html';
 import './searchbar.js';
+import './searchbar_category.html';
+import './searchbar_category.js';
 
 Template.body.helpers({
 

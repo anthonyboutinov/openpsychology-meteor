@@ -22,11 +22,9 @@
             </div>
 
             <div class="text-center">
-              <a class="btn btn-pane-inverse btn-sm active">Тренинги</a>
-              <a class="btn btn-pane-inverse btn-sm">Семинары</a>
-              <a class="btn btn-pane-inverse btn-sm active">Образование</a>
-              <a class="btn btn-pane-inverse btn-sm">Мероприятия онлайн</a>
-              <a class="btn btn-pane-inverse btn-sm">Статьи</a>
+              {{#each category in categories}}
+                {{> searchbar_category category=category currentCategory=currentCategory}}
+              {{/each}}
             </div>
 
           </form>
