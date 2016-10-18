@@ -1,27 +1,47 @@
+import { Categories } from '../../api/categories.js';
+
 Router.configure({
   // the default layout
   layoutTemplate: 'defaultLayout'
 });
 
 Router.route('/', function () {
-  this.layout('defaultLayout');
-  this.render('home');
+  this.subscribe('categories').wait();
+  this.layout('defaultLayout', {
+    data: {
+      currentCategory: null,
+    }
+  });
+  if (this.ready()) {
+    this.render('home');
+  } else {
+    this.render('loading');
+  };
+}, {
+  name: "home",
 });
 
-Router.route('/search/:category', function() {
+Router.route('/search/:categoryUrlName', function() {
+  this.subscribe('categories').wait();
   // var category;
   // if (this.params.category == "all") {
   //   // catetory = ...
   // } else {
   //   category = Categories.findOne({urlName: this.params.category});
   // }
-  var category = "t";
+  const categoryUrlName = this.params.categoryUrlName;
   this.layout('defaultLayout', {
     data: {
-      category: category,
+      currentCategory: () => { return Categories.findOne({urlName: categoryUrlName}) },
       searchbarSupported: true,
-      showSearchbar: this.params.query.sb,
+      showSearchbar: this.params.query.sb == "true",
     },
   });
-  this.render('list');
+  if (this.ready()) {
+    this.render('list');
+  } else {
+    this.render('loading');
+  };
+}, {
+  name: "search",
 });

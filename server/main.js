@@ -1,4 +1,6 @@
-import '../imports/api/tasks.js';
+import '../imports/startup/server/index.js';
+// import { Categories } from '../imports/api/categories.js';
+
 // import { Meteor } from 'meteor/meteor';
 //
 // Meteor.startup(() => {

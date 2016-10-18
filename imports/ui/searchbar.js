@@ -1,5 +1,5 @@
 let animateSearchbarOnAndOff = function(showSearchbar) {
-  if (showSearchbar == "true") {
+  if (showSearchbar) {
     this.$(".animated-slide-down").css("max-height", this.$(".animated-slide-down")[0].scrollHeight); // TODO: requires update on window resize
     this.$("#search").focus();
   } else {
