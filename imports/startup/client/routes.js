@@ -1,4 +1,5 @@
 import { Categories } from '../../api/categories.js';
+import { Events } from '../../api/events.js';
 
 Router.configure({
   // the default layout
@@ -39,6 +40,17 @@ Router.route('/search/:categoryUrlName', function() {
       },
       searchbarSupported: true,
       showSearchbar: this.params.query.sb == "true",
+      events_: () => {
+        if (categoriesUrlNamesList) {
+          const categoryIds = Categories.find({urlName: {$in: categoriesUrlNamesList}}).fetch().map( (v) => {return v._id} );
+          console.log(categoryIds);
+          const events = Events.find({categoryId: {$in: categoryIds}}, {sort: {createdAt: -1}});
+          console.log(events.fetch());
+          return events;
+        } else {
+          return false;
+        }
+      },
     },
   });
   if (this.ready()) {

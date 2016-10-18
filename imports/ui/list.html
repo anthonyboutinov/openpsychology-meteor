@@ -4,20 +4,20 @@
 
     <div class="row m-t-60">
 
-      {{#each loopCount 6}}
+      {{#each event in events_}}
       <div class="col-sm-6 col-md-4 m-b-60">
-        <a href="#" class="link-nonvisual">
-          <img class="img-responsive img-external-noalpha m-b-10" src="http://placehold.it/360x170" alt="">
-          <h5 class="block-title hint-text">Тренинг</h5>
-          <h4>Путь пары. Гармония взаимоотношений в&nbsp;семье</h4>
+        <a href="/event/{{event._id}}" class="link-nonvisual">
+          <img class="img-responsive img-external-noalpha m-b-10" src="{{event.imageUrl}}" alt="">
+          <h5 class="block-title hint-text">{{event.title}}</h5>
+          <h4>{{event.description.short}}</h4>
         </a>
         <div>
-          <h5>12 ноября 2016 г., 20:00</h5>
-          <h4 class="inline no-margin v-middle">800 ₽</h4>
+          <h5>{{event.date}}</h5>
+          <h4 class="inline no-margin v-middle">{{event.cost}} ₽</h4>
           <a href="#">
-            <h5 class="inline no-margin v-middle m-l-10">Generic Inc.</h5><img src="http://placehold.it/24x24" class="img-responsive m-l-char inline v-middle profile-pic">
+            <h5 class="inline no-margin v-middle m-l-10">{{event.organizer.name}}</h5><img src="{{event.organizer.imageUrl}}" class="img-responsive m-l-char inline v-middle profile-pic">
           </a>
-          <a class="btn btn-sm all-caps m-l-10" href="#"><i class="fa fa-star-o" style="font-size: 18px;"></i><span class="sr-only">Добавить в закладки</span></a>
+          <a class="btn btn-sm all-caps m-l-10" href="#" ev-toggle-bookmark-id="{{event._id}}"><i class="fa fa-star-o" style="font-size: 18px;"></i><span class="sr-only">Добавить в закладки</span></a>
         </div>
       </div>
       {{/each}}
