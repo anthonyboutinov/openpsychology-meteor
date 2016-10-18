@@ -25,6 +25,13 @@ Template.searchbar.helpers({
   },
 });
 
+Template.searchbar.events({
+  'click [sb-toggle-category-id]': function(event, template) {
+    event.preventDefault();
+    const _id = $(event.currentTarget).attr("sb-toggle");
+    // ...
+  }
+});
 
 Template.searchbar.onRendered(function() {
   animateSearchbarOnAndOff(this.showSearchbar);

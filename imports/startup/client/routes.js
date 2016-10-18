@@ -30,9 +30,16 @@ Router.route('/search/:categoryUrlName', function() {
   //   category = Categories.findOne({urlName: this.params.category});
   // }
   const categoryUrlName = this.params.categoryUrlName;
+  const categoriesUrlNamesList = categoryUrlName.length > 1 ? categoryUrlName.split('') : false;
   this.layout('defaultLayout', {
     data: {
-      currentCategory: () => { return Categories.findOne({urlName: categoryUrlName}) },
+      currentCategory: () => {
+        if (categoriesUrlNamesList == false) {
+          return Categories.findOne({urlName: categoryUrlName});
+        } else {
+          return Categories.find({urlName: {$in: categoriesUrlNamesList}});
+        }
+      },
       searchbarSupported: true,
       showSearchbar: this.params.query.sb == "true",
     },
