@@ -9,5 +9,8 @@ Template.list.helpers({
   nbsp: function(str) {
     return str.replace(/&nbsp;/g, '\u00a0');
   },
+  shouldClearfix: function(index, grid) {
+    return index != 0 && index % grid == 0;
+  }
 
 });

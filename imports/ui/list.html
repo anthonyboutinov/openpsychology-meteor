@@ -5,9 +5,20 @@
     <div class="row m-t-60">
 
       {{#each event in events_}}
+
+      {{#if shouldClearfix @index 3}}
+      <div class="clearfix visible-md-block visible-lg-block"></div>
+      {{/if}}
+
+      {{#if shouldClearfix @index 2}}
+      <div class="clearfix visible-sm-block"></div>
+      {{/if}}
+
       <div class="col-sm-6 col-md-4 m-b-60">
         <a href="/event/{{event._id}}" class="link-nonvisual">
-          <img class="img-responsive img-external-noalpha m-b-10" src="{{event.imageUrl}}" alt="">
+          <div class="aspect-ratio aspect-ratio-2-1 m-b-10">
+            <img class="img-responsive img-external-noalpha" src="{{event.imageUrl}}" alt="">
+          </div>
           <h5 class="block-title hint-text">{{event.category.singularName}}</h5>
           <h4>{{nbsp event.title}}</h4>
         </a>
