@@ -42,10 +42,14 @@ Router.route('/search/:categoryUrlName', function() {
       showSearchbar: this.params.query.sb == "true",
       events_: () => {
         if (categoriesUrlNamesList) {
+          // Extract categoryIds from Categories based on categoriesUrlNamesList
           const categoryIds = Categories.find({urlName: {$in: categoriesUrlNamesList}}).fetch().map( (v) => {return v._id} );
-          console.log(categoryIds);
-          const events = Events.find({categoryId: {$in: categoryIds}}, {sort: {createdAt: -1}});
-          console.log(events.fetch());
+          // Find events in these categories and fetch for processing
+          let events = Events.find({categoryId: {$in: categoryIds}}, {sort: {createdAt: -1}}).fetch();
+          // Left join: fetch data from Categories and attach it to `category` property
+          for (let i = 0; i < events.length; i++) {
+            events[i].category = Categories.findOne({_id: events[i].categoryId});
+          }
           return events;
         } else {
           return false;

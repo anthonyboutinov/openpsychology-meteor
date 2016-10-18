@@ -6,5 +6,8 @@ Template.list.helpers({
     }
     return countArr;
   },
+  nbsp: function(str) {
+    return str.replace(/&nbsp;/g, '\u00a0');
+  },
 
 });
