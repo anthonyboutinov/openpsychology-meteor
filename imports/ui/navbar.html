@@ -27,7 +27,7 @@
               <li class="{{isActiveRouteHome}}"><a href="/"><i class="fa fa-home nav-home" aria-hidden="true"></i><span class="sr-only">Главная</span></a></li>
               <li class="{{searchbarActive}}"><a href="#" id="showSearchbar"><i class="fa fa-search nav-home" aria-hidden="true"></i><span class="sr-only">Поиск</span></a></li>
               {{#each category in categories}}
-                {{> navbar_category category=category currentCategory=currentCategory showSearchbar=showSearchbar}}
+                {{> navbar_category category=category currentCategories=currentCategories showSearchbar=showSearchbar}}
               {{/each}}
               <li><a href="#">Статьи</a></li>
             </ul>

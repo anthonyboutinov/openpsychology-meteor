@@ -1,5 +1,5 @@
 Template.searchbar_category.helpers({
   isActive: function() {
-    return this.currentCategory && this.category._id == this.currentCategory._id ? "active" : false;
+    return this.currentCategories && this.currentCategories.map((currentValue) => {return currentValue._id}).indexOf(this.category._id) != -1 ? "active" : false;
   }
 });

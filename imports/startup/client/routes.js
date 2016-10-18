@@ -9,7 +9,7 @@ Router.route('/', function () {
   this.subscribe('categories').wait();
   this.layout('defaultLayout', {
     data: {
-      currentCategory: null,
+      currentCategories: null,
     }
   });
   if (this.ready()) {
@@ -23,21 +23,18 @@ Router.route('/', function () {
 
 Router.route('/search/:categoryUrlName', function() {
   this.subscribe('categories').wait();
-  // var category;
-  // if (this.params.category == "all") {
-  //   // catetory = ...
-  // } else {
-  //   category = Categories.findOne({urlName: this.params.category});
-  // }
-  const categoryUrlName = this.params.categoryUrlName;
-  const categoriesUrlNamesList = categoryUrlName.length > 1 ? categoryUrlName.split('') : false;
+  let categoryUrlName = this.params.categoryUrlName;
+  if (categoryUrlName == "all") {
+    categoryUrlName = "teos"; // FIXME: Not a good way to handle this
+  }
+  const categoriesUrlNamesList = categoryUrlName != "none" ? categoryUrlName.split('') : false;
   this.layout('defaultLayout', {
     data: {
-      currentCategory: () => {
-        if (categoriesUrlNamesList == false) {
-          return Categories.findOne({urlName: categoryUrlName});
-        } else {
+      currentCategories: () => {
+        if (categoriesUrlNamesList) {
           return Categories.find({urlName: {$in: categoriesUrlNamesList}});
+        } else {
+          return false;
         }
       },
       searchbarSupported: true,
