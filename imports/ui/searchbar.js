@@ -26,10 +26,25 @@ Template.searchbar.helpers({
 });
 
 Template.searchbar.events({
-  'click [sb-toggle-category-id]': function(event, template) {
+  'click [sb-toggle-category-urlName]': function(event, template) {
     event.preventDefault();
-    const _id = $(event.currentTarget).attr("sb-toggle");
-    // ...
+    const thisUrlName = $(event.currentTarget).attr("sb-toggle-category-urlName");
+
+    const pathname = window.location.pathname;
+    const indexOfLastSlash = pathname.lastIndexOf("/") + 1;
+    const currentUrlNames = pathname.substring(indexOfLastSlash);
+    let currentUrlNamesArray = currentUrlNames == "none" ? [] : currentUrlNames == "all" ? "teos".split("") : currentUrlNames.split(""); // FIXME: "teos" is a bad design
+    if (currentUrlNamesArray.length == 0) {
+      const leftPathname = pathname.substring(0, indexOfLastSlash);
+      Router.go(leftPathname + thisUrlName + window.location.search);
+    } else if (currentUrlNamesArray.indexOf(thisUrlName) == -1) {
+      Router.go(pathname + thisUrlName + window.location.search);
+    } else {
+      const leftPathname = pathname.substring(0, indexOfLastSlash);
+      currentUrlNamesArray = currentUrlNamesArray.filter((value) => {return value != thisUrlName});
+      const rightPathName = currentUrlNamesArray.length ? currentUrlNamesArray.join("") : "none";
+      Router.go(leftPathname + rightPathName + window.location.search);
+    }
   }
 });
 
