@@ -1,7 +1,7 @@
 import { Categories } from '../../api/categories.js';
 import { Events } from '../../api/events.js';
 
-const QUERY_LIMIT = 30;
+const QUERY_LIMIT = 1;
 
 Router.configure({
   // the default layout
@@ -29,13 +29,15 @@ Router.route('/search/:categoryUrlName', function() {
 
   this.subscribe('categories').wait();
 
-  const eventsLimitCount = 30;
+  if (Session.get('events.limit') == null) {
+    Session.set('events.limit', QUERY_LIMIT);
+  }
   const categoriesUrlNamesList = categoryUrlName != "none" ? categoryUrlName.split("") : false;
   this.subscribe('events', {
     categoriesUrlNamesList: categoriesUrlNamesList,
     options: {
       sort: {createdAt: -1},
-      limit: eventsLimitCount,
+      limit: Session.get('events.limit'),
     }
   }).wait();
 
