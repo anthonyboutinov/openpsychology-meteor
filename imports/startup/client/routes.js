@@ -22,18 +22,29 @@ Router.route('/', function () {
   name: "home",
 });
 
-Router.route('/search/:categoryUrlName', function() {
-  this.subscribe('categories').wait();
+Router.route('/search/:categoryUrlName/:page?', function() {
   let categoryUrlName = this.params.categoryUrlName;
   if (categoryUrlName == "all") {
     categoryUrlName = "teos"; // FIXME: Not a good way to handle this
   }
+
+  this.subscribe('categories').wait();
+
+  const eventsSkip = parseInt(this.params.page) ? parseInt(this.params.page - 1) * 30 : 0;
   const categoriesUrlNamesList = categoryUrlName != "none" ? categoryUrlName.split('') : false;
+  this.subscribe('events', {
+    categoriesUrlNamesList: categoriesUrlNamesList,
+    options: {
+      sort: {createdAt: -1},
+      skip: eventsSkip
+    }
+  }).wait();
+
   this.layout('defaultLayout', {
     data: {
       currentCategories: () => {
         if (categoriesUrlNamesList) {
-          return Categories.find({urlName: {$in: categoriesUrlNamesList}});
+          return Categories.find({urlName: {$in: categoriesUrlNamesList}}, {reactive: false});
         } else {
           return false;
         }
@@ -42,26 +53,17 @@ Router.route('/search/:categoryUrlName', function() {
       showSearchbar: this.params.query.sb == "true",
       events_: () => {
         if (categoriesUrlNamesList) {
-          // Extract categoryIds from Categories based on categoriesUrlNamesList
-          const categoryIds = Categories.find({urlName: {$in: categoriesUrlNamesList}}).fetch().map( (v) => {return v._id} );
-          // Find events in these categories and fetch for processing
-          let events = Events.find({categoryId: {$in: categoryIds}}, {sort: {createdAt: -1}}).fetch();
-          // Left join: fetch data from Categories and attach it to `category` property
-          for (let i = 0; i < events.length; i++) {
-            events[i].category = Categories.findOne({_id: events[i].categoryId});
-          }
-          return events;
+          return Events.find().map((event) => {
+            event.category = Categories.findOne({_id: event.categoryId});
+            return event;
+          });
         } else {
           return false;
         }
       },
     },
   });
-  if (this.ready()) {
-    this.render('list');
-  } else {
-    this.render('loading');
-  };
+  this.render('list');
 }, {
   name: "search",
 });
