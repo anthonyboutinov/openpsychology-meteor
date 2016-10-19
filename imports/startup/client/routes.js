@@ -1,6 +1,8 @@
 import { Categories } from '../../api/categories.js';
 import { Events } from '../../api/events.js';
 
+const QUERY_LIMIT = 30;
+
 Router.configure({
   // the default layout
   layoutTemplate: 'defaultLayout'
@@ -22,21 +24,18 @@ Router.route('/', function () {
   name: "home",
 });
 
-Router.route('/search/:categoryUrlName/:page?', function() {
+Router.route('/search/:categoryUrlName', function() {
   let categoryUrlName = this.params.categoryUrlName;
-  if (categoryUrlName == "all") {
-    categoryUrlName = "teos"; // FIXME: Not a good way to handle this
-  }
 
   this.subscribe('categories').wait();
 
-  const eventsSkip = parseInt(this.params.page) ? parseInt(this.params.page - 1) * 30 : 0;
-  const categoriesUrlNamesList = categoryUrlName != "none" ? categoryUrlName.split('') : false;
+  const eventsLimitCount = 30;
+  const categoriesUrlNamesList = categoryUrlName != "none" ? categoryUrlName.split("") : false;
   this.subscribe('events', {
     categoriesUrlNamesList: categoriesUrlNamesList,
     options: {
       sort: {createdAt: -1},
-      skip: eventsSkip
+      limit: eventsLimitCount,
     }
   }).wait();
 
@@ -57,9 +56,8 @@ Router.route('/search/:categoryUrlName/:page?', function() {
             event.category = Categories.findOne({_id: event.categoryId});
             return event;
           });
-        } else {
-          return false;
         }
+        return false;
       },
     },
   });

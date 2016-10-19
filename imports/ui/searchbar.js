@@ -33,7 +33,7 @@ Template.searchbar.events({
     const pathname = window.location.pathname;
     const indexOfLastSlash = pathname.lastIndexOf("/") + 1;
     const currentUrlNames = pathname.substring(indexOfLastSlash);
-    let currentUrlNamesArray = currentUrlNames == "none" ? [] : currentUrlNames == "all" ? "teos".split("") : currentUrlNames.split(""); // FIXME: "teos" is a bad design
+    let currentUrlNamesArray = currentUrlNames == "none" ? [] : currentUrlNames.split("");
     if (currentUrlNamesArray.length == 0) {
       const leftPathname = pathname.substring(0, indexOfLastSlash);
       Router.go(leftPathname + thisUrlName + window.location.search);

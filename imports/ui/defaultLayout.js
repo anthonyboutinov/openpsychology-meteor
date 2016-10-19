@@ -8,7 +8,8 @@ Template.defaultLayout.events({
       Router.go(window.location.pathname + "?sb=true");
     } else {
       event.preventDefault();
-      Router.go("/search/all?sb=true")
+      const allCategoriesUrlNames = Categories.find({}, {reactive: false, fields: {urlName: 1}}).map((v) => {return v.urlName});
+      Router.go("/search/" + allCategoriesUrlNames + "?sb=true")
     }
 
   },
