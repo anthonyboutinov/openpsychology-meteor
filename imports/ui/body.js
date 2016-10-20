@@ -1,5 +1,4 @@
 import { Template } from 'meteor/templating';
-import { Categories } from '../api/categories.js';
 
 import './loading.html';
 import './defaultLayout.html';

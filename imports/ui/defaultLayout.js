@@ -1,3 +1,5 @@
+import { Categories } from '../api/categories.js';
+
 Template.defaultLayout.events({
   "click #showSearchbar": function(event, template){
     if (this.showSearchbar) {
@@ -8,7 +10,7 @@ Template.defaultLayout.events({
       Router.go(window.location.pathname + "?sb=true");
     } else {
       event.preventDefault();
-      const allCategoriesUrlNames = Categories.find({}, {reactive: false, fields: {urlName: 1}}).map((v) => {return v.urlName});
+      const allCategoriesUrlNames = Categories.find({}, {reactive: false, fields: {urlName: 1}}).map((v) => {return v.urlName}).join("");
       Router.go("/search/" + allCategoriesUrlNames + "?sb=true")
     }
 

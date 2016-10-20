@@ -1,11 +1,14 @@
 <template name="defaultLayout">
 
-  {{> navbar}}
-
-  {{> searchbar}}
-
-  {{> yield}}
-
-  {{> footer}}
+  <div id="document-container">
+     <div id="document-body">
+       {{> navbar}}
+       {{> searchbar}}
+       {{> yield}}
+     </div>
+     <div id="document-footer">
+       {{> footer}}
+     </div>
+  </div>
 
 </template>

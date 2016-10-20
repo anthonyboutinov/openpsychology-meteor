@@ -24,6 +24,10 @@ Router.route('/', function () {
   name: "home",
 });
 
+// Router.route('/__loading', function() {
+//   this.render('loading');
+// });
+
 Router.route('/search/:categoryUrlName', function() {
   let categoryUrlName = this.params.categoryUrlName;
 
