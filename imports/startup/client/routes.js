@@ -29,19 +29,21 @@ Router.route('/', function () {
 // });
 
 Router.route('/search/:categoryUrlName', function() {
-  let categoryUrlName = this.params.categoryUrlName;
-
   this.subscribe('categories').wait();
 
-  if (Session.get('events.limit') == null) {
-    Session.set('events.limit', QUERY_LIMIT);
-  }
+  const categoryUrlName = this.params.categoryUrlName;
   const categoriesUrlNamesList = categoryUrlName != "none" ? categoryUrlName.split("") : false;
+
+  if (SessionStore.get('events.limit') == null || SessionStore.get('categoryUrlName') != categoryUrlName) {
+    SessionStore.set('events.limit', QUERY_LIMIT);
+  }
+  SessionStore.set('categoryUrlName', categoryUrlName);
+
   this.subscribe('events', {
     categoriesUrlNamesList: categoriesUrlNamesList,
     options: {
       sort: {createdAt: -1},
-      limit: Session.get('events.limit'),
+      limit: SessionStore.get('events.limit'),
     }
   }).wait();
 

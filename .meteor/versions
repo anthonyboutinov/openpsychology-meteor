@@ -1,5 +1,6 @@
 255kb:meteor-status@1.5.0
 allow-deny@1.0.5
+amplify@1.0.0
 autoupdate@1.2.11
 babel-compiler@6.9.1_1
 babel-runtime@0.1.11_1
@@ -13,6 +14,7 @@ caching-compiler@1.1.7
 caching-html-compiler@1.0.7
 callback-hook@1.0.9
 check@1.2.3
+coffeescript@1.0.17
 ddp@1.2.5
 ddp-client@1.2.9
 ddp-common@1.2.6
@@ -70,6 +72,7 @@ retry@1.0.8
 routepolicy@1.0.11
 session@1.0.5
 shell-server@0.2.1
+smeevil:session-store@1.0.0
 spacebars@1.0.13
 spacebars-compiler@1.0.13
 standard-minifier-css@1.2.1

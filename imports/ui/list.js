@@ -18,9 +18,8 @@ Template.list.helpers({
 Template.list.events({
   'click a[href=\'#loadMore\']': (event, template) => {
     event.preventDefault();
-    const currentLimit = Session.get('events.limit');
+    const currentLimit = SessionStore.get('events.limit');
     const newLimit = currentLimit + 1;
-    console.log(newLimit);
-    Session.set('events.limit', newLimit);
+    SessionStore.set('events.limit', newLimit);
   },
 });
