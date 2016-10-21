@@ -1,7 +1,7 @@
 import { Categories } from '../../api/categories.js';
 import { Events } from '../../api/events.js';
 
-export const QUERY_LIMIT = 6;
+export const QUERY_LIMIT = 6 * 5;
 
 Router.configure({
   // the default layout

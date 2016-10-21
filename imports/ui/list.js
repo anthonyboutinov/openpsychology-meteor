@@ -1,8 +1,6 @@
 import { Events } from '../api/events.js';
 import { QUERY_LIMIT } from '../startup/client/routes.js';
 
-// let triggered = false;
-
 Template.list.helpers({
   loopCount: function(count){
     var countArr = [];
@@ -21,6 +19,9 @@ Template.list.helpers({
     return index > QUERY_LIMIT ? "animated fadeIn" : false;
   },
   allItemsFetched: function() {
+    if (!Template.instance().data.subscriptionsReady()) {
+      return false;
+    }
     return Counts.get('events.count') == Events.find().count();
   },
 
@@ -32,44 +33,27 @@ Template.list.events({
 
 Template.list.onDestroyed(function() {
   clearInterval(this.interval);
-  // console.log("interval destryed");
 });
 
 Template.list.onRendered(function() {
-  // this.triggered = false;
-  const FOOTER_IMAGINARY_PADDING_FOR_INFINITE_SCROLLING_TRIGGER = 200;
-  let footerHeight = $("#document-footer").outerHeight() + FOOTER_IMAGINARY_PADDING_FOR_INFINITE_SCROLLING_TRIGGER;
+  let footerHeight = $("#document-footer").outerHeight() + $(window).height();
 
   this.interval = setInterval(() => {
 
-    // if (this.triggered) {
-    //   return;
-    // }
-
     if (!this.data.subscriptionsReady()) {
-      console.log("Events not ready");
       return;
     }
 
     const offset = $(window).scrollTop() + $(window).height();
     const height = $(document).height();
-    // console.log(height - offset, footerHeight);
 
-    // console.log(Counts.get('events.count'), this.data.events_().length);
     if (height - offset <= footerHeight && Counts.get('events.count') > this.data.events_().length) {
-
-      // this.triggered = true;
-      // setTimeout(()=>{
-      //    this.triggered = false;
-      // }, 200);
-
       const currentLimit = SessionStore.get('events.limit');
       const newLimit = currentLimit + QUERY_LIMIT;
       SessionStore.set('events.limit', newLimit);
-      // console.log("New limit: " + newLimit);
     }
 
-  }, 1000);
+  }, 1000); // Page scroll check rate (for infinite scrolling)
 
 
 
