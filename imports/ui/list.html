@@ -23,7 +23,7 @@
           <h4>{{nbsp event.title}}</h4>
         </a>
         <div>
-          <h5>{{event.date}}</h5>
+          <h5>{{formatedDate event.date}} ({{calenderDate event.date}})</h5>
           <h4 class="inline no-margin v-middle">{{event.cost}}&nbsp;₽</h4>
           <a href="#">
             <h5 class="inline no-margin v-middle m-l-10">{{nbsp event.organizer.name}}</h5><img src="{{event.organizer.imageUrl}}" class="img-responsive m-l-char inline v-middle profile-pic">

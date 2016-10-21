@@ -28,3 +28,5 @@ frozeman:template-var
 session
 smeevil:session-store
 tmeasday:publish-counts
+momentjs:moment
+rzymek:moment-locale-ru

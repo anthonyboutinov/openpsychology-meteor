@@ -35,6 +35,12 @@ Template.list.helpers({
     const instance = Template.instance();
     return !instance.data.allItemsFetched() && instance.data.events_().length == 0;
   },
+  formatedDate: function(date) {
+    return moment(date).format('llll');
+  },
+  calenderDate: function(date) {
+    return moment(date).calendar();
+  },
 
 });
 
