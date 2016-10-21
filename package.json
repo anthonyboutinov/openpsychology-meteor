@@ -5,6 +5,7 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "animate.css": "^3.5.2",
     "bootstrap-sass": "^3.3.7",
     "fixtures.js": "^2.1.0",
     "meteor-node-stubs": "~0.2.0"

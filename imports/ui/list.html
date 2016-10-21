@@ -14,7 +14,7 @@
       <div class="clearfix visible-sm-block"></div>
       {{/if}}
 
-      <div class="col-sm-6 col-md-4 m-b-60">
+      <div class="col-sm-6 col-md-4 m-b-60 {{animationClass @index}}">
         <a href="/event/{{event._id}}" class="link-nonvisual">
           <div class="aspect-ratio aspect-ratio-2-1 m-b-10">
             <img class="img-responsive img-external-noalpha" src="{{event.imageUrl}}" alt="">
@@ -33,12 +33,18 @@
       </div>
       {{/each}}
 
-      <div class="col-xs-12 text-center">
-        {{#if loadMoreActive}}
-        <a href="#loadMore" class="btn btn-sm btn-default">Загрузить еще</a>
-        {{/if}}
-      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        {{#if allItemsFetched}}
+        <h5 class="hint-text animated fadeInUp"><i class="fa fa-fw fa-info" aria-hidden="true"></i> Больше данных нет</h5>
+        {{/if}}
+
+        {{#unless allItemsFetched}}
+        <h5 class="hint-text animated fadeIn"><i class="fa fa-fw fa-spinner fa-spin" aria-hidden="true"></i> Загрузка...</h5>
+        {{/unless}}
+      </div>
     </div>
 
 

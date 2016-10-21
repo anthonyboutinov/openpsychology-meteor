@@ -247,9 +247,11 @@ Meteor.startup(() => {
       },
     ];
 
-    events.forEach((event) => {
-      Events.insert(event);
-    });
+    for (let i = 0; i < 20; i++) {
+      events.forEach((event) => {
+        Events.insert(event);
+      });
+    }
 
   }
 

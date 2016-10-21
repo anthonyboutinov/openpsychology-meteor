@@ -1,7 +1,7 @@
 import { Categories } from '../../api/categories.js';
 import { Events } from '../../api/events.js';
 
-const QUERY_LIMIT = 1;
+export const QUERY_LIMIT = 6;
 
 Router.configure({
   // the default layout
@@ -65,12 +65,11 @@ Router.route('/search/:categoryUrlName', function() {
             return event;
           });
         }
-        return false;
+        return [];
       },
-      loadMoreActive: () => {
-        console.log(Counts.get('events.count'), Events.find().count());
-        return Counts.get('events.count') > Events.find().count();
-      }
+      subscriptionsReady: () => {
+        return this.ready();
+      },
     },
   });
   this.render('list');

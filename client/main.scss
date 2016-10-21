@@ -1,6 +1,18 @@
+// **
+// Other packages
+// **
 @import 'scss/bootstrap-variables';
 @import "{}/node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 
+// **
+// Animate.css modules
+// **
+@import "scss/_animate-min";
+// @import "{}/node_modules/animate.css/animate.css";
+
+// **
+// My Stuff
+// **
 @import "scss/general";
 @import "scss/common";
 @import "scss/loading";
