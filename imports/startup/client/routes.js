@@ -67,6 +67,10 @@ Router.route('/search/:categoryUrlName', function() {
         }
         return false;
       },
+      loadMoreActive: () => {
+        console.log(Counts.get('events.count'), Events.find().count());
+        return Counts.get('events.count') > Events.find().count();
+      }
     },
   });
   this.render('list');
