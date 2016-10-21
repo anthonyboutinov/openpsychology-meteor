@@ -38,16 +38,17 @@
     <div class="row">
       <div class="col-xs-12 text-center">
         {{#if allItemsFetched}}
-        <h5 class="hint-text animated fadeInUp"><i class="fa fa-fw fa-info" aria-hidden="true"></i> Больше данных нет</h5>
+        <h5 class="hint-text animated fadeIn"><i class="fa fa-fw fa-info" aria-hidden="true"></i> Больше данных нет</h5>
         {{/if}}
 
         {{#unless allItemsFetched}}
-        <h5 class="hint-text animated fadeIn"><i class="fa fa-fw fa-spinner fa-spin" aria-hidden="true"></i> Загрузка...</h5>
+        <!-- <h5 class="hint-text animated fadeIn"><i class="fa fa-fw fa-spinner fa-spin" aria-hidden="true"></i> Загрузка...</h5> -->
+        <div class="p-t-30 p-b-30">
+          {{> loading}}
+        </div>
         {{/unless}}
       </div>
     </div>
-
-
 
   </section>
 

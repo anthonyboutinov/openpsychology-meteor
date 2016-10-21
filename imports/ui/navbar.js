@@ -2,7 +2,16 @@ import { Categories } from '../api/categories.js';
 
 Template.navbar.helpers({
   "searchbarActive": function() {
-    return this.showSearchbar ? "active" : this.currentCategories && this.currentCategories().count() > 1 ? "searchbar-active-but-hidden" : false;
+    if (this.showSearchbar) {
+      return "active";
+    } else {
+      const cc = this.currentCategories;
+      if (cc == null) {
+        return false;
+      }
+      const ccValue = cc(); 
+      return ccValue && ccValue.count() > 1 ? "searchbar-active-but-hidden" : false;
+    }
   },
   "isActiveRouteHome": function() {
     return Router.current().route.getName() == "home" ? "active" : false;

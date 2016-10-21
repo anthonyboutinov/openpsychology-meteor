@@ -19,10 +19,21 @@ Template.list.helpers({
     return index > QUERY_LIMIT ? "animated fadeIn" : false;
   },
   allItemsFetched: function() {
-    if (!Template.instance().data.subscriptionsReady()) {
+    const instance = Template.instance();
+    if (!instance.data.subscriptionsReady()) {
+      // console.log("allItemsFetched not ready");
       return false;
     }
+    // console.log(Counts.get('events.count'), Events.find().count());
+    // console.log(!instance.data.subscribedToEvents);
+    if (!instance.data.subscribedToEvents) {
+      return true;
+    }
     return Counts.get('events.count') == Events.find().count();
+  },
+  initialLoading: function() {
+    const instance = Template.instance();
+    return !instance.data.allItemsFetched() && instance.data.events_().length == 0;
   },
 
 });
@@ -36,24 +47,25 @@ Template.list.onDestroyed(function() {
 });
 
 Template.list.onRendered(function() {
-  let footerHeight = $("#document-footer").outerHeight() + $(window).height();
+  if (this.data.subscribedToEvents) {
+    let footerHeight = $("#document-footer").outerHeight() + $(window).height();
+    this.interval = setInterval(() => {
 
-  this.interval = setInterval(() => {
+      if (!this.data.subscriptionsReady()) {
+        return;
+      }
 
-    if (!this.data.subscriptionsReady()) {
-      return;
-    }
+      const offset = $(window).scrollTop() + $(window).height();
+      const height = $(document).height();
 
-    const offset = $(window).scrollTop() + $(window).height();
-    const height = $(document).height();
+      if (height - offset <= footerHeight && Counts.get('events.count') > this.data.events_().length) {
+        const currentLimit = SessionStore.get('events.limit');
+        const newLimit = currentLimit + QUERY_LIMIT;
+        SessionStore.set('events.limit', newLimit);
+      }
 
-    if (height - offset <= footerHeight && Counts.get('events.count') > this.data.events_().length) {
-      const currentLimit = SessionStore.get('events.limit');
-      const newLimit = currentLimit + QUERY_LIMIT;
-      SessionStore.set('events.limit', newLimit);
-    }
-
-  }, 1000); // Page scroll check rate (for infinite scrolling)
+    }, 1000); // Page scroll check rate (for infinite scrolling)
+  }
 
 
 

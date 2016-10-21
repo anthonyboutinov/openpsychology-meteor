@@ -49,7 +49,9 @@ Template.searchbar.events({
 });
 
 Template.searchbar.onRendered(function() {
-  animateSearchbarOnAndOff(this.showSearchbar);
+  setTimeout(()=>{
+    animateSearchbarOnAndOff(this.data.showSearchbar);
+  }, 200);
 
   this.$('#filter-datepicker').datepicker({
     maxViewMode: 2,

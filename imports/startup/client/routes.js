@@ -12,7 +12,7 @@ Router.route('/', function () {
   this.subscribe('categories').wait();
   this.layout('defaultLayout', {
     data: {
-      currentCategories: null,
+      // currentCategories: null,
     }
   });
   if (this.ready()) {
@@ -24,9 +24,9 @@ Router.route('/', function () {
   name: "home",
 });
 
-// Router.route('/__loading', function() {
-//   this.render('loading');
-// });
+Router.route('/__loading', function() {
+  this.render('loading');
+});
 
 Router.route('/search/:categoryUrlName', function() {
   this.subscribe('categories').wait();
@@ -37,15 +37,19 @@ Router.route('/search/:categoryUrlName', function() {
   if (SessionStore.get('events.limit') == null || SessionStore.get('categoryUrlName') != categoryUrlName) {
     SessionStore.set('events.limit', QUERY_LIMIT);
   }
+  // update categoryUrlName value after `if` check
   SessionStore.set('categoryUrlName', categoryUrlName);
 
-  this.subscribe('events', {
-    categoriesUrlNamesList: categoriesUrlNamesList,
-    options: {
-      sort: {createdAt: -1},
-      limit: SessionStore.get('events.limit'),
-    }
-  }).wait();
+  const subscribedToEvents = categoriesUrlNamesList != false;
+  if (subscribedToEvents) {
+    this.subscribe('events', {
+      categoriesUrlNamesList: categoriesUrlNamesList,
+      options: {
+        sort: {createdAt: -1},
+        limit: SessionStore.get('events.limit'),
+      }
+    }).wait();
+  }
 
   this.layout('defaultLayout', {
     data: {
@@ -59,7 +63,7 @@ Router.route('/search/:categoryUrlName', function() {
       searchbarSupported: true,
       showSearchbar: this.params.query.sb == "true",
       events_: () => {
-        if (categoriesUrlNamesList) {
+        if (subscribedToEvents) {
           return Events.find().map((event) => {
             event.category = Categories.findOne({_id: event.categoryId});
             return event;
@@ -67,6 +71,7 @@ Router.route('/search/:categoryUrlName', function() {
         }
         return [];
       },
+      subscribedToEvents: subscribedToEvents,
       subscriptionsReady: () => {
         return this.ready();
       },
