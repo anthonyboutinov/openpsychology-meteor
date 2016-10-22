@@ -45,6 +45,15 @@ Template.searchbar.events({
       const rightPathName = currentUrlNamesArray.length ? currentUrlNamesArray.join("") : "none";
       Router.go(leftPathname + rightPathName + window.location.search);
     }
+  },
+
+  'keyup #search-filter-text': function(event, template) {
+    const value = $(event.currentTarget).val();
+    if (value == '') {
+      SessionStore.unset('events.search.text');
+    } else {
+      SessionStore.set('events.search.text', value);
+    }
   }
 });
 
@@ -53,7 +62,9 @@ Template.searchbar.onRendered(function() {
     animateSearchbarOnAndOff(this.data.showSearchbar);
   }, 200);
 
-  this.$('#filter-datepicker').datepicker({
+  this.$("#search-filter-text").val(SessionStore.get('events.search.text'));
+
+  this.$('#search-filter-datepicker').datepicker({
     maxViewMode: 2,
     format: 'dd.mm.yyyy',
     startDate: '0d',

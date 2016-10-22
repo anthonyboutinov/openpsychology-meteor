@@ -11,20 +11,25 @@
               <div class="col-sm-8">
                 <div class="form-group">
                   <label for="search" class="sr-only">Поиск:</label>
-                  <input type="search" class="form-control boxshadow-upwards" id="search" placeholder="Искать...">
+                  <input type="search" class="form-control boxshadow-upwards" id="search-filter-text" placeholder="Искать...">
                 </div>
               </div>
               <div class="col-sm-4">
-                <div class="input-group date input-group-seamless" id="filter-datepicker">
+                <div class="input-group date input-group-seamless" id="search-filter-datepicker">
                   <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" placeholder="Любой день">
                 </div>
               </div>
             </div>
 
             <div class="text-center">
-              {{#each category in categories}}
-                {{> searchbar_category category=category currentCategories=currentCategories}}
-              {{/each}}
+              <span>
+                {{#unless categories}}
+                <a class="btn btn-pane-inverse btn-sm disabled">Загрузка данных...</a> <!-- TODO: Check on actual connection if this shows up at all. -->
+                {{/unless}}
+                {{#each category in categories}}
+                  {{> searchbar_category category=category currentCategories=currentCategories}}
+                {{/each}}
+              </span>
             </div>
 
           </form>

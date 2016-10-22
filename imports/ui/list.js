@@ -1,6 +1,22 @@
 import { Events } from '../api/events.js';
 import { QUERY_LIMIT } from '../startup/client/routes.js';
 
+
+const allItemsFetchedCommonCode = function() {
+  const instance = Template.instance();
+  if (!instance.data.subscriptionsReady()) {return false;}
+  if (!instance.data.subscribedToEvents) {return 'noResults';}
+  const eCount = Events.find().count();
+  if (Counts.get('events.count') == eCount) {
+    if (eCount == 0) {
+      return 'noResults';
+    } else {
+      return true;
+    }
+  }
+  return false;
+};
+
 Template.list.helpers({
   loopCount: function(count){
     var countArr = [];
@@ -19,17 +35,13 @@ Template.list.helpers({
     return index > QUERY_LIMIT ? "animated fadeIn" : false;
   },
   allItemsFetched: function() {
-    const instance = Template.instance();
-    if (!instance.data.subscriptionsReady()) {
-      // console.log("allItemsFetched not ready");
-      return false;
-    }
-    // console.log(Counts.get('events.count'), Events.find().count());
-    // console.log(!instance.data.subscribedToEvents);
-    if (!instance.data.subscribedToEvents) {
-      return true;
-    }
-    return Counts.get('events.count') == Events.find().count();
+    return allItemsFetchedCommonCode()
+  },
+  allItemsFetchedWithResults: function() {
+    return allItemsFetchedCommonCode() === true;
+  },
+  allItemsFetchedNoResults: function() {
+    return allItemsFetchedCommonCode() === 'noResults';
   },
   initialLoading: function() {
     const instance = Template.instance();
@@ -50,6 +62,8 @@ Template.list.events({
 
 Template.list.onDestroyed(function() {
   clearInterval(this.interval);
+  SessionStore.unset('events.search.text');
+  $("#search-filter-text").val("");
 });
 
 Template.list.onRendered(function() {

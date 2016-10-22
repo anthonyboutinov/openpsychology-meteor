@@ -12,7 +12,9 @@ Router.route('/', function () {
   this.subscribe('categories').wait();
   this.layout('defaultLayout', {
     data: {
-      // currentCategories: null,
+      subscriptionsReady: () => {
+        return this.ready();
+      },
     }
   });
   if (this.ready()) {
@@ -44,6 +46,7 @@ Router.route('/search/:categoryUrlName', function() {
   if (subscribedToEvents) {
     this.subscribe('events', {
       categoriesUrlNamesList: categoriesUrlNamesList,
+      constainsText: SessionStore.get('events.search.text'),
       options: {
         sort: {createdAt: -1},
         limit: SessionStore.get('events.limit'),
