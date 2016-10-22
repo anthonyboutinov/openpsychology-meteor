@@ -48,7 +48,7 @@ Meteor.startup(() => {
       {
         createdAt: new Date(),
         categoryId: categories[0],
-        imageUrl: "http://placehold.it/360x180",
+        imageUrl: "/assets/placeholder360x180.png",
         title: "Путь пары. Гармония взаимоотношений в&nbsp;семье",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         date: new Date(),
@@ -58,7 +58,7 @@ Meteor.startup(() => {
           building: "23a",
           additionalInfo: "вход с торца здания",
         },
-        cost: 800,
+        cost: 0,
         organizer: {
           _id: "4343284390432",
           name: "Generic, Inc.",
@@ -68,7 +68,7 @@ Meteor.startup(() => {
       {
         createdAt: new Date(),
         categoryId: categories[0],
-        imageUrl: "http://placehold.it/360x180",
+        imageUrl: "/assets/placeholder360x180.png",
         title: "Второй в нулевой категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         date: new Date(),
@@ -88,7 +88,7 @@ Meteor.startup(() => {
       {
         createdAt: new Date(),
         categoryId: categories[0],
-        imageUrl: "http://placehold.it/360x180",
+        imageUrl: "/assets/placeholder360x180.png",
         title: "Третий в нулевой категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         date: new Date(),
@@ -108,7 +108,7 @@ Meteor.startup(() => {
       {
         createdAt: new Date(),
         categoryId: categories[1],
-        imageUrl: "http://placehold.it/360x180",
+        imageUrl: "/assets/placeholder360x180.png",
         title: "Первый в первой категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         date: new Date(),
@@ -118,7 +118,7 @@ Meteor.startup(() => {
           building: "23a",
           additionalInfo: "вход с торца здания",
         },
-        cost: 800,
+        cost: 1500,
         organizer: {
           _id: "4343284390432",
           name: "Generic, Inc.",
@@ -128,7 +128,7 @@ Meteor.startup(() => {
       {
         createdAt: new Date(),
         categoryId: categories[1],
-        imageUrl: "http://placehold.it/360x180",
+        imageUrl: "/assets/placeholder360x180.png",
         title: "Второй в первой категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         date: new Date(),
@@ -148,7 +148,7 @@ Meteor.startup(() => {
       {
         createdAt: new Date(),
         categoryId: categories[1],
-        imageUrl: "http://placehold.it/360x180",
+        imageUrl: "/assets/placeholder360x180.png",
         title: "Третий в первой категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         date: new Date(),
@@ -168,7 +168,7 @@ Meteor.startup(() => {
       {
         createdAt: new Date(),
         categoryId: categories[1],
-        imageUrl: "http://placehold.it/360x180",
+        imageUrl: "/assets/placeholder360x180.png",
         title: "Четвертый в первой категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         date: new Date(),
@@ -188,7 +188,7 @@ Meteor.startup(() => {
       {
         createdAt: new Date(),
         categoryId: categories[2],
-        imageUrl: "http://placehold.it/360x180",
+        imageUrl: "/assets/placeholder360x180.png",
         title: "Первый во второй категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         date: new Date(),
@@ -208,7 +208,7 @@ Meteor.startup(() => {
       {
         createdAt: new Date(),
         categoryId: categories[2],
-        imageUrl: "http://placehold.it/360x180",
+        imageUrl: "/assets/placeholder360x180.png",
         title: "Второй во второй категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         date: new Date(),
@@ -228,7 +228,7 @@ Meteor.startup(() => {
       {
         createdAt: new Date(),
         categoryId: categories[3],
-        imageUrl: "http://placehold.it/360x180",
+        imageUrl: "/assets/placeholder360x180.png",
         title: "Единственный в третьей категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         date: new Date(),
