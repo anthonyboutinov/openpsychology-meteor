@@ -64,13 +64,27 @@ Template.searchbar.onRendered(function() {
 
   this.$("#search-filter-text").val(SessionStore.get('events.search.text'));
 
-  this.$('#search-filter-datepicker').datepicker({
+  this.$('#search-filter-datepicker-from').datepicker({
     maxViewMode: 2,
     format: 'dd.mm.yyyy',
-    startDate: '0d',
     clearBtn: true,
     language: "ru",
     todayHighlight: true,
+    autoclose: true,
+    beforeShowYear: function (date){
+      if (date.getFullYear() < 2016) {
+        return false;
+      }
+    }
+  });
+
+  this.$('#search-filter-datepicker-to').datepicker({
+    maxViewMode: 2,
+    format: 'dd.mm.yyyy',
+    clearBtn: true,
+    language: "ru",
+    todayHighlight: true,
+    autoclose: true,
     beforeShowYear: function (date){
       if (date.getFullYear() < 2016) {
         return false;

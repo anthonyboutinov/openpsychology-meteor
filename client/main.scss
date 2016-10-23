@@ -185,3 +185,17 @@
     padding-right: 15px;
   }
 }
+
+
+@media (min-width: $screen-sm-min) {
+  .search-form-group-left,
+  .search-form-group-right {
+    width: calc(50% - 0.2em);
+  }
+  .search-form-group-left {
+    margin-right: 0.1em;
+  }
+  .search-form-group-right {
+    margin-left: 0.1em;
+  }
+}

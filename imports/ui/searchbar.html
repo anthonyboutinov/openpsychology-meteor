@@ -8,15 +8,24 @@
           <form class="form">
 
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-lg-6 col-sm-12">
                 <div class="form-group">
                   <label for="search" class="sr-only">Поиск:</label>
                   <input type="search" class="form-control boxshadow-upwards" id="search-filter-text" placeholder="Искать...">
                 </div>
               </div>
-              <div class="col-sm-4">
-                <div class="input-group date input-group-seamless" id="search-filter-datepicker">
-                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" placeholder="Любой день">
+              <div class="col-lg-6 col-sm-12 text-center form-inline m-b-15">
+                <div class="form-group search-form-group-left">
+                  <span class="sr-only">Диапазон дат: нижнее значение</span>
+                  <div class="input-group date input-group-seamless" id="search-filter-datepicker-from">
+                    <span class="input-group-addon"><i class="fa fa-calendar" aria-label="hidden"></i></span><input type="text" class="form-control" placeholder="С любого дня">
+                  </div>
+                </div
+                ><div class="form-group search-form-group-right">
+                  <span class="sr-only">Диапазон дат: верхнее значение</span>
+                  <div class="input-group date input-group-seamless" id="search-filter-datepicker-to">
+                    <span class="input-group-addon"><i class="fa fa-calendar" aria-label="hidden"></i></span><input type="text" class="form-control" placeholder="По любой день">
+                  </div>
                 </div>
               </div>
             </div>
