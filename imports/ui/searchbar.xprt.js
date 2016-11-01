@@ -1,10 +1,10 @@
 export const clearSearchbarFields = function() {
-  SessionStore.unset('events.search.text');
+  SessionStore.set('events.search.text', '');
   $("#search-filter-text").val("");
 
-  SessionStore.unset('events.search.date.from');
+  SessionStore.set('events.search.dates.from', '');
   $("#search-filter-datepicker-from input").val("");
 
-  SessionStore.unset('events.search.date.to');
+  SessionStore.set('events.search.dates.to', '');
   $("#search-filter-datepicker-to input").val("");
 };
