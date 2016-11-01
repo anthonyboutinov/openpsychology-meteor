@@ -47,6 +47,10 @@ Router.route('/search/:categoryUrlName', function() {
     this.subscribe('events', {
       categoriesUrlNamesList: categoriesUrlNamesList,
       constainsText: SessionStore.get('events.search.text'),
+      datesRange: {
+        from: SessionStore.get('events.search.dates.from'),
+        to:   SessionStore.get('events.search.dates.to'),
+      },
       options: {
         sort: {createdAt: -1},
         limit: SessionStore.get('events.limit'),

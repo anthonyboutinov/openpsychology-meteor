@@ -47,14 +47,20 @@ Template.searchbar.events({
     }
   },
 
-  'keyup #search-filter-text': function(event, template) {
+  'keyup #search-filter-text, blur #search-filter-text': function(event, template) {
     const value = $(event.currentTarget).val();
-    if (value == '') {
-      SessionStore.unset('events.search.text');
-    } else {
-      SessionStore.set('events.search.text', value);
-    }
-  }
+    SessionStore.set('events.search.text', value);
+  },
+
+  'change #search-filter-datepicker-from input': function(event, template) {
+    const value = $(event.currentTarget).val();
+    SessionStore.set('events.search.dates.from', value);
+  },
+
+  'change #search-filter-datepicker-to input': function(event, template) {
+    const value = $(event.currentTarget).val();
+    SessionStore.set('events.search.dates.to', value);
+  },
 });
 
 Template.searchbar.onRendered(function() {
@@ -63,6 +69,8 @@ Template.searchbar.onRendered(function() {
   }, 200);
 
   this.$("#search-filter-text").val(SessionStore.get('events.search.text'));
+  this.$("#search-filter-datepicker-from input").val(SessionStore.get('events.search.date.from'));
+  this.$("#search-filter-datepicker-to input").val(SessionStore.get('events.search.date.to'));
 
   this.$('#search-filter-datepicker-from').datepicker({
     maxViewMode: 2,
@@ -76,6 +84,8 @@ Template.searchbar.onRendered(function() {
         return false;
       }
     }
+  }).on('clearDate', function() {
+    SessionStore.set('events.search.dates.from', '');
   });
 
   this.$('#search-filter-datepicker-to').datepicker({
@@ -90,5 +100,7 @@ Template.searchbar.onRendered(function() {
         return false;
       }
     }
+  }).on('clearDate', function() {
+    SessionStore.set('events.search.dates.to', '');
   });
 });
