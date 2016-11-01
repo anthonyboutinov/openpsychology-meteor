@@ -1,0 +1,51 @@
+<template name="event">
+  <div class="section container">
+    <div class="row m-t-60">
+      <div class="col-xs-12 col-lg-8">
+
+        <img class="img-responsive img-external-noalpha" src="http://placehold.it/780x260" alt="Изображение-баннер события">
+        <h1 class="inline-block">{{nbsp event.title}}</h1>
+
+        <div class="row">
+
+          <div class="col-xs-12 col-sm-12 col-lg-5">
+
+            <h3 class="inline-block block-title hint-text">{{event.category.singularName}}</h3>
+
+            <h4 class="no-margin v-middle">Стоимость: {{event.cost}}<span aria-hidden="true">&nbsp;</span>₽</h4>
+            <div>
+              <h4 class="inline no-margin v-middle">Дата проведения: </h4
+              ><h5 class="inline no-margin v-middle">{{formatedDate event.date}} ({{calenderDate event.date}})</h5>
+            </div>
+            <div>
+              <h4 class="inline no-margin v-middle">Место проведения: </h4
+              ><h5 class="inline no-margin v-middle">{{event.location.city}}, {{event.location.street}}, {{event.location.building}}, {{event.location.additionalInfo}}</h5>
+            </div>
+
+
+            <div>
+              <h4 class="inline no-margin v-middle">Организатор: </h4>
+              <h5 class="inline no-margin v-middle">
+                <a href="/organizer/{{event.organizer._id}}">
+                  {{nbsp event.organizer.name}}<img src="{{event.organizer.imageUrl}}" class="img-responsive m-l-char inline v-middle profile-pic">
+                </a>
+              </h5>
+            </div>
+
+            <a class="btn btn-sm all-caps m-l-10" href="#" ev-toggle-bookmark-id="{{event._id}}"><i class="fa fa-star-o" style="font-size: 18px;"></i><span class="sr-only">Добавить в закладки</span></a>
+
+          </div>
+          <div class="col-xs-12 col-sm-12 col-lg-7">
+            {{nbsp event.description}}
+          </div>
+
+        </div><!-- eof .row -->
+
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-lg-4">
+        <h3>Похожие мероприятия:</h3>
+      </div>
+    </div>
+  </div>
+</template>

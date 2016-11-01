@@ -88,3 +88,30 @@ Router.route('/search/:categoryUrlName', function() {
 }, {
   name: "search",
 });
+
+Router.route("/event/:_id", function() {
+  this.subscribe('categories').wait();
+
+  this.subscribe('event', this.params._id).wait();
+
+  this.layout('defaultLayout', {
+    data: {
+      subscriptionsReady: () => {
+        return this.ready();
+      },
+      event: () => {
+        const event = Events.findOne({ _id: this.params._id });
+        event.category = Categories.findOne({_id: event.categoryId});
+        return event;
+      },
+    }
+  });
+  if (this.ready()) {
+    this.render('event');
+  } else {
+    this.render('loading');
+  };
+
+}, {
+  name: "event"
+});

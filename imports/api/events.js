@@ -42,4 +42,8 @@ if (Meteor.isServer) {
     return Events.find(findParams, params.options);
   });
 
+  Meteor.publish('event', function(_id) {
+    return Events.find({ _id: _id});
+  });
+
 }
