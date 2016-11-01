@@ -1,6 +1,6 @@
 import { Events } from '../api/events.js';
 import { QUERY_LIMIT } from '../startup/client/routes.js';
-
+import { clearSearchbarFields } from './searchbar.xprt.js';
 
 const allItemsFetchedCommonCode = function() {
   const instance = Template.instance();
@@ -16,6 +16,8 @@ const allItemsFetchedCommonCode = function() {
   }
   return false;
 };
+
+
 
 Template.list.helpers({
   loopCount: function(count){
@@ -61,18 +63,8 @@ Template.list.events({
 });
 
 Template.list.onDestroyed(function() {
-
   clearInterval(this.interval);
-
-  SessionStore.unset('events.search.text');
-  $("#search-filter-text").val("");
-
-  SessionStore.unset('events.search.date.from');
-  $("#search-filter-datepicker-from input").val("");
-
-  SessionStore.unset('events.search.date.to');
-  $("#search-filter-datepicker-to input").val("");
-
+  clearSearchbarFields();
 });
 
 Template.list.onRendered(function() {
