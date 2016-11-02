@@ -156,8 +156,11 @@ $table-border-color:            #ddd !default;
 $btn-font-weight:                normal !default;
 
 $btn-default-color:              $gray !default;
-$btn-default-bg:                 #fafafa !default;
-$btn-default-border:             #f0f0f0 !default;
+$btn-default-bg:                 transparent !default;
+$btn-default-border:             transparent !default;
+$btn-default-hover-bg:           rgba(51, 51, 51, 0.08) !default;
+$btn-default-focus-bg:           rgba(51, 51, 51, 0.14) !default;
+$btn-default-focus-hover-bg:     rgba(51, 51, 51, 0.17) !default;
 
 $btn-primary-color:              #fff !default;
 $btn-primary-bg:                 $brand-primary !default;
