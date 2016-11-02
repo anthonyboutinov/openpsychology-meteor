@@ -1,20 +1,22 @@
 <template name="list_item">
 
   <div class="list-item">
-    <a href="/event/{{event._id}}" class="link-nonvisual">
+    <a href="/event/{{event._id}}">
       <div class="aspect-ratio aspect-ratio-2-1 m-b-10">
         <img class="img-responsive img-external-noalpha" src="{{event.imageUrl}}" aria-hidden="true">
       </div>
+    </a>
 
-      <div class="list-item-text">
-        <span class="inline-block pull-right">
-          <button class="btn btn-default" ev-toggle-bookmark-id="{{event._id}}"><i class="fa fa-star-o" aria-hidden="true"></i><span class="sr-only">Добавить в закладки</span></button>
-          <button class="btn btn-default" ev-toggle-like-id="{{event._id}}"><i class="fa fa-heart-o" aria-hidden="true"></i><span class="sr-only">Поставить лайк</span></button>
-        </span>
+    <div class="list-item-text">
+      <span class="inline-block pull-right">
+        <button class="btn btn-default" ev-toggle-bookmark-id="{{event._id}}"><i class="fa fa-star-o" aria-hidden="true"></i><span class="sr-only">Добавить в закладки</span></button>
+        <button class="btn btn-default" ev-toggle-like-id="{{event._id}}"><i class="fa fa-heart-o" aria-hidden="true"></i><span class="sr-only">Поставить лайк</span></button>
+      </span>
+      <a href="/event/{{event._id}}">
         <h5 class="block-title hint-text">{{event.category.singularName}}</h5>
         <h4>{{nbsp event.title}}</h4>
-      </div>
-    </a>
+      </a>
+    </div>
     <div class="list-item-text p-b-15">
       {{formatedDate event.date}} ({{calenderDate event.date}})
 
