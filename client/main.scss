@@ -58,6 +58,10 @@
 
 .profile-pic {
   border-radius: 50%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: inline;
+  vertical-align: middle;
 }
 
 
@@ -187,6 +191,10 @@
   &-text {
     padding-left: 15px;
     padding-right: 15px;
+  }
+
+  .block-title {
+    line-height: 33px;
   }
 }
 
