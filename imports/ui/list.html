@@ -15,26 +15,7 @@
       {{/if}}
 
       <div class="col-sm-6 col-md-4 m-b-60 {{animationClass @index}}">
-        <div class="list-item">
-          <a href="/event/{{event._id}}" class="link-nonvisual">
-            <div class="aspect-ratio aspect-ratio-2-1 m-b-10">
-              <img class="img-responsive img-external-noalpha" src="{{event.imageUrl}}" alt="Изображение-баннер события">
-            </div>
-
-            <div class="list-item-text">
-              <h5 class="block-title hint-text">{{event.category.singularName}}</h5>
-              <h4>{{nbsp event.title}}</h4>
-            </div>
-          </a>
-          <div class="list-item-text p-b-15">
-            <h5>{{formatedDate event.date}} ({{calenderDate event.date}})</h5>
-            <h4 class="inline no-margin v-middle">{{event.cost}}<span aria-hidden="true">&nbsp;</span>₽</h4>
-            <a href="/organizer/{{event.organizer._id}}">
-              <h5 class="inline no-margin v-middle m-l-10">{{nbsp event.organizer.name}}</h5><img src="{{event.organizer.imageUrl}}" class="img-responsive m-l-char inline v-middle profile-pic">
-            </a>
-            <a class="btn btn-sm all-caps m-l-10" href="#" ev-toggle-bookmark-id="{{event._id}}"><i class="fa fa-star-o" style="font-size: 18px;"></i><span class="sr-only">Добавить в закладки</span></a>
-          </div>
-        </div>
+        {{> list_item event=event}}
       </div>
       {{/each}}
 

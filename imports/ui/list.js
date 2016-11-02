@@ -2,6 +2,9 @@ import { Events } from '../api/events.js';
 import { QUERY_LIMIT } from '../startup/client/routes.js';
 import { clearSearchbarFields } from './searchbar.xprt.js';
 
+import './list_item.html';
+import './list_item.js';
+
 const allItemsFetchedCommonCode = function() {
   const instance = Template.instance();
   if (!instance.data.subscriptionsReady()) {return false;}
@@ -27,9 +30,6 @@ Template.list.helpers({
     }
     return countArr;
   },
-  nbsp: function(str) {
-    return str.replace(/&nbsp;/g, '\u00a0');
-  },
   shouldClearfix: function(index, grid) {
     return index != 0 && index % grid == 0;
   },
@@ -48,12 +48,6 @@ Template.list.helpers({
   initialLoading: function() {
     const instance = Template.instance();
     return !instance.data.allItemsFetched() && instance.data.events_().length == 0;
-  },
-  formatedDate: function(date) {
-    return moment(date).format('llll');
-  },
-  calenderDate: function(date) {
-    return moment(date).calendar();
   },
 
 });

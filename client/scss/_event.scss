@@ -1,0 +1,23 @@
+.event-main {
+  background: white;
+}
+
+.event-heading {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.event-body {
+  padding: 0 30px 30px 30px;
+}
+
+.event-actions {
+  background-color: #f6f6f6;
+  padding: 10px 45px 10px 15px;
+  text-align: right;
+  margin-right: -31px;
+
+  a {
+    font-size: $font-size-h5;
+  }
+}
