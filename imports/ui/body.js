@@ -27,4 +27,7 @@ import './searchbar_category.js';
 import './event.html';
 import './event.js';
 
+import './organizer.html';
+import './organizer.js';
+
 import './share-button.html';

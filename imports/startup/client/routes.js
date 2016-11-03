@@ -1,5 +1,6 @@
-import { Categories } from '../../api/categories.js';
-import { Events } from '../../api/events.js';
+import { Categories }  from '../../api/categories.js';
+import { Events }      from '../../api/events.js';
+import { Organizers } from '../../api/organizers.js';
 
 export const QUERY_LIMIT = 6 * 5;
 
@@ -8,6 +9,12 @@ Router.configure({
   layoutTemplate: 'defaultLayout'
 });
 
+
+/*
+----------------------------
+Home route
+----------------------------
+*/
 Router.route('/', function () {
   this.subscribe('categories').wait();
   this.layout('defaultLayout', {
@@ -26,10 +33,22 @@ Router.route('/', function () {
   name: "home",
 });
 
+
+/*
+----------------------------
+Loading route
+----------------------------
+*/
 Router.route('/__loading', function() {
   this.render('loading');
 });
 
+
+/*
+----------------------------
+Search events route
+----------------------------
+*/
 Router.route('/search/:categoryUrlName', function() {
   this.subscribe('categories').wait();
 
@@ -52,7 +71,7 @@ Router.route('/search/:categoryUrlName', function() {
         to:   SessionStore.get('events.search.dates.to'),
       },
       options: {
-        sort: {createdAt: -1},
+        sort: {date: -1},
         limit: SessionStore.get('events.limit'),
       }
     }).wait();
@@ -89,11 +108,15 @@ Router.route('/search/:categoryUrlName', function() {
   name: "search",
 });
 
+
+/*
+----------------------------
+Event route
+----------------------------
+*/
 Router.route("/event/:_id", function() {
   this.subscribe('categories').wait();
-
   this.subscribe('event', this.params._id).wait();
-
   this.layout('defaultLayout', {
     data: {
       subscriptionsReady: () => {
@@ -114,4 +137,44 @@ Router.route("/event/:_id", function() {
 
 }, {
   name: "event"
+});
+
+
+/*
+----------------------------
+Organizer route
+----------------------------
+*/
+Router.route("/organizer/:_id", function() {
+  this.subscribe('categories').wait();
+  this.subscribe('organizer', this.params._id).wait();
+  this.subscribe('events.byOrganizer', {
+    _idOrganizer: this.params._id,
+    options: {
+      sort: {date: -1},
+      limit: QUERY_LIMIT,
+    }
+  }).wait();
+  this.layout('defaultLayout', {
+    data: {
+      subscriptionsReady: () => {
+        return this.ready();
+      },
+      events_: () => {
+        return Events.find().map((event) => {
+          event.category = Categories.findOne({_id: event.categoryId});
+          return event;
+        });
+      },
+      organizer: Organizers.findOne({ _id: this.params._id }),
+    }
+  });
+  if (this.ready()) {
+    this.render('organizer');
+  } else {
+    this.render('loading');
+  };
+
+}, {
+  name: "organizer"
 });

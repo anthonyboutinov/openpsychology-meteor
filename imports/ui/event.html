@@ -2,12 +2,12 @@
   <div class="container p-b-30">
     <div class="row m-t-60">
       <div class="col-xs-12 col-lg-8">
-        <div class="event-main">
+        <div class="fulldescription-main">
 
           <img class="img-responsive img-external-noalpha" src="http://placehold.it/780x260" alt="Изображение-баннер события">
-          <h1 class="event-heading m-b-30">{{nbsp event.title}}</h1>
+          <h1 class="fulldescription-heading m-b-30">{{nbsp event.title}}</h1>
 
-          <div class="row event-body">
+          <div class="row fulldescription-body">
 
             <div class="col-xs-12 col-sm-12 col-lg-5">
 
@@ -41,7 +41,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-lg-7">
 
-              <div class="m-b-30 event-actions">
+              <div class="m-b-30 fulldescription-actions">
                 {{> shareButton}}
                 <button class="btn btn-default" ev-toggle-bookmark-id="{{event._id}}"><i class="fa fa-star-o" aria-hidden="true"></i><span class="sr-only">Добавить в закладки</span></button>
                 <button class="btn btn-default" ev-toggle-like-id="{{event._id}}"><i class="fa fa-heart-o" aria-hidden="true"></i><span class="sr-only">Поставить лайк</span></button>
@@ -65,11 +65,11 @@
 
         <h4 class="hint block-title">Похожие мероприятия</h4>
 
-        <div class="m-t-30">
+        <div class="m-t-30 list-items-bordered">
           {{> list_item event=event}}
         </div>
 
-        <div class="m-t-30">
+        <div class="m-t-30 list-items-bordered">
           {{> list_item event=event}}
         </div>
 

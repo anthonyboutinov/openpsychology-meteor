@@ -23,7 +23,8 @@
 @import "scss/meteorstatus";
 @import "scss/nav";
 @import "scss/section";
-@import "scss/event";
+@import "scss/list-item";
+@import "scss/fulldescription";
 @import "scss/share-button";
 
 
@@ -170,33 +171,6 @@
 
 
 
-
-
-
-
-.list-item {
-  -webkit-transition: all .8s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -moz-transition: all .8s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -ms-transition: all .8s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -o-transition: all .8s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: all .8s cubic-bezier(0.645, 0.045, 0.355, 1);
-
-  background-color: white;
-
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
-  &:hover, &:active, &:focus, &.active {
-    box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.1);
-  }
-
-  &-text {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  .block-title {
-    line-height: 33px;
-  }
-}
 
 
 @media (min-width: $screen-sm-min) {

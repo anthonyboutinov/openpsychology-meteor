@@ -1,6 +1,7 @@
 import './fixtures.js';
-import { Categories } from '../../api/categories.js';
-import { Events } from '../../api/events.js';
+import { Categories }  from '../../api/categories.js';
+import { Events }      from '../../api/events.js';
+import { Organizers } from '../../api/organizers.js';
 
 Meteor.startup(() => {
 
@@ -39,34 +40,82 @@ Meteor.startup(() => {
 
   };
 
+  if (Organizers.find().count() == 0) {
+    const organizers = [
+      {
+        createdAt: new Date(),
+
+        _idsEditors: [
+          "43285203tghds3",
+          "432r9wfhsddsar",
+        ],
+
+        bannerUrl: "http://placehold.it/780x260",
+        imageUrl: "http://placehold.it/24x24",
+
+        name: "Название Организации №1",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        phoneNum: "8000000000",
+        location: {
+          city: "Казань",
+          street: "ул. Тукая",
+          building: "д. 23a",
+          additionalInfo: "вход с торца здания",
+        },
+      }
+    ];
+
+    organizers.forEach((organizer) => {
+      Organizers.insert(organizer);
+    });
+  }
+
   if (Events.find().count() == 0) {
 
     const categories = Categories.find({}, {fields: {'_id': 1}}).fetch().map((v) => {return v._id});
-    console.log(categories);
+    console.log("Categories: ", categories);
+
+    const organizers = Organizers.find({}, {fields: {'_id': 1}}).fetch().map((v) => {return v._id});
+    console.log("Organizers: ", organizers);
+
+    const inventDate = function() {
+
+      const getRandomInt = function(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+      };
+
+      let date = new Date();
+      date.setMonth(date.getMonth() + 1);
+      date.setDate(date.getDate() + getRandomInt(-15, 16));
+      return date;
+    };
 
     const events = [
       {
-        createdAt: new Date(),
+        createdAt: inventDate(),
         categoryId: categories[0],
         imageUrl: "/assets/placeholder360x180.png",
         title: "Путь пары. Гармония взаимоотношений в&nbsp;семье",
         description: "Полное описание Арбуз Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        date: new Date(),
+        date: inventDate(),
         location: {
           city: "Казань",
-          street: "Тукая",
-          building: "23a",
+          street: "ул. Тукая",
+          building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
         cost: 0,
         organizer: {
-          _id: "4343284390432",
+          _id: organizers[0],
           name: "Generic, Inc.",
           imageUrl: "http://placehold.it/24x24",
         },
       },
       {
-        createdAt: new Date(),
+        createdAt: inventDate(),
         categoryId: categories[0],
         imageUrl: "/assets/placeholder360x180.png",
         title: "Второй в нулевой категории",
@@ -74,39 +123,42 @@ Meteor.startup(() => {
         date: new Date(),
         location: {
           city: "Казань",
-          street: "Тукая",
-          building: "23a",
+          street: "ул. Тукая",
+          building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
         cost: 800,
         organizer: {
-          _id: "4343284390432",
+          _id: organizers[0],
           name: "Generic, Inc.",
           imageUrl: "http://placehold.it/24x24",
         },
       },
       {
-        createdAt: new Date(),
+        createdAt: inventDate(),
         categoryId: categories[0],
         imageUrl: "/assets/placeholder360x180.png",
-        title: "Третий в нулевой категории",
-        description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        title: "Третий в&nbsp;нулевой категории с&nbsp;длинным описанием",
+        description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\
+* Item 1\
+* Item 2",
         date: new Date(),
         location: {
           city: "Казань",
-          street: "Тукая",
-          building: "23a",
+          street: "ул. Тукая",
+          building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
-        cost: 800,
+        cost: 1600,
         organizer: {
-          _id: "4343284390432",
+          _id: organizers[0],
           name: "Generic, Inc.",
           imageUrl: "http://placehold.it/24x24",
         },
       },
       {
-        createdAt: new Date(),
+        createdAt: inventDate(),
         categoryId: categories[1],
         imageUrl: "/assets/placeholder360x180.png",
         title: "Первый в первой категории",
@@ -114,19 +166,19 @@ Meteor.startup(() => {
         date: new Date(),
         location: {
           city: "Казань",
-          street: "Тукая",
-          building: "23a",
+          street: "ул. Тукая",
+          building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
         cost: 1500,
         organizer: {
-          _id: "4343284390432",
+          _id: organizers[0],
           name: "Generic, Inc.",
           imageUrl: "http://placehold.it/24x24",
         },
       },
       {
-        createdAt: new Date(),
+        createdAt: inventDate(),
         categoryId: categories[1],
         imageUrl: "/assets/placeholder360x180.png",
         title: "Второй в первой категории",
@@ -134,19 +186,19 @@ Meteor.startup(() => {
         date: new Date(),
         location: {
           city: "Казань",
-          street: "Тукая",
-          building: "23a",
+          street: "ул. Тукая",
+          building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
         cost: 800,
         organizer: {
-          _id: "4343284390432",
+          _id: organizers[0],
           name: "Generic, Inc.",
           imageUrl: "http://placehold.it/24x24",
         },
       },
       {
-        createdAt: new Date(),
+        createdAt: inventDate(),
         categoryId: categories[1],
         imageUrl: "/assets/placeholder360x180.png",
         title: "Третий в первой категории",
@@ -154,19 +206,19 @@ Meteor.startup(() => {
         date: new Date(),
         location: {
           city: "Казань",
-          street: "Тукая",
-          building: "23a",
+          street: "ул. Тукая",
+          building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
         cost: 800,
         organizer: {
-          _id: "4343284390432",
+          _id: organizers[0],
           name: "Generic, Inc.",
           imageUrl: "http://placehold.it/24x24",
         },
       },
       {
-        createdAt: new Date(),
+        createdAt: inventDate(),
         categoryId: categories[1],
         imageUrl: "/assets/placeholder360x180.png",
         title: "Четвертый в первой категории",
@@ -174,19 +226,19 @@ Meteor.startup(() => {
         date: new Date(),
         location: {
           city: "Казань",
-          street: "Тукая",
-          building: "23a",
+          street: "ул. Тукая",
+          building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
         cost: 800,
         organizer: {
-          _id: "4343284390432",
+          _id: organizers[0],
           name: "Generic, Inc.",
           imageUrl: "http://placehold.it/24x24",
         },
       },
       {
-        createdAt: new Date(),
+        createdAt: inventDate(),
         categoryId: categories[2],
         imageUrl: "/assets/placeholder360x180.png",
         title: "Первый во второй категории",
@@ -194,19 +246,19 @@ Meteor.startup(() => {
         date: new Date(),
         location: {
           city: "Казань",
-          street: "Тукая",
-          building: "23a",
+          street: "ул. Тукая",
+          building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
         cost: 800,
         organizer: {
-          _id: "4343284390432",
+          _id: organizers[0],
           name: "Generic, Inc.",
           imageUrl: "http://placehold.it/24x24",
         },
       },
       {
-        createdAt: new Date(),
+        createdAt: inventDate(),
         categoryId: categories[2],
         imageUrl: "/assets/placeholder360x180.png",
         title: "Второй во второй категории",
@@ -214,19 +266,19 @@ Meteor.startup(() => {
         date: new Date(),
         location: {
           city: "Казань",
-          street: "Тукая",
-          building: "23a",
+          street: "ул. Баки Урманче",
+          building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
         cost: 800,
         organizer: {
-          _id: "4343284390432",
+          _id: organizers[0],
           name: "Generic, Inc.",
           imageUrl: "http://placehold.it/24x24",
         },
       },
       {
-        createdAt: new Date(),
+        createdAt: inventDate(),
         categoryId: categories[3],
         imageUrl: "/assets/placeholder360x180.png",
         title: "Единственный в третьей категории",
@@ -234,13 +286,13 @@ Meteor.startup(() => {
         date: new Date(),
         location: {
           city: "Казань",
-          street: "Тукая",
-          building: "23a",
+          street: "ул. Баки Урманче",
+          building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
         cost: 800,
         organizer: {
-          _id: "4343284390432",
+          _id: organizers[0],
           name: "Generic, Inc.",
           imageUrl: "http://placehold.it/24x24",
         },
@@ -256,6 +308,7 @@ Meteor.startup(() => {
   }
 
   console.log(Categories.find().count() + " categories in total.");
+  console.log(Organizers.find().count() + " organizers in total.");
   console.log(Events.find().count() + " events in total.");
 
 });
