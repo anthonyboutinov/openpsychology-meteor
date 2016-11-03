@@ -10,7 +10,22 @@
           <div class="row fulldescription-body">
 
             <div class="col-xs-12 col-sm-12 col-lg-5">
-              ...
+
+              <div class="m-b-10">
+                <h4 class="m-t-0">Адрес:</h4>
+                {{organizer.location.city}}, {{organizer.location.street}}, {{organizer.location.building}}, {{organizer.location.additionalInfo}}
+              </div>
+
+              <div class="m-t-15">
+                <h4>Контакты:</h4>
+                <a href="#" class="btn m-b-5 btn-vk"><i class="fa fa-fw fa-vk" aria-hidden="true"></i><span class="sr-only">ВКонтакте</span></a>
+                <a href="#" class="btn m-b-5 btn-odnoklassniki"><i class="fa fa-fw fa-odnoklassniki" aria-hidden="true"></i><span class="sr-only">Одноклассники</span></a>
+                <a href="#" class="btn m-b-5 btn-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+                <a href="#" class="btn m-b-5 btn-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span class="sr-only">Google Plus</span></a>
+                <a href="#" class="btn m-b-5 btn-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+                <a href="tel:+7{{organizer.phoneNum}}" class="btn m-b-5 btn-primary"><i class="fa fa-phone fa-fw" aria-hidden="true"></i>+7 (800) 000-00-00</a>
+              </div>
+
             </div>
             <div class="col-xs-12 col-sm-12 col-lg-7">
               {{nbsp organizer.description}}

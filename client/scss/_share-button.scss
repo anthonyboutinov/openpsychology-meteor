@@ -73,7 +73,7 @@
       border-left: 20px solid transparent;
     	border-right: 20px solid transparent;
 
-    	border-top: 20px solid #4b74a5; // vk color
+    	border-top: 20px solid $btn-vk-bg;
     }
 
     li {
@@ -90,11 +90,11 @@
 
       &:hover {color:rgba(0,0,0,.5);}
 
-      &[class*="facebook"] {background:#3B5998; border-top-left-radius: $border-radius-base; border-bottom-left-radius: $border-radius-base;}
-      &[class*="vk"] {background:#4b74a5}
-      &[class*="odnoklassniki"] {background:#ee8209}
-      &[class*="twitter"] {background:#6CDFEA}
-      &[class*="google-plus"] {background:#e34428; border-top-right-radius: $border-radius-base; border-bottom-right-radius: $border-radius-base;}
+      &[class*="facebook"] {background:$btn-facebook-bg; border-top-left-radius: $border-radius-base; border-bottom-left-radius: $border-radius-base;}
+      &[class*="vk"] {background:$btn-vk-bg}
+      &[class*="odnoklassniki"] {background:$btn-odnoklassniki-bg}
+      &[class*="twitter"] {background:$btn-twitter-bg}
+      &[class*="google-plus"] {background:$btn-googleplus-bg; border-top-right-radius: $border-radius-base; border-bottom-right-radius: $border-radius-base;}
 
 
     }

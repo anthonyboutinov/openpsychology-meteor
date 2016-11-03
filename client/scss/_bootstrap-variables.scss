@@ -184,6 +184,21 @@ $btn-danger-border:              darken($btn-danger-bg, 5%) !default;
 
 $btn-link-disabled-color:        $gray-light !default;
 
+$btn-vk-bg:                      #4b74a5 !default;
+$btn-vk-border:                  darken($btn-vk-bg, 5%) !default;
+
+$btn-facebook-bg:                #3B5998 !default;
+$btn-facebook-border:            darken($btn-facebook-bg, 5%) !default;
+
+$btn-twitter-bg:                 #6CDFEA !default;
+$btn-twitter-border:             darken($btn-twitter-bg, 5%) !default;
+
+$btn-googleplus-bg:              #e34428 !default;
+$btn-googleplus-border:          darken($btn-googleplus-bg, 5%) !default;
+
+$btn-odnoklassniki-bg:           #e34428 !default;
+$btn-odnoklassniki-border:       darken($btn-odnoklassniki-bg, 5%) !default;
+
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius-base:         $border-radius-base !default;
 $btn-border-radius-large:        $border-radius-large !default;

@@ -1,0 +1,43 @@
+.btn-default {
+
+  &:focus,
+  &.focus {
+    background-color: $btn-default-focus-bg;
+  }
+  &:hover {
+    background-color: $btn-default-hover-bg;
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-color: $btn-default-focus-bg;
+
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: $btn-default-focus-hover-bg;
+    }
+  }
+
+}
+
+
+.btn-vk {
+  @include button-variant(#fff, $btn-vk-bg, $btn-vk-border);
+}
+
+.btn-facebook {
+  @include button-variant(#fff, $btn-facebook-bg, $btn-facebook-border);
+}
+
+.btn-googleplus {
+  @include button-variant(#fff, $btn-googleplus-bg, $btn-googleplus-border);
+}
+
+.btn-twitter {
+  @include button-variant(#fff, $btn-twitter-bg, $btn-twitter-border);
+}
+
+.btn-odnoklassniki {
+  @include button-variant(#fff, $btn-odnoklassniki-bg, $btn-odnoklassniki-border);
+}
