@@ -1,43 +1,43 @@
 <template name="home">
 
-  <section class="container p-b-30">
+  <section class="bg-white p-b-30">
+    <div class="container">
 
-    <div class="row section-heading">
-      <div class="col-sm-8 col-sm-offset-2">
-        <h3>Новое и интересное</h3>
-        <h1 class="light">Рекомендованные мероприятия</h1>
-        <h4>Каждый день мы вручную отбираем для вас самые интересные мероприятия</h4>
-      </div>
-    </div>
-
-    <div class="row m-t-60">
-
-      {{#each loopCount 6}}
-      <div class="col-sm-6 col-md-4 m-b-60">
-        <a href="#" class="link-nonvisual">
-          <img class="img-responsive img-external-noalpha m-b-10" src="http://placehold.it/360x170" alt="">
-          <h5 class="block-title hint-text">Семинар</h5>
-          <h4>Путь пары. Гармония взаимоотношений в&nbsp;семье</h4>
-        </a>
-        <div>
-          <h5>12 ноября 2016 г., 20:00</h5>
-          <h4 class="inline v-middle">800 ₽</h4>
-          <a href="#">
-            <h5 class="inline v-middle m-l-10">Generic Inc.</h5><img src="http://placehold.it/24x24" class="img-responsive m-l-char inline v-middle profile-pic">
-          </a>
-          <a class="btn btn-sm all-caps m-l-10" href="#"><i class="fa fa-star-o" style="font-size: 18px;"></i><span class="sr-only">Добавить в закладки</span></a>
+      <div class="row section-heading">
+        <div class="col-sm-8 col-sm-offset-2">
+          <h3>Новое и интересное</h3>
+          <h1 class="light">Рекомендованные мероприятия</h1>
+          <h4>Каждый день мы вручную отбираем для вас самые интересные мероприятия</h4>
         </div>
       </div>
-      {{/each}}
+
+      <div class="row m-t-60">
+
+        {{#each loopCount 6}}
+        <div class="col-sm-6 col-md-4 m-b-60">
+          <a href="#" class="link-nonvisual">
+            <img class="img-responsive img-external-noalpha m-b-10" src="http://placehold.it/360x170" alt="">
+            <h5 class="block-title hint-text">Семинар</h5>
+            <h4>Путь пары. Гармония взаимоотношений в&nbsp;семье</h4>
+          </a>
+          <div>
+            <h5>12 ноября 2016 г., 20:00</h5>
+            <h4 class="inline v-middle">800 ₽</h4>
+            <a href="#">
+              <h5 class="inline v-middle m-l-10">Generic Inc.</h5><img src="http://placehold.it/24x24" class="img-responsive m-l-char inline v-middle profile-pic">
+            </a>
+            <a class="btn btn-sm all-caps m-l-10" href="#"><i class="fa fa-star-o" style="font-size: 18px;"></i><span class="sr-only">Добавить в закладки</span></a>
+          </div>
+        </div>
+        {{/each}}
+
+      </div>
 
     </div>
-
-
-
   </section>
 
 
-  <section class="section-lighter p-b-30">
+  <section class="p-b-30">
     <div class="container">
 
       <div class="row section-heading">

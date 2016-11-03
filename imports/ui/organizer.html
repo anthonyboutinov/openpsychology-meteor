@@ -2,7 +2,7 @@
   <div class="container p-b-30">
     <div class="row m-t-60">
       <div class="col-xs-12 col-lg-8">
-        <div class="fulldescription-main">
+        <section class="fulldescription-main">
 
           <img class="img-responsive img-external-noalpha" src="{{organizer.bannerUrl}}" alt="Изображение-баннер события">
           <h1 class="fulldescription-heading m-b-30">{{organizer.name}}</h1>
@@ -29,27 +29,27 @@
 
             </div>
             <div class="col-xs-12 col-sm-12 col-lg-7">
-              {{nbsp organizer.description}}
+              {{#markdown}}{{nbsp organizer.description}}{{/markdown}}
             </div>
 
           </div><!-- eof .row -->
 
-        </div>
+        </section>
 
       </div>
 
-      <div class="col-xs-12 col-sm-12 col-lg-4">
+      <aside class="col-xs-12 col-sm-12 col-lg-4">
 
         <div class="m-b-60">
           <img src="http://placehold.it/400x400?text=Реклама" class="img-responsive">
         </div>
 
-      </div>
+      </aside>
     </div>
-    <div class="row m-t-60">
+    <section class="row m-t-60">
 
-      <div class="col-xs-12">
-        <h4 class="all-caps m-b-30">Мероприятия от организатора</h4>
+      <div class="col-xs-12 section-heading">
+        <h3>Мероприятия от организатора</h3>
       </div>
 
       {{#each event in events_}}
@@ -67,6 +67,6 @@
       </div>
       {{/each}}
 
-    </div>
+    </section>
   </div>
 </template>

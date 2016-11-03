@@ -58,7 +58,7 @@
     padding:0;
     list-style:none;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.14);
-    border-radius: $border-radius-base;
+    border-radius: $border-radius-large;
 
     &::after {
       content:'';
@@ -90,11 +90,11 @@
 
       &:hover {color:rgba(0,0,0,.5);}
 
-      &[class*="facebook"] {background:$btn-facebook-bg; border-top-left-radius: $border-radius-base; border-bottom-left-radius: $border-radius-base;}
+      &[class*="facebook"] {background:$btn-facebook-bg; border-top-left-radius: $border-radius-large; border-bottom-left-radius: $border-radius-large;}
       &[class*="vk"] {background:$btn-vk-bg}
       &[class*="odnoklassniki"] {background:$btn-odnoklassniki-bg}
       &[class*="twitter"] {background:$btn-twitter-bg}
-      &[class*="google-plus"] {background:$btn-googleplus-bg; border-top-right-radius: $border-radius-base; border-bottom-right-radius: $border-radius-base;}
+      &[class*="google-plus"] {background:$btn-googleplus-bg; border-top-right-radius: $border-radius-large; border-bottom-right-radius: $border-radius-large;}
 
 
     }

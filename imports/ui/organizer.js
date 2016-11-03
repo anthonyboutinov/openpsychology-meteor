@@ -1,3 +1,5 @@
+import { QUERY_LIMIT } from '../startup/client/routes.js';
+
 Template.organizer.helpers({
   nbsp: function(str) {
     return str.replace(/&nbsp;/g, '\u00a0');
