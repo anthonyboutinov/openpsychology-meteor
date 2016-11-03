@@ -19,6 +19,7 @@ $gray-dark:              lighten($gray-base, 20%) !default;   // #333
 $gray:                   lighten($gray-base, 33.5%) !default; // #555
 $gray-light:             lighten($gray-base, 46.7%) !default; // #777
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
+$gray-lightest:          lighten($gray-base, 96.5%) !default; // #f6f6f6
 
 $brand-primary:         #6b7785;//darken(#428bca, 6.5%) !default; // #337ab7
 $brand-success:         #5cb85c !default;
@@ -162,42 +163,46 @@ $btn-default-hover-bg:           rgba(51, 51, 51, 0.08) !default;
 $btn-default-focus-bg:           rgba(51, 51, 51, 0.14) !default;
 $btn-default-focus-hover-bg:     rgba(51, 51, 51, 0.17) !default;
 
+$btn-secondary-color:            $btn-default-color !default;
+$btn-secondary-bg:               $gray-lightest !default;
+$btn-secondary-border:           $btn-secondary-bg !default;
+
 $btn-primary-color:              #fff !default;
 $btn-primary-bg:                 $brand-primary !default;
-$btn-primary-border:             darken($btn-primary-bg, 5%) !default;
+$btn-primary-border:             $btn-primary-bg !default;
 
 $btn-success-color:              #fff !default;
 $btn-success-bg:                 $brand-success !default;
-$btn-success-border:             darken($btn-success-bg, 5%) !default;
+$btn-success-border:             $btn-success-bg !default;
 
 $btn-info-color:                 #fff !default;
 $btn-info-bg:                    $brand-info !default;
-$btn-info-border:                darken($btn-info-bg, 5%) !default;
+$btn-info-border:                $btn-info-bg !default;
 
 $btn-warning-color:              #fff !default;
 $btn-warning-bg:                 $brand-warning !default;
-$btn-warning-border:             darken($btn-warning-bg, 5%) !default;
+$btn-warning-border:             $btn-warning-bg !default;
 
 $btn-danger-color:               #fff !default;
 $btn-danger-bg:                  $brand-danger !default;
-$btn-danger-border:              darken($btn-danger-bg, 5%) !default;
+$btn-danger-border:              $btn-danger-bg !default;
 
 $btn-link-disabled-color:        $gray-light !default;
 
 $btn-vk-bg:                      #4b74a5 !default;
-$btn-vk-border:                  darken($btn-vk-bg, 5%) !default;
+$btn-vk-border:                  $btn-vk-bg !default;
 
 $btn-facebook-bg:                #3B5998 !default;
-$btn-facebook-border:            darken($btn-facebook-bg, 5%) !default;
+$btn-facebook-border:            $btn-facebook-bg !default;
 
 $btn-twitter-bg:                 #6CDFEA !default;
-$btn-twitter-border:             darken($btn-twitter-bg, 5%) !default;
+$btn-twitter-border:             $btn-twitter-bg !default;
 
 $btn-googleplus-bg:              #e34428 !default;
-$btn-googleplus-border:          darken($btn-googleplus-bg, 5%) !default;
+$btn-googleplus-border:          $btn-googleplus-bg !default;
 
 $btn-odnoklassniki-bg:           #e34428 !default;
-$btn-odnoklassniki-border:       darken($btn-odnoklassniki-bg, 5%) !default;
+$btn-odnoklassniki-border:       $btn-odnoklassniki-bg !default;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius-base:         $border-radius-base !default;

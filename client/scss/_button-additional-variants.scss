@@ -1,3 +1,8 @@
+
+/*
+ * Default button
+ * (override for correct background colors)
+ */
 .btn-default {
 
   &:focus,
@@ -22,6 +27,9 @@
 }
 
 
+/*
+ * Social buttons
+ */
 .btn-vk {
   @include button-variant(#fff, $btn-vk-bg, $btn-vk-border);
 }
@@ -40,4 +48,12 @@
 
 .btn-odnoklassniki {
   @include button-variant(#fff, $btn-odnoklassniki-bg, $btn-odnoklassniki-border);
+}
+
+
+/*
+ * Other buttons
+ */
+.btn-secondary {
+  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
 }
