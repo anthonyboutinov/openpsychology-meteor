@@ -10,6 +10,6 @@ Template.event.helpers({
   },
 });
 
-Template.event.events({
-
+Template.event.onRendered(function() {
+  $('[data-toggle="tooltip"]').tooltip();
 });
