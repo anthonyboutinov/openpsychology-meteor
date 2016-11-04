@@ -134,3 +134,7 @@
     text-decoration: underline;
   }
 }
+
+.capitalize-first-letter::first-letter {
+  text-transform: uppercase;
+}

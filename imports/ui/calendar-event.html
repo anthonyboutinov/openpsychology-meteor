@@ -1,0 +1,13 @@
+<template name="calendarEvent">
+  <div class="calendar-event {{class}}">
+    <div class="calendar-event-relative-date"><span class="sr-only">{{relativeDateSR}} </span>{{relativeDate}}</div>
+    <div class="calendar-event-absolute-date">{{absoluteDate}}</div>
+    <div class="calendar-event-time"><span class="sr-only">Время: </span>{{{time}}} (<span class="sr-only">Продолжительность: </span>{{{duration}}})</div>
+    {{#if info}}
+    <div class="calendar-event-info"><span class="sr-only">Дополнительная информация: </span>{{event.info}}</div>
+    {{/if}}
+    {{#if eventIsInTheFuture}}
+    <button class="btn btn-default" data-toggle="tooltip" data-delay="250" title="Скачать и&nbsp;добавить в&nbsp;свой календарь"><i class="fa fa-fw fa-calendar-plus-o" aria-hidden="true"></i><span class="sr-only">Скачать и добавить в свой календарь</span></button>
+    {{/if}}
+  </div>
+</template>

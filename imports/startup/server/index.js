@@ -78,6 +78,29 @@ Meteor.startup(() => {
     const organizers = Organizers.find({}, {fields: {'_id': 1}}).fetch().map((v) => {return v._id});
     console.log("Organizers: ", organizers);
 
+    const dates = [
+      {
+        dateFrom: moment("2016-11-02 09:30").toDate(),
+        dateTo: moment("2016-11-02 11:30").toDate(),
+      },
+      {
+        dateFrom: moment("2016-11-03 10:00").toDate(),
+        dateTo: moment("2016-11-03 11:15").toDate(),
+      },
+      {
+        dateFrom: moment("2016-11-04 20:00").toDate(),
+        dateTo: moment("2016-11-04 21:15").toDate(),
+      },
+      {
+        dateFrom: moment("2016-11-05 18:00").toDate(),
+        dateTo: moment("2016-11-05 23:00").toDate(),
+      },
+      {
+        dateFrom: moment("2016-11-09 18:00").toDate(),
+        dateTo: moment("2016-11-09 23:00").toDate(),
+      },
+    ];
+
     const inventDate = function() {
 
       const getRandomInt = function(min, max) {
@@ -96,11 +119,12 @@ Meteor.startup(() => {
       {
         createdAt: inventDate(),
         categoryId: categories[0],
+
         imageUrl: "/assets/placeholder360x180.png",
         bannerUrl: "http://placehold.it/795x200",
         title: "Путь пары. Гармония взаимоотношений в&nbsp;семье",
         description: "Полное описание Арбуз Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        date: inventDate(),
+        dates: dates,
         location: {
           city: "Казань",
           street: "ул. Тукая",
@@ -121,7 +145,7 @@ Meteor.startup(() => {
         bannerUrl: "http://placehold.it/780x260",
         title: "Второй в нулевой категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        date: new Date(),
+        dates: dates,
         location: {
           city: "Казань",
           street: "ул. Тукая",
@@ -142,7 +166,7 @@ Meteor.startup(() => {
         bannerUrl: "http://placehold.it/780x260",
         title: "Третий в&nbsp;нулевой категории с&nbsp;длинным описанием",
         description: "Полное описание Lorem ipsum dolor sit amet, *consectetur* adipisicing **elit**, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, <http://example.com> consectetur adipisicing elit, sed do eiusmod tempor incididunt quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n\n---\n\n* Item 1\n* Item 2",
-        date: new Date(),
+        dates: dates,
         location: {
           city: "Казань",
           street: "ул. Тукая",
@@ -163,7 +187,7 @@ Meteor.startup(() => {
         bannerUrl: "http://placehold.it/780x260",
         title: "Первый в первой категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        date: new Date(),
+        dates: dates,
         location: {
           city: "Казань",
           street: "ул. Тукая",
@@ -184,7 +208,7 @@ Meteor.startup(() => {
         bannerUrl: "http://placehold.it/780x260",
         title: "Второй в первой категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        date: new Date(),
+        dates: dates,
         location: {
           city: "Казань",
           street: "ул. Тукая",
@@ -205,7 +229,7 @@ Meteor.startup(() => {
         bannerUrl: "http://placehold.it/780x260",
         title: "Третий в первой категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        date: new Date(),
+        dates: dates,
         location: {
           city: "Казань",
           street: "ул. Тукая",
@@ -226,7 +250,28 @@ Meteor.startup(() => {
         bannerUrl: "http://placehold.it/780x260",
         title: "Четвертый в первой категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        date: new Date(),
+        dates: [
+          {
+            dateFrom: moment("2016-10-02 09:30").toDate(),
+            dateTo: moment("2016-10-02 11:30").toDate(),
+          },
+          {
+            dateFrom: moment("2016-10-03 10:00").toDate(),
+            dateTo: moment("2016-10-03 11:15").toDate(),
+          },
+          {
+            dateFrom: moment("2016-10-04 20:00").toDate(),
+            dateTo: moment("2016-10-04 21:15").toDate(),
+          },
+          {
+            dateFrom: moment("2016-10-05 18:00").toDate(),
+            dateTo: moment("2016-10-05 23:00").toDate(),
+          },
+          {
+            dateFrom: moment("2016-10-09 18:00").toDate(),
+            dateTo: moment("2016-10-09 23:00").toDate(),
+          },
+        ],
         location: {
           city: "Казань",
           street: "ул. Тукая",
@@ -247,7 +292,16 @@ Meteor.startup(() => {
         bannerUrl: "http://placehold.it/780x260",
         title: "Первый во второй категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        date: new Date(),
+        dates: [
+          {
+            dateFrom: moment("2016-11-03 10:00").toDate(),
+            dateTo: moment("2016-11-03 11:15").toDate(),
+          },
+          {
+            dateFrom: moment("2016-11-04 20:00").toDate(),
+            dateTo: moment("2016-11-04 21:15").toDate(),
+          },
+        ],
         location: {
           city: "Казань",
           street: "ул. Тукая",
@@ -268,7 +322,13 @@ Meteor.startup(() => {
         bannerUrl: "http://placehold.it/780x260",
         title: "Второй во второй категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        date: new Date(),
+        dates: [
+          {
+            dateFrom: moment("2016-11-09 12:00").toDate(),
+            dateTo: moment("2016-11-09 23:00").toDate(),
+            info: "Перерыв с 13:00 до 14:00",
+          },
+        ],
         location: {
           city: "Казань",
           street: "ул. Баки Урманче",
@@ -289,7 +349,22 @@ Meteor.startup(() => {
         bannerUrl: "http://placehold.it/780x260",
         title: "Единственный в третьей категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        date: new Date(),
+        dates: [
+          {
+            dateFrom: moment("2016-11-02 09:30").toDate(),
+            dateTo: moment("2016-11-02 11:30").toDate(),
+            info: "Дополнительная информация"
+          },
+          {
+            dateFrom: moment("2016-11-04 20:00").toDate(),
+            dateTo: moment("2016-11-04 21:15").toDate(),
+          },
+          {
+            dateFrom: moment("2016-11-05 18:00").toDate(),
+            dateTo: moment("2016-11-05 23:00").toDate(),
+            info: "Доп. информация"
+          },
+        ],
         location: {
           city: "Казань",
           street: "ул. Баки Урманче",
