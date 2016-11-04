@@ -37,20 +37,24 @@ if (Meteor.isServer) {
     }
 
     if (params.datesRange && params.datesRange.from) {
-      if (findParams['dates.dateFrom'] == null) {
-        findParams['dates.dateFrom'] = {};
-      }
-      findParams['dates.dateFrom'].$gt = parseDateRussianFormat(params.datesRange.from);
+      const path = ['dates','$not', '$elemMatch', 'dateFrom'];
+      if (findParams[path[0]]                   == null) {findParams[path[0]] = {}}
+      if (findParams[path[0]][path[1]]          == null) {findParams[path[0]][path[1]] = {}}
+      if (findParams[path[0]][path[1]][path[2]] == null) {findParams[path[0]][path[1]][path[2]] = {}}
+      if (findParams[path[0]][path[1]][path[2]][path[3]] == null) {findParams[path[0]][path[1]][path[2]][path[3]] = {}}
+      findParams[path[0]][path[1]][path[2]][path[3]].$lt = parseDateRussianFormat(params.datesRange.from);
     }
     if (params.datesRange && params.datesRange.to) {
-      if (findParams['dates.dateTo'] == null) {
-        findParams['dates.dateTo'] = {};
-      }
-      findParams['dates.dateTo'].$lt = parseDateRussianFormat(params.datesRange.to);
+      const path = ['dates','$not', '$elemMatch', 'dateTo'];
+      if (findParams[path[0]]                   == null) {findParams[path[0]] = {}}
+      if (findParams[path[0]][path[1]]          == null) {findParams[path[0]][path[1]] = {}}
+      if (findParams[path[0]][path[1]][path[2]] == null) {findParams[path[0]][path[1]][path[2]] = {}}
+      if (findParams[path[0]][path[1]][path[2]][path[3]] == null) {findParams[path[0]][path[1]][path[2]][path[3]] = {}}
+      findParams[path[0]][path[1]][path[2]][path[3]].$gt = parseDateRussianFormat(params.datesRange.to);
     }
 
     console.log(params);
-    console.log(findParams);
+    console.log(JSON.stringify(findParams));
 
     Counts.publish(this, 'events.count', Events.find(findParams), {noReady: true});
     return Events.find(findParams, params.options);
