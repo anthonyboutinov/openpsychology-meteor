@@ -7,7 +7,7 @@ Template.event.helpers({
   },
 
   location: function(location) {
-    return location.city + "," + location.street + "," + location.building + "," + location.additionalInfo;
+    return location.city + ", " + location.street + ", " + location.building + ", " + location.additionalInfo;
   },
   showCalEventsCount: function(count) {
     return count >= 2;

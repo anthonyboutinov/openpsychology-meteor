@@ -71,7 +71,7 @@ Router.route('/search/:categoryUrlName', function() {
         to:   SessionStore.get('events.search.dates.to'),
       },
       options: {
-        sort: {date: -1},
+        sort: {'dates.dateFrom': -1},
         limit: SessionStore.get('events.limit'),
       }
     }).wait();
@@ -151,7 +151,7 @@ Router.route("/organizer/:_id", function() {
   this.subscribe('events.byOrganizer', {
     _idOrganizer: this.params._id,
     options: {
-      sort: {date: -1},
+      sort: {'dates.dateFrom': -1},
       limit: QUERY_LIMIT,
     }
   }).wait();

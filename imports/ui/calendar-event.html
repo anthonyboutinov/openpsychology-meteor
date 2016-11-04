@@ -3,7 +3,7 @@
     <div class="calendar-event-relative-date"><span class="sr-only">{{relativeDateSR}} </span>{{relativeDate}}</div>
     <div class="calendar-event-absolute-date">{{absoluteDate}}</div>
     <div class="calendar-event-time"><span class="sr-only">Время: </span>{{{time}}} (<span class="sr-only">Продолжительность: </span>{{{duration}}})</div>
-    {{#if info}}
+    {{#if event.info}}
     <div class="calendar-event-info"><span class="sr-only">Дополнительная информация: </span>{{event.info}}</div>
     {{/if}}
     {{#if eventIsInTheFuture}}

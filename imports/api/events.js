@@ -37,16 +37,16 @@ if (Meteor.isServer) {
     }
 
     if (params.datesRange && params.datesRange.from) {
-      if (findParams.date == null) {
-        findParams.date = {};
+      if (findParams['dates.dateFrom'] == null) {
+        findParams['dates.dateFrom'] = {};
       }
-      findParams.date.$gt = parseDateRussianFormat(params.datesRange.from);
+      findParams['dates.dateFrom'].$gt = parseDateRussianFormat(params.datesRange.from);
     }
     if (params.datesRange && params.datesRange.to) {
-      if (findParams.date == null) {
-        findParams.date = {};
+      if (findParams['dates.dateTo'] == null) {
+        findParams['dates.dateTo'] = {};
       }
-      findParams.date.$lt = parseDateRussianFormat(params.datesRange.to);
+      findParams['dates.dateTo'].$lt = parseDateRussianFormat(params.datesRange.to);
     }
 
     console.log(params);
