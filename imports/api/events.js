@@ -45,12 +45,16 @@ if (Meteor.isServer) {
       findParams[path[0]][path[1]][path[2]][path[3]].$lt = parseDateRussianFormat(params.datesRange.from);
     }
     if (params.datesRange && params.datesRange.to) {
+      // add 1 day to make this restriction inclusive
+      let dateTo = parseDateRussianFormat(params.datesRange.to);
+      dateTo = moment(dateTo).add(1, 'days').toDate();
+
       const path = ['dates','$not', '$elemMatch', 'dateTo'];
       if (findParams[path[0]]                   == null) {findParams[path[0]] = {}}
       if (findParams[path[0]][path[1]]          == null) {findParams[path[0]][path[1]] = {}}
       if (findParams[path[0]][path[1]][path[2]] == null) {findParams[path[0]][path[1]][path[2]] = {}}
       if (findParams[path[0]][path[1]][path[2]][path[3]] == null) {findParams[path[0]][path[1]][path[2]][path[3]] = {}}
-      findParams[path[0]][path[1]][path[2]][path[3]].$gt = parseDateRussianFormat(params.datesRange.to);
+      findParams[path[0]][path[1]][path[2]][path[3]].$gt = dateTo;
     }
 
     console.log(params);
