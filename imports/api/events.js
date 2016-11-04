@@ -37,24 +37,36 @@ if (Meteor.isServer) {
     }
 
     if (params.datesRange && params.datesRange.from) {
-      const path = ['dates','$not', '$elemMatch', 'dateFrom'];
+      const orArrayInstance = {
+        'dateTo': {
+          '$lt': parseDateRussianFormat(params.datesRange.from)
+        }
+      };
+
+      const path = ['dates','$not', '$elemMatch', '$or'];
       if (findParams[path[0]]                   == null) {findParams[path[0]] = {}}
       if (findParams[path[0]][path[1]]          == null) {findParams[path[0]][path[1]] = {}}
       if (findParams[path[0]][path[1]][path[2]] == null) {findParams[path[0]][path[1]][path[2]] = {}}
-      if (findParams[path[0]][path[1]][path[2]][path[3]] == null) {findParams[path[0]][path[1]][path[2]][path[3]] = {}}
-      findParams[path[0]][path[1]][path[2]][path[3]].$lt = parseDateRussianFormat(params.datesRange.from);
+      if (findParams[path[0]][path[1]][path[2]][path[3]] == null) {findParams[path[0]][path[1]][path[2]][path[3]] = []}
+      findParams[path[0]][path[1]][path[2]][path[3]].push(orArrayInstance);
     }
     if (params.datesRange && params.datesRange.to) {
       // add 1 day to make this restriction inclusive
       let dateTo = parseDateRussianFormat(params.datesRange.to);
       dateTo = moment(dateTo).add(1, 'days').toDate();
 
-      const path = ['dates','$not', '$elemMatch', 'dateTo'];
+      const orArrayInstance = {
+        'dateTo': {
+          '$gt': dateTo
+        }
+      };
+
+      const path = ['dates','$not', '$elemMatch', '$or'];
       if (findParams[path[0]]                   == null) {findParams[path[0]] = {}}
       if (findParams[path[0]][path[1]]          == null) {findParams[path[0]][path[1]] = {}}
       if (findParams[path[0]][path[1]][path[2]] == null) {findParams[path[0]][path[1]][path[2]] = {}}
-      if (findParams[path[0]][path[1]][path[2]][path[3]] == null) {findParams[path[0]][path[1]][path[2]][path[3]] = {}}
-      findParams[path[0]][path[1]][path[2]][path[3]].$gt = dateTo;
+      if (findParams[path[0]][path[1]][path[2]][path[3]] == null) {findParams[path[0]][path[1]][path[2]][path[3]] = []}
+      findParams[path[0]][path[1]][path[2]][path[3]].push(orArrayInstance);
     }
 
     console.log(params);
