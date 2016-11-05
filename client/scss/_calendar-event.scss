@@ -1,3 +1,5 @@
+$calendar-event-relative-date-transparentize: 0.4;
+
 .calendar-event {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -8,11 +10,19 @@
   &-passed {
     background-color: $gray-lightest;
     color: $gray-light;
+
+    & .calendar-event-relative-date {
+      color: transparentize($gray-light, $calendar-event-relative-date-transparentize);
+    }
   }
 
   &-next {
     color: $calendar-event-next-color;
     background-color: $calendar-event-next-bg;
+
+    & .calendar-event-relative-date {
+      color: transparentize($calendar-event-next-color, $calendar-event-relative-date-transparentize);
+    }
 
     .btn-default {
       @include button-variant($calendar-event-next-color, $calendar-event-next-bg, $calendar-event-next-bg);
@@ -23,14 +33,13 @@
     color: $calendar-event-upcoming-color;
     background-color: $calendar-event-upcoming-bg;
 
+    & .calendar-event-relative-date {
+      color: transparentize($calendar-event-upcoming-color, $calendar-event-relative-date-transparentize);
+    }
+
     .btn-default {
       @include button-variant($calendar-event-upcoming-color, $calendar-event-upcoming-bg, $calendar-event-upcoming-bg);
     }
-  }
-
-
-  &-relative-date {
-    font-weight: 300;
   }
 
   &-absolute-date {
@@ -38,7 +47,7 @@
   }
 
   &-time {
-    font-weight: 400;
+
   }
 
   &-info {
