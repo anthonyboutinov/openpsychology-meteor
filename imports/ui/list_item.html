@@ -18,7 +18,23 @@
       </a>
     </div>
     <div class="list-item-text p-b-15">
-      {{{dateStatus event.dates}}} {{nearestUpcomingDate event.dates}} ({{calenderDate event.dates}})
+      <div class="list-item-date {{dateInProgressClass}}">
+        {{#unless eventHasPassed}}
+          {{nearestUpcomingDate}} ({{calenderDate}})
+          {{#if eventIsInProgress}}
+            <div class="progress">
+              <div class="progress-bar progress-bar-calendar"
+              role="progressbar" aria-valuenow="{{eventProgressCalEventsFinished}}" aria-valuemin="0" aria-valuemax="{{event.dates.length}}"
+              style="width: {{eventProgressPercentage}}%">
+                <span class="sr-only">Прошло {{eventProgressCalEventsFinished}} встреч из {{event.dates.length}}.</span>
+              </div>
+            </div>
+          {{/if}}
+        {{/unless}}
+        {{#if eventHasPassed}}
+          Событие закончилось
+        {{/if}}
+      </div>
 
       <div class="m-t-10">
         <span class="m-r-15 btn-sized {{priceBg}}">{{priceLabel}}</span>

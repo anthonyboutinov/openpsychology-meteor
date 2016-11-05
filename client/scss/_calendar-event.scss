@@ -1,8 +1,3 @@
-$calendar-event-next-color: #fff;
-$calendar-event-next-bg:    #fb9e2e;
-$calendar-event-upcoming-color: #d26746;
-$calendar-event-upcoming-bg:  #fee9cc;
-
 .calendar-event {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -56,4 +51,10 @@ $calendar-event-upcoming-bg:  #fee9cc;
     right: 10px;
   }
 
+}
+
+
+.progress-bar-calendar {
+  background-color: $calendar-event-next-bg;
+  color: $calendar-event-next-color;
 }

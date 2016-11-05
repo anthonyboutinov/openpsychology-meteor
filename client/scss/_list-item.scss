@@ -24,4 +24,20 @@
   .block-title {
     line-height: 33px;
   }
+
+  .progress {
+    margin-top: 10px;
+    margin-bottom: 0;
+    height: 8px;
+  }
+
+  &-date {
+    color: $gray-light;
+  }
+
+  &-date-in-progress {
+    border-radius: $border-radius-base;
+    background-color: $gray-lightest;
+    padding: 5px 10px 8px;
+  }
 }
