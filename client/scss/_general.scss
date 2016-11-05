@@ -31,3 +31,8 @@ a, a i, button, input[type="submit"] {
       transition: color .2s cubic-bezier(0.645, 0.045, 0.355, 1), background-color .5s cubic-bezier(0.645, 0.045, 0.355, 1);
     }
 }
+
+h1, .h1, h2, .h2, h3, .h3 {
+  font-family: $font-family-headings;
+  font-weight: 400;
+}
