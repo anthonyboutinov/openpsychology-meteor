@@ -8,6 +8,14 @@
   padding-right: 30px;
 }
 
+.fulldescription-category {
+  @extend .block-title;
+  @extend .hint-text;
+  @extend .fulldescription-heading;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
 .fulldescription-body {
   padding: 0 30px 30px 30px;
 }
