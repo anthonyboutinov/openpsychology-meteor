@@ -45,7 +45,26 @@ Template.list_item.helpers({
     } else {
       return '<i class="fa fa-fw fa-calendar-o text-success" aria-hidden="true"></i><span class="sr-only">Состоится </span>';
     }
-  }
+  },
+
+  priceLabel: function() {
+    const sale = this.event.price.sale;
+    if (sale != null) {
+      return sale == 0 ? "Бесплатно" : sale + "₽";
+    } else {
+      const regular = this.event.price.regular;
+      return regular == 0 ? "Бесплатно" : regular + "₽";
+    }
+  },
+  priceBg: function() {
+    const sale = this.event.price.sale;
+    if (sale != null) {
+      return "bg-success";
+    } else {
+      const regular = this.event.price.regular;
+      return regular == 0 ? "bg-success" : "bg-hint";
+    }
+  },
 });
 
 

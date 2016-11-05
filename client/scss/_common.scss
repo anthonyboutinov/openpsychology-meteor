@@ -24,6 +24,9 @@
 .bg-white {
   background-color: white;
 }
+.bg-hint {
+  background-color: $gray-lightest;
+}
 
 
 .m-r-char {
@@ -125,16 +128,24 @@
   vertical-align: middle;
 }
 
-.link-nonvisual {
+.link-hoverreveal {
   color: $text-color;
-  &:hover, &:focus {
+  &:hover, &:focus, &:active, &.hover, &.focus, &.active {
     text-decoration: none;
-  }
-  &:active {
-    text-decoration: underline;
   }
 }
 
 .capitalize-first-letter::first-letter {
   text-transform: uppercase;
+}
+
+.btn-sized {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: $btn-font-weight;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-base, $line-height-base, $btn-border-radius-base);
 }

@@ -66,7 +66,8 @@ Template.searchbar.events({
 
 Template.searchbar.onRendered(function() {
   setTimeout(()=>{
-    animateSearchbarOnAndOff(this.data.showSearchbar);
+    const flag = this.data.showSearchbar || false;
+    animateSearchbarOnAndOff(flag);
   }, 200);
 
   this.$("#search-filter-text").val(SessionStore.get('events.search.text'));

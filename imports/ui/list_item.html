@@ -10,9 +10,9 @@
     <div class="list-item-text">
       <span class="inline-block pull-right">
         <button class="btn btn-default" ev-toggle-bookmark-id="{{event._id}}"><i class="fa fa-fw fa-star-o" aria-hidden="true"></i><span class="sr-only">Добавить в закладки</span></button>
-        <button class="btn btn-default" ev-toggle-like-id="{{event._id}}"><i class="fa fa-fw fa-heart-o" aria-hidden="true"></i><span class="sr-only">Поставить лайк</span></button>
+        <button class="btn btn-default" ev-toggle-like-id="{{event._id}}">10 <i class="fa fa-fw fa-heart-o" aria-hidden="true"></i><span class="sr-only">Поставить лайк</span></button>
       </span>
-      <a href="/event/{{event._id}}">
+      <a href="/event/{{event._id}}" class="link-hoverreveal">
         <h5 class="block-title hint-text">{{event.category.singularName}}</h5>
         <h4>{{nbsp event.title}}</h4>
       </a>
@@ -21,9 +21,9 @@
       {{{dateStatus event.dates}}} {{nearestUpcomingDate event.dates}} ({{calenderDate event.dates}})
 
       <div class="m-t-10">
-        <h4 class="inline v-middle m-r-15">{{event.cost}}<span aria-hidden="true">&nbsp;</span>₽</h4>
+        <span class="m-r-15 btn-sized {{priceBg}}">{{priceLabel}}</span>
 
-        <a href="/organizer/{{event.organizer._id}}" class="m-r-10">
+        <a href="/organizer/{{event.organizer._id}}" class="link-hoverreveal">
           <span aria-hidden="true"><img src="{{event.organizer.imageUrl}}" class="profile-pic">&nbsp;</span>{{nbsp event.organizer.name}}
         </a>
       </div>

@@ -1,0 +1,25 @@
+.event {
+
+  &-price {
+    text-align: center;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 2px;
+
+    div {
+      font-size: $font-size-h4;
+    }
+
+    &-sale {
+      background-color: $btn-success-bg;
+      color: $btn-success-color;
+    }
+
+    &-regular {
+      background-color: $gray-lighter;
+      color: $gray-light;
+      min-width: 120px;
+    }
+  }
+
+}

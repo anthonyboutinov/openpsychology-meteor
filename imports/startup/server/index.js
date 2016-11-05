@@ -131,7 +131,7 @@ Meteor.startup(() => {
           building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
-        cost: 0,
+        price: {regular: 0},
         organizer: {
           _id: organizers[0],
           name: "Generic, Inc.",
@@ -152,7 +152,7 @@ Meteor.startup(() => {
           building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
-        cost: 800,
+        price: {regular: 800},
         organizer: {
           _id: organizers[0],
           name: "Generic, Inc.",
@@ -173,7 +173,10 @@ Meteor.startup(() => {
           building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
-        cost: 1600,
+        price: {
+          sale: 1600,
+          regular: 1900
+        },
         organizer: {
           _id: organizers[0],
           name: "Generic, Inc.",
@@ -194,7 +197,10 @@ Meteor.startup(() => {
           building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
-        cost: 1500,
+        price: {
+          sale: 300,
+          regular: 500
+        },
         organizer: {
           _id: organizers[0],
           name: "Generic, Inc.",
@@ -215,7 +221,7 @@ Meteor.startup(() => {
           building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
-        cost: 800,
+        price: {regular: 650},
         organizer: {
           _id: organizers[0],
           name: "Generic, Inc.",
@@ -236,7 +242,7 @@ Meteor.startup(() => {
           building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
-        cost: 800,
+        price: {regular: 0},
         organizer: {
           _id: organizers[0],
           name: "Generic, Inc.",
@@ -278,7 +284,10 @@ Meteor.startup(() => {
           building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
-        cost: 800,
+        price: {
+          sale: 1000,
+          regular: 1400
+        },
         organizer: {
           _id: organizers[0],
           name: "Generic, Inc.",
@@ -308,7 +317,7 @@ Meteor.startup(() => {
           building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
-        cost: 800,
+        price: {regular: 0, sale: 0},
         organizer: {
           _id: organizers[0],
           name: "Generic, Inc.",
@@ -335,7 +344,7 @@ Meteor.startup(() => {
           building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
-        cost: 800,
+        price: {sale: 0, regular: 100},
         organizer: {
           _id: organizers[0],
           name: "Generic, Inc.",
@@ -371,7 +380,7 @@ Meteor.startup(() => {
           building: "д. 23a",
           additionalInfo: "вход с торца здания",
         },
-        cost: 800,
+        price: {regular: 200},
         organizer: {
           _id: organizers[0],
           name: "Generic, Inc.",

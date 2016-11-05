@@ -56,26 +56,4 @@ $calendar-event-upcoming-bg:  #fee9cc;
     right: 10px;
   }
 
-
-  &-price {
-    text-align: center;
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 2px;
-
-    div {
-      font-size: $font-size-h4;
-    }
-
-    &-sale {
-      background-color: $btn-success-bg;
-      color: $btn-success-color;
-    }
-
-    &-regular {
-      background-color: $gray-lighter;
-      color: $gray-light;
-    }
-  }
-
 }

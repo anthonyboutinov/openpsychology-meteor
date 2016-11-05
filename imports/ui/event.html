@@ -5,13 +5,13 @@
         <div class="fulldescription-main">
 
           <img class="img-responsive img-external-noalpha" src="{{event.bannerUrl}}" alt="Изображение-баннер события">
-          <h1 class="fulldescription-heading m-b-30">{{nbsp event.title}}</h1>
+          <h1 class="fulldescription-heading">{{nbsp event.title}}</h1>
 
           <div class="m-b-30 fulldescription-actions">
             {{> shareButton}}
-            <button class="btn btn-default" ev-toggle-bookmark-id="{{event._id}}"><i class="fa fa-fw fa-star-o" aria-hidden="true"></i><span class="sr-only">Добавить в закладки</span></button>
-            <button class="btn btn-default" ev-toggle-like-id="{{event._id}}"><i class="fa fa-fw fa-heart-o" aria-hidden="true"></i><span class="sr-only">Поставить лайк</span></button>
-            <button class="btn btn-sm btn-success all-caps" ev-toggle-register-id="{{event._id}}">Подать заявку и получить скидку в 200 руб.</button>
+            <button class="btn btn-default" data-toggle="tooltip" data-delay="1000" title="Добавить в закладки" ev-toggle-bookmark-id="{{event._id}}"><i class="fa fa-fw fa-star-o" aria-hidden="true"></i><span class="sr-only">Добавить в закладки</span></button>
+            <button class="btn btn-default" data-toggle="tooltip" data-delay="1000" title="Поставить лайк" ev-toggle-like-id="{{event._id}}">10 <i class="fa fa-fw fa-heart-o" aria-hidden="true"></i><span class="sr-only">Поставить лайк</span></button>
+            <button class="btn btn-sm btn-success all-caps" data-toggle="tooltip" data-delay="250" title="18 человек уже зарегистрировались">Зарегистрироваться{{#if salePriceExists}} и получить скидку{{/if}}</button>
           </div>
 
           <div class="row fulldescription-body">
@@ -23,18 +23,24 @@
               <div class="m-b-10">
                 <h4>Стоимость:</h4>
                 <div class="text-center">
-                  <span class="calendar-event-price calendar-event-price-sale" data-toggle="tooltip" title="Скидка в 500₽ действует на&nbsp;каждое посещение данного мероприятия">
-                    <div>2500₽</div>
+                  {{#if salePriceExists}}
+                  <span class="event-price event-price-sale" data-toggle="tooltip" data-delay="250" title="Скидка в {{deltaPrice}} действует на&nbsp;каждое посещение данного мероприятия">
+                    <div>{{salePriceLabel}}</div>
                     с регистрацией
                   </span>
+                  {{/if}}
 
-                  <span class="calendar-event-price calendar-event-price-regular">
-                    <div>3000₽</div>
+                  <span class="event-price event-price-regular">
+                    <div>{{regularPriceLabel}}</div>
+                    {{#if salePriceExists}}
                     без регистрации
+                    {{/if}}
                   </span>
                 </div>
 
+                {{#if priceGTZero}}
                 <div class="hint h6 text-center">Цена указана за 1 посещение</div>
+                {{/if}}
               </div>
 
               <div class="m-t-15 m-b-10">
