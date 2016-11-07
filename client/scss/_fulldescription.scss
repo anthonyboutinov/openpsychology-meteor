@@ -27,12 +27,17 @@
 
   &-body {
     padding: 0 30px 30px 30px;
+
+    & .list-item {
+      margin: 30px auto;
+    }
   }
 
   &-actions {
     background-color: $gray-lightest;
     padding: 10px 30px 10px 30px;
     text-align: right;
+    margin-bottom: 30px;
 
     a, label {
       font-size: $font-size-h5;
