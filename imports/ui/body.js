@@ -31,3 +31,9 @@ import './organizer.html';
 import './organizer.js';
 
 import './share-button.html';
+
+import './dashboardLayout.html';
+import './dashboard.navbar.html';
+import './dashboard.navbar.js';
+import './dashboard.sidenavbar.html';
+import './dashboard.user.html';

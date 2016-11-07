@@ -47,3 +47,11 @@
   font-size: 19px !important;
   vertical-align: top;
 }
+
+.nav-pills.nav-stacked > .divider {
+  border-bottom: 1px dotted $gray-doublelight;
+}
+
+.nav-stacked > li > .nav-stacked {
+  margin-left: 2.6em;
+}

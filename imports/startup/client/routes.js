@@ -178,3 +178,28 @@ Router.route("/organizer/:_id", function() {
 }, {
   name: "organizer"
 });
+
+
+/*
+----------------------------
+Dashboard.User route
+----------------------------
+*/
+Router.route("/user", function() {
+
+  this.layout('dashboardLayout', {
+    data: {
+      subscriptionsReady: () => {
+        return this.ready();
+      },
+    }
+  });
+  if (this.ready()) {
+    this.render('dashboardUser');
+  } else {
+    this.render('loading');
+  };
+
+}, {
+  name: "dashboard.user"
+});
