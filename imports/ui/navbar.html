@@ -22,15 +22,9 @@
               </a>
             </li>
           </ul>
-          <div class="position-relative">
-            <ul class="nav navbar-nav navbar-center">
-              <li class="{{isActiveRouteHome}}"><a href="/"><i class="fa fa-fw fa-home nav-home" aria-hidden="true"></i><span class="sr-only">Главная</span></a></li>
-              <li class="{{searchbarActive}}"><a href="#" id="showSearchbar"><i class="fa fa-fw fa-search nav-home" aria-hidden="true"></i><span class="sr-only">Поиск</span></a></li>
-              {{#each category in categories}}
-                {{> navbar_category category=category currentCategories=currentCategories showSearchbar=showSearchbar}}
-              {{/each}}
-              <li><a href="#">Статьи</a></li>
-            </ul>
+          <div class="position-relative text-center">
+
+            <!-- Navbar right -->
             <ul class="nav navbar-nav navbar-right">
               {{#if currentUser}}
               <li class="dropdown">
@@ -58,6 +52,19 @@
               <li><a style="color: white;">{{> loginButtons}}</a></li>
               {{/if}}
             </ul>
+            <!-- eof Navbar right -->
+
+            <!-- Navbar center -->
+            <ul class="nav navbar-nav navbar-center">
+              <li class="{{isActiveRouteHome}}"><a href="/"><i class="fa fa-fw fa-home nav-home" aria-hidden="true"></i><span class="sr-only">Главная</span></a></li>
+              <li class="{{searchbarActive}}"><a href="#" id="showSearchbar"><i class="fa fa-fw fa-search nav-home" aria-hidden="true"></i><span class="sr-only">Поиск</span></a></li>
+              {{#each category in categories}}
+                {{> navbar_category category=category currentCategories=currentCategories showSearchbar=showSearchbar}}
+              {{/each}}
+              <li><a href="#">Статьи</a></li>
+            </ul>
+            <!-- eof Navbar center -->
+
           </div>
 
         </div><!-- /.navbar-collapse -->
