@@ -31,21 +31,6 @@ Template.list_item.helpers({
     const date = _nearestUpcomingDate(this.event.dates);
     return moment(date).fromNow();
   },
-  // dateStatus: function() {
-  //   const date = _nearestUpcomingDate(this.event.dates);
-  //   const now = new Date();
-  //   if (date < now) {
-  //     return '<i class="fa fa-fw fa-stop text-hint" aria-hidden="true" data-toggle="tooltip" data-delay="250" title="Мероприятие закончилось. Последняя встреча была ' + moment(date).calendar() + '"></i><span class="sr-only">Мероприятие закончилось. Последняя встреча была </span>';
-  //   } else
-  //   // If more than one calendar events and the first one in the array
-  //   // is not the one that _nearestUpcomingDate returned,
-  //   // then it means that the course is currently in progress.
-  //   if (this.event.dates.length > 1 && this.event.dates[0].dateFrom.getTime() != date) {
-  //     return '<i class="fa fa-fw fa-play text-info" aria-hidden="true" data-toggle="tooltip" data-delay="250" title="Первая встреча была в прошлом. Следующая встреча ' + moment(date).calendar() + '"></i><span class="sr-only">Первая встреча была в прошлом. Следующая встреча </span>';
-  //   } else {
-  //     return '<i class="fa fa-fw fa-calendar-o text-success" aria-hidden="true"></i><span class="sr-only">Состоится </span>';
-  //   }
-  // },
   dateInProgressClass: function() {
     const date = _nearestUpcomingDate(this.event.dates);
     const now = new Date();

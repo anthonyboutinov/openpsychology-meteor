@@ -1,0 +1,29 @@
+.aspect-ratio {
+  display: block;
+  width: 100%;
+  position: relative;
+  height: 0;
+  overflow: hidden;
+
+  & > img {
+    position: absolute;
+    display: block;
+    max-width: 100%;
+    // max-height: 100%; // uncomment, if you want images to FIT the area, comment out if you want them to FILL the area
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  &-16-9 {
+    padding: 56.25% 0 0 0;
+  }
+  &-2-1 {
+    padding: 50% 0 0 0;
+  }
+  &-3-1 {
+    padding: 33.33% 0 0 0;
+  }
+}

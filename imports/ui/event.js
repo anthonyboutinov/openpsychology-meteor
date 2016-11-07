@@ -38,6 +38,10 @@ Template.event.helpers({
   },
   priceGTZero: function() {
     return this.event.price.regular > 0;
+  },
+
+  registrationIsOpen: function() {
+    return this.event.dates[this.event.dates.length - 1].dateFrom > new Date();
   }
 });
 

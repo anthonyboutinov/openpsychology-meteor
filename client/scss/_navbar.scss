@@ -75,3 +75,13 @@
   @extend .animated;
   @extend .fadeIn;
 }
+
+.navbar-inverse .navbar-nav {
+  .dropdown-menu > li > a {
+    &:hover, &:focus {
+      & > i.fa {
+        color: $brand-primary;
+      }
+    }
+  }
+}

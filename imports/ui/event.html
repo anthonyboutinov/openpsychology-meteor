@@ -4,16 +4,26 @@
       <div class="col-xs-12 col-lg-8">
         <div class="fulldescription-main">
 
-          <img class="img-responsive img-external-noalpha" src="{{event.bannerUrl}}" alt="Изображение-баннер события">
+          <div class="aspect-ratio aspect-ratio-3-1">
+            <img class="img-responsive img-external-noalpha" src="{{event.bannerUrl}}">
+          </div>
 
           <h1 class="fulldescription-heading">{{nbsp event.title}}</h1>
           <h3 class="fulldescription-category">{{event.category.singularName}}</h3>
 
           <div class="m-b-30 fulldescription-actions">
+
             {{> shareButton}}
             <button class="btn btn-default" data-toggle="tooltip" data-delay="1000" title="Добавить в закладки" ev-toggle-bookmark-id="{{event._id}}"><i class="fa fa-fw fa-star-o" aria-hidden="true"></i><span class="sr-only">Добавить в закладки</span></button>
             <button class="btn btn-default" data-toggle="tooltip" data-delay="1000" title="Поставить лайк" ev-toggle-like-id="{{event._id}}">10 <i class="fa fa-fw fa-heart-o" aria-hidden="true"></i><span class="sr-only">Поставить лайк</span></button>
+
+            {{#if registrationIsOpen}}
             <button class="btn btn-sm btn-success all-caps" data-toggle="tooltip" data-delay="250" title="18 человек уже зарегистрировались">Зарегистрироваться{{#if salePriceExists}} и получить скидку{{/if}}</button>
+            {{/if}}
+            {{#unless registrationIsOpen}}
+            <span class="btn-sized all-caps text-muted">Мероприятие окончено</span>
+            {{/unless}}
+
           </div>
 
           <div class="row fulldescription-body">
