@@ -1,0 +1,8 @@
+@mixin glass-pane ($color) {
+  background: $color;
+  @supports ((backdrop-filter: blur(20px) saturate(100%) hue-rotate(-15deg)) or (-webkit-backdrop-filter: blur(20px) saturate(100%) hue-rotate(-15deg))) {
+    backdrop-filter: blur(20px) saturate(100%) hue-rotate(-15deg);
+    -webkit-backdrop-filter: blur(20px) saturate(100%) hue-rotate(-15deg);
+    background: transparentize($color, $glass-pane-opacity);
+  }
+}

@@ -31,3 +31,9 @@ tmeasday:publish-counts
 momentjs:moment
 rzymek:moment-locale-ru
 markdown@1.0.11
+accounts-password
+accounts-facebook
+accounts-google
+accounts-twitter
+accounts-ui
+mrt:accounts-vk

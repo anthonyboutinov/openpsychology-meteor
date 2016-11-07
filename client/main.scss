@@ -15,6 +15,7 @@
 // **
 // My Stuff
 // **
+@import "scss/mixins";
 @import "scss/general";
 @import "scss/common";
 @import "scss/button-additional-variants";
@@ -38,7 +39,6 @@
 
 .block-title {
   text-transform: uppercase;
-  letter-spacing: 0.03em;
 }
 
 

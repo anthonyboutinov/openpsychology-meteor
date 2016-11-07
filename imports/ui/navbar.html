@@ -24,8 +24,8 @@
           </ul>
           <div class="position-relative">
             <ul class="nav navbar-nav navbar-center">
-              <li class="{{isActiveRouteHome}}"><a href="/"><i class="fa fa-home nav-home" aria-hidden="true"></i><span class="sr-only">Главная</span></a></li>
-              <li class="{{searchbarActive}}"><a href="#" id="showSearchbar"><i class="fa fa-search nav-home" aria-hidden="true"></i><span class="sr-only">Поиск</span></a></li>
+              <li class="{{isActiveRouteHome}}"><a href="/"><i class="fa fa-fw fa-home nav-home" aria-hidden="true"></i><span class="sr-only">Главная</span></a></li>
+              <li class="{{searchbarActive}}"><a href="#" id="showSearchbar"><i class="fa fa-fw fa-search nav-home" aria-hidden="true"></i><span class="sr-only">Поиск</span></a></li>
               {{#each category in categories}}
                 {{> navbar_category category=category currentCategories=currentCategories showSearchbar=showSearchbar}}
               {{/each}}
@@ -33,9 +33,29 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               {{#if currentUser}}
-              <li><a href="/signout" title="Выход">Выйти</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-haspopup="true" aria-expanded="false"
+                aria-label="Отобразить панель пользователя">
+                  {{username}}
+                  <i class="fa fa-fw fa-user-circle" aria-hidden="true"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><i class="fa fa-fw fa-user-circle-o" aria-hidden="true"></i> Профиль</a></li>
+                  <li><a href="#"><i class="fa fa-fw fa-calendar-o" aria-hidden="true"></i> Мероприятия</a></li>
+                  <li><a href="#"><i class="fa fa-fw fa-star" aria-hidden="true"></i> Закладки</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Организации</li>
+                  <li><a href="#"><i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> Желаем счастья, ПАО</a></li>
+                  <li><a href="#"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Управлять</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#"><i class="fa fa-fw fa-cog" aria-hidden="true"></i> Настройки</a></li>
+                  <li><a href="/signout"><i class="fa fa-fw fa-sign-out" aria-hidden="true"></i> Выйти</a></li>
+                </ul>
+              </li>
               {{else}}
-              <li><a href="/signin" title="Войти на сайт или зарегистрироваться"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a></li>
+              <li><a href="/signin"><i class="fa fa-fw fa-user-circle-o" aria-hidden="true"></i> Войти</a></li>
+              <li><a style="color: white;">{{> loginButtons}}</a></li>
               {{/if}}
             </ul>
           </div>

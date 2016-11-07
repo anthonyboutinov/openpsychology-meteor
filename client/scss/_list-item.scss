@@ -15,6 +15,10 @@
   &-text {
     padding-left: 15px;
     padding-right: 15px;
+
+    h4 {
+      font-family: $font-family-headings; // TODO: replace this h4 to h2 and remove this line
+    }
   }
 
   .list-items-bordered > & {
@@ -23,6 +27,9 @@
 
   .block-title {
     line-height: 33px;
+    letter-spacing: 0.2em;
+    color: $gray-doublelight;
+    font-family: $font-family-headings; // TODO: replace this h5 to h3 and remove this line
   }
 
   .progress {

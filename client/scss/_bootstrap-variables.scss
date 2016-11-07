@@ -18,6 +18,7 @@ $gray-darker:            lighten($gray-base, 13.5%) !default; // #222
 $gray-dark:              lighten($gray-base, 20%) !default;   // #333
 $gray:                   lighten($gray-base, 33.5%) !default; // #555
 $gray-light:             lighten($gray-base, 46.7%) !default; // #777
+$gray-doublelight:       #999;
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 $gray-lightest:          lighten($gray-base, 96.5%) !default; // #f6f6f6
 
@@ -281,7 +282,7 @@ $dropdown-border:                rgba(0,0,0,.15) !default;
 //** Dropdown menu `border-color` **for IE8**.
 $dropdown-fallback-border:       #ccc !default;
 //** Divider color for between dropdown items.
-$dropdown-divider-bg:            #e5e5e5 !default;
+$dropdown-divider-bg:            rgba(135, 135, 135, 0.3) !default;
 
 //** Dropdown link text color.
 $dropdown-link-color:            $gray-dark !default;
@@ -293,7 +294,7 @@ $dropdown-link-hover-bg:         #f5f5f5 !default;
 //** Active dropdown menu item text color.
 $dropdown-link-active-color:     $component-active-color !default;
 //** Active dropdown menu item background color.
-$dropdown-link-active-bg:        $component-active-bg !default;
+$dropdown-link-active-bg:        transparent !default;
 
 //** Disabled dropdown menu item background color.
 $dropdown-link-disabled-color:   $gray-light !default;
@@ -910,3 +911,10 @@ $dl-horizontal-offset:        $component-offset-horizontal !default;
 $dl-horizontal-breakpoint:    $grid-float-breakpoint !default;
 //** Horizontal line color.
 $hr-border:                   $gray-lighter !default;
+
+
+//== Glass pane
+//
+//##
+
+$glass-pane-opacity: 0.5;

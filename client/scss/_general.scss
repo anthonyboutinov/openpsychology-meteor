@@ -7,13 +7,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: default;
-
-
-  // Gradient: http://colorzilla.com/gradient-editor/#fdfdfd+0,ffffff+40,ffffff+60,fdfdfd+100
-  // background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZkZmRmZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZGZkZmQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-  // background: -moz-linear-gradient(left, rgba(253,253,253,1) 0%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 60%, rgba(253,253,253,1) 100%);
-  // background: -webkit-linear-gradient(left, rgba(253,253,253,1) 0%,rgba(255,255,255,1) 40%,rgba(255,255,255,1) 60%,rgba(253,253,253,1) 100%);
-  // background: linear-gradient(to right, rgba(253,253,253,1) 0%,rgba(255,255,255,1) 40%,rgba(255,255,255,1) 60%,rgba(253,253,253,1) 100%);
 }
 
 a, a i, button, input[type="submit"] {
@@ -23,7 +16,7 @@ a, a i, button, input[type="submit"] {
     -o-transition: all .2s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition: all .2s cubic-bezier(0.645, 0.045, 0.355, 1);
 
-    li > & {
+    .navbar-nav > li > & {
       -webkit-transition: color .2s cubic-bezier(0.645, 0.045, 0.355, 1), background-color .5s cubic-bezier(0.645, 0.045, 0.355, 1);
       -moz-transition: color .2s cubic-bezier(0.645, 0.045, 0.355, 1), background-color .5s cubic-bezier(0.645, 0.045, 0.355, 1);
       -ms-transition: color .2s cubic-bezier(0.645, 0.045, 0.355, 1), background-color .5s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -35,4 +28,13 @@ a, a i, button, input[type="submit"] {
 h1, .h1, h2, .h2, h3, .h3 {
   font-family: $font-family-headings;
   font-weight: 400;
+}
+h3, .h3 {
+  letter-spacing: 0.2em;
+}
+
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  color: inherit;
+  background-color: inherit;
 }
