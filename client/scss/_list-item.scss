@@ -49,4 +49,13 @@
     padding: 5px 10px 8px;
   }
 
+  @media screen and (max-width: $screen-sm-max) {
+    div > & {
+      border-bottom: 1px solid $gray;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
 }

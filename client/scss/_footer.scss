@@ -2,7 +2,9 @@ footer.primary {
 
   padding-top: $grid-gutter-width;
   padding-bottom: $grid-gutter-width;
-  height: $footer-height;
+  @media screen and (min-width: $screen-md-min) {
+    height: $footer-height;
+  }
 
   a {
     color: #d1d1d1;

@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "animate.css": "^3.5.2",
+    "atvimg": "git+https://github.com/drewwilson/atvImg.git",
     "bootstrap-sass": "^3.3.7",
     "fixtures.js": "^2.1.0",
     "meteor-node-stubs": "~0.2.0"
