@@ -158,10 +158,12 @@
 
 
 
-@media screen and (max-width: $screen-sm-max) {
-  .touch-separator {
-    display: inline-block;
-    width: 10px;
-    height: 1px;
-  }
+.touch-separator {
+  display: none;
+  
+  @media screen and (max-width: $screen-sm-max) {
+      display: inline-block;
+      width: 10px;
+      height: 1px;
+    }
 }
