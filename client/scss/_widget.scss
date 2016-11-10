@@ -42,8 +42,10 @@
   }
 
   &-body {
-    padding: 10px 15px 20px 15px;
+    padding: 49px 15px 20px 15px;
+    margin-top: -49px;
     display: block;
+    position: relative;
 
     & h1 {
       margin: 0 0 5px 0;
@@ -72,6 +74,8 @@
 
 
 .widget-body .list-item-text {
+  padding: 0;
+
   .block-title {
     line-height: normal;
     margin-top: 0;

@@ -184,3 +184,20 @@ ul.content-list {
     margin-left: 0.1em;
   }
 }
+
+
+
+i.fa-heart {
+  color: $heart-color;
+  .nav & {color: inherit}
+}
+
+i.fa-bookmark {
+  color: $bookmark-color;
+  .nav & {color: inherit}
+}
+
+i.fa-history {
+  color: $bookmark-color;
+  .nav & {color: inherit}
+}
