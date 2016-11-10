@@ -6,8 +6,10 @@
   position: relative;
 
   &-heading {
-    padding: 20px 15px 10px 15px;
+    margin: 20px 15px 10px 15px;
     position: relative;
+    z-index: 1;
+    display: inline-block;
 
     & > a {
       text-transform: uppercase;
@@ -79,5 +81,19 @@
   .block-title {
     line-height: normal;
     margin-top: 0;
+  }
+}
+
+.widget-img-bg {
+  background-position: center;
+  background-size: 110%;
+  background-repeat: no-repeat;
+  border-color: transparent;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+
+  &.text-all-white {
+    i.fa {
+      color: white !important;
+    }
   }
 }
