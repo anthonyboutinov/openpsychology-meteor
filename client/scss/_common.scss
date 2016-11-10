@@ -154,16 +154,54 @@
   &-bar {
     box-shadow: inset 0 -4px 10px rgba(0, 0, 0, 0.1);
   }
+
+  &-small {
+    border-radius: 0;
+    height: 4px;
+  }
 }
 
 
 
 .touch-separator {
   display: none;
-  
+
   @media screen and (max-width: $screen-sm-max) {
       display: inline-block;
       width: 10px;
       height: 1px;
     }
+}
+
+
+.fa.small {
+  font-size: 70%;
+  position: relative;
+  bottom: 0.1em;
+}
+
+
+.link-unstyled {
+  &, &:hover, &:active, &:focus {
+    color: $text-color;
+  }
+}
+
+.table {
+  & > thead > tr {
+    & > th {
+      color: #ccc;
+      &:first-child {
+        color: $gray-light;
+      }
+    }
+  }
+  & > tbody > tr {
+    & > th {
+      font-weight: 400;
+    }
+    & > td {
+      color: $gray-light;
+    }
+  }
 }

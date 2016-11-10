@@ -20,27 +20,27 @@
     h4 {
       font-family: $font-family-headings; // TODO: replace this h4 to h2 and remove this line
     }
+
+    .block-title {
+      line-height: 33px;
+      letter-spacing: 0.2em;
+      color: $gray-doublelight;
+      font-family: $font-family-headings; // TODO: replace this h5 to h3 and remove this line
+    }
   }
 
   .list-items-bordered > & {
     border: 1px solid rgba(0,0,0,0.1);
   }
 
-  .block-title {
-    line-height: 33px;
-    letter-spacing: 0.2em;
-    color: $gray-doublelight;
-    font-family: $font-family-headings; // TODO: replace this h5 to h3 and remove this line
-  }
-
-  .progress {
-    margin-top: 10px;
-    margin-bottom: 0;
-    height: 8px;
-  }
-
   &-date {
     color: $gray-light;
+
+    .progress {
+      margin-top: 10px;
+      margin-bottom: 0;
+      height: 8px;
+    }
   }
 
   &-date-in-progress {

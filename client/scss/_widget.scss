@@ -1,0 +1,79 @@
+.widget {
+  margin-bottom: 20px;
+  border-radius: $border-radius-base;
+  border: 1px solid $gray-lighter;
+  overflow: hidden;
+  position: relative;
+
+  &-heading {
+    padding: 20px 15px 10px 15px;
+    position: relative;
+
+    & > a {
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    & > ul.widget-controls {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 21px;
+      right: 15px;
+      font-size: 12px;
+
+      & > li {
+        padding-left: 3px;
+        display: inline-block;
+        list-style: none;
+        line-height: 0;
+
+        & > a {
+          color: $gray-light;
+          padding-top: 10px;
+          padding-bottom: 10px;
+
+          &:hover, &:focus, &:active {
+            color: $gray-dark;
+          }
+        }
+      }
+    }
+  }
+
+  &-body {
+    padding: 10px 15px 20px 15px;
+    display: block;
+
+    & h1 {
+      margin: 0 0 5px 0;
+    }
+
+    & > span, & > a > span {
+      @extend .small;
+      line-height: 1.6em;
+      vertical-align: bottom;
+      display: inline-block;
+    }
+  }
+
+  &-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+
+    > .progress  {
+      margin: 0;
+    }
+  }
+}
+
+
+.widget-body .list-item-text {
+  .block-title {
+    line-height: normal;
+    margin-top: 0;
+  }
+}
