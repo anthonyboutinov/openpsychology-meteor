@@ -1,6 +1,7 @@
 import { Categories }  from '../../api/categories.js';
 import { Events }      from '../../api/events.js';
 import { Organizers } from '../../api/organizers.js';
+// import { Likes } from '../../api/likes.js';
 
 export const QUERY_LIMIT = 6 * 5;
 
@@ -202,4 +203,29 @@ Router.route("/user", function() {
 
 }, {
   name: "dashboard.user"
+});
+
+
+/*
+----------------------------
+Dashboard.Events route
+----------------------------
+*/
+Router.route("/myevents/:filter?", function() {
+
+  this.layout('dashboardLayout', {
+    data: {
+      subscriptionsReady: () => {
+        return this.ready();
+      },
+    }
+  });
+  if (this.ready()) {
+    this.render('dashboardEvents');
+  } else {
+    this.render('loading');
+  };
+
+}, {
+  name: "dashboard.events"
 });
