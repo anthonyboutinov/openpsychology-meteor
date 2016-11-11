@@ -21,7 +21,7 @@ Template.event.helpers({
   },
 
   salePriceExists: function() {
-    return this.event.price.sale != null;
+    return this.event.price.sale != null && this.event.price.sale !== this.event.price.regular;
   },
   salePriceLabel: function() {
     const price = this.event.price.sale;
@@ -42,7 +42,20 @@ Template.event.helpers({
 
   registrationIsOpen: function() {
     return this.event.dates[this.event.dates.length - 1].dateFrom > new Date();
-  }
+  },
+
+  registeredForEvent: function() {
+    return Meteor.user() && this.event.registeredForEvent ? this.event.registeredForEvent.includes(Meteor.user()._id) : false;
+  },
+});
+
+Template.event.events({
+  "click #registerForEvent": function(event, template){
+    Meteor.call('event.registerForEvent', template.data.event._id, true);
+  },
+  "click #unregisterFromEvent": function(event, template){
+    Meteor.call('event.registerForEvent', template.data.event._id, false);
+  },
 });
 
 Template.event.onRendered(function() {

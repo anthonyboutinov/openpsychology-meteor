@@ -1,6 +1,5 @@
 .widget {
   margin-bottom: 20px;
-  border-radius: $border-radius-base;
   border: 1px solid $gray-lighter;
   overflow: hidden;
   position: relative;
@@ -121,11 +120,6 @@
     background-repeat: no-repeat;
     filter: blur(30px);
     opacity: 0;
-    // -webkit-transition: opacity .8s ease-in;
-    // -moz-transition: opacity .8s ease-in;
-    // -ms-transition: opacity .8s ease-in;
-    // -o-transition: opacity .8s ease-in;
-    // transition: opacity .8s ease-in;
     transform: scale(1.0);
     -webkit-transition: opacity .2s cubic-bezier(0.645, 0.045, 0.355, 1);
     -moz-transition: opacity .2s cubic-bezier(0.645, 0.045, 0.355, 1);
