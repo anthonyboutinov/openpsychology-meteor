@@ -14,8 +14,8 @@
           <div class="fulldescription-actions">
 
             {{> shareButton}}
-            <button class="btn btn-default" data-toggle="tooltip" data-delay="1000" title="Добавить в закладки" ev-toggle-bookmark-id="{{event._id}}"><i class="fa fa-fw fa-bookmark-o" aria-hidden="true"></i><span class="sr-only">Добавить в закладки</span></button>
-            {{> likeButton _id=event._id}}
+            {{> bookmarkButton event=event}}
+            {{> likeButton event=event}}
 
             {{#if registrationIsOpen}}
             <button class="btn btn-sm btn-success all-caps" data-toggle="tooltip" data-delay="250" title="18 человек уже зарегистрировались">Зарегистрироваться{{#if salePriceExists}} <span class="hidden-xs">и получить скидку</span><span class="visible-xs-inline">со скидкой</span>{{/if}}</button>

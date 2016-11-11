@@ -28,6 +28,8 @@ import './btn.share.html';
 import './btn.share.js';
 import './btn.like.html';
 import './btn.like.js';
+import './btn.bookmark.html';
+import './btn.bookmark.js';
 
 import './event.html';
 import './event.js';

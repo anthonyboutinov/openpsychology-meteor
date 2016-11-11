@@ -9,8 +9,8 @@
 
     <div class="list-item-text">
       <span class="inline-block pull-right">
-        <button class="btn btn-default" ev-toggle-bookmark-id="{{event._id}}"><i class="fa fa-fw fa-bookmark-o" aria-hidden="true"></i><span class="sr-only">Добавить в закладки</span></button>
-        {{> likeButton _id=event._id}}
+        {{> bookmarkButton event=event}}
+        {{> likeButton event=event}}
       </span>
       <a href="/event/{{event._id}}" class="link-hoverreveal">
         <h5 class="block-title">{{event.category.singularName}}</h5>
