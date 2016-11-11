@@ -44,3 +44,5 @@ import './dashboard.sidenavbar.html';
 
 import './dashboard.user.html';
 import './dashboard.user.js';
+
+import './dashboard.events.html';
