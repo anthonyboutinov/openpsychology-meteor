@@ -1,5 +1,8 @@
 import { Mongo } from 'meteor/mongo';
+import { check } from 'meteor/check';
 import { Categories } from './categories.js';
+import { Organizers } from './organizers.js';
+import { Likes } from './likes.js';
 
 export const Events = new Mongo.Collection("events");
 
@@ -24,56 +27,90 @@ if (Meteor.isServer) {
     options - Collection.find options dictionary
   }
   */
-  Meteor.publish('events', function(params) {
-    const categoryIds = Categories.find({urlName: {$in: params.categoriesUrlNamesList}}).map( (v) => {return v._id} );
-    let findParams = {categoryId: {$in: categoryIds}};
+  Meteor.publishComposite('events', function(params) {
+    return {
 
-    if (params.constainsText) {
-      console.log("Searching Events w/text: " + params.constainsText);
-      findParams.$or = [
-        {title:       {$regex : ".*" + params.constainsText + ".*", $options: "i"}},
-        {description: {$regex : ".*" + params.constainsText + ".*", $options: "i"}},
-      ];
-    }
+      find: function() {
+        // TODO: check method input params
+        const categoryIds = Categories.find({urlName: {$in: params.categoriesUrlNamesList}}).map( (v) => {return v._id} );
+        let findParams = {categoryId: {$in: categoryIds}};
 
-    if (params.datesRange && params.datesRange.from) {
-      const orArrayInstance = {
-        'dateTo': {
-          '$lt': parseDateRussianFormat(params.datesRange.from)
+        if (params.constainsText) {
+          console.log("Searching Events w/text: " + params.constainsText);
+          findParams.$or = [
+            {title:       {$regex : ".*" + params.constainsText + ".*", $options: "i"}},
+            {description: {$regex : ".*" + params.constainsText + ".*", $options: "i"}},
+          ];
         }
-      };
 
-      const path = ['dates','$not', '$elemMatch', '$or'];
-      if (findParams[path[0]]                   == null) {findParams[path[0]] = {}}
-      if (findParams[path[0]][path[1]]          == null) {findParams[path[0]][path[1]] = {}}
-      if (findParams[path[0]][path[1]][path[2]] == null) {findParams[path[0]][path[1]][path[2]] = {}}
-      if (findParams[path[0]][path[1]][path[2]][path[3]] == null) {findParams[path[0]][path[1]][path[2]][path[3]] = []}
-      findParams[path[0]][path[1]][path[2]][path[3]].push(orArrayInstance);
-    }
-    if (params.datesRange && params.datesRange.to) {
-      // add 1 day to make this restriction inclusive
-      let dateTo = parseDateRussianFormat(params.datesRange.to);
-      dateTo = moment(dateTo).add(1, 'days').toDate();
+        if (params.datesRange && params.datesRange.from) {
+          const orArrayInstance = {
+            'dateTo': {
+              '$lt': parseDateRussianFormat(params.datesRange.from)
+            }
+          };
 
-      const orArrayInstance = {
-        'dateTo': {
-          '$gt': dateTo
+          const path = ['dates','$not', '$elemMatch', '$or'];
+          if (findParams[path[0]]                   == null) {findParams[path[0]] = {}}
+          if (findParams[path[0]][path[1]]          == null) {findParams[path[0]][path[1]] = {}}
+          if (findParams[path[0]][path[1]][path[2]] == null) {findParams[path[0]][path[1]][path[2]] = {}}
+          if (findParams[path[0]][path[1]][path[2]][path[3]] == null) {findParams[path[0]][path[1]][path[2]][path[3]] = []}
+          findParams[path[0]][path[1]][path[2]][path[3]].push(orArrayInstance);
         }
-      };
+        if (params.datesRange && params.datesRange.to) {
+          // add 1 day to make this restriction inclusive
+          let dateTo = parseDateRussianFormat(params.datesRange.to);
+          dateTo = moment(dateTo).add(1, 'days').toDate();
 
-      const path = ['dates','$not', '$elemMatch', '$or'];
-      if (findParams[path[0]]                   == null) {findParams[path[0]] = {}}
-      if (findParams[path[0]][path[1]]          == null) {findParams[path[0]][path[1]] = {}}
-      if (findParams[path[0]][path[1]][path[2]] == null) {findParams[path[0]][path[1]][path[2]] = {}}
-      if (findParams[path[0]][path[1]][path[2]][path[3]] == null) {findParams[path[0]][path[1]][path[2]][path[3]] = []}
-      findParams[path[0]][path[1]][path[2]][path[3]].push(orArrayInstance);
+          const orArrayInstance = {
+            'dateTo': {
+              '$gt': dateTo
+            }
+          };
+
+          const path = ['dates','$not', '$elemMatch', '$or'];
+          if (findParams[path[0]]                   == null) {findParams[path[0]] = {}}
+          if (findParams[path[0]][path[1]]          == null) {findParams[path[0]][path[1]] = {}}
+          if (findParams[path[0]][path[1]][path[2]] == null) {findParams[path[0]][path[1]][path[2]] = {}}
+          if (findParams[path[0]][path[1]][path[2]][path[3]] == null) {findParams[path[0]][path[1]][path[2]][path[3]] = []}
+          findParams[path[0]][path[1]][path[2]][path[3]].push(orArrayInstance);
+        }
+
+        // console.log(params);
+        // console.log(JSON.stringify(findParams));
+
+        Counts.publish(this, 'events.count', Events.find(findParams), {noReady: true});
+        return Events.find(findParams, params.options);
+
+      }, // eof find
+
+      // children: [
+      //   {
+      //     collectionName: 'likes.forEvents',
+      //     find: function(event) {
+      //       // console.log("Likes aggregate... " + event._id);
+      //       console.log(Likes.find({eventId: event._id}).count());
+      //
+      //       const aggr =  Likes.aggregate([
+      //         { $match: { eventId: event._id } },
+      //         { $group: { _id: '$eventId', likesCount: { $sum: '$likes' } } }
+      //       ]);
+      //       console.log("aggr ", aggr);
+      //       if (aggr.length == 0) {
+      //         return;
+      //       }
+      //       return aggr;
+      //     }
+      //   },
+        // {
+        //   find: function(event) {
+        //     console.log("Organizers children... " + event.organizer._id);
+        //     return Organizers.find({_id: event.organizer._id});
+        //   }
+        // }
+      ], // eof children
+
     }
-
-    console.log(params);
-    console.log(JSON.stringify(findParams));
-
-    Counts.publish(this, 'events.count', Events.find(findParams), {noReady: true});
-    return Events.find(findParams, params.options);
   });
 
 
@@ -84,6 +121,7 @@ if (Meteor.isServer) {
   }
   */
   Meteor.publish('events.byOrganizer', function(params) {
+    // TODO: check method input params
     const findParams = {
       'organizer._id': params._idOrganizer
     };
@@ -95,8 +133,25 @@ if (Meteor.isServer) {
 
 
 
-  Meteor.publish('event', function(_id) {
-    return Events.find({ _id: _id});
+  Meteor.publish('event', function(eventId) {
+    check(eventId, String);
+    return Events.find({ _id: eventId});
+  });
+
+
+
+
+  Meteor.methods({
+    'event.registerForEvent'(eventId, setRegistered) {
+      check(eventId, String);
+      check(setRegistered, Boolean);
+
+      if (setRegistered) {
+        Events.update(eventId, { $push: { registeredForEvent: this.userId} });
+      } else {
+        Events.update(eventId, { $pull: { registeredForEvent: this.userId} });
+      }
+    },
   });
 
 }

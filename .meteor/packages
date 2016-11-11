@@ -37,3 +37,6 @@ accounts-google
 accounts-twitter
 accounts-ui
 mrt:accounts-vk
+meteorhacks:aggregate
+reywood:publish-composite
+dburles:collection-helpers
