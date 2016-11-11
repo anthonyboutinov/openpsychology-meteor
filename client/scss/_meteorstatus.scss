@@ -1,10 +1,11 @@
 .meteor-status {
-  background-color: rgba(50, 50, 50, 0.90);
+  // background-color: rgba(50, 50, 50, 0.90);
   left: auto;
   right: 15px;
   bottom: 15px;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  border-radius: $border-radius-small;
+  @include glass-pane(rgba(50, 50, 50, 0.90));
 
   a {
     &, &:hover, &:active {

@@ -24,13 +24,16 @@ import './searchbar.js';
 import './searchbar_category.html';
 import './searchbar_category.js';
 
+import './btn.share.html';
+import './btn.share.js';
+import './btn.like.html';
+import './btn.like.js';
+
 import './event.html';
 import './event.js';
 
 import './organizer.html';
 import './organizer.js';
-
-import './share-button.html';
 
 import './dashboardLayout.html';
 import './dashboard.navbar.html';

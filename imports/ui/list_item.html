@@ -10,7 +10,7 @@
     <div class="list-item-text">
       <span class="inline-block pull-right">
         <button class="btn btn-default" ev-toggle-bookmark-id="{{event._id}}"><i class="fa fa-fw fa-bookmark-o" aria-hidden="true"></i><span class="sr-only">Добавить в закладки</span></button>
-        <button class="btn btn-default" ev-toggle-like-id="{{event._id}}">10 <i class="fa fa-fw fa-heart-o" aria-hidden="true"></i><span class="sr-only">Поставить лайк</span></button>
+        {{> likeButton _id=event._id}}
       </span>
       <a href="/event/{{event._id}}" class="link-hoverreveal">
         <h5 class="block-title">{{event.category.singularName}}</h5>

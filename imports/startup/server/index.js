@@ -80,24 +80,24 @@ Meteor.startup(() => {
 
     const dates = [
       {
-        dateFrom: moment("2016-11-02 09:30").toDate(),
-        dateTo: moment("2016-11-02 11:30").toDate(),
+        dateFrom: moment("2016-11-10 09:30").toDate(),
+        dateTo: moment("2016-11-10 11:30").toDate(),
       },
       {
-        dateFrom: moment("2016-11-03 10:00").toDate(),
-        dateTo: moment("2016-11-03 11:15").toDate(),
+        dateFrom: moment("2016-11-13 10:00").toDate(),
+        dateTo: moment("2016-11-13 11:15").toDate(),
       },
       {
-        dateFrom: moment("2016-11-04 20:00").toDate(),
-        dateTo: moment("2016-11-04 21:15").toDate(),
+        dateFrom: moment("2016-11-18 20:00").toDate(),
+        dateTo: moment("2016-11-18 21:15").toDate(),
       },
       {
-        dateFrom: moment("2016-11-05 18:00").toDate(),
-        dateTo: moment("2016-11-05 23:00").toDate(),
+        dateFrom: moment("2016-11-20 18:00").toDate(),
+        dateTo: moment("2016-11-20 23:00").toDate(),
       },
       {
-        dateFrom: moment("2016-11-09 18:00").toDate(),
-        dateTo: moment("2016-11-09 23:00").toDate(),
+        dateFrom: moment("2016-11-29 18:00").toDate(),
+        dateTo: moment("2016-11-29 23:00").toDate(),
       },
     ];
 
@@ -190,7 +190,22 @@ Meteor.startup(() => {
         bannerUrl: "http://placehold.it/780x260",
         title: "Первый в первой категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        dates: dates,
+        dates: [{
+          dateFrom: moment("2016-11-11 09:30").toDate(),
+          dateTo: moment("2016-11-11 11:30").toDate(),
+        },
+        {
+          dateFrom: moment("2016-11-15 10:00").toDate(),
+          dateTo: moment("2016-11-15 11:15").toDate(),
+        },
+        {
+          dateFrom: moment("2016-11-17 20:00").toDate(),
+          dateTo: moment("2016-11-17 21:15").toDate(),
+        },
+        {
+          dateFrom: moment("2016-11-30 18:00").toDate(),
+          dateTo: moment("2016-11-30 23:00").toDate(),
+        }],
         location: {
           city: "Казань",
           street: "ул. Тукая",
@@ -214,7 +229,22 @@ Meteor.startup(() => {
         bannerUrl: "http://placehold.it/780x260",
         title: "Второй в первой категории",
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        dates: dates,
+        dates: [{
+          dateFrom: moment("2016-11-10 09:30").toDate(),
+          dateTo: moment("2016-11-10 11:30").toDate(),
+        },
+        {
+          dateFrom: moment("2016-11-18 20:00").toDate(),
+          dateTo: moment("2016-11-18 21:15").toDate(),
+        },
+        {
+          dateFrom: moment("2016-11-20 18:00").toDate(),
+          dateTo: moment("2016-11-20 23:00").toDate(),
+        },
+        {
+          dateFrom: moment("2016-11-29 18:00").toDate(),
+          dateTo: moment("2016-11-29 23:00").toDate(),
+        }],
         location: {
           city: "Казань",
           street: "ул. Тукая",
@@ -270,12 +300,12 @@ Meteor.startup(() => {
             dateTo: moment("2016-10-04 21:15").toDate(),
           },
           {
-            dateFrom: moment("2016-10-05 18:00").toDate(),
-            dateTo: moment("2016-10-05 23:00").toDate(),
+            dateFrom: moment("2016-10-15 18:00").toDate(),
+            dateTo: moment("2016-10-15 23:00").toDate(),
           },
           {
-            dateFrom: moment("2016-10-09 18:00").toDate(),
-            dateTo: moment("2016-10-09 23:00").toDate(),
+            dateFrom: moment("2016-10-19 18:00").toDate(),
+            dateTo: moment("2016-10-19 23:00").toDate(),
           },
         ],
         location: {
@@ -303,12 +333,12 @@ Meteor.startup(() => {
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         dates: [
           {
-            dateFrom: moment("2016-11-03 10:00").toDate(),
-            dateTo: moment("2016-11-03 11:15").toDate(),
+            dateFrom: moment("2016-11-13 10:00").toDate(),
+            dateTo: moment("2016-11-13 11:15").toDate(),
           },
           {
-            dateFrom: moment("2016-11-04 20:00").toDate(),
-            dateTo: moment("2016-11-04 21:15").toDate(),
+            dateFrom: moment("2016-11-15 20:00").toDate(),
+            dateTo: moment("2016-11-15 21:15").toDate(),
           },
         ],
         location: {
@@ -333,8 +363,8 @@ Meteor.startup(() => {
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         dates: [
           {
-            dateFrom: moment("2016-11-09 12:00").toDate(),
-            dateTo: moment("2016-11-09 23:00").toDate(),
+            dateFrom: moment("2016-11-29 12:00").toDate(),
+            dateTo: moment("2016-11-29 23:00").toDate(),
             info: "Перерыв с 13:00 до 14:00",
           },
         ],
@@ -360,17 +390,17 @@ Meteor.startup(() => {
         description: "Полное описание Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         dates: [
           {
-            dateFrom: moment("2016-11-02 09:30").toDate(),
-            dateTo: moment("2016-11-02 11:30").toDate(),
+            dateFrom: moment("2016-11-12 09:30").toDate(),
+            dateTo: moment("2016-11-12 11:30").toDate(),
             info: "Дополнительная информация"
           },
           {
-            dateFrom: moment("2016-11-04 20:00").toDate(),
-            dateTo: moment("2016-11-04 21:15").toDate(),
+            dateFrom: moment("2016-11-14 20:00").toDate(),
+            dateTo: moment("2016-11-14 21:15").toDate(),
           },
           {
-            dateFrom: moment("2016-11-05 18:00").toDate(),
-            dateTo: moment("2016-11-05 23:00").toDate(),
+            dateFrom: moment("2016-11-15 18:00").toDate(),
+            dateTo: moment("2016-11-15 23:00").toDate(),
             info: "Доп. информация"
           },
         ],
