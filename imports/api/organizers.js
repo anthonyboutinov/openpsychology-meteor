@@ -12,4 +12,9 @@ if (Meteor.isServer) {
     return Organizers.find({ _id: _id});
   });
 
+
+  Meteor.publish('organizers.managedByUser', function() {
+    return Organizers.find({ 'managedBy.userId': this.userId }, {orderBy: 'createdAt', limit: 100});
+  });
+
 }

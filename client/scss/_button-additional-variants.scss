@@ -57,3 +57,12 @@
 .btn-secondary {
   @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
 }
+
+
+.btn-xl {
+  @extend .btn-lg;
+  border-radius: 0;
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}

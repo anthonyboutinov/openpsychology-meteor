@@ -206,3 +206,19 @@ i.fa-history {
   color: $bookmark-color;
   .nav & {color: inherit}
 }
+
+
+.control-label {
+  font-weight: 500;
+
+  .help-block, .text-muted {
+    font-weight: 400;
+  }
+}
+
+.form-horizontal .hr {
+  height: 2px;
+  background-color: rgba(0,0,0,.1);
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

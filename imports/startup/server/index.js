@@ -45,9 +45,13 @@ Meteor.startup(() => {
       {
         createdAt: new Date(),
 
-        _idsEditors: [
-          "43285203tghds3",
-          "432r9wfhsddsar",
+        managedBy: [
+          {
+            userId: "3343r2ewds",
+            nonRetireable: true, // cannot be retired from managing community
+            addedAt: new Date(),
+            // TODO: accepted invitation etc...
+          }
         ],
 
         bannerUrl: "http://placehold.it/795x200",

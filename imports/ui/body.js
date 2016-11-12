@@ -47,3 +47,8 @@ import './dashboard.user.js';
 
 import './dashboard.events.html';
 import './dashboard.events.js';
+
+import './dashboard.managedorganizers.html';
+import './dashboard.managedorganizers.js';
+import './dashboard.managedorganizers.add.html';
+import './dashboard.managedorganizers.add.js';

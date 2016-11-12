@@ -254,7 +254,7 @@ Router.route("/user", function() {
 Dashboard.Events route
 ----------------------------
 */
-Router.route("/myevents/:timeframe?", function() {
+Router.route("/myevents/:timeframe", function() {
   this.subscribe('categories').wait();
 
   this.subscribe('events.userRegistered', {
@@ -288,4 +288,59 @@ Router.route("/myevents/:timeframe?", function() {
 
 }, {
   name: "dashboard.events"
+});
+
+
+/*
+----------------------------
+Dashboard.ManagedOrganizers route
+----------------------------
+*/
+Router.route("/managedorganizers", function() {
+
+  this.subscribe('organizers.managedByUser').wait();
+
+  this.layout('dashboardLayout', {
+    data: {
+      subscriptionsReady: () => {
+        return this.ready();
+      },
+      organizers: () => {
+        return Organizers.find();
+      },
+    }
+  });
+  if (this.ready()) {
+    this.render('dashboardManagedOrganizers');
+  } else {
+    this.render('loading');
+  };
+
+}, {
+  name: "dashboard.managedOrganizers"
+});
+
+
+/*
+----------------------------
+Dashboard.ManagedOrganizers.Add route
+----------------------------
+*/
+Router.route("/managedorganizers/add", function() {
+
+  this.layout('dashboardLayout', {
+    data: {
+      subscriptionsReady: () => {
+        return this.ready();
+      },
+    }
+  });
+  if (this.ready()) {
+    this.render('dashboardManagedOrganizersAdd');
+  } else {
+    this.render('loading');
+  };
+
+}, {
+  name: "dashboard.managedOrganizers.add"
 });

@@ -1,0 +1,36 @@
+<template name="dashboardManagedOrganizers">
+
+  <div class="fulldescription-main">
+    <div class="fulldescription-heading section-heading">
+      <h3>Список управляемых организаций</h3>
+      <h1>Организации</h1>
+    </div>
+    <div class="fulldescription-actions">
+      <a href="/managedorganizers/add" class="btn btn-default"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Добавить</a>
+    </div>
+    <div class="fulldescription-body">
+
+      {{#if organizers.count}}
+
+      <ul class="content-list">
+        {{#each org in organizers}}
+        <li>
+          <a href="/organizer/{{org._id}}">
+            <h4 class="font-headings">{{org.name}}</h4>
+          </a>
+        </li>
+        {{/each}}
+      </ul>
+
+      {{else}}
+
+      <a href="/managedorganizers/add" class="btn btn-primary btn-xl">
+        <i class="fa fa-fw fa-plus" aria-hidden="true"></i> Добавить организацию
+      </a>
+
+      {{/if}}
+
+    </div>
+  </div>
+
+</template>
