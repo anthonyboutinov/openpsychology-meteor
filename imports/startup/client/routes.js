@@ -208,6 +208,11 @@ Router.route("/user", function() {
     }
   }).wait();
 
+  this.subscribe('events.userRegistered.counts', {
+    userId: Meteor.user()._id,
+    timeframe: "past"
+  }).wait();
+
   const findParamsUpcomingEvents = queryByDate.setFindUpcoming({});
   const findParamsOngoingEvents = queryByDate.setFindOngoing({});
 
@@ -228,6 +233,9 @@ Router.route("/user", function() {
           return event;
         });
       },
+      pastEventsCount: () => {
+        return Counter.get('events.userRegistered.counts.past');
+      }
     }
   });
   if (this.ready()) {

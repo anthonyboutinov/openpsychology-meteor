@@ -84,17 +84,38 @@ if (Meteor.isServer) {
       findParams = queryByDate.setFindOngoing(findParams);
     } else if (params.timeframe == "upcoming") {
       findParams = queryByDate.setFindUpcoming(findParams);
-    // } else if (params.timeframe == "notPast") {
-    //   findParams = setFindNotPast(findParams);
     }
 
     // console.log(JSON.stringify(findParams));
-
-    // Counts.publish(this, 'events.byOrganizer.count', Events.find(findParams), {noReady: true});
     const events = Events.find(findParams, params.options);
     return events;
   });
 
+
+  /*
+  params: {
+    userId - ID,
+    timeframe - "past" || "ongoing" || "upcoming"
+  }
+  */
+  Meteor.publish('events.userRegistered.counts', function(params) {
+    check(params.userId, String);
+    check(params.timeframe, String);
+
+    let findParams = {
+      'registeredForEvent': params.userId
+    };
+
+    if (params.timeframe == "past") {
+      findParams = queryByDate.setFindPast(findParams);
+    } else if (params.timeframe == "ongoing") {
+      findParams = queryByDate.setFindOngoing(findParams);
+    } else if (params.timeframe == "upcoming") {
+      findParams = queryByDate.setFindUpcoming(findParams);
+    }
+
+    return new Counter('events.userRegistered.counts.' + params.timeframe, Events.find(findParams));
+  });
 
 
   Meteor.publish('event', function(_id) {
