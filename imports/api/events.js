@@ -31,7 +31,7 @@ function setFindDatesRange(findParams, datesRange) {
       }
     };
 
-    const path = ['dates','$not', '$elemMatch', '$or'];
+    const path = ['dates', '$not', '$elemMatch', '$or'];
     if (findParams[path[0]]                   == null) {findParams[path[0]] = {}}
     if (findParams[path[0]][path[1]]          == null) {findParams[path[0]][path[1]] = {}}
     if (findParams[path[0]][path[1]][path[2]] == null) {findParams[path[0]][path[1]][path[2]] = {}}
@@ -50,7 +50,7 @@ function setFindDatesRange(findParams, datesRange) {
       }
     };
 
-    const path = ['dates','$not', '$elemMatch', '$or'];
+    const path = ['dates', '$not', '$elemMatch', '$or'];
     if (findParams[path[0]]                   == null) {findParams[path[0]] = {}}
     if (findParams[path[0]][path[1]]          == null) {findParams[path[0]][path[1]] = {}}
     if (findParams[path[0]][path[1]][path[2]] == null) {findParams[path[0]][path[1]][path[2]] = {}}
@@ -68,20 +68,14 @@ function setFindDatesRange(findParams, datesRange) {
 function setFindOngoing(findParams) {
   const now = new Date();
 
-  const path = ['dates', '$elemMatch', '$or'];
-  if (findParams[path[0]]                   == null) {findParams[path[0]] = {}}
-  if (findParams[path[0]][path[1]]          == null) {findParams[path[0]][path[1]] = {}}
-  if (findParams[path[0]][path[1]][path[2]] == null) {findParams[path[0]][path[1]][path[2]] = [
-    { 'dateFrom': { '$lt': now } },
-    { 'dateFrom': { '$gte': now } },
-  ]}
-
-  // findParams.dates = {
-  //   '$and': [
-  //     { 'dateFrom': { '$lt': now } },
-  //     { 'dateFrom': { '$gte': now } },
-  //   ]
-  // };
+  const path = ['$and'];
+  if (findParams[path[0]] == null) {findParams[path[0]] = []}
+  findParams[path[0]].push({
+    'dates': {'$elemMatch': {'dateFrom': {'$lt' : now}}}
+  });
+  findParams[path[0]].push({
+    'dates': {'$elemMatch': {'dateFrom': {'$gte' : now}}}
+  });
 
   return findParams;
 }

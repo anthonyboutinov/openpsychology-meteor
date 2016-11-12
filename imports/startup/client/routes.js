@@ -227,6 +227,7 @@ Router.route("/myevents/:timeframe?", function() {
       subscriptionsReady: () => {
         return this.ready();
       },
+      timeframe: this.params.timeframe,
       events_: () => {
         console.log(Events.find().count());
         return Events.find().map((event) => {
