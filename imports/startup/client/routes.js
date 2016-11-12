@@ -2,6 +2,7 @@ import { Categories }  from '../../api/categories.js';
 import { Events }      from '../../api/events.js';
 import { Organizers } from '../../api/organizers.js';
 // import { Likes } from '../../api/likes.js';
+import * as queryByDate from '../../../both/queryByDate.js';
 
 export const QUERY_LIMIT = 6 * 5;
 
@@ -187,11 +188,45 @@ Dashboard.User route
 ----------------------------
 */
 Router.route("/user", function() {
+  this.subscribe('categories').wait();
+
+  this.subscribe('events.userRegistered', {
+    userId: Meteor.user()._id,
+    timeframe: "ongoing",
+    options: {
+      limit: 2,
+      orderBy: {'dates.dateFrom': 1}
+    }
+  }).wait();
+
+  this.subscribe('events.userRegistered', {
+    userId: Meteor.user()._id,
+    timeframe: "upcoming",
+    options: {
+      limit: 2,
+      orderBy: {'dates.dateFrom': 1}
+    }
+  }).wait();
+
+  const findParamsUpcomingEvents = queryByDate.setFindUpcoming({});
+  const findParamsOngoingEvents = queryByDate.setFindOngoing({});
 
   this.layout('dashboardLayout', {
     data: {
       subscriptionsReady: () => {
         return this.ready();
+      },
+      ongoingEvents: () => {
+        return Events.find(findParamsOngoingEvents).map((event) => {
+          event.category = Categories.findOne({_id: event.categoryId});
+          return event;
+        });
+      },
+      upcomingEvents: () => {
+        return Events.find(findParamsUpcomingEvents).map((event) => {
+          event.category = Categories.findOne({_id: event.categoryId});
+          return event;
+        });
       },
     }
   });
@@ -218,7 +253,8 @@ Router.route("/myevents/:timeframe?", function() {
     userId: Meteor.user()._id,
     timeframe: this.params.timeframe,
     options: {
-      limit: 100
+      limit: 100,
+      orderBy: {'dates.dateFrom': 1}
     }
   }).wait();
 
@@ -229,7 +265,6 @@ Router.route("/myevents/:timeframe?", function() {
       },
       timeframe: this.params.timeframe,
       events_: () => {
-        console.log(Events.find().count());
         return Events.find().map((event) => {
           event.category = Categories.findOne({_id: event.categoryId});
           return event;

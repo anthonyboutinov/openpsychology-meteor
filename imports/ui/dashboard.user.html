@@ -51,16 +51,9 @@
             </div>
             <div class="widget-body">
               <ul class="content-list">
-                <li>
-                  <div class="list-item-text"><a href="/event/PM6DZdpgDSRNumnZq" class="link-hoverreveal"> <h5 class="block-title">Тренинг</h5> <h4>Второй в нулевой категории</h4> </a>
-                    <div class="list-item-date list-item-date-in-progress"> ср, 9 нояб. 2016 г., 18:00 (через 2 дня) <div class="progress"> <div class="progress-bar progress-bar-calendar" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%"> <span class="sr-only">Прошло 4 встреч из 5.</span> </div> </div> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="list-item-text"><a href="/event/PM6DZdpgDSRNumnZq" class="link-hoverreveal"> <h5 class="block-title">Тренинг</h5> <h4>Второй в нулевой категории</h4> </a>
-                    <div class="list-item-date list-item-date-in-progress"> ср, 9 нояб. 2016 г., 18:00 (через 2 дня) <div class="progress"> <div class="progress-bar progress-bar-calendar" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%"> <span class="sr-only">Прошло 4 встреч из 5.</span> </div> </div> </div>
-                  </div>
-                </li>
+                {{#each event in ongoingEvents}}
+                <li>{{>list_item event=event hideImage=true hideButtons=true hideAdditionalInfo=true}}</li>
+                {{/each}}
               </ul>
             </div>
           </div>
@@ -74,16 +67,9 @@
             </div>
             <div class="widget-body">
               <ul class="content-list">
-                <li>
-                  <div class="list-item-text"><a href="/event/CceDxxFN7vukXJhs8" class="link-hoverreveal"><h5 class="block-title">Семинар</h5><h4>Второй в первой категории</h4></a>
-                    <div class="list-item-date"> ср, 9 нояб. 2016 г., 18:00 (через 2 дня)</div>
-                  </div>
-                </li>
-                <li>
-                  <div class="list-item-text"><a href="/event/CceDxxFN7vukXJhs8" class="link-hoverreveal"><h5 class="block-title">Семинар</h5><h4>Второй в первой категории</h4></a>
-                    <div class="list-item-date"> ср, 9 нояб. 2016 г., 18:00 (через 2 дня)</div>
-                  </div>
-                </li>
+                {{#each event in upcomingEvents}}
+                <li>{{>list_item event=event hideImage=true hideButtons=true hideAdditionalInfo=true}}</li>
+                {{/each}}
               </ul>
             </div>
           </div>
