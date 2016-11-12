@@ -211,12 +211,28 @@ Router.route("/user", function() {
 Dashboard.Events route
 ----------------------------
 */
-Router.route("/myevents/:filter?", function() {
+Router.route("/myevents/:timeframe?", function() {
+  this.subscribe('categories').wait();
+
+  this.subscribe('events.userRegistered', {
+    userId: Meteor.user()._id,
+    timeframe: this.params.timeframe,
+    options: {
+      limit: 100
+    }
+  }).wait();
 
   this.layout('dashboardLayout', {
     data: {
       subscriptionsReady: () => {
         return this.ready();
+      },
+      events_: () => {
+        console.log(Events.find().count());
+        return Events.find().map((event) => {
+          event.category = Categories.findOne({_id: event.categoryId});
+          return event;
+        });
       },
     }
   });

@@ -46,3 +46,4 @@ import './dashboard.user.html';
 import './dashboard.user.js';
 
 import './dashboard.events.html';
+import './dashboard.events.js';
