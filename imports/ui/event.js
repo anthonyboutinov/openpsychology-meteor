@@ -45,7 +45,8 @@ Template.event.helpers({
   },
 
   registeredForEvent: function() {
-    return Meteor.user() && this.event.registeredForEvent ? this.event.registeredForEvent.includes(Meteor.user()._id) : false;
+    const user = Meteor.user();
+    return user && this.event.registeredForEvent ? this.event.registeredForEvent.includes(user._id) : false;
   },
 });
 

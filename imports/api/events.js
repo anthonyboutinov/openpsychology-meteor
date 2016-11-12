@@ -1,4 +1,5 @@
 import { Mongo } from 'meteor/mongo';
+import { check } from 'meteor/check';
 import { Categories } from './categories.js';
 
 export const Events = new Mongo.Collection("events");
@@ -84,6 +85,8 @@ if (Meteor.isServer) {
   }
   */
   Meteor.publish('events.byOrganizer', function(params) {
+    check(params._idOrganizer, String);
+
     const findParams = {
       'organizer._id': params._idOrganizer
     };
@@ -97,6 +100,20 @@ if (Meteor.isServer) {
 
   Meteor.publish('event', function(_id) {
     return Events.find({ _id: _id});
+  });
+
+
+  Meteor.methods({
+    'event.registerForEvent'(eventId, setRegistered) {
+      check(eventId, String);
+      check(setRegistered, Boolean);
+
+      if (setRegistered) {
+        Events.update(eventId, { $push: { registeredForEvent: this.userId} });
+      } else {
+        Events.update(eventId, { $pull: { registeredForEvent: this.userId} });
+      }
+    },
   });
 
 }
