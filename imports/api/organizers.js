@@ -43,6 +43,7 @@ Organizers.attachSchema(new SimpleSchema({
     autoform: {
       group: "Описание",
       type: 'image',
+      // 'help-text': "Отображается на странице организатора",
     }
   },
   imageUrl: {
@@ -52,6 +53,7 @@ Organizers.attachSchema(new SimpleSchema({
     autoform: {
       group: "Описание",
       type: 'image',
+      // 'help-text': "Рекомендуется: 96⨉96 px (разшенение 3⨉). Масштабируется в разрешение 32⨉32 px",
     }
   },
   email: {
@@ -62,6 +64,7 @@ Organizers.attachSchema(new SimpleSchema({
     optional: true,
     autoform: {
       group: "Контакты",
+      // 'help-text': "Email скрыт от посетителей сайта. Посетители могут отправлять сообщения на эту почту только через форму обратной связи"
     }
   },
   phone: {
@@ -84,7 +87,8 @@ Organizers.attachSchema(new SimpleSchema({
   },
   managedBy: {
     type: [ManagedBy],
-    label: "Управляющие"
+    label: "Управляющие",
+    // 'help-text': "Список людей, которые могут редактировать инфомрацию об организации; добавлять, изменять и удалять события",
   }
 }));
 
