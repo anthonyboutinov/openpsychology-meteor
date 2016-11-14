@@ -7,7 +7,25 @@
     </div>
     <div class="fulldescription-body">
 
-      <div class="form-horizontal">
+      {{#autoForm collection=Organizers id="insertOrganizerForm" type="insert" trimString=true template="bootstrap3-horizontal"}}
+        <fieldset>
+          <legend>Основная информация</legend>
+          {{> afQuickField name="name" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" autofocus=''}}
+          <legend>Описание</legend>
+          {{> afQuickField name="description" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+          {{> afQuickField name="imageUrl" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+          {{> afQuickField name="bannerUrl" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+          <legend>Контактная информация</legend>
+          <div class="input-group">
+            <div class="input-group-addon">+7</div>
+             {{> afQuickField name='phone'}}
+          </div>
+           {{> afQuickField name="location" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Insert</button>
+      {{/autoForm}}
+
+      <!-- <div class="form-horizontal">
         <div class="form-group">
           <label for="inputName" class="col-sm-3 control-label">Название<span class="text-danger">*</span></label>
           <div class="col-sm-9">
@@ -74,7 +92,7 @@
             <button class="btn btn-primary">Готово</button>
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>

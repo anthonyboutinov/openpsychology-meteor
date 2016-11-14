@@ -130,8 +130,15 @@
 
 .link-hoverreveal {
   color: $text-color;
-  &:hover, &:focus, &:active, &.hover, &.focus, &.active {
-    text-decoration: none;
+  // &:hover, &:focus, &:active, &.hover, &.focus, &.active {
+  //   text-decoration: none;
+  // }
+
+  &.text-muted {
+    @extend .text-muted;
+    &:hover, &:focus, &:active, &.hover, &.focus, &.active {
+      color: $link-hover-color;
+    }
   }
 }
 

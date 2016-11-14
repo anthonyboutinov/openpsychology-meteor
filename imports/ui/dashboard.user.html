@@ -56,6 +56,11 @@
                 <li>{{>list_item event=event hideImage=true hideButtons=true hideAdditionalInfo=true}}</li>
                 {{/each}}
               </ul>
+              {{#if gotMoreOngoingEvents}}
+              <div class="small text-center m-t-15">
+                <a href="/myevents/ongoing" class="link-hoverreveal text-muted">Ещё {{ongoingEventsCountLeft}} штук</a>
+              </div>
+              {{/if}}
             </div>
           </div>
 
@@ -72,6 +77,11 @@
                 <li>{{>list_item event=event hideImage=true hideButtons=true hideAdditionalInfo=true}}</li>
                 {{/each}}
               </ul>
+              {{#if gotMoreUpcomingEvents}}
+              <div class="small text-center m-t-15">
+                <a href="/myevents/upcoming" class="link-hoverreveal text-muted">Ещё {{upcomingEventsCountLeft}} штук</a>
+              </div>
+              {{/if}}
             </div>
           </div>
 

@@ -20,35 +20,67 @@ Organizers.attachSchema(new SimpleSchema({
     type: String,
     label: "Название",
     max: 100,
-    min: 3
+    min: 3,
+    autoform: {
+      group: "Основная информация",
+    }
   },
   description: {
     type: 'markdown',
     label: "Описание",
     max: 2000,
-    optional: true
+    optional: true,
+    autoform: {
+      // rows: 6,
+      type: "markdown",
+      group: "Описание",
+    }
   },
   bannerUrl: {
     type: String,
     label: "Изображение-баннер",
-    optional: true
+    optional: true,
+    autoform: {
+      group: "Описание",
+      type: 'image',
+    }
   },
   imageUrl: {
     type: String,
     label: "Логотип",
-    optional: true
+    optional: true,
+    autoform: {
+      group: "Описание",
+      type: 'image',
+    }
+  },
+  email: {
+    type: 'email',
+    label: "Email",
+    min: 5,
+    max: 64,
+    optional: true,
+    autoform: {
+      group: "Контакты",
+    }
   },
   phone: {
-    type: Number,
+    type: 'String',
     label: "Номер телефона",
     min: 6,
     max: 10,
     optional: true,
+    autoform: {
+      group: "Контакты",
+    }
   },
   location: {
     type: String,
     label: "Адрес",
-    optional: true
+    optional: true,
+    autoform: {
+      group: "Контакты",
+    }
   },
   managedBy: {
     type: [ManagedBy],

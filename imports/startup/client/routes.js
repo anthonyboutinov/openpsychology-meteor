@@ -213,6 +213,16 @@ Router.route("/user", function() {
     timeframe: "past"
   }).wait();
 
+  this.subscribe('events.userRegistered.counts', {
+    userId: Meteor.user()._id,
+    timeframe: "upcoming"
+  }).wait();
+
+  this.subscribe('events.userRegistered.counts', {
+    userId: Meteor.user()._id,
+    timeframe: "ongoing"
+  }).wait();
+
   const findParamsUpcomingEvents = queryByDate.setFindUpcoming({});
   const findParamsOngoingEvents = queryByDate.setFindOngoing({});
 
@@ -233,9 +243,18 @@ Router.route("/user", function() {
           return event;
         });
       },
-      pastEventsCount: () => {
-        return Counter.get('events.userRegistered.counts.past');
-      }
+      gotMoreOngoingEvents: () => {
+        return Counter.get('events.userRegistered.counts.ongoing') > Events.find(findParamsOngoingEvents).count();
+      },
+      gotMoreUpcomingEvents: () => {
+        return Counter.get('events.userRegistered.counts.upcoming') > Events.find(findParamsUpcomingEvents).count();
+      },
+      ongoingEventsCountLeft: () => {
+        return Counter.get('events.userRegistered.counts.ongoing') - Events.find(findParamsOngoingEvents).count();
+      },
+      upcomingEventsCountLeft: () => {
+        return Counter.get('events.userRegistered.counts.upcoming') - Events.find(findParamsUpcomingEvents).count();
+      },
     }
   });
   if (this.ready()) {
