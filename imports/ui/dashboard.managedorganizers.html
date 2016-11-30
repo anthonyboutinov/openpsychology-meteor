@@ -6,7 +6,11 @@
       <h1>Организации</h1>
     </div>
     <div class="fulldescription-actions">
+      {{#unless maxOrganizersCountReached}}
       <a href="/managedorganizers/add" class="btn btn-default"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Добавить</a>
+      {{else}}
+      <span class="btn-sized">Вы достигли лимита на количество организаций</span>
+      {{/unless}}
     </div>
     <div class="fulldescription-body">
 
@@ -15,9 +19,28 @@
       <ul class="content-list">
         {{#each org in organizers}}
         <li>
-          <a href="/organizer/{{org._id}}">
-            <h4 class="font-headings">{{org.name}}</h4>
-          </a>
+          <h4 class="font-headings inline-block">{{org.name}}</h4>
+          <div class="row">
+            <div class="col-sm-7">
+              <a href="#" class="btn btn-default"><i class="fa fa-fw fa-bar-chart" aria-hidden="true"></i> Статистика</a>
+              <a href="/organizer/{{org._id}}" class="btn btn-default"><i class="fa fa-fw fa-id-card-o" aria-hidden="true"></i> Страница</a>
+              <a href="#" class="btn btn-default"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Редактировать</a>
+              <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-fw fa-ellipsis-h" aria-hidden="true"></i><span class="sr-only">Ещё</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Редактировать список администраторов</a></li>
+                  <li><a href="#">Передать права другой учетной записи</a></li>
+                  <li><a href="#">Удалить организацию</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-5 text-right">
+              <a href="#" class="btn btn-default"><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> События</a>
+              <a href="#" class="btn btn-default"><i class="fa fa-fw fa-calendar-plus-o" aria-hidden="true"></i> Добавить событие</a>
+            </div>
+          </div>
         </li>
         {{/each}}
       </ul>

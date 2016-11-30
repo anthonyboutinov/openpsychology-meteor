@@ -4,32 +4,52 @@
       <div class="col-xs-12 col-lg-8">
         <section class="fulldescription-main">
 
+          {{#if organizer.bannerUrl}}
           <img class="img-responsive img-external-noalpha" src="{{organizer.bannerUrl}}" alt="Изображение-баннер события">
+          {{/if}}
           <h1 class="fulldescription-heading m-b-30">{{organizer.name}}</h1>
 
           <div class="row fulldescription-body">
 
             <div class="col-xs-12 col-sm-12 col-lg-5">
 
+              {{#if organizer.location}}
               <div class="m-b-10">
                 <h4 class="m-t-0">Адрес:</h4>
-                {{organizer.location.city}}, {{organizer.location.street}}, {{organizer.location.building}}, {{organizer.location.additionalInfo}}
+                {{organizer.location.city}}{{#if organizer.location.line1}}, {{organizer.location.line1}}{{/if}}{{#if organizer.location.additionalInfo}}, {{organizer.location.additionalInfo}}{{/if}}
               </div>
+              {{/if}}
 
               <div class="m-t-15">
                 <h4>Контакты:</h4>
-                <a href="#" class="btn m-b-5 btn-vk"><i class="fa fa-fw fa-vk" aria-hidden="true"></i><span class="sr-only">ВКонтакте</span></a>
-                <a href="#" class="btn m-b-5 btn-odnoklassniki"><i class="fa fa-fw fa-odnoklassniki" aria-hidden="true"></i><span class="sr-only">Одноклассники</span></a>
-                <a href="#" class="btn m-b-5 btn-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
-                <a href="#" class="btn m-b-5 btn-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span class="sr-only">Google Plus</span></a>
-                <a href="#" class="btn m-b-5 btn-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
-                <a href="tel:+7{{organizer.phoneNum}}" class="btn m-b-5 btn-secondary"><i class="fa fa-phone fa-fw" aria-hidden="true"></i>+7 (800) 000-00-00</a>
-                <a href="#" class="btn m-b-5 btn-secondary" title="Написать сообщение"><i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i><span class="sr-only">Написать сообщение</span></a>
+                {{#if organizer.socialLinkVK}}
+                <a href="{{organizer.socialLinkVK}}" class="btn m-b-5 btn-vk"><i class="fa fa-fw fa-vk" aria-hidden="true"></i><span class="sr-only">ВКонтакте</span></a>
+                {{/if}}
+                {{#if organizer.socialLinkOdnoklassniki}}
+                <a href="{{organizer.socialLinkOdnoklassniki}}" class="btn m-b-5 btn-odnoklassniki"><i class="fa fa-fw fa-odnoklassniki" aria-hidden="true"></i><span class="sr-only">Одноклассники</span></a>
+                {{/if}}
+                {{#if organizer.socialLinkFacebook}}
+                <a href="{{organizer.socialLinkFacebook}}" class="btn m-b-5 btn-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+                {{/if}}
+                {{#if organizer.socialLinkYouTube}}
+                <a href="{{organizer.socialLinkYouTube}}" class="btn m-b-5 btn-youtube"><i class="fa fa-fw fa-youtube" aria-hidden="true"></i><span class="sr-only">YouTube</span></a>
+                {{/if}}
+                {{#if organizer.socialLinkTwitter}}
+                <a href="{{organizer.socialLinkTwitter}}" class="btn m-b-5 btn-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+                {{/if}}
+                {{#if organizer.phoneNum}}
+                <a href="{{phoneNumHref organizer.phoneNum}}" class="btn m-b-5 btn-secondary"><i class="fa fa-phone fa-fw" aria-hidden="true"></i>{{phoneNumLabel organizer.phoneNum}}</a>
+                {{/if}}
+                {{#if organizer.email}}
+                <button class="btn m-b-5 btn-secondary" title="Написать сообщение"><i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i><span class="sr-only">Написать сообщение</span></button>
+                {{/if}}
               </div>
 
             </div>
             <div class="col-xs-12 col-sm-12 col-lg-7">
+              {{#if organizer.description}}
               {{#markdown}}{{nbsp organizer.description}}{{/markdown}}
+              {{/if}}
             </div>
 
           </div><!-- eof .row -->
@@ -46,6 +66,7 @@
 
       </aside>
     </div>
+    {{#if events_.count}}
     <section class="row">
 
       <div class="col-xs-12 section-heading">
@@ -68,5 +89,6 @@
       {{/each}}
 
     </section>
+    {{/if}}
   </div>
 </template>

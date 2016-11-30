@@ -42,6 +42,10 @@
   @include button-variant(#fff, $btn-googleplus-bg, $btn-googleplus-border);
 }
 
+.btn-youtube {
+  @include button-variant(#fff, $btn-youtube-bg, $btn-youtube-border);
+}
+
 .btn-twitter {
   @include button-variant(#fff, $btn-twitter-bg, $btn-twitter-border);
 }

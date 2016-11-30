@@ -14,6 +14,7 @@ Template.dashboardManagedOrganizersAdd.events({
 let hooksObject = {
   before: {
     insert: function(doc) {
+      doc.phoneNum = Phoneformat.cleanPhone(doc.phoneNum);
       doc.managedBy = [
         {
           userId: Meteor.userId(),

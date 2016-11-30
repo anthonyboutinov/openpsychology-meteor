@@ -10,7 +10,13 @@
         <i class="fa fa-fw fa-building-o" aria-hidden="true"></i> Организации
       </a>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#"><i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> Желаем счастья, ПАО</a></li>
+        {{#if organizers.count}}
+
+        {{#each org in organizers}}
+        <li><a href="/organizer/{{org._id}}"><i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> {{org.name}}</a></li>
+        {{/each}}
+
+        {{/if}}
       </ul>
     </li>
     <li role="separator" class="divider"></li>

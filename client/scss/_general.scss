@@ -34,10 +34,20 @@ h3, .h3 {
 }
 
 
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-  color: inherit;
-  background-color: inherit;
+.dropdown-menu > li > a {
+  &, & > i {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+  &:hover, &:focus {
+    color: #fff;
+    background-color: $gray-doublelight;
+  }
 }
+
 
 .panel {
   background-color: $gray-lightest;

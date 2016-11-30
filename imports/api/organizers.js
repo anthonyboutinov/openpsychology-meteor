@@ -18,11 +18,30 @@ const ManagedBy = new SimpleSchema({
 const Location = new SimpleSchema({
   city: {
     type: String,
+    label: "Город",
     allowedValues: [
-      "Казань",
       "Москва",
-      "Екатерин"
+      "Новосибирск",
+      "Екатеринбург",
+      "Нижний Новгород",
+      "Казань",
+      "Челябинск",
+      "Омск",
+      "Самара",
     ],
+    defaultValue: "Казань"
+  },
+  line1: {
+    type: String,
+    label: "Улица, здание",
+    max: 128,
+    optional: true,
+  },
+  additionalInfo: {
+    type: String,
+    label: "Дополнительная информация",
+    optional: true,
+    max: 128,
   }
 });
 
@@ -78,7 +97,7 @@ Organizers.attachSchema(new SimpleSchema({
       // 'help-text': "Email скрыт от посетителей сайта. Посетители могут отправлять сообщения на эту почту только через форму обратной связи"
     }
   },
-  phone: {
+  phoneNum: {
     type: 'String',
     label: "Номер телефона",
     min: 6,
@@ -89,12 +108,52 @@ Organizers.attachSchema(new SimpleSchema({
     }
   },
   location: {
-    type: String,
+    type: Location,
     label: "Адрес",
     optional: true,
     autoform: {
       group: "Контакты",
     }
+  },
+  socialLinkVK: {
+    type: 'String',
+    label: "Ссылка ВКонтакте",
+    optional: true,
+    autoform: {
+      group: "Ссылки на социальные сети",
+    },
+  },
+  socialLinkOdnoklassniki: {
+    type: 'String',
+    label: "Ссылка Одноклассники",
+    optional: true,
+    autoform: {
+      group: "Ссылки на социальные сети",
+    },
+  },
+  socialLinkFacebook: {
+    type: 'String',
+    label: "Ссылка Facebook",
+    optional: true,
+    autoform: {
+      group: "Ссылки на социальные сети",
+    },
+  },
+  socialLinkYouTube: {
+    type: 'String',
+    label: "Ссылка YouTube",
+    optional: true,
+    autoform: {
+      group: "Ссылки на социальные сети",
+    },
+  },
+  socialLinkTwitter: {
+    type: 'String',
+    label: "Ссылка Twitter",
+    optional: true,
+    autoform: {
+      group: "Ссылки на социальные сети",
+    },
   },
   managedBy: {
     type: [ManagedBy],

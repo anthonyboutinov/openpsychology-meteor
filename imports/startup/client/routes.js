@@ -189,6 +189,7 @@ Dashboard.User route
 */
 Router.route("/user", function() {
   this.subscribe('categories').wait();
+  this.subscribe('organizers.managedByUser').wait();
 
   this.subscribe('events.userRegistered', {
     userId: Meteor.user()._id,
@@ -255,6 +256,9 @@ Router.route("/user", function() {
       upcomingEventsCountLeft: () => {
         return Counter.get('events.userRegistered.counts.upcoming') - Events.find(findParamsUpcomingEvents).count();
       },
+      organizers: () => {
+        return Organizers.find({}, {orderBy: {'name': 1}});
+      },
     }
   });
   if (this.ready()) {
@@ -275,6 +279,7 @@ Dashboard.Events route
 */
 Router.route("/myevents/:timeframe", function() {
   this.subscribe('categories').wait();
+  this.subscribe('organizers.managedByUser').wait();
 
   this.subscribe('events.userRegistered', {
     userId: Meteor.user()._id,
@@ -297,6 +302,9 @@ Router.route("/myevents/:timeframe", function() {
           return event;
         });
       },
+      organizers: () => {
+        return Organizers.find({}, {orderBy: {'name': 1}});
+      },
     }
   });
   if (this.ready()) {
@@ -316,7 +324,6 @@ Dashboard.ManagedOrganizers route
 ----------------------------
 */
 Router.route("/managedorganizers", function() {
-
   this.subscribe('organizers.managedByUser').wait();
 
   this.layout('dashboardLayout', {
@@ -325,7 +332,7 @@ Router.route("/managedorganizers", function() {
         return this.ready();
       },
       organizers: () => {
-        return Organizers.find();
+        return Organizers.find({}, {orderBy: {'name': 1}});
       },
     }
   });
@@ -346,11 +353,15 @@ Dashboard.ManagedOrganizers.Add route
 ----------------------------
 */
 Router.route("/managedorganizers/add", function() {
+  this.subscribe('organizers.managedByUser').wait();
 
   this.layout('dashboardLayout', {
     data: {
       subscriptionsReady: () => {
         return this.ready();
+      },
+      organizers: () => {
+        return Organizers.find({}, {orderBy: {'name': 1}});
       },
     }
   });

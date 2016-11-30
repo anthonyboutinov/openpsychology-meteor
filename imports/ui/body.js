@@ -1,5 +1,7 @@
 import { Template } from 'meteor/templating';
 
+import './globalHelpers.js';
+
 import './loading.html';
 import './defaultLayout.html';
 import './defaultLayout.js';
