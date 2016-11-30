@@ -15,6 +15,17 @@ const ManagedBy = new SimpleSchema({
   }
 });
 
+const Location = new SimpleSchema({
+  city: {
+    type: String,
+    allowedValues: [
+      "Казань",
+      "Москва",
+      "Екатерин"
+    ],
+  }
+});
+
 Organizers.attachSchema(new SimpleSchema({
   name: {
     type: String,
@@ -42,7 +53,7 @@ Organizers.attachSchema(new SimpleSchema({
     optional: true,
     autoform: {
       group: "Описание",
-      type: 'image',
+      type: 'file',
       // 'help-text': "Отображается на странице организатора",
     }
   },
@@ -52,8 +63,8 @@ Organizers.attachSchema(new SimpleSchema({
     optional: true,
     autoform: {
       group: "Описание",
-      type: 'image',
-      // 'help-text': "Рекомендуется: 96⨉96 px (разшенение 3⨉). Масштабируется в разрешение 32⨉32 px",
+      type: 'file',
+      // 'help-text': "Рекомендуется: 96⨉96 px (разшенение 3⨉). Масштабируется в разрешение 32⨉32 px"
     }
   },
   email: {
