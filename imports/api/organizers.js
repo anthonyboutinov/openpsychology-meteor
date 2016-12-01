@@ -208,8 +208,9 @@ if (Meteor.isServer) {
 
 }
 
-// Meteor.methods({
-//   'organizers.update': function(doc) {
-//     Organizers.update({_id: doc._id, managedBy: { userId: this.userId}}, {$set: doc});
-//   }
-// });
+Meteor.methods({
+  'organizers.remove': function(_id) {
+    console.log("organizers.remove: " + _id);
+    Organizers.remove({_id: _id, managedBy: { userId: this.userId, nonRetireable: true}});
+  }
+});

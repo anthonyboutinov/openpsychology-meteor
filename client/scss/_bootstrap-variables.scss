@@ -24,7 +24,7 @@ $gray-lightest:          lighten($gray-base, 96.5%) !default; // #f6f6f6
 
 $brand-primary:         #4ba0b9;//darken(#2391d1, 10%);//#6b7785;//darken(#428bca, 6.5%) !default; // #337ab7
 $brand-success:         #269c7b; //#5cb85c !default;
-$brand-info:            #4da5cb; //#5bc0de !default;
+$brand-info:            #34cebc;//#4da5cb; //#5bc0de !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
 
@@ -285,7 +285,7 @@ $cursor-disabled:                not-allowed !default;
 //## Dropdown menu container and contents.
 
 //** Background for the dropdown menu.
-$dropdown-bg:                    #fff !default;
+$dropdown-bg:                    #eee !default;
 //** Dropdown menu `border-color`.
 $dropdown-border:                rgba(0,0,0,.15) !default;
 //** Dropdown menu `border-color` **for IE8**.

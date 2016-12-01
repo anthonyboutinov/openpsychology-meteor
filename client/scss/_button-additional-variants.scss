@@ -62,6 +62,53 @@
   @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
 }
 
+$btn-alt-bg-hover-transparecy:        (1 - 0.14);
+$btn-alt-bg-focus-transparecy:        0.7;
+$btn-alt-bg-active-transparecy:       0.7;
+$btn-alt-bg-activehover-transparecy:  0.6;
+
+@mixin btn-alt ($color) {
+  @extend .btn-default;
+  & > i.fa {
+    color: $color;
+  }
+  &:active, &.active {
+    background-color: transparentize($color, $btn-alt-bg-active-transparecy);
+    &:hover, &.hover,
+    &:focus, &.focus {
+      background-color: transparentize($color, $btn-alt-bg-activehover-transparecy);
+    }
+  }
+  &:focus, &.focus {
+    background-color: transparentize($color, $btn-alt-bg-focus-transparecy);
+  }
+  &:hover, &.hover {
+    background-color: transparentize($color, $btn-alt-bg-hover-transparecy);
+  }
+}
+
+.btn-info-alt {
+  @include btn-alt($brand-info);
+}
+
+.btn-danger-alt {
+  @include btn-alt($brand-danger);
+}
+
+.btn-primary-alt {
+  @include btn-alt($brand-primary);
+}
+
+.btn-warning-alt {
+  @include btn-alt($brand-warning);
+}
+
+.btn-success-alt {
+  @include btn-alt($brand-success);
+}
+
+
+
 
 .btn-xl {
   @extend .btn-lg;

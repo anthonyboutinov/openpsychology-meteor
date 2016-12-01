@@ -62,12 +62,6 @@
   border-radius: 2px 2px 0 0;
 }
 
-.dropdown-menu {
-  @include glass-pane($dropdown-bg);
-  @extend .animated;
-  @extend .fadeIn;
-}
-
 // .navbar-inverse .navbar-nav {
 //   .dropdown-menu > li > a {
 //     &:hover, &:focus {

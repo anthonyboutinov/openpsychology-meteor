@@ -74,6 +74,18 @@
 .m-b-30 {
   margin-bottom: 30px !important;
 }
+.m-r-20 {
+  margin-right: 20px;
+}
+.m-l-20 {
+  margin-left: 20px;
+}
+.m-t-20 {
+  margin-top: 20px;
+}
+.m-b-20 {
+  margin-bottom: 20px;
+}
 .m-t-negative-15 {
   margin-top: -15px;
 }
@@ -234,4 +246,20 @@
 
 .font-headings {
   font-family: $font-family-headings;
+}
+
+
+.dropdown-menu {
+  @include glass-pane($dropdown-bg);
+  @extend .animated;
+  @extend .fadeIn;
+}
+
+
+.border-danger {
+  border-color: $brand-danger;
+  border-style: solid;
+  &.modal-content {
+    border-width: 10px;
+  }
 }
