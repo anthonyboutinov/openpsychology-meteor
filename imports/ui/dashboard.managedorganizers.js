@@ -7,6 +7,6 @@ Template.dashboardManagedOrganizers.helpers({
 });
 
 
-Template.dashboardManagedOrganizers.events({
-
-});
+// Template.dashboardManagedOrganizers.events({
+//
+// });

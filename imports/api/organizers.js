@@ -176,3 +176,9 @@ if (Meteor.isServer) {
   });
 
 }
+
+// Meteor.methods({
+//   'organizers.update': function(doc) {
+//     Organizers.update({_id: doc._id, managedBy: { userId: this.userId}}, {$set: doc});
+//   }
+// });

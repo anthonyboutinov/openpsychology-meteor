@@ -1,0 +1,37 @@
+<template name="dashboardManagedOrganizersUpdate">
+
+  <div class="fulldescription-main">
+    <div class="fulldescription-heading section-heading">
+      <h3>Управление организациями</h3>
+      <h1>Редактировать организацию</h1>
+    </div>
+    <div class="fulldescription-body">
+
+      {{#autoForm collection=Organizers id="updateOrganizerForm" type="update" doc=this.organizer trimString=true template="bootstrap3-horizontal" class="row"}}
+        <fieldset>
+          <legend class="col-xs-12">Основная информация</legend>
+          {{> afQuickField name="name" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" autofocus=''}}
+          <legend class="col-xs-12">Описание</legend>
+          {{> afQuickField name="description" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+          {{> afQuickField name="imageUrl" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+          {{> afQuickField name="bannerUrl" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+          <legend class="col-xs-12">Контактная информация</legend>
+          {{> afQuickField name="phoneNum" template="bootstrap3-horizontal_withprefix" label-class="col-sm-3" input-col-class="col-sm-9" prefix="+7"}}
+          {{> afQuickField name="email" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+          {{> afQuickField name="location" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+          <legend class="col-xs-12">Ссылки на социальные сети</legend>
+          {{> afQuickField name="socialLinkVK" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+          {{> afQuickField name="socialLinkOdnoklassniki" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+          {{> afQuickField name="socialLinkFacebook" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+          {{> afQuickField name="socialLinkYouTube" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+          {{> afQuickField name="socialLinkTwitter" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+        </fieldset>
+        <div class="col-sm-9 col-sm-offset-3">
+          <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        </div>
+      {{/autoForm}}
+
+    </div>
+  </div>
+
+</template>

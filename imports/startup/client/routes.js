@@ -374,3 +374,35 @@ Router.route("/managedorganizers/add", function() {
 }, {
   name: "dashboard.managedOrganizers.add"
 });
+
+/*
+----------------------------
+Dashboard.ManagedOrganizers.Update route
+----------------------------
+*/
+Router.route("/managedorganizers/update/:_id", function() {
+  this.subscribe('organizers.managedByUser').wait();
+  this.subscribe('organizer', this.params._id).wait();
+
+  this.layout('dashboardLayout', {
+    data: {
+      subscriptionsReady: () => {
+        return this.ready();
+      },
+      organizers: () => {
+        return Organizers.find({}, {orderBy: {'name': 1}});
+      },
+      organizer: () => {
+        return Organizers.findOne({_id: this.params._id});
+      }
+    }
+  });
+  if (this.ready()) {
+    this.render('dashboardManagedOrganizersUpdate');
+  } else {
+    this.render('loading');
+  };
+
+}, {
+  name: "dashboard.managedOrganizers.update"
+});

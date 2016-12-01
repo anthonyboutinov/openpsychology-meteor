@@ -54,6 +54,8 @@ import './dashboard.managedorganizers.html';
 import './dashboard.managedorganizers.js';
 import './dashboard.managedorganizers.add.html';
 import './dashboard.managedorganizers.add.js';
+import './dashboard.managedorganizers.update.html';
+import './dashboard.managedorganizers.update.js';
 
 import './autoform/afMyFormGroup.html';
 import './autoform/afMyFormGroup.js';
