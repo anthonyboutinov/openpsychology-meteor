@@ -23,19 +23,19 @@
               <div class="m-t-15">
                 <h4>Контакты:</h4>
                 {{#if organizer.socialLinkVK}}
-                <a href="{{organizer.socialLinkVK}}" class="btn m-b-5 btn-vk"><i class="fa fa-fw fa-vk" aria-hidden="true"></i><span class="sr-only">ВКонтакте</span></a>
+                <a href="{{organizer.socialLinkVKAbsoluteURL}}" class="btn m-b-5 btn-vk"><i class="fa fa-fw fa-vk" aria-hidden="true"></i><span class="sr-only">ВКонтакте</span></a>
                 {{/if}}
                 {{#if organizer.socialLinkOdnoklassniki}}
-                <a href="{{organizer.socialLinkOdnoklassniki}}" class="btn m-b-5 btn-odnoklassniki"><i class="fa fa-fw fa-odnoklassniki" aria-hidden="true"></i><span class="sr-only">Одноклассники</span></a>
+                <a href="{{organizer.socialLinkOdnoklassnikiAbsoluteURL}}" class="btn m-b-5 btn-odnoklassniki"><i class="fa fa-fw fa-odnoklassniki" aria-hidden="true"></i><span class="sr-only">Одноклассники</span></a>
                 {{/if}}
                 {{#if organizer.socialLinkFacebook}}
-                <a href="{{organizer.socialLinkFacebook}}" class="btn m-b-5 btn-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+                <a href="{{organizer.socialLinkFacebookAbsoluteURL}}" class="btn m-b-5 btn-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
                 {{/if}}
                 {{#if organizer.socialLinkYouTube}}
-                <a href="{{organizer.socialLinkYouTube}}" class="btn m-b-5 btn-youtube"><i class="fa fa-fw fa-youtube" aria-hidden="true"></i><span class="sr-only">YouTube</span></a>
+                <a href="{{organizer.socialLinkYouTubeAbsoluteURL}}" class="btn m-b-5 btn-youtube"><i class="fa fa-fw fa-youtube" aria-hidden="true"></i><span class="sr-only">YouTube</span></a>
                 {{/if}}
                 {{#if organizer.socialLinkTwitter}}
-                <a href="{{organizer.socialLinkTwitter}}" class="btn m-b-5 btn-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+                <a href="{{organizer.socialLinkTwitterAbsoluteURL}}" class="btn m-b-5 btn-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
                 {{/if}}
                 {{#if organizer.phoneNum}}
                 <a href="{{phoneNumHref organizer.phoneNum}}" class="btn m-b-5 btn-secondary"><i class="fa fa-phone fa-fw" aria-hidden="true"></i>{{phoneNumLabel organizer.phoneNum}}</a>

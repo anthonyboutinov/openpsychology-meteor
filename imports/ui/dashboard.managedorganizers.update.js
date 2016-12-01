@@ -9,7 +9,7 @@ Template.dashboardManagedOrganizersUpdate.helpers({
 
 let hooksObject = {
   before: {
-    insert: function(doc) {
+    update: function(doc) {
       doc.phoneNum = Phoneformat.cleanPhone(doc.phoneNum);
       console.log(doc);
       return doc;

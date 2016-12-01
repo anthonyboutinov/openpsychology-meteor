@@ -2,7 +2,36 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 import { Categories } from './categories.js';
 
-export const Organizers = new Mongo.Collection("organizers");
+
+Organizer = function (doc) {
+  _.extend(this, doc);
+};
+
+Organizer.prototype = {
+  constructor: Organizer,
+
+  socialLinkVKAbsoluteURL: function () {
+    return "https://vk.com/" + this.socialLinkVK;
+  },
+  socialLinkOdnoklassnikiAbsoluteURL: function () {
+    return "https://ok.ru/" + this.socialLinkOdnoklassniki;
+  },
+  socialLinkFacebookAbsoluteURL: function () {
+    return "https://facebook.com/" + this.socialLinkFacebook;
+  },
+  socialLinkYouTubeAbsoluteURL: function () {
+    return "https://youtube.ru/" + this.socialLinkYouTube;
+  },
+  socialLinkTwitterAbsoluteURL: function () {
+    return "https://twitter.ru/" + this.socialLinkTwitter;
+  },
+};
+
+export const Organizers = new Mongo.Collection("organizers", {
+  transform: function(doc) {
+    return new Organizer(doc);
+  }
+});
 
 const ManagedBy = new SimpleSchema({
   userId: {
@@ -90,8 +119,9 @@ Organizers.attachSchema(new SimpleSchema({
     type: 'email',
     label: "Email",
     min: 5,
-    max: 64,
+    max: 128,
     optional: true,
+    regEx: SimpleSchema.RegEx.Email,
     autoform: {
       group: "Контакты",
       // 'help-text': "Email скрыт от посетителей сайта. Посетители могут отправлять сообщения на эту почту только через форму обратной связи"
@@ -102,6 +132,7 @@ Organizers.attachSchema(new SimpleSchema({
     label: "Номер телефона",
     min: 6,
     max: 10,
+    regEx: /^[0-9]+$/,
     optional: true,
     autoform: {
       group: "Контакты",
