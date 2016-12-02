@@ -18,17 +18,22 @@ Template.dashboardManagedOrganizers.events({
     // });
     swal({
       title: "Вы уверены?",
-      text: "Организация " + doc.name + " и все мероприятия, закрепленные за ней будут безвозвратно удалены.",
-      type: "warning",
+      text: "Организация " + doc.name + " и все мероприятия, закрепленные за ней будут безвозвратно удалены. Чтобы удалить организацию, Вы должны ввести свой пароль.",
+      type: "input",
+      inputType: "password",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
       confirmButtonText: "Удалить",
       closeOnConfirm: false,
       html: false
-    }, function(){
-      swal("Удалено!",
-      "Организация " + doc.name + " удалена.",
-      "success");
+    }, function(typedPassword){
+
+      if (typedPassword === "") {
+    		swal.showInputError("Вы должны ввести пароль, чтобы выполнить это действие!");
+        return false;
+    	}
+
+      swal("Удалено!", "Организация " + doc.name + " удалена.", "success");
     });
   }
 });
