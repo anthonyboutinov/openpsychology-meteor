@@ -10,12 +10,44 @@
       </a>
     </li>
     <li>
-      <a href="/myevents/ongoing">
-        <span class="title">Мероприятия</span>
+      <a href="#" submenu-toggle="events">
+        <span class="title">
+          Мероприятия
+          <span class="arrow {{subMenuIsOpen 'events'}} {{isActive 'dashboard.managedOrganizers'}}"></span>
+        </span>
         <span class="icon-thumbnail {{isActive 'dashboard.events'}}">
           <i class="fa fa-fw fa-calendar-o" aria-hidden="true"></i>
         </span>
       </a>
+      <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'events'}}">
+        <li>
+          <a href="/myevents/ongoing">
+            <span class="title">Текущие</span>
+            <span class="icon-thumbnail">
+              Т
+              <!-- <i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> -->
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="/myevents/upcoming">
+            <span class="title">Предстоящие</span>
+            <span class="icon-thumbnail">
+              П
+              <!-- <i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> -->
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="/myevents/past">
+            <span class="title">Завершенные</span>
+            <span class="icon-thumbnail">
+              З
+              <!-- <i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> -->
+            </span>
+          </a>
+        </li>
+      </ul>
     </li>
     <li>
       <a href="#">
@@ -31,7 +63,7 @@
         <span class="title">
           Организации
           {{#if organizers.count}}
-          <span class="arrow {{organizersSubMenuIsOpen}} {{isActive 'dashboard.managedOrganizers'}}" id="organizersSubMenuOpenToggle"></span>
+          <span class="arrow {{subMenuIsOpen 'organizers'}} {{isActive 'dashboard.managedOrganizers'}}" submenu-toggle="organizers"></span>
           {{/if}}
         </span>
         <span class="icon-thumbnail {{isActive 'dashboard.managedOrganizers'}}">
@@ -39,7 +71,7 @@
         </span>
       </a>
       {{#if organizers.count}}
-      <ul class="nav nav-stacked sub-menu {{organizersSubMenuIsOpen}}">
+      <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'organizers'}}">
         {{#each org in organizers}}
         <li>
           <a href="/organizer/{{org._id}}">

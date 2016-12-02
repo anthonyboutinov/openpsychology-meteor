@@ -11,16 +11,17 @@ Template.dashboardSidenavbar.helpers({
     let secondLetter = str.substr(spacePosition + 1, 1);
     return firstLetter + secondLetter;
   },
-  organizersSubMenuIsOpen: function() {
-    return SessionStore.get("dashboard.sidenavbar.organizersSubMenuIsOpen") ? "open" : false;
-  }
+  subMenuIsOpen: function(id) {
+    return SessionStore.get("dashboard.sidenavbar.subMenuIsOpen." + id) ? "open" : false;
+  },
 });
 
 Template.dashboardSidenavbar.events({
-  "click #organizersSubMenuOpenToggle": function(event, template){
+  "click [submenu-toggle]": function(event, template){
     event.preventDefault();
-    let currentValue = SessionStore.get("dashboard.sidenavbar.organizersSubMenuIsOpen") ? true : false;
-    console.log(!currentValue);
-    SessionStore.set("dashboard.sidenavbar.organizersSubMenuIsOpen", !currentValue);
+    let target = $(event.currentTarget);
+    let id = target.attr("submenu-toggle");
+    let currentValue = SessionStore.get("dashboard.sidenavbar.subMenuIsOpen." + id) ? true : false;
+    SessionStore.set("dashboard.sidenavbar.subMenuIsOpen." + id, !currentValue);
   }
 });
