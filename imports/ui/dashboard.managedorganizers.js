@@ -13,8 +13,22 @@ Template.dashboardManagedOrganizers.events({
     event.preventDefault();
     // const target = $(event.currentTarget);
     const doc = this;
-    Modal.show('dashboardManagedOrganizersRemoveModal', function() {
-      return doc;
+    // Modal.show('dashboardManagedOrganizersRemoveModal', function() {
+    //   return doc;
+    // });
+    swal({
+      title: "Вы уверены?",
+      text: "Организация " + doc.name + " и все мероприятия, закрепленные за ней будут безвозвратно удалены.",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Удалить",
+      closeOnConfirm: false,
+      html: false
+    }, function(){
+      swal("Удалено!",
+      "Организация " + doc.name + " удалена.",
+      "success");
     });
   }
 });
