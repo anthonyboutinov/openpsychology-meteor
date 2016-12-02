@@ -43,6 +43,7 @@ import './dashboardLayout.html';
 import './dashboard.navbar.html';
 import './dashboard.navbar.js';
 import './dashboard.sidenavbar.html';
+import './dashboard.sidenavbar.js';
 
 import './dashboard.user.html';
 import './dashboard.user.js';

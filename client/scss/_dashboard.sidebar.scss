@@ -1,0 +1,126 @@
+.page-sidebar {
+  .nav {
+    padding-top: 30px;
+
+    li > a {
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left: 30px;
+      padding-bottom: 8px;
+      color: $gray-doublelight;
+      &:hover, &.hover, &:focus, &.focus, &:active, &.active {
+        color: #fff;
+        background: none;
+
+        & .icon-thumbnail {
+          color: #fff;
+        }
+      }
+    }
+
+    .title {
+      min-height: 40px;
+      line-height: 40px;
+      width: 76%;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .icon-thumbnail {
+      display: inline-block;
+      background: #21252d;
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
+      text-align: center;
+      vertical-align: middle;
+      position: relative;
+      left: 0;
+      float: right;
+      color: #788195;
+      font-size: 16px;
+      // -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.05, 0.74, 0.27, 0.99);
+      // transition: transform 0.4s cubic-bezier(0.05, 0.74, 0.27, 0.99);
+      // -webkit-backface-visibility: hidden;
+      // -webkit-perspective: 1000;
+      // -webkit-text-size-adjust: 100%;
+      // -ms-text-size-adjust: 100%;
+      font-weight: bold;
+
+      &.active {
+        color: #fff;
+        background-color: $brand-primary;
+      }
+    }
+
+    .sub-menu {
+      // display: none;
+      list-style: none;
+      clear: both;
+      margin: 0;
+      background-color: #21252d;
+      padding: 0;
+      font-size: 12px;
+      overflow: hidden;
+      height: 0;
+      -webkit-transition: all .2s ease-out;
+      -moz-transition: all .2s ease-out;
+      -ms-transition: all .2s ease-out;
+      -o-transition: all .2s ease-out;
+      transition: all .2s ease-out;
+
+      &.open {
+        display: block;
+        padding: 18px 0 10px 0;
+        margin: 0 0 10px 0;
+        height: auto;
+      }
+
+      li > a {
+        padding-left: 35px;
+        padding-right: 20px;
+      }
+
+      .icon-thumbnail {
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+        background-color: #2b303b;
+        font-size: 12px;
+      }
+
+      .title {
+        line-height: 30px;
+        min-height: 30px;
+      }
+    }
+
+    .arrow {
+      float: right;
+      padding-right: 3px;
+
+      &:before {
+        float: right;
+        display: inline;
+        font-size: 16px;
+        font-family: FontAwesome;
+        height: auto;
+        content: "\f104";
+        font-weight: 300;
+        text-shadow: none;
+        -webkit-transition: all 0.12s ease;
+        transition: all 0.12s ease;
+      }
+
+      &.open:before {
+        -webkit-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+
+}

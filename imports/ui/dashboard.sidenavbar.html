@@ -1,26 +1,69 @@
 <template name="dashboardSidenavbar">
 
-  <ul class="nav nav-pills nav-stacked m-b-60">
-    <li><a href="/user"><i class="fa fa-fw fa-user-circle" aria-hidden="true"></i> Имя пользователя</a></li>
-    <li><a href="/myevents/ongoing"><i class="fa fa-fw fa-calendar-o" aria-hidden="true"></i> Мероприятия</a></li>
-    <li><a href="#"><i class="fa fa-fw fa-bookmark" aria-hidden="true"></i> Закладки</a></li>
+  <ul class="nav nav-stacked m-b-60">
+    <li>
+      <a href="/user">
+        <span class="title">Имя пользователя</span>
+        <span class="icon-thumbnail {{isActive 'dashboard.user'}}">
+          <i class="fa fa-fw fa-user-circle" aria-hidden="true"></i>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="/myevents/ongoing">
+        <span class="title">Мероприятия</span>
+        <span class="icon-thumbnail {{isActive 'dashboard.events'}}">
+          <i class="fa fa-fw fa-calendar-o" aria-hidden="true"></i>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <span class="title">Закладки</span>
+        <span class="icon-thumbnail">
+          <i class="fa fa-fw fa-bookmark" aria-hidden="true"></i>
+        </span>
+      </a>
+    </li>
     <li role="separator" class="divider"></li>
     <li>
       <a href="/managedorganizers">
-        <i class="fa fa-fw fa-building-o" aria-hidden="true"></i> Организации
+        <span class="title">
+          Организации
+          {{#if organizers.count}}
+          <span class="arrow {{organizersSubMenuIsOpen}} {{isActive 'dashboard.managedOrganizers'}}" id="organizersSubMenuOpenToggle"></span>
+          {{/if}}
+        </span>
+        <span class="icon-thumbnail {{isActive 'dashboard.managedOrganizers'}}">
+          <i class="fa fa-fw fa-building-o" aria-hidden="true"></i>
+        </span>
       </a>
-      <ul class="nav nav-pills nav-stacked">
-        {{#if organizers.count}}
-
+      {{#if organizers.count}}
+      <ul class="nav nav-stacked sub-menu {{organizersSubMenuIsOpen}}">
         {{#each org in organizers}}
-        <li><a href="/organizer/{{org._id}}"><i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> {{org.name}}</a></li>
+        <li>
+          <a href="/organizer/{{org._id}}">
+            <span class="title">{{org.name}}</span>
+            <span class="icon-thumbnail">
+              {{textThumbnailAcronym org.name}}
+              <!-- <i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> -->
+            </span>
+          </a>
+        </li>
         {{/each}}
-
-        {{/if}}
       </ul>
+      {{/if}}
     </li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#"><i class="fa fa-fw fa-cog" aria-hidden="true"></i> Настройки</a></li>
+    <li>
+      <a href="#">
+        <span class="title">
+          Настройки
+        </span>
+        <span class="icon-thumbnail {{isActive 'dashboard.settings'}}">
+          <i class="fa fa-fw fa-cog" aria-hidden="true"></i>
+        </span>
+      </a>
+    </li>
   </ul>
 
   <img src="http://placehold.it/400x400?text=Реклама" class="img-responsive">

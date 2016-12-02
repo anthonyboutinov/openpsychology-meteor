@@ -2,17 +2,15 @@
 
   <div id="document-container" class="dashboardLayout">
     <div id="document-body">
-       {{> dashboardNavbar}}
-       <div class="container">
-         <div class="row">
-           <div class="col-sm-4 col-md-3 m-b-60 m-t-60">
-             {{> dashboardSidenavbar}}
-           </div>
-           <div class="col-sm-8 col-md-9 m-b-60 m-t-60">
-               {{> yield}}
-           </div>
-         </div>
-       </div>
+      <div class="header">
+        {{> dashboardNavbar}}
+      </div>
+      <nav class="page-sidebar">
+        {{> dashboardSidenavbar}}
+      </nav>
+      <div class="page-container">
+        {{> yield}}
+      </div>
      </div>
      <div id="document-footer">
        {{> footer}}
