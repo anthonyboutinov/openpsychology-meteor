@@ -4,7 +4,7 @@
     <li>
       <a href="/user">
         <span class="title">Имя пользователя</span>
-        <span class="icon-thumbnail {{isActive 'dashboard.user'}}">
+        <span class="icon-thumbnail {{childThereofIsActive 'dashboard.user'}}">
           <i class="fa fa-fw fa-user-circle" aria-hidden="true"></i>
         </span>
       </a>
@@ -63,10 +63,10 @@
         <span class="title">
           Организации
           {{#if organizers.count}}
-          <span class="arrow {{subMenuIsOpen 'organizers'}} {{isActive 'dashboard.managedOrganizers'}}" submenu-toggle="organizers"></span>
+          <span class="arrow {{subMenuIsOpen 'organizers'}} {{childThereofIsActive 'dashboard.managedOrganizers'}}" submenu-toggle="organizers"></span>
           {{/if}}
         </span>
-        <span class="icon-thumbnail {{isActive 'dashboard.managedOrganizers'}}">
+        <span class="icon-thumbnail {{childThereofIsActive 'dashboard.managedOrganizers'}}">
           <i class="fa fa-fw fa-building-o" aria-hidden="true"></i>
         </span>
       </a>

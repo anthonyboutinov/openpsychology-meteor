@@ -1,3 +1,7 @@
+.navbar {
+  border-bottom: none;
+}
+
 .navbar-inverse {
   border-radius: 0;
   margin-bottom: 0;
@@ -60,6 +64,10 @@
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus,
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
   border-radius: 2px 2px 0 0;
+}
+
+.navbar-translucent {
+  @include glass-pane($brand-primary);
 }
 
 // .navbar-inverse .navbar-nav {

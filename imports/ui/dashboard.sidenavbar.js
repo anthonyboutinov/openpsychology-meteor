@@ -2,6 +2,9 @@ Template.dashboardSidenavbar.helpers({
   isActive: function(name) {
     return Router.current().route.getName() == name ? "active" : false;
   },
+  childThereofIsActive: function(name) {
+    return Router.current().route.getName().indexOf(name) >= 0 ? "active" : false;
+  },
   textThumbnailAcronym: function(str) {
     let firstLetter = str.substr(0, 1);
     let spacePosition = str.indexOf(' ');

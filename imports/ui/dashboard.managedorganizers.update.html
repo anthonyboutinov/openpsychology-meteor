@@ -1,11 +1,16 @@
 <template name="dashboardManagedOrganizersUpdate">
 
-  <div class="fulldescription-main">
-    <div class="fulldescription-heading section-heading">
-      <h3>Управление организациями</h3>
-      <h1>Редактировать организацию</h1>
+  <ul class="breadcrumb">
+    <li><a href="/dashboard">Личный кабинет</a></li>
+    <li><a href="{{pathFor 'dashboard.managedOrganizers'}}">Организации</a></li>
+    <li><a href="{{pathFor 'dashboard.managedOrganizers.update' _id=this.organizer._id}}" class="active">Редактировать «{{organizer.name}}»</a></li>
+  </ul>
+
+  <div class="panel">
+    <div class="panel-heading">
+      <div class="panel-title">Редактировать организацию</div>
     </div>
-    <div class="fulldescription-body">
+    <div class="panel-body">
 
       {{#autoForm collection=Organizers id="updateOrganizerForm" type="update" doc=this.organizer trimString=true template="bootstrap3-horizontal" class="row"}}
         <fieldset>

@@ -14,6 +14,7 @@ import './navbar_category.html';
 import './navbar_category.js';
 
 import './footer.html';
+import './footer.js';
 
 import './home.html';
 import './home.js';

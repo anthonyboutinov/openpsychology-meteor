@@ -1,18 +1,25 @@
 <template name="dashboardManagedOrganizers">
 
-  <div class="fulldescription-main">
-    <div class="fulldescription-heading section-heading">
+  <ul class="breadcrumb">
+    <li><a href="/dashboard">Личный кабинет</a></li>
+    <li><a href="{{pathFor 'dashboard.managedOrganizers'}}" class="active">Организации</a></li>
+  </ul>
+
+  <div class="panel">
+    <div class="panel-heading">
+      <div class="panel-title">Организации</div>
+    </div>
+    <div class="panel-body">
+
       <h3>Список управляемых организаций</h3>
-      <h1>Организации</h1>
-    </div>
-    <div class="fulldescription-actions">
-      {{#unless maxOrganizersCountReached}}
-      <a href="/managedorganizers/add" class="btn btn-default"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Добавить</a>
-      {{else}}
-      <span class="btn-sized">Вы достигли лимита на количество организаций</span>
-      {{/unless}}
-    </div>
-    <div class="fulldescription-body">
+
+      <div class="fulldescription-actions">
+        {{#unless maxOrganizersCountReached}}
+        <a href="/managedorganizers/add" class="btn btn-default"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Добавить</a>
+        {{else}}
+        <span class="btn-sized">Вы достигли лимита на количество организаций</span>
+        {{/unless}}
+      </div>
 
       {{#if organizers.count}}
 

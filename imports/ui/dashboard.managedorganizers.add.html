@@ -1,11 +1,16 @@
 <template name="dashboardManagedOrganizersAdd">
 
-  <div class="fulldescription-main">
-    <div class="fulldescription-heading section-heading">
-      <h3>Управление организациями</h3>
-      <h1>Добавить организацию</h1>
+  <ul class="breadcrumb">
+    <li><a href="/dashboard">Личный кабинет</a></li>
+    <li><a href="{{pathFor 'dashboard.managedOrganizers'}}">Организации</a></li>
+    <li><a href="{{pathFor 'dashboard.managedOrganizers.add'}}" class="active">Добавить</a></li>
+  </ul>
+
+  <div class="panel">
+    <div class="panel-heading">
+      <div class="panel-title">Добавить организацию</div>
     </div>
-    <div class="fulldescription-body">
+    <div class="panel-body">
 
       {{#autoForm collection=Organizers id="insertOrganizerForm" type="insert" trimString=true template="bootstrap3-horizontal" class="row"}}
         <fieldset>

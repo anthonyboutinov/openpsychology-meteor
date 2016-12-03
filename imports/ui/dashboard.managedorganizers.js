@@ -31,9 +31,19 @@ Template.dashboardManagedOrganizers.events({
       if (typedPassword === "") {
     		swal.showInputError("Вы должны ввести пароль, чтобы выполнить это действие!");
         return false;
-    	}
-
-      swal("Удалено!", "Организация " + doc.name + " удалена.", "success");
+    	} else {
+        let digest = Package.sha.SHA256(typedPassword);
+        Meteor.call("user.confirmPassword", digest, function(error, result) {
+          if (error) {
+            swal.showInputError(error);
+          } else if (result == true) {
+            Meteor.call('organizers.remove', doc._id);
+            swal("Удалено!", "Организация " + doc.name + " удалена.", "success");
+          } else {
+            swal.showInputError("Неверный пароль!");
+          }
+        });
+      }
     });
   }
 });

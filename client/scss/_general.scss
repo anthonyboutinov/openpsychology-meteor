@@ -49,6 +49,13 @@ h3, .h3 {
 }
 
 
-.panel {
-  background-color: $gray-lightest;
+.container-fluid {
+  padding-left: 30px;
+  padding-right: 30px;
 }
+
+
+// TODO: What was that?
+// .panel {
+//   background-color: $gray-lightest;
+// }

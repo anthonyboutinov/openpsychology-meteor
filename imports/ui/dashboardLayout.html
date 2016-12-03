@@ -9,11 +9,13 @@
         {{> dashboardSidenavbar}}
       </nav>
       <div class="page-container">
-        {{> yield}}
+        <div class="container-fluid">
+          {{> yield}}
+        </div>
+        <div id="document-footer">
+          {{> footer type="dashboard"}}
+        </div>
       </div>
-     </div>
-     <div id="document-footer">
-       {{> footer}}
      </div>
   </div>
 

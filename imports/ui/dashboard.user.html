@@ -1,49 +1,37 @@
 <template name="dashboardUser">
 
-  <div class="fulldescription-main">
-    <div class="fulldescription-heading section-heading">
-      <h3>Личный кабинет</h3>
-      <h1>Имя пользователя</h1>
-      <h4>На сайте с 2 ноября 2016</h4>
-    </div>
-    <div class="fulldescription-actions">
-      <button class="btn btn-default"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Редактировать</button>
-    </div>
-    <div class="fulldescription-body">
+  <ul class="breadcrumb">
+    <li><a href="/dashboard">Личный кабинет</a></li>
+    <li><a href="{{pathFor 'dashboard.user'}}" class="active">Профиль</a></li>
+  </ul>
 
+  <div class="panel">
+    <div class="panel-heading">
+      <div class="panel-title">Профиль</div>
+    </div>
+    <div class="panel-body">
 
       <div class="row">
 
-        <!-- <div class="col-xs-6 col-sm-6 col-md-4">
-          <div class="widget">
-            <div class="widget-heading">
-              <a href="#">
-                Weekly Sales
-                <i class="fa fa-fw small fa-chevron-right" aria-hidden="true"></i>
-              </a>
-              <ul class="widget-controls">
-                <li><a href="#"><i class="fa fa-fw fa-ellipsis-h"></i></a></li>
-              </ul>
-            </div>
-            <a href="#" class="link-unstyled">
-              <div class="widget-body">
-                <h1>$23,000</h1>
-                <span class="text-muted">71% of total goal</span>
-                <span class="pull-right text-primary">$30,000</span>
-              </div>
-            </a>
-            <div class="widget-progress">
-              <div class="progress progress-small">
-                <div class="progress-bar progress-bar-primary" style="width:45%"></div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
         <div class="col-xs-12 col-sm-12 col-md-8">
 
+          <div class="p-r-30 m-b-30">
+            <h3 class="">Имя пользователя</h3>
+            <!-- <br> -->
+            <p class="text-muted">Добро пожаловать в личный кабинет! Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
 
-          <div class="widget">
+          <!-- <div class="widget">
+            <div class="widget-heading widget-heading-inline-block">
+                Добро пожаловать!
+            </div>
+            <div class="widget-body">
+
+            </div>
+          </div> -->
+
+
+          <div class="widget bg-white">
             <div class="widget-heading widget-heading-inline-block">
               <a href="/myevents/ongoing">
                 Текущие мероприятия
@@ -51,20 +39,27 @@
               </a>
             </div>
             <div class="widget-body">
-              <ul class="content-list">
-                {{#each event in ongoingEvents}}
-                <li>{{>list_item event=event hideImage=true hideButtons=true hideAdditionalInfo=true}}</li>
-                {{/each}}
-              </ul>
-              {{#if gotMoreOngoingEvents}}
-              <div class="small text-center m-t-15">
-                <a href="/myevents/ongoing" class="link-hoverreveal text-muted">Ещё {{ongoingEventsCountLeft}} штук</a>
-              </div>
+
+              {{#if ongoingEvents.count}}
+                <ul class="content-list">
+                  {{#each event in ongoingEvents}}
+                  <li>{{>list_item event=event hideImage=true hideButtons=true hideAdditionalInfo=true}}</li>
+                  {{/each}}
+                </ul>
+                {{#if gotMoreOngoingEvents}}
+                <div class="small text-center m-t-15">
+                  <a href="/myevents/ongoing" class="link-hoverreveal text-muted">Ещё {{ongoingEventsCountLeft}} штук</a>
+                </div>
+                {{/if}}
+
+              {{else}}
+                <p>Здесь будут отображаться текущие мероптиятия, на которые Вы зарегистрируетесь.</p>
               {{/if}}
+
             </div>
           </div>
 
-          <div class="widget">
+          <div class="widget bg-white">
             <div class="widget-heading widget-heading-inline-block">
               <a href="/myevents/upcoming">
                 Предстоящие мероприятия
@@ -72,15 +67,21 @@
               </a>
             </div>
             <div class="widget-body">
-              <ul class="content-list">
-                {{#each event in upcomingEvents}}
-                <li>{{>list_item event=event hideImage=true hideButtons=true hideAdditionalInfo=true}}</li>
-                {{/each}}
-              </ul>
-              {{#if gotMoreUpcomingEvents}}
-              <div class="small text-center m-t-15">
-                <a href="/myevents/upcoming" class="link-hoverreveal text-muted">Ещё {{upcomingEventsCountLeft}} штук</a>
-              </div>
+
+              {{#if upcomingEvents.count}}
+                <ul class="content-list">
+                  {{#each event in upcomingEvents}}
+                  <li>{{>list_item event=event hideImage=true hideButtons=true hideAdditionalInfo=true}}</li>
+                  {{/each}}
+                </ul>
+                {{#if gotMoreUpcomingEvents}}
+                <div class="small text-center m-t-15">
+                  <a href="/myevents/upcoming" class="link-hoverreveal text-muted">Ещё {{upcomingEventsCountLeft}} штук</a>
+                </div>
+                {{/if}}
+
+              {{else}}
+                <p>Здесь будут отображаться предстоящие мероптиятия, на которые Вы зарегистрируетесь.</p>
               {{/if}}
             </div>
           </div>
@@ -136,6 +137,32 @@
           </div>
 
         </div>
+
+        <!-- <div class="col-xs-6 col-sm-6 col-md-4">
+          <div class="widget bg-white">
+            <div class="widget-heading">
+              <a href="#">
+                Weekly Sales
+                <i class="fa fa-fw small fa-chevron-right" aria-hidden="true"></i>
+              </a>
+              <ul class="widget-controls">
+                <li><a href="#"><i class="fa fa-fw fa-ellipsis-h"></i></a></li>
+              </ul>
+            </div>
+            <a href="#" class="link-unstyled">
+              <div class="widget-body">
+                <h1>$23,000</h1>
+                <span class="text-muted">71% of total goal</span>
+                <span class="pull-right text-primary">$30,000</span>
+              </div>
+            </a>
+            <div class="widget-progress">
+              <div class="progress progress-small">
+                <div class="progress-bar progress-bar-primary" style="width:45%"></div>
+              </div>
+            </div>
+          </div>
+        </div> -->
 
       </div>
 
