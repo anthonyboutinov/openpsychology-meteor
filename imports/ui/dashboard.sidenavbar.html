@@ -15,7 +15,7 @@
           Мероприятия
           <span class="arrow {{subMenuIsOpen 'events'}} {{isActive 'dashboard.managedOrganizers'}}"></span>
         </span>
-        <span class="icon-thumbnail {{isActive 'dashboard.events'}}">
+        <span class="icon-thumbnail">
           <i class="fa fa-fw fa-calendar-o" aria-hidden="true"></i>
         </span>
       </a>
@@ -23,7 +23,7 @@
         <li>
           <a href="/myevents/ongoing">
             <span class="title">Текущие</span>
-            <span class="icon-thumbnail">
+            <span class="icon-thumbnail {{eventsTimeframeIsActive 'ongoing'}}">
               Т
               <!-- <i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> -->
             </span>
@@ -32,7 +32,7 @@
         <li>
           <a href="/myevents/upcoming">
             <span class="title">Предстоящие</span>
-            <span class="icon-thumbnail">
+            <span class="icon-thumbnail {{eventsTimeframeIsActive 'upcoming'}}">
               П
               <!-- <i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> -->
             </span>
@@ -41,7 +41,7 @@
         <li>
           <a href="/myevents/past">
             <span class="title">Завершенные</span>
-            <span class="icon-thumbnail">
+            <span class="icon-thumbnail {{eventsTimeframeIsActive 'past'}}">
               З
               <!-- <i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> -->
             </span>

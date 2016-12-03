@@ -1,32 +1,37 @@
 <template name="dashboardEvents">
 
-  <div class="fulldescription-main">
-    <div class="fulldescription-heading section-heading">
-      <h1>Мероприятия</h1>
-      <div class="text-center">
-        <ul class="nav nav-pills">
-          <li class="{{ongoingClass}}"><a href="/myevents/ongoing">Текущие<span class="hidden-xs hidden-sm"> мероприятия</span></a></li>
-          <li class="{{upcomingClass}}"><a href="/myevents/upcoming">Предстоящие<span class="hidden-xs hidden-sm"> мероприятия</span></a></li>
-          <li class="{{pastClass}}"><a href="/myevents/past">Завершенные<span class="hidden-xs hidden-sm"> мероприятия</span></a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="fulldescription-body">
+  <ul class="breadcrumb">
+    <li><a href="/dashboard">Личный кабинет</a></li>
+    <li><a class="">Мероприятия</a></li>
+    <li><a href="{{pathFor 'dashboard.events'}}" class="active">{{panelLabel}}</a></li>
+  </ul>
 
-      <div class="row">
+  <div class="panel">
+    <!-- <div class="panel-heading">
+      <div class="panel-title">{{panelLabel}} мероприятия</div>
+    </div> -->
+    <div class="panel-body">
 
-        {{#each event in events_}}
+      <h3 class="m-b-30">{{panelLabel}} мероприятия</h3>
 
-        {{#if shouldClearfix @index 2}}
-        <div class="clearfix hidden-xs"></div>
-        {{/if}}
+      {{#if events_.length}}
+        <div class="row">
 
-        <div class="col-sm-6 m-b-60">
-          {{> list_item event=event}}
+          {{#each event in events_}}
+
+          {{#if shouldClearfix @index 2}}
+          <div class="clearfix hidden-xs"></div>
+          {{/if}}
+
+          <div class="col-sm-6 m-b-60">
+            {{> list_item event=event}}
+          </div>
+          {{/each}}
+
         </div>
-        {{/each}}
-
-      </div>
+      {{else}}
+        <p class="text-muted">Здесь будут отображаться {{panelLabelLowercase}} мероптиятия, на которые Вы зарегистрируетесь.</p>
+      {{/if}}
 
     </div>
   </div>

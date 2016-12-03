@@ -1,10 +1,19 @@
 Template.dashboardSidenavbar.helpers({
+
   isActive: function(name) {
     return Router.current().route.getName() == name ? "active" : false;
   },
   childThereofIsActive: function(name) {
     return Router.current().route.getName().indexOf(name) >= 0 ? "active" : false;
   },
+  eventsTimeframeIsActive: function(name) {
+    return this.timeframe == name ? "active" : false;
+  },
+  // eventsIsActive: function() { // Нет необходимости в этом, так как сейчас и так нет страницы Events. Только ее подвиды.
+  //   let name = 'events';
+  //   return !this.timeframe && Router.current().route.getName() == name ? "active" : false;
+  // },
+
   textThumbnailAcronym: function(str) {
     let firstLetter = str.substr(0, 1);
     let spacePosition = str.indexOf(' ');
