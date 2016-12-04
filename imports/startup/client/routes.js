@@ -187,7 +187,7 @@ Router.route("/organizer/:_id", function() {
 Dashboard.User route
 ----------------------------
 */
-Router.route("/user", function() {
+Router.route("/dashboard/user", function() {
   this.subscribe('categories').wait();
   this.subscribe('organizers.managedByUser').wait();
 
@@ -277,7 +277,7 @@ Router.route("/user", function() {
 Dashboard.Events route
 ----------------------------
 */
-Router.route("/myevents/:timeframe", function() {
+Router.route("/dashboard/events/:timeframe", function() {
   this.subscribe('categories').wait();
   this.subscribe('organizers.managedByUser').wait();
 
@@ -323,7 +323,7 @@ Router.route("/myevents/:timeframe", function() {
 Dashboard.ManagedOrganizers route
 ----------------------------
 */
-Router.route("/managedorganizers", function() {
+Router.route("/dashboard/organizers", function() {
   this.subscribe('organizers.managedByUser').wait();
 
   this.layout('dashboardLayout', {
@@ -343,7 +343,7 @@ Router.route("/managedorganizers", function() {
   };
 
 }, {
-  name: "dashboard.managedOrganizers"
+  name: "dashboard.organizers"
 });
 
 
@@ -352,7 +352,7 @@ Router.route("/managedorganizers", function() {
 Dashboard.ManagedOrganizers.Add route
 ----------------------------
 */
-Router.route("/managedorganizers/add", function() {
+Router.route("/dashboard/organizers/add", function() {
   this.subscribe('organizers.managedByUser').wait();
 
   this.layout('dashboardLayout', {
@@ -372,7 +372,7 @@ Router.route("/managedorganizers/add", function() {
   };
 
 }, {
-  name: "dashboard.managedOrganizers.add"
+  name: "dashboard.organizers.add"
 });
 
 /*
@@ -380,7 +380,7 @@ Router.route("/managedorganizers/add", function() {
 Dashboard.ManagedOrganizers.Update route
 ----------------------------
 */
-Router.route("/managedorganizers/update/:_id", function() {
+Router.route("/dashboard/organizer/:_id/update", function() {
   this.subscribe('organizers.managedByUser').wait();
   this.subscribe('organizer', this.params._id).wait();
 
@@ -404,5 +404,50 @@ Router.route("/managedorganizers/update/:_id", function() {
   };
 
 }, {
-  name: "dashboard.managedOrganizers.update"
+  name: "dashboard.organizer.update"
+});
+
+/*
+----------------------------
+Dashboard.Organizer.Events route
+----------------------------
+*/
+Router.route("/dashboard/organizer/:_id/events", function() {
+  this.subscribe('organizers.managedByUser').wait();
+  this.subscribe('organizer', this.params._id).wait();
+  this.subscribe('events.byOrganizer', {
+    _idOrganizer: this.params._id,
+    options: {
+      sort: {'dates.dateFrom': -1},
+      limit: QUERY_LIMIT,
+    }
+  }).wait();
+
+  this.layout('dashboardLayout', {
+    data: {
+      subscriptionsReady: () => {
+        return this.ready();
+      },
+      organizers: () => {
+        return Organizers.find({}, {orderBy: {'name': 1}});
+      },
+      organizer: () => {
+        return Organizers.findOne({_id: this.params._id});
+      },
+      events_: () => {
+        return Events.find().map((event) => {
+          event.category = Categories.findOne({_id: event.categoryId});
+          return event;
+        });
+      },
+    }
+  });
+  if (this.ready()) {
+    this.render('dashboardOrganizerEvents');
+  } else {
+    this.render('loading');
+  };
+
+}, {
+  name: "dashboard.organizer.events"
 });

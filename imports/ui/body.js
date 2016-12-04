@@ -58,8 +58,10 @@ import './dashboard.managedorganizers.add.html';
 import './dashboard.managedorganizers.add.js';
 import './dashboard.managedorganizers.update.html';
 import './dashboard.managedorganizers.update.js';
-import './dashboard.managedorganizers.modals.remove.html';
-import './dashboard.managedorganizers.modals.remove.js';
+// import './dashboard.managedorganizers.modals.remove.html';
+// import './dashboard.managedorganizers.modals.remove.js';
+
+import './dashboard.organizer.events.html';
 
 import './alert.success.html';
 

@@ -2,7 +2,7 @@
 
   <ul class="breadcrumb">
     <li><a href="/dashboard">Личный кабинет</a></li>
-    <li><a href="{{pathFor 'dashboard.managedOrganizers'}}" class="active">Организации</a></li>
+    <li><a href="{{pathFor 'dashboard.organizers'}}" class="active">Организации</a></li>
   </ul>
 
   <div class="panel">
@@ -15,7 +15,7 @@
 
       <div class="fulldescription-actions">
         {{#unless maxOrganizersCountReached}}
-        <a href="/managedorganizers/add" class="btn btn-success btn-wider"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Добавить</a>
+        <a href="{{pathFor 'dashboard.organizers.add'}}" class="btn btn-success btn-wider"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Добавить</a>
         {{else}}
         <span class="btn-sized">Вы достигли лимита на количество организаций</span>
         {{/unless}}
@@ -31,8 +31,8 @@
           <div class="row">
             <div class="col-sm-7">
               <a href="#" class="btn btn-info-alt"><i class="fa fa-fw fa-bar-chart" aria-hidden="true"></i> Статистика</a>
-              <a href="/organizer/{{org._id}}" class="btn btn-default"><i class="fa fa-fw fa-id-card-o" aria-hidden="true"></i> Страница</a>
-              <a href="{{pathFor 'dashboard.managedOrganizers.update' _id=org._id}}" class="btn btn-default"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Редактировать</a>
+              <a href="/organizer/{{_id}}" class="btn btn-default"><i class="fa fa-fw fa-id-card-o" aria-hidden="true"></i> Страница</a>
+              <a href="{{pathFor 'dashboard.organizer.update' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Редактировать</a>
               <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-fw fa-ellipsis-h" aria-hidden="true"></i><span class="sr-only">Ещё</span>
@@ -51,7 +51,7 @@
                 </div>
               </div>
               <div class="position-relative">
-                <a href="#" class="btn btn-default"><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> События</a>
+                <a href="{{pathFor 'dashboard.organizer.events' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> События</a>
                 <a href="#" class="btn btn-default"><i class="fa fa-fw fa-calendar-plus-o" aria-hidden="true"></i> Добавить событие</a>
               </div>
             </div>
@@ -63,7 +63,7 @@
 
       {{else}}
 
-      <a href="/managedorganizers/add" class="btn btn-primary btn-xl">
+      <a href="{{pathFor 'dashboard.organizers.add'}}" class="btn btn-success btn-xl">
         <i class="fa fa-fw fa-plus" aria-hidden="true"></i> Добавить организацию
       </a>
 

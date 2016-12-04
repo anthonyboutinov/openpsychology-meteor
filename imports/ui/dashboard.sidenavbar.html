@@ -13,7 +13,7 @@
       <a href="#" submenu-toggle="events">
         <span class="title">
           Мероприятия
-          <span class="arrow {{subMenuIsOpen 'events'}} {{isActive 'dashboard.managedOrganizers'}}"></span>
+          <span class="arrow {{subMenuIsOpen 'events'}} {{isActive 'dashboard.organizers'}}"></span>
         </span>
         <span class="icon-thumbnail">
           <i class="fa fa-fw fa-calendar-o" aria-hidden="true"></i>
@@ -21,7 +21,7 @@
       </a>
       <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'events'}}">
         <li>
-          <a href="/myevents/ongoing">
+          <a href="{{pathFor 'dashboard.events' timeframe='ongoing'}}">
             <span class="title">Текущие</span>
             <span class="icon-thumbnail {{eventsTimeframeIsActive 'ongoing'}}">
               Т
@@ -30,7 +30,7 @@
           </a>
         </li>
         <li>
-          <a href="/myevents/upcoming">
+          <a href="{{pathFor 'dashboard.events' timeframe='upcoming'}}">
             <span class="title">Предстоящие</span>
             <span class="icon-thumbnail {{eventsTimeframeIsActive 'upcoming'}}">
               П
@@ -39,7 +39,7 @@
           </a>
         </li>
         <li>
-          <a href="/myevents/past">
+          <a href="{{pathFor 'dashboard.events' timeframe='past'}}">
             <span class="title">Завершенные</span>
             <span class="icon-thumbnail {{eventsTimeframeIsActive 'past'}}">
               З
@@ -59,14 +59,14 @@
     </li>
     <li role="separator" class="divider"></li>
     <li>
-      <a href="/managedorganizers">
+      <a href="{{pathFor 'dashboard.organizers'}}">
         <span class="title">
           Организации
           {{#if organizers.count}}
-          <span class="arrow {{subMenuIsOpen 'organizers'}} {{childThereofIsActive 'dashboard.managedOrganizers'}}" submenu-toggle="organizers"></span>
+          <span class="arrow {{subMenuIsOpen 'organizers'}} {{childThereofIsActive 'dashboard.organizers'}}" submenu-toggle="organizers"></span>
           {{/if}}
         </span>
-        <span class="icon-thumbnail {{childThereofIsActive 'dashboard.managedOrganizers'}}">
+        <span class="icon-thumbnail {{childThereofIsActive 'dashboard.organizers'}}">
           <i class="fa fa-fw fa-building-o" aria-hidden="true"></i>
         </span>
       </a>
@@ -74,7 +74,7 @@
       <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'organizers'}}">
         {{#each org in organizers}}
         <li>
-          <a href="/organizer/{{org._id}}">
+          <a href="{{pathFor 'organizer' _id=org._id}}">
             <span class="title">{{org.name}}</span>
             <span class="icon-thumbnail">
               {{textThumbnailAcronym org.name}}
