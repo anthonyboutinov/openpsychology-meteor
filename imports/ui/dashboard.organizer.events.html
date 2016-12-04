@@ -26,6 +26,8 @@
         {{#with event}}
         <li>
           {{title}}
+          <a href="{{pathFor 'event' _id=_id}}" class="btn btn-default">Страница</a>
+          <a href="{{pathFor 'dashboard.organizer.event.update' _id=_id}}" class="btn btn-default">Редактировать</a>
         </li>
         {{/with}}
         {{/each}}

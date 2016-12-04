@@ -435,7 +435,7 @@ Router.route("/dashboard/organizer/:_id/events", function() {
         return Organizers.findOne({_id: this.params._id});
       },
       events_: () => {
-        return Events.find().map((event) => {
+        return Events.find({}, {orderBy: {'name': 1}}).map((event) => {
           event.category = Categories.findOne({_id: event.categoryId});
           return event;
         });
@@ -462,6 +462,8 @@ Router.route("/dashboard/organizer/:_id/events/add", function() {
   this.subscribe('organizers.managedByUser').wait();
   this.subscribe('organizer', this.params._id).wait();
 
+  let organizer = Organizers.findOne({_id: this.params._id});
+
   this.layout('dashboardLayout', {
     data: {
       subscriptionsReady: () => {
@@ -470,9 +472,7 @@ Router.route("/dashboard/organizer/:_id/events/add", function() {
       organizers: () => {
         return Organizers.find({}, {orderBy: {'name': 1}});
       },
-      organizer: () => {
-        return Organizers.findOne({_id: this.params._id});
-      },
+      organizer: organizer,
     }
   });
   if (this.ready()) {
@@ -483,4 +483,36 @@ Router.route("/dashboard/organizer/:_id/events/add", function() {
 
 }, {
   name: "dashboard.organizer.events.add"
+});
+
+/*
+----------------------------
+Dashboard.Organizer.Events.Update route
+----------------------------
+*/
+Router.route("/dashboard/event/:_id/update", function() {
+  this.subscribe('categories').wait();
+  this.subscribe('event', this.params._id).wait();
+
+  const event = Events.findOne({ _id: this.params._id });
+
+  this.layout('dashboardLayout', {
+    data: {
+      subscriptionsReady: () => {
+        return this.ready();
+      },
+      organizers: () => {
+        return Organizers.find({}, {orderBy: {'name': 1}});
+      },
+      event: event
+    }
+  });
+  if (this.ready()) {
+    this.render('dashboardOrganizerEventsUpdate');
+  } else {
+    this.render('loading');
+  };
+
+}, {
+  name: "dashboard.organizer.event.update"
 });

@@ -6,7 +6,7 @@ Template.dashboardOrganizerEventsAdd.helpers({
   },
   eventTemplateDoc: function() {
     return {
-      location: this.organizer().location,
+      location: this.organizer.location,
     }
   },
 });
@@ -25,6 +25,9 @@ let hooksObject = {
             dateFrom: moment(raw.substring(0, indexOfSeparator), "DD.MM.YYYY HH:mm").toDate(),
             dateTo: moment(raw.substring(indexOfSeparator + 3), "DD.MM.YYYY HH:mm").toDate(),
           }
+        });
+        doc.dates.sort(function(a, b) {
+          return (a.dateFrom > b.dateFrom) ? 1 : ((a.dateFrom < b.dateFrom )? -1 : 0);
         });
       }
 
