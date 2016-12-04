@@ -9,6 +9,9 @@ Template.dashboardSidenavbar.helpers({
   eventsTimeframeIsActive: function(name) {
     return this.timeframe == name ? "active" : false;
   },
+  organizerIsActive: function(_id) {
+    return this.organizer && this.organizer()._id == _id ? "active" : false;
+  },
   // eventsIsActive: function() { // Нет необходимости в этом, так как сейчас и так нет страницы Events. Только ее подвиды.
   //   let name = 'events';
   //   return !this.timeframe && Router.current().route.getName() == name ? "active" : false;
@@ -35,5 +38,10 @@ Template.dashboardSidenavbar.events({
     let id = target.attr("submenu-toggle");
     let currentValue = SessionStore.get("dashboard.sidenavbar.subMenuIsOpen." + id) ? true : false;
     SessionStore.set("dashboard.sidenavbar.subMenuIsOpen." + id, !currentValue);
+
+    // Upon clicking on "organizers" submenu toggle, hide "events" submenu
+    if (id == "organizers" && currentValue == false) {
+      SessionStore.set("dashboard.sidenavbar.subMenuIsOpen." + "events", false);
+    }
   }
 });

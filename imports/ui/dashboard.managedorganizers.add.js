@@ -22,6 +22,9 @@ let hooksObject = {
   },
   onSuccess: function(formType, result) {
     Router.go('dashboard.organizers');
-  }
+  },
+  onError: function(formType, error) {
+    console.log(error);
+  },
 };
 AutoForm.addHooks(['insertOrganizerForm'], hooksObject);

@@ -1,35 +1,41 @@
-<template name="dashboardManagedOrganizersAdd">
+<template name="dashboardOrganizerEventsAdd">
 
   <ul class="breadcrumb">
     <li><a href="/dashboard">Личный кабинет</a></li>
     <li><a href="{{pathFor 'dashboard.organizers'}}">Организации</a></li>
-    <li><a href="{{pathFor 'dashboard.organizers.add'}}" class="active">Добавить</a></li>
+    <li><a href="{{pathFor 'dashboard.organizer' _id=organizer._id}}">{{organizer.name}}</a></li>
+    <li><a href="{{pathFor 'dashboard.organizer.events' _id=organizer._id}}">События</a></li>
+    <li><a href="{{pathFor 'dashboard.organizer.events.add' _id=organizer._id}}" class="active">Добавить</a></li>
   </ul>
 
   <div class="panel-section bg-white">
     <div class="panel-heading">
-      <div class="panel-title">Добавить организацию</div>
+      <div class="panel-title">Добавить событие</div>
     </div>
     <div class="panel-body">
 
-      {{#autoForm collection=Organizers id="insertOrganizerForm" type="insert" trimString=true template="bootstrap3-horizontal" class="row"}}
+      {{#autoForm collection=Events id="insertEventForm" doc=eventTemplateDoc organizer=organizer type="insert" trimString=true template="bootstrap3-horizontal" class="row"}}
         <fieldset>
           <legend class="col-xs-12">Основная информация</legend>
-          {{> afQuickField name="name" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" autofocus=''}}
+          {{> afQuickField name="title" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" autofocus=''}}
+          {{> afQuickField name="categoryId" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
           <legend class="col-xs-12">Описание</legend>
+          {{> afQuickField name="price" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
           {{> afQuickField name="description" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
           {{> afQuickField name="imageUrl" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
           {{> afQuickField name="bannerUrl" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+
+          {{> afQuickField name="dates" template="datetimeRange" label-class="col-sm-3" input-col-class="col-sm-9"}}
+
+          <!-- {{#afEachArrayItem name="dates"}}
+            {{> afFieldInput name=this.current.dateFrom template="datetimeRange"}}
+            <button type="button" class="btn btn-primary autoform-remove-item"><span class="glyphicon glyphicon-minus"></span></button>
+          {{/afEachArrayItem}}
+          <button type="button" class="btn btn-primary autoform-add-item" data-autoform-field="dates"><span class="glyphicon glyphicon-plus"></span></button> -->
+
           <legend class="col-xs-12">Контактная информация</legend>
-          {{> afQuickField name="phoneNum" template="bootstrap3-horizontal_withprefix" label-class="col-sm-3" input-col-class="col-sm-9" prefix="+7"}}
-          {{> afQuickField name="email" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
           {{> afQuickField name="location" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
-          <legend class="col-xs-12">Ссылки на социальные сети</legend>
-          {{> afQuickField name="socialLinkVK" template="bootstrap3-horizontal_withprefix" label-class="col-sm-3" input-col-class="col-sm-9" prefix="https://vk.com/"}}
-          {{> afQuickField name="socialLinkOdnoklassniki" template="bootstrap3-horizontal_withprefix" label-class="col-sm-3" input-col-class="col-sm-9" prefix="https://ok.ru/"}}
-          {{> afQuickField name="socialLinkFacebook" template="bootstrap3-horizontal_withprefix" label-class="col-sm-3" input-col-class="col-sm-9" prefix="https://facebook.com/"}}
-          {{> afQuickField name="socialLinkYouTube" template="bootstrap3-horizontal_withprefix" label-class="col-sm-3" input-col-class="col-sm-9" prefix="https://youtube.com/"}}
-          {{> afQuickField name="socialLinkTwitter" template="bootstrap3-horizontal_withprefix" label-class="col-sm-3" input-col-class="col-sm-9" prefix="https://twitter.com/"}}
+
         </fieldset>
         <div class="col-sm-9 col-sm-offset-3">
           <button type="submit" class="btn btn-primary btn-wider">Добавить</button>

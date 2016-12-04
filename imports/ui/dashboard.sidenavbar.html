@@ -2,7 +2,7 @@
 
   <ul class="nav nav-stacked m-b-60">
     <li>
-      <a href="/user">
+      <a href="{{pathFor 'dashboard.user'}}">
         <span class="title">Имя пользователя</span>
         <span class="icon-thumbnail {{childThereofIsActive 'dashboard.user'}}">
           <i class="fa fa-fw fa-user-circle" aria-hidden="true"></i>
@@ -76,7 +76,7 @@
         <li>
           <a href="{{pathFor 'organizer' _id=org._id}}">
             <span class="title">{{org.name}}</span>
-            <span class="icon-thumbnail">
+            <span class="icon-thumbnail {{organizerIsActive org._id}}">
               {{textThumbnailAcronym org.name}}
               <!-- <i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> -->
             </span>

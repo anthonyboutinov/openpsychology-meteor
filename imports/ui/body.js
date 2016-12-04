@@ -62,8 +62,13 @@ import './dashboard.managedorganizers.update.js';
 // import './dashboard.managedorganizers.modals.remove.js';
 
 import './dashboard.organizer.events.html';
+import './dashboard.organizer.events.add.html';
+import './dashboard.organizer.events.add.js';
 
 import './alert.success.html';
 
 import './autoform/afMyFormGroup.html';
 import './autoform/afMyFormGroup.js';
+
+import './autoform/datetimeRange.html';
+import './autoform/datetimeRange.js';

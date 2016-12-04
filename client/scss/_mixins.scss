@@ -6,3 +6,13 @@
     background: transparentize(darken(saturate($color, 100%), 21%), $glass-pane-opacity);
   }
 }
+
+@mixin glass-pane-grayscale ($color) {
+  background: $color;
+  @supports ((backdrop-filter: blur(20px) saturate(100%) hue-rotate(-15deg)) or (-webkit-backdrop-filter: blur(20px) saturate(100%) hue-rotate(-15deg))) {
+    backdrop-filter: blur(20px) saturate(100%) hue-rotate(-15deg);
+    -webkit-backdrop-filter: blur(20px) saturate(100%) hue-rotate(-15deg);
+    background: transparentize(darken($color, 2.8%), $glass-pane-opacity);
+
+  }
+}

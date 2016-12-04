@@ -1,6 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 import { Categories } from './categories.js';
+import { LocationSchema } from './schemas/location.js';
 
 
 Organizer = function (doc) {
@@ -44,36 +45,6 @@ const ManagedBy = new SimpleSchema({
   }
 });
 
-const Location = new SimpleSchema({
-  city: {
-    type: String,
-    label: "Город",
-    allowedValues: [
-      "Москва",
-      "Новосибирск",
-      "Екатеринбург",
-      "Нижний Новгород",
-      "Казань",
-      "Челябинск",
-      "Омск",
-      "Самара",
-    ],
-    defaultValue: "Казань"
-  },
-  line1: {
-    type: String,
-    label: "Улица, здание",
-    max: 128,
-    optional: true,
-  },
-  additionalInfo: {
-    type: String,
-    label: "Дополнительная информация",
-    optional: true,
-    max: 128,
-  }
-});
-
 Organizers.attachSchema(new SimpleSchema({
   name: {
     type: String,
@@ -87,7 +58,7 @@ Organizers.attachSchema(new SimpleSchema({
   description: {
     type: 'markdown',
     label: "Описание",
-    max: 2000,
+    max: 4000,
     optional: true,
     autoform: {
       // rows: 6,
@@ -139,7 +110,7 @@ Organizers.attachSchema(new SimpleSchema({
     }
   },
   location: {
-    type: Location,
+    type: LocationSchema,
     label: "Адрес",
     optional: true,
     autoform: {

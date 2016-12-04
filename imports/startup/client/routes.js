@@ -451,3 +451,36 @@ Router.route("/dashboard/organizer/:_id/events", function() {
 }, {
   name: "dashboard.organizer.events"
 });
+
+/*
+----------------------------
+Dashboard.Organizer.Events.Add route
+----------------------------
+*/
+Router.route("/dashboard/organizer/:_id/events/add", function() {
+  this.subscribe('categories').wait();
+  this.subscribe('organizers.managedByUser').wait();
+  this.subscribe('organizer', this.params._id).wait();
+
+  this.layout('dashboardLayout', {
+    data: {
+      subscriptionsReady: () => {
+        return this.ready();
+      },
+      organizers: () => {
+        return Organizers.find({}, {orderBy: {'name': 1}});
+      },
+      organizer: () => {
+        return Organizers.findOne({_id: this.params._id});
+      },
+    }
+  });
+  if (this.ready()) {
+    this.render('dashboardOrganizerEventsAdd');
+  } else {
+    this.render('loading');
+  };
+
+}, {
+  name: "dashboard.organizer.events.add"
+});

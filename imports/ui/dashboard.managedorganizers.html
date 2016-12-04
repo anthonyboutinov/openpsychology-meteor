@@ -5,7 +5,7 @@
     <li><a href="{{pathFor 'dashboard.organizers'}}" class="active">Организации</a></li>
   </ul>
 
-  <div class="panel">
+  <div class="panel-section">
     <div class="panel-heading">
       <div class="panel-title">Организации</div>
     </div>
@@ -31,7 +31,7 @@
           <div class="row">
             <div class="col-sm-7">
               <a href="#" class="btn btn-info-alt"><i class="fa fa-fw fa-bar-chart" aria-hidden="true"></i> Статистика</a>
-              <a href="/organizer/{{_id}}" class="btn btn-default"><i class="fa fa-fw fa-id-card-o" aria-hidden="true"></i> Страница</a>
+              <a href="{{pathFor 'organizer' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-id-card-o" aria-hidden="true"></i> Страница</a>
               <a href="{{pathFor 'dashboard.organizer.update' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Редактировать</a>
               <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -52,7 +52,7 @@
               </div>
               <div class="position-relative">
                 <a href="{{pathFor 'dashboard.organizer.events' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> События</a>
-                <a href="#" class="btn btn-default"><i class="fa fa-fw fa-calendar-plus-o" aria-hidden="true"></i> Добавить событие</a>
+                <a href="{{pathFor 'dashboard.organizer.events.add' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-calendar-plus-o" aria-hidden="true"></i> Добавить событие</a>
               </div>
             </div>
           </div>
