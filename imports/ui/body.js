@@ -64,6 +64,8 @@ import './dashboard.managedorganizers.update.js';
 import './dashboard.organizer.events.html';
 import './dashboard.organizer.events.add.html';
 import './dashboard.organizer.events.add.js';
+import './dashboard.organizer.events.update.html';
+import './dashboard.organizer.events.update.js';
 
 import './alert.success.html';
 

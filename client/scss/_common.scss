@@ -271,10 +271,9 @@
     content: " ";
     display: table;
   }
-
-  .control-label {
-    line-height: 34px;
-  }
+}
+fieldset > .form-group > .control-label {
+  line-height: 34px;
 }
 
 .form-control {
@@ -285,4 +284,16 @@
     box-shadow: none;
     background-color: #f0f0f0;
   }
+}
+
+.input-group {
+  width: 100%;
+}
+
+.input-group-addon {
+  border-radius: 1px;
+}
+
+.panel-default {
+  box-shadow: none;
 }

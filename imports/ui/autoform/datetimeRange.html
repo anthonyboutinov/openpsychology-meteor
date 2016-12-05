@@ -1,7 +1,18 @@
-<template name="afFormGroup_datetimeRange">
+<!-- <template name="afFormGroup_datetimeRange">
   <div class="{{hideThis}}">
     <div class="form-group {{#if afFieldIsInvalid name=this.name}}has-error{{/if}} {{afFormGroupClass}}" data-required={{required}} {{afFormGroupAtts}}>
-      <input class="form-control" type="text" dp-type="datetime" {{afFieldInputAtts}}>
+      <input class="form-control" type="text" dp-type="datetime" value="{{this.value}}" {{afFieldInputAtts}}>
+      {{> afFieldInput afFieldInputAtts}}
+      <span class="help-block">{{{afFieldMessage name=this.name}}}</span>
     </div>
+  </div>
+</template> -->
+
+<template name="afInputDateTimeRange">
+  <div class="input-group">
+    <div class="input-group-addon">
+      <i class="fa fa-fw fa-calendar" aria-hidden="true"></i>
+    </div>
+    <input type="datetimerange" value="{{this.value}}" class="form-control" {{this.atts}}/>
   </div>
 </template>

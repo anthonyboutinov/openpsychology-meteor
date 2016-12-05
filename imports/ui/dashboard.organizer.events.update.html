@@ -1,20 +1,21 @@
-<template name="dashboardOrganizerEventsAdd">
+<template name="dashboardOrganizerEventsUpdate">
 
   <ul class="breadcrumb">
     <li><a href="/dashboard">Личный кабинет</a></li>
     <li><a href="{{pathFor 'dashboard.organizers'}}">Организации</a></li>
-    <li><a href="{{pathFor 'dashboard.organizer' _id=organizer._id}}">{{organizer.name}}</a></li>
-    <li><a href="{{pathFor 'dashboard.organizer.events' _id=organizer._id}}">События</a></li>
-    <li><a href="{{pathFor 'dashboard.organizer.events.add' _id=organizer._id}}" class="active">Добавить</a></li>
+    <li><a href="{{pathFor 'dashboard.organizer' _id=event.organizer._id}}">{{event.organizer.name}}</a></li>
+    <li><a href="{{pathFor 'dashboard.organizer.events' _id=event.organizer._id}}">События</a></li>
+    <li><a href="{{pathFor 'dashboard.organizer.event' _id=_id}}">{{event.title}}</a></li>
+    <li><a href="{{pathFor 'dashboard.organizer.event.update' _id=event._id}}" class="active">Редактировать</a></li>
   </ul>
 
   <div class="panel-section bg-white">
     <div class="panel-heading">
-      <div class="panel-title">Добавить событие</div>
+      <div class="panel-title">Редактировать событие</div>
     </div>
     <div class="panel-body">
 
-      {{#autoForm collection=Events id="insertEventForm" doc=eventTemplateDoc organizer=organizer type="insert" trimString=true template="bootstrap3-horizontal" class="row"}}
+      {{#autoForm collection=Events id="updateEventForm" doc=event type="update" trimString=true template="bootstrap3-horizontal" class="row"}}
         <fieldset>
           <legend class="col-xs-12">Основная информация</legend>
           {{> afQuickField name="title" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" autofocus=''}}
@@ -37,7 +38,7 @@
 
         </fieldset>
         <div class="col-sm-9 col-sm-offset-3">
-          <button type="submit" class="btn btn-primary btn-wider">Добавить</button>
+          <button type="submit" class="btn btn-primary btn-wider">Обновить</button>
         </div>
       {{/autoForm}}
 

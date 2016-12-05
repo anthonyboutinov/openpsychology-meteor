@@ -24,6 +24,7 @@ let hooksObject = {
           return {
             dateFrom: moment(raw.substring(0, indexOfSeparator), "DD.MM.YYYY HH:mm").toDate(),
             dateTo: moment(raw.substring(indexOfSeparator + 3), "DD.MM.YYYY HH:mm").toDate(),
+            info: subdoc.info
           }
         });
         doc.dates.sort(function(a, b) {
