@@ -1,8 +1,8 @@
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
-import { Categories } from './categories.js';
-import { Events } from './events.js';
-import { LocationSchema } from './schemas/location.js';
+import { Categories } from '../categories/index.js';
+import { Events } from '../events/collection.js';
+import { LocationSchema } from '../schemas/location.js';
 
 
 Organizer = function (doc) {

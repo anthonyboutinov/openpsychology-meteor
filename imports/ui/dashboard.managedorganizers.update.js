@@ -1,4 +1,4 @@
-import { Organizers } from '../api/organizers.js';
+import { Organizers } from '../api/organizers/index.js';
 
 Template.dashboardManagedOrganizersUpdate.helpers({
   Organizers: function() {

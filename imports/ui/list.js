@@ -1,4 +1,4 @@
-import { Events } from '../api/events.js';
+import { Events } from '../api/events/collection.js';
 import { QUERY_LIMIT } from '../startup/client/routes.js';
 import { clearSearchbarFields } from './searchbar.xprt.js';
 

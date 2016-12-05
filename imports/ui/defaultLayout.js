@@ -1,4 +1,4 @@
-import { Categories } from '../api/categories.js';
+import { Categories } from '../api/categories';
 
 Template.defaultLayout.events({
   "click #showSearchbar": function(event, template){

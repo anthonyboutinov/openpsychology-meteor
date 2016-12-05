@@ -1,4 +1,4 @@
-import { Events } from '../api/events.js';
+import { Events } from '../api/events/collection.js';
 
 Template.dashboardOrganizerEventsUpdate.helpers({
   Events: function() {

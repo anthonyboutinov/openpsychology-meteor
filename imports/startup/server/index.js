@@ -1,7 +1,7 @@
 import './fixtures.js';
-import { Categories }  from '../../api/categories.js';
-import { Events }      from '../../api/events.js';
-import { Organizers } from '../../api/organizers.js';
+import { Categories }  from '../../api/categories/index.js';
+import { Events }      from '../../api/events/collection.js';
+import { Organizers } from '../../api/organizers/index.js';
 
 Meteor.startup(() => {
 

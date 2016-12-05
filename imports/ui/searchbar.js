@@ -1,4 +1,4 @@
-import { Categories } from '../api/categories.js';
+import { Categories } from '../api/categories';
 // import * as constants from './searchbar.xprt.js';
 
 let animateSearchbarOnAndOff = function(showSearchbar) {

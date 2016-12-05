@@ -1,6 +1,6 @@
-import { Categories }  from '../../api/categories.js';
-import { Events }      from '../../api/events.js';
-import { Organizers } from '../../api/organizers.js';
+import { Categories }  from '../../api/categories/index.js';
+import { Events }      from '../../api/events/collection.js';
+import { Organizers } from '../../api/organizers/index.js';
 // import { Likes } from '../../api/likes.js';
 import * as queryByDate from '../../../both/queryByDate.js';
 
