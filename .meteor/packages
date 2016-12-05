@@ -45,3 +45,5 @@ aldeed:collection2
 dispatch:phoneformat.js
 peppelg:bootstrap-3-modal
 dangrossman:bootstrap-daterangepicker
+socialize:likeable
+socialize:base-model
