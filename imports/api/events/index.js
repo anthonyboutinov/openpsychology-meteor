@@ -1,3 +1,3 @@
 import './collection.js';
-import './server/publications.js';
-import './server/methods.js';
+import './publications.js';
+import './methods.js';

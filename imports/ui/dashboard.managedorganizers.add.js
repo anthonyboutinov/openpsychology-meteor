@@ -1,4 +1,4 @@
-import { Organizers } from '../api/organizers/index.js';
+import { Organizers } from '../api/organizers/collection.js';
 
 Template.dashboardManagedOrganizersAdd.helpers({
   Organizers: function() {

@@ -1,10 +1,5 @@
-import '../imports/startup/server';
-import '../imports/api/user.js';
-import '/imports/api/events'
-// import { Categories } from '../imports/api/categories.js';
+import '/imports/startup/server';
 
-// import { Meteor } from 'meteor/meteor';
-//
-// Meteor.startup(() => {
-//   // code to run on server at startup
-// });
+import '/imports/api/user.js';
+import '/imports/api/organizers';
+import '/imports/api/events';

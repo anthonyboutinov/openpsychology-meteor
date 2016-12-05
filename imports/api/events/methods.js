@@ -1,5 +1,5 @@
 import { check } from 'meteor/check';
-import { Events } from '../collection.js';
+import { Events } from './collection.js';
 
 if (Meteor.isServer) {
 
