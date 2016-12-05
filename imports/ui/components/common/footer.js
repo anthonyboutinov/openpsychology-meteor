@@ -2,7 +2,6 @@ import './footer.html';
 
 Template.footer.helpers({
   footerClass: function() {
-    console.log(new Date(), this);
     if (this.type == "dashboard") {
       return "navbar-light";
     } else {
