@@ -1,6 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 import { Categories } from './categories.js';
+import { Events } from './events.js';
 import { LocationSchema } from './schemas/location.js';
 
 
@@ -169,12 +170,17 @@ if (Meteor.isServer) {
 
   Meteor.publish('organizer', function(_id) {
     check(_id, String);
-    return Organizers.find({ _id: _id});
+    return Organizers.find({_id: _id});
   });
-
 
   Meteor.publish('organizers.managedByUser', function() {
     return Organizers.find({ 'managedBy.userId': this.userId }, {orderBy: 'createdAt', limit: 100});
+  });
+
+  Meteor.publish('organizer.byEventId', function(_id) {
+    check(_id, String);
+    let organizerId = Events.findOne({_id: _id}).organizer._id;
+    return Organizers.find({_id: organizerId});
   });
 
 }
