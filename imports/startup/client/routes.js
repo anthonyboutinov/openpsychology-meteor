@@ -1,8 +1,7 @@
-import { Categories }  from '../../api/categories/index.js';
-import { Events }      from '../../api/events/collection.js';
-import { Organizers } from '../../api/organizers/collection.js';
-// import { Likes } from '../../api/likes.js';
-import * as queryByDate from '../../../both/queryByDate.js';
+import { Categories }  from '/imports/api/categories/index.js';
+import { Events }      from '/imports/api/events/collection.js';
+import { Organizers } from '/imports/api/organizers/collection.js';
+import * as queryByDate from '/both/queryByDate.js';
 
 export const QUERY_LIMIT = 6 * 5;
 

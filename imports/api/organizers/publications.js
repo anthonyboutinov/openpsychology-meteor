@@ -1,5 +1,6 @@
 import { check } from 'meteor/check';
 import { Organizers } from './collection.js';
+import { Events } from '/imports/api/events/collection.js';
 
 if (Meteor.isServer) {
 

@@ -1,71 +1,7 @@
-// Template["afFormGroup_datetimeRange"].helpers({
-//   afFieldInputAtts: function () {
-//     console.log(this);
-//     var atts = _.omit(this.afFieldInputAtts || {}, 'input-col-class');
-//     atts["data-schema-key"] = atts.name;
-//     // We have a special template for check boxes, but otherwise we
-//     // want to use the same as those defined for bootstrap3 template.
-//     if (AutoForm.getInputType(this.afFieldInputAtts) === "boolean-checkbox") {
-//       atts.template = "bootstrap3-horizontal";
-//     } else {
-//       atts.template = "bootstrap3";
-//     }
-//     console.log(atts);
-//     return atts;
-//   },
-//   afFieldLabelAtts: function () {
-//     var atts = _.clone(this.afFieldLabelAtts || {});
-//     // Add bootstrap class
-//     atts = AutoForm.Utility.addClass(atts, "control-label");
-//     return atts;
-//   },
-//   rightColumnClass: function () {
-//     var atts = this.afFieldInputAtts || {};
-//     return atts['input-col-class'] || "";
-//   },
-//   skipLabel: function () {
-//     var self = this;
-//
-//     var type = AutoForm.getInputType(self.afFieldInputAtts);
-//     return (self.skipLabel || (type === "boolean-checkbox" && !self.afFieldInputAtts.leftLabel));
-//   },
-// });
+import './datetimeRange.html';
 
 AutoForm.addInputType("datetimerange", {
   template: "afInputDateTimeRange",
-  // valueIn: function (val) {
-  //   //convert Date to string value
-  //   // return AutoForm.valueConverters.dateToNormalizedForcedUtcGlobalDateAndTimeString(val);
-  //   return val;
-  // },
-  // valueOut: function () {
-  //   // var val = this.val();
-  //   // val = (typeof val === "string") ? val.replace(/ /g, "T") : val;
-  //   // if (AutoForm.Utility.isValidNormalizedForcedUtcGlobalDateAndTimeString(val)) {
-  //   //   //Date constructor will interpret val as UTC due to ending "Z"
-  //   //   return new Date(val);
-  //   // } else {
-  //   //   return null;
-  //   // }
-  //   return this.val();
-  // },
-  // // valueConverters: {
-  // //   "string": AutoForm.valueConverters.dateToNormalizedForcedUtcGlobalDateAndTimeString,
-  // //   "stringArray": AutoForm.valueConverters.dateToNormalizedForcedUtcGlobalDateAndTimeStringArray,
-  // //   "number": AutoForm.valueConverters.dateToNumber,
-  // //   "numberArray": AutoForm.valueConverters.dateToNumberArray,
-  // //   "dateArray": AutoForm.valueConverters.dateToDateArray
-  // // },
-  // contextAdjust: function (context) {
-  //   return context;
-  //   // if (typeof context.atts.max === "undefined" && context.max instanceof Date) {
-  //   //   context.atts.max = AutoForm.valueConverters.dateToNormalizedForcedUtcGlobalDateAndTimeString(context.max);
-  //   // }
-  //   // if (typeof context.atts.min === "undefined" && context.min instanceof Date) {
-  //   //   context.atts.min = AutoForm.valueConverters.dateToNormalizedForcedUtcGlobalDateAndTimeString(context.min);
-  //   // }
-  //   // return context;
-  // }
 });
 
 

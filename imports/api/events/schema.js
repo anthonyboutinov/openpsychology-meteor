@@ -128,4 +128,13 @@ export const EventsSchema = new SimpleSchema({
     type: [EventDatesSchema],
     label: "Даты проведения",
   },
+
+  registeredForEvent: {
+    type: [String],
+    label: "Зарегистрированные на событие пользователи",
+    autoform: {
+      type: "hidden",
+    },
+    defaultValue: [],
+  }
 });

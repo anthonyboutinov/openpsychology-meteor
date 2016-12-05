@@ -1,8 +1,8 @@
 Meteor.startup(() => {
 
-  import { Categories }  from '../../api/categories/index.js';
-  import { Events }      from '../../api/events/collection.js';
-  import { Organizers } from '../../api/organizers/collection.js';
+  import { Categories }  from '/imports/api/categories/index.js';
+  import { Events }      from '/imports/api/events/collection.js';
+  import { Organizers }  from '/imports/api/organizers/collection.js';
 
   /*
    * Set up Organizers placeholders

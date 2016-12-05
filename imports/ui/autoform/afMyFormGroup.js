@@ -1,3 +1,5 @@
+import './afMyFormGroup.html';
+
 Template["afFormGroup_bootstrap3-horizontal_withprefix"].helpers({
   afFieldInputAtts: function () {
     var atts = _.omit(this.afFieldInputAtts || {}, 'input-col-class');

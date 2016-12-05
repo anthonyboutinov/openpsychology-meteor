@@ -1,6 +1,6 @@
 Meteor.startup(() => {
 
-  import { Categories }  from '../../api/categories/index.js';
+  import { Categories }  from '/imports/api/categories/index.js';
 
 
 
