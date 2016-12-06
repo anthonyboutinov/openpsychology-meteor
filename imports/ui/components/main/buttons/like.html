@@ -1,7 +1,9 @@
 <template name="likeButton">
-  <button class="btn btn-default" data-toggle="tooltip" data-delay="1000" title="{{#if event.userLikedIt}}Спасибо!{{else}}Поставить лайк{{/if}}">
-    <span class="likesCount">{{count}}</span> <i class="fa fa-fw {{faClass}}" aria-hidden="true"></i><span class="sr-only">
-      {{#if event.userLikedIt}}Спасибо!{{else}}Поставить лайк{{/if}}
+  {{#with event}}
+  <button class="btn btn-default" data-toggle="tooltip" data-delay="1000" title="{{#if userLikedIt}}Спасибо!{{else}}Поставить лайк{{/if}}">
+    <span class="likesCount">{{likesCount}}</span> <i class="fa fa-fw {{faClass}}" aria-hidden="true"></i><span class="sr-only">
+      {{#if userLikedIt}}Спасибо!{{else}}Поставить лайк{{/if}}
     </span>
   </button>
+  {{/with}}
 </template>

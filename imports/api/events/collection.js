@@ -8,12 +8,24 @@ Event = function (doc) {
 Event.prototype = {
   constructor: Event,
 
-  userLikedIt: function() {
+  userLikedIt() {
     let userId = Meteor.user()._id;
     if (!userId) {
       return false;
     }
     return this.likes.map(function(like) { return like.userId; }).includes(userId);
+  },
+
+  like() {
+    return Meteor.call('event.like', this._id);
+  },
+
+  unlike() {
+    return Meteor.call('event.unlike', this._id);
+  },
+
+  likesCount() {
+    return this.likes.length;
   }
 
 };
