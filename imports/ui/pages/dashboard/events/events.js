@@ -9,20 +9,21 @@ Template.dashboardEvents.helpers({
         case "past": return "Завершенные";
         default: return null
       }
-    } else {
+    } else if(this.group == "liked") {
       return "Лайки";
+    } else if(this.group == "bookmarked") {
+      return "Закладки";
     }
   },
   panelLabelLowercase: function() {
-    // if (this.timeframe) {
-      switch(this.timeframe) {
-        case "ongoing": return "текущие";
-        case "upcoming": return "предстоящие";
-        case "past": return "завершенные";
-        default: return null
-      }
-    // } else {
-    //   return "лайкнутые";
-    // }
+    switch(this.timeframe) {
+      case "ongoing": return "текущие";
+      case "upcoming": return "предстоящие";
+      case "past": return "завершенные";
+      default: return null
+    }
+  },
+  groupIs: function(str) {
+    return this.group == str;
   }
 });

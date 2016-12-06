@@ -143,6 +143,46 @@ if (Meteor.isServer) {
   });
 
 
+  /*
+  params: {
+    options - Collection.find options dictionary
+  }
+  */
+  Meteor.publish('events.bookmarked', function(options) {
+    check(this.userId, String);
+
+    let findParams = {
+      'bookmarks.userId': this.userId
+    };
+
+    return Events.find(findParams, options);
+  });
+
+
+  Meteor.publish('events.bookmarked.count', function() {
+    check(this.userId, String);
+
+    let findParams = {
+      'bookmarks.userId': this.userId
+    };
+
+    return new Counter('events.bookmarked.count', Events.find(findParams));
+  });
+
+
+  Meteor.publish('events.bookmarked.lastOne', function() {
+    check(this.userId, String);
+
+    let findParams = {
+      'bookmarks.userId': this.userId
+    };
+
+    return Events.find(findParams, {
+      limit: 1, orderBy: 'createdAt' // TODO: orberBy must be different
+    });
+  });
+
+
 
   Meteor.publish('event', function(_id) {
     return Events.find({ _id: _id});

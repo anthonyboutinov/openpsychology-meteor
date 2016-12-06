@@ -47,6 +47,11 @@ Router.route("/dashboard/user", function() {
   }).wait();
 
   this.subscribe('events.liked.count').wait();
+  this.subscribe('events.bookmarked.count').wait();
+
+  const findParamsLastBookmarkedEvent = {'bookmarks.userId': Meteor.user()._id};
+
+  this.subscribe('events.bookmarked.lastOne').wait();
 
   const findParamsUpcomingEvents = queryByDate.setFindUpcoming({});
   const findParamsOngoingEvents = queryByDate.setFindOngoing({});
@@ -79,7 +84,13 @@ Router.route("/dashboard/user", function() {
       },
       eventsLikedCount: () => {
         return Counter.get('events.liked.count');
-      }
+      },
+      eventsBookmarkedCount: () => {
+        return Counter.get('events.bookmarked.count');
+      },
+      lastBookmarkedEvent: () => {
+        return Events.findOne(findParamsLastBookmarkedEvent);
+      },
     }
   });
   if (this.ready()) {

@@ -93,16 +93,18 @@
           <div class="widget widget-img-bg text-all-white" style="background-image: url('/assets/blue.jpg'); background-color: #4da5cb">
             <div class="widget-img-bg-blur" style="background-image: url('/assets/blue.jpg')"></div>
             <div class="widget-heading">
-              <a href="{{pathFor 'dashboard.bookmarks'}}">
+              <a href="{{pathFor 'dashboard.events.bookmarked'}}">
                 Закладки
                 <i class="fa fa-fw small fa-chevron-right" aria-hidden="true"></i>
               </a>
             </div>
             <div class="widget-body">
-              <a href="{{pathFor 'dashboard.bookmarks'}}" class="link-unstyled">
-                <h1><i class="fa small fa-bookmark"></i> 12</h1>
+              <a href="{{pathFor 'dashboard.events.bookmarked'}}" class="link-unstyled">
+                <h1><i class="fa small fa-bookmark"></i> {{eventsBookmarkedCount}}</h1>
               </a>
-              <a href="#"><span><span class="text-muted">Последняя: </span>Второй в первой категории с очень длинным названием</span></a>
+              {{#with lastBookmarkedEvent}}
+                <a href="{{pathFor 'event' _id=this._id}}"><span><span class="text-muted">Последняя: </span>{{this.title}}</span></a>
+              {{/with}}
             </div>
           </div>
 

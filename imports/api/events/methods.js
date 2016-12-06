@@ -27,6 +27,18 @@ if (Meteor.isServer) {
       check(eventId, String);
       check(this.userId, String);
       Events.update(eventId, { $pull: { likes: {userId: this.userId}} });
+    },
+
+    'event.bookmark'(eventId) {
+      check(eventId, String);
+      check(this.userId, String);
+      Events.update(eventId, { $push: { bookmarks: {createdAt: new Date(), userId: this.userId}} });
+    },
+
+    'event.removeBookmark'(eventId) {
+      check(eventId, String);
+      check(this.userId, String);
+      Events.update(eventId, { $pull: { bookmarks: {userId: this.userId}} });
     }
 
   });

@@ -1,14 +1,28 @@
 import './bookmark.html';
 
-Template.bookmarkButton.events({
-  'click [ev-toggle-bookmark-id]': function(event, template) {
-    const target = $(event.currentTarget);
-    if (target.attr('ev-val-like') == "true") {
-      target.attr('ev-val-like', "false");
-      target.find('i.fa').toggleClass('fa-bookmark-o fa-bookmark animated fadeIn');
+Template.bookmarkButton.helpers({
+  'faClass': function() {
+    if (this.userBookmarkedIt()) {
+      return "fa-bookmark";
     } else {
-      target.attr('ev-val-like', "true");
-      target.find('i.fa').toggleClass('fa-bookmark-o fa-bookmark animated fadeIn');
+      return "fa-bookmark-o";
     }
-  }
+  },
+});
+
+Template.bookmarkButton.events({
+  'click button': function(event, template) {
+    if (!Meteor.user()) {
+      return;
+    }
+    const target = $(event.currentTarget);
+
+    if (this.userBookmarkedIt()) {
+      this.removeBookmark();
+      target.find('i.fa').removeClass('animated fadeIn');
+    } else {
+      this.bookmark();
+      target.find('i.fa').addClass('animated fadeIn');
+    }
+  },
 });

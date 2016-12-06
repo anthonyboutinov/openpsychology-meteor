@@ -4,14 +4,14 @@ import { Organizers } from '/imports/api/organizers/collection.js';
 
 /*
 ----------------------------
-Dashboard.Events.Liked route
+Dashboard.Events.Bookmarked route
 ----------------------------
 */
-Router.route("/dashboard/events/liked", function() {
+Router.route("/dashboard/events/bookmarked", function() {
   this.subscribe('categories').wait();
   this.subscribe('organizers.managedByUser').wait();
 
-  this.subscribe('events.liked', {
+  this.subscribe('events.bookmarked', {
     limit: 100,
     orderBy: {'dates.dateFrom': 1}
   }).wait();
@@ -28,7 +28,7 @@ Router.route("/dashboard/events/liked", function() {
       organizers: () => {
         return Organizers.find({}, {orderBy: {'name': 1}});
       },
-      group: 'liked',
+      group: 'bookmarked',
     }
   });
   if (this.ready()) {
@@ -38,5 +38,5 @@ Router.route("/dashboard/events/liked", function() {
   };
 
 }, {
-  name: "dashboard.events.liked"
+  name: "dashboard.events.bookmarked"
 });

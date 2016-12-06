@@ -14,7 +14,7 @@
     </div> -->
     <div class="panel-body">
 
-      <h3 class="m-b-30">{{panelLabel}} мероприятия</h3>
+      <h3 class="m-b-30">{{panelLabel}}{{#if timeframe}} мероприятия{{/if}}</h3>
 
       {{#if events_.count}}
         <div class="row">
@@ -35,7 +35,11 @@
         {{#if timeframe}}
           <p class="text-muted">Здесь будут отображаться {{panelLabelLowercase}} мероптиятия, на которые Вы зарегистрируетесь.</p>
         {{else}}
-          <p class="text-muted">Здесь буту отображаться мероприятия, которым вы поставите «лайк».</p>
+          {{#if groupIs 'liked'}}
+            <p class="text-muted">Здесь буту отображаться мероприятия, которым вы поставите «лайк».</p>
+          {{else}}
+            <p class="text-muted">Здесь буту отображаться мероприятия, которые вы добавите в закладки.</p>
+          {{/if}}
         {{/if}}
       {{/if}}
 
