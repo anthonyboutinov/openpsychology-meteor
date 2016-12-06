@@ -46,3 +46,5 @@ dispatch:phoneformat.js
 peppelg:bootstrap-3-modal
 dangrossman:bootstrap-daterangepicker
 aldeed:collection2-core
+softwarerero:accounts-t9n
+useraccounts:iron-routing

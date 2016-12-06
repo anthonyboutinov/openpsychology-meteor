@@ -5,5 +5,6 @@ Router.configure({
   layoutTemplate: 'defaultLayout'
 });
 
+import './accounts.js';
 import './main';
 import './dashboard';

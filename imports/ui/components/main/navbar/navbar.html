@@ -44,12 +44,14 @@
                   <!-- <li><a href="#"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Управлять</a></li> -->
                   <!-- <li role="separator" class="divider"></li> -->
                   <li><a href="#"><i class="fa fa-fw fa-cog" aria-hidden="true"></i> Настройки</a></li>
-                  <li><a href="/signout"><i class="fa fa-fw fa-sign-out" aria-hidden="true"></i> Выйти</a></li>
+                  <li><a href="#"><i class="fa fa-fw fa-sign-out" aria-hidden="true"></i> Выйти</a></li>
+                  <li>{{> atNavButton}}</li>
                 </ul>
               </li>
               {{else}}
-              <li><a href="/signin"><i class="fa fa-fw fa-user-circle-o" aria-hidden="true"></i> Войти</a></li>
-              <li><a style="background-color: rgba(255,255,255,.4);">{{> loginButtons}}</a></li>
+                <li>{{> atNavButton}}</li>
+              <!-- <li><a href="/signin"><i class="fa fa-fw fa-user-circle-o" aria-hidden="true"></i> Войти</a></li> -->
+              <!-- <li><a style="background-color: rgba(255,255,255,.4);">{{> loginButtons}}</a></li> -->
               {{/if}}
             </ul>
             <!-- eof Navbar right -->
