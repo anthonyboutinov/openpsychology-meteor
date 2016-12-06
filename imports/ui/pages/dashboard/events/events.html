@@ -20,14 +20,13 @@
         <div class="row">
 
           {{#each event in events_}}
+            {{#if shouldClearfix @index 2}}
+            <div class="clearfix hidden-xs"></div>
+            {{/if}}
 
-          {{#if shouldClearfix @index 2}}
-          <div class="clearfix hidden-xs"></div>
-          {{/if}}
-
-          <div class="col-sm-6 m-b-60">
-            {{> list_item event=event}}
-          </div>
+            <div class="col-sm-6 m-b-60 list-items-bordered">
+              {{> list_item event=event}}
+            </div>
           {{/each}}
 
         </div>

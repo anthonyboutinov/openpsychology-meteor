@@ -2,6 +2,7 @@ if (Meteor.isServer) {
 
   import { check } from 'meteor/check';
   import { Events } from './collection.js';
+  import { Organizers } from '../organizers/collection.js';
 
   Meteor.methods({
 
@@ -39,7 +40,18 @@ if (Meteor.isServer) {
       check(eventId, String);
       check(this.userId, String);
       Events.update(eventId, { $pull: { bookmarks: {userId: this.userId}} });
-    }
+    },
+
+    'event.remove'(eventId) {
+      check(eventId, String);
+      check(this.userId, String);
+      let organizerId = Events.findOne({_id: eventId}).organizer._id;
+      if ( !Organizers.findOne({_id: organizerId}, {managedBy: { userId: this.userId}}) ) {
+        // TODO: throw error
+        return false;
+      }
+      Events.remove({_id: eventId});
+    },
 
   });
 }

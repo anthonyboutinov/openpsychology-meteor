@@ -10,6 +10,13 @@ Event.prototype = {
   constructor: Event,
 
   /*
+   * Remove
+   */
+   remove() {
+     return Meteor.call('event.remove', this._id);
+   },
+
+  /*
    * Like functionality
    */
 

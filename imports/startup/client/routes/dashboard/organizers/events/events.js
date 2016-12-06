@@ -11,6 +11,7 @@ Dashboard.Organizer.Events route
 ----------------------------
 */
 Router.route("/dashboard/organizer/:_id/events", function() {
+  this.subscribe('categories').wait();
   this.subscribe('organizers.managedByUser').wait();
   this.subscribe('organizer', this.params._id).wait();
   this.subscribe('events.byOrganizer', {

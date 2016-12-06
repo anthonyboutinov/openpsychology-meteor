@@ -1,0 +1,11 @@
+.sweet-alert {
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+  
+  p {
+    font-weight: normal;
+  }
+}
+
+.sweet-overlay {
+  @include glass-pane-grayscale(rgba(0,0,0,0.4));
+}

@@ -7,7 +7,6 @@
 @import "{}/node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 @import "atvimg-custom/atvImg";
 @import "{}/node_modules/sweetalert/dev/sweetalert.scss";
-@import "scss/sweetalert.theme";
 
 // **
 // Animate.css modules
@@ -19,6 +18,7 @@
 // My Stuff
 // **
 @import "scss/mixins";
+@import "scss/sweetalert.theme";
 @import "scss/panel-section";
 @import 'useraccounts-mytheme/at_style';
 @import "scss/form-contemporary";
