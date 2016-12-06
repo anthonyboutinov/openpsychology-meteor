@@ -187,6 +187,17 @@ Router.route("/organizer/:_id", function() {
 
 /*
 ----------------------------
+Dashboard.Home route
+----------------------------
+*/
+Router.route("/dashboard", function() {
+  this.redirect("/dashboard/user");
+}, {
+  name: "dashboard.home"
+});
+
+/*
+----------------------------
 Dashboard.User route
 ----------------------------
 */

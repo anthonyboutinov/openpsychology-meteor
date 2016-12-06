@@ -1,7 +1,7 @@
 <template name="dashboardOrganizerEventsUpdate">
 
   <ul class="breadcrumb">
-    <li><a href="/dashboard">Личный кабинет</a></li>
+    <li><a href="{{pathFor 'dashboard.home'}}">Личный кабинет</a></li>
     <li><a href="{{pathFor 'dashboard.organizers'}}">Организации</a></li>
     <li><a href="{{pathFor 'dashboard.organizer' _id=event.organizer._id}}">{{event.organizer.name}}</a></li>
     <li><a href="{{pathFor 'dashboard.organizer.events' _id=event.organizer._id}}">События</a></li>

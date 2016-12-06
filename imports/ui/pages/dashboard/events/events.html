@@ -1,7 +1,7 @@
 <template name="dashboardEvents">
 
   <ul class="breadcrumb">
-    <li><a href="/dashboard">Личный кабинет</a></li>
+    <li><a href="{{pathFor 'dashboard.home'}}">Личный кабинет</a></li>
     {{#if timeframe}}
     <li><a class="">Мероприятия</a></li>
     {{/if}}

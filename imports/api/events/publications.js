@@ -139,9 +139,7 @@ if (Meteor.isServer) {
       'likes.userId': this.userId
     };
 
-    const events = Events.find(findParams, options);
-    console.log(events.fetch());
-    return events;
+    return Events.find(findParams, options);
   });
 
 
