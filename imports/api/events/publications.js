@@ -116,12 +116,32 @@ if (Meteor.isServer) {
   });
 
 
-  Meteor.publish('events.liked', function() {
+  Meteor.publish('events.liked.count', function() {
     check(this.userId, String);
+
     let findParams = {
       'likes.userId': this.userId
     };
+
     return new Counter('events.liked.count', Events.find(findParams));
+  });
+
+
+  /*
+  params: {
+    options - Collection.find options dictionary
+  }
+  */
+  Meteor.publish('events.liked', function(options) {
+    check(this.userId, String);
+
+    let findParams = {
+      'likes.userId': this.userId
+    };
+
+    const events = Events.find(findParams, options);
+    console.log(events.fetch());
+    return events;
   });
 
 

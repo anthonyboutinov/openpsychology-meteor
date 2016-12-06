@@ -24,9 +24,6 @@ const allItemsFetchedCommonCode = function() {
 
 
 Template.list.helpers({
-  shouldClearfix: function(index, grid) {
-    return index != 0 && index % grid == 0;
-  },
   animationClass: function(index) {
     return index > QUERY_LIMIT ? "animated fadeIn" : false;
   },

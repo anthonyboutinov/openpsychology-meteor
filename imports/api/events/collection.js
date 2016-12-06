@@ -13,9 +13,7 @@ Event.prototype = {
     if (!userId) {
       return false;
     }
-    let a = this.likes.map(function(like) { return like.userId; }).includes(userId);
-    console.log("userLikedIt from collection prototype were called with result ", a);
-    return a;
+    return this.likes.map(function(like) { return like.userId; }).includes(userId);
   }
 
 };

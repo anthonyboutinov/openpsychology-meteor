@@ -2,7 +2,9 @@
 
   <ul class="breadcrumb">
     <li><a href="/dashboard">Личный кабинет</a></li>
+    {{#if timeframe}}
     <li><a class="">Мероприятия</a></li>
+    {{/if}}
     <li><a href="{{pathFor 'dashboard.events'}}" class="active">{{panelLabel}}</a></li>
   </ul>
 
@@ -30,7 +32,11 @@
 
         </div>
       {{else}}
-        <p class="text-muted">Здесь будут отображаться {{panelLabelLowercase}} мероптиятия, на которые Вы зарегистрируетесь.</p>
+        {{#if timeframe}}
+          <p class="text-muted">Здесь будут отображаться {{panelLabelLowercase}} мероптиятия, на которые Вы зарегистрируетесь.</p>
+        {{else}}
+          <p class="text-muted">Здесь буту отображаться мероприятия, которым вы поставите «лайк».</p>
+        {{/if}}
       {{/if}}
 
     </div>

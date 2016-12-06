@@ -1,3 +1,7 @@
+Template.registerHelper("shouldClearfix", function(index, grid) {
+  return index != 0 && index % grid == 0;
+});
+
 Template.registerHelper("nbsp", function (string) {
   if (!string) return null;
   return string.replace(/&nbsp;/g, '\u00a0');
