@@ -1,4 +1,6 @@
-import { QUERY_LIMIT } from '/imports/startup/client/routes.js';
+// import { QUERY_LIMIT } from '/imports/startup/client/routes';
+
+let QUERY_LIMIT = 6 * 5;
 
 import './organizer.html';
 

@@ -1,43 +1,51 @@
 <template name="list">
-    <section class="bg-white p-b-30">
-      <div class="container">
+  <section class="bg-white p-b-30">
+    <div class="container">
 
-      <div class="row m-t-60">
+      {{#if events_.length}}
 
-        {{#each event in events_}}
+        <div class="row m-t-60">
 
-        {{#if shouldClearfix @index 3}}
-        <div class="clearfix visible-md-block visible-lg-block"></div>
-        {{/if}}
+          {{#each event in events_}}
 
-        {{#if shouldClearfix @index 2}}
-        <div class="clearfix visible-sm-block"></div>
-        {{/if}}
-
-        <div class="col-sm-6 col-md-4 m-b-60 {{animationClass @index}}">
-          {{> list_item event=event}}
-        </div>
-        {{/each}}
-
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12 text-center">
-          {{#if allItemsFetchedWithResults}}
-          <h5 class="text-muted animated fadeIn">Больше данных нет</h5>
+          {{#if shouldClearfix @index 3}}
+          <div class="clearfix visible-md-block visible-lg-block"></div>
           {{/if}}
 
-          {{#if allItemsFetchedNoResults}}
-          <h5 class="text-muted animated fadeIn">Нет результатов</h5>
+          {{#if shouldClearfix @index 2}}
+          <div class="clearfix visible-sm-block"></div>
           {{/if}}
 
-          {{#unless allItemsFetched}}
-          <div class="p-t-30 p-b-30">
-            {{> loading}}
+          <div class="col-sm-6 col-md-4 m-b-60 {{animationClass @index}}">
+            {{> list_item event=event}}
           </div>
-          {{/unless}}
+          {{/each}}
+
         </div>
-      </div>
+
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            {{#if allItemsFetchedWithResults}}
+            <h5 class="text-muted animated fadeIn">Больше данных нет</h5>
+            {{/if}}
+
+            {{#if allItemsFetchedNoResults}}
+            <h5 class="text-muted animated fadeIn">Нет результатов</h5>
+            {{/if}}
+
+            {{#unless allItemsFetched}}
+            <div class="p-t-30 p-b-30">
+              {{> loading}}
+            </div>
+            {{/unless}}
+          </div>
+        </div>
+
+      {{else}}
+        <div class="m-t-60 text-center">
+          <h5 class="text-muted">Пустая выборка</h5>
+        </div>
+      {{/if}}
 
     </div>
   </section>

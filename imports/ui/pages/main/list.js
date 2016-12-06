@@ -1,6 +1,9 @@
 import { Events } from '/imports/api/events/collection.js';
-import { QUERY_LIMIT } from '/imports/startup/client/routes.js';
+// import { QUERY_LIMIT } from '/imports/startup/client/routes';
 import { clearSearchbarFields } from '/imports/ui/components/main/searchbar/searchbar.xprt.js';
+
+
+let QUERY_LIMIT = 6 * 5;
 
 import './list.html';
 

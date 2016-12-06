@@ -1,2 +1,2 @@
 import './fixtures.js';
-import './placeholderdata.js';
+// import './placeholderdata.js';

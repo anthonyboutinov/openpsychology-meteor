@@ -4,6 +4,7 @@ let MAX_ORGANIZERS_PER_USER = 100;
 
 Template.dashboardOrganizers.helpers({
   maxOrganizersCountReached: function() {
+    console.log(this.organizers);
     return this.organizers().count() >= MAX_ORGANIZERS_PER_USER;
   },
 
@@ -15,12 +16,9 @@ Template.dashboardOrganizers.events({
     event.preventDefault();
     // const target = $(event.currentTarget);
     const doc = this;
-    // Modal.show('dashboardOrganizersRemoveModal', function() {
-    //   return doc;
-    // });
     swal({
       title: "Вы уверены?",
-      text: "Организация " + doc.name + " и все мероприятия, закрепленные за ней будут безвозвратно удалены. Чтобы удалить организацию, Вы должны ввести свой пароль.",
+      text: "Организация «" + doc.name + "» и все мероприятия, закрепленные за ней будут безвозвратно удалены. Чтобы удалить организацию, Вы должны ввести свой пароль.",
       type: "input",
       inputType: "password",
       showCancelButton: true,
@@ -40,7 +38,7 @@ Template.dashboardOrganizers.events({
             swal.showInputError(error);
           } else if (result == true) {
             Meteor.call('organizers.remove', doc._id);
-            swal("Удалено!", "Организация " + doc.name + " удалена.", "success");
+            swal("Удалено!", "Организация «" + doc.name + "» удалена.", "success");
           } else {
             swal.showInputError("Неверный пароль!");
           }

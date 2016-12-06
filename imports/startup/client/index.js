@@ -1,2 +1,2 @@
-import './routes.js';
+import './routes';
 import './useraccounts-configuration.js';
