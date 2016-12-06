@@ -7,7 +7,10 @@
     <div class="calendar-event-info"><span class="sr-only">Дополнительная информация: </span>{{event.info}}</div>
     {{/if}}
     {{#if eventIsInTheFuture}}
-    <button class="btn btn-default" data-toggle="tooltip" data-delay="250" title="Скачать и&nbsp;добавить в&nbsp;свой календарь"><i class="fa fa-fw fa-calendar-plus-o" aria-hidden="true"></i><span class="sr-only">Скачать и добавить в свой календарь</span></button>
+      <a href="/files/ics/{{event._id}}" class="btn btn-default" data-toggle="tooltip" data-delay="250" title="Скачать и&nbsp;добавить в&nbsp;свой календарь">
+        <i class="fa fa-fw fa-calendar-plus-o" aria-hidden="true"></i>
+        <span class="sr-only">Скачать и добавить в свой календарь</span>
+      </a>
     {{/if}}
   </div>
 </template>

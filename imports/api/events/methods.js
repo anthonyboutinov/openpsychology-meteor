@@ -2,9 +2,17 @@ if (Meteor.isServer) {
 
   import { check } from 'meteor/check';
   import { Events } from './collection.js';
+  import { Categories } from '../categories';
   import { Organizers } from '../organizers/collection.js';
 
   Meteor.methods({
+
+    'event'(eventId) {
+      let event = Events.findOne(eventId);
+      event.category = Categories.findOne(event.categoryId);
+      event.organizer = Organizers.findOne(event.organizer._id);
+      return event;
+    },
 
     'event.registerForEvent'(eventId, setRegistered) {
       check(eventId, String);
