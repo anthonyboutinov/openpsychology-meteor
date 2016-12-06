@@ -5,7 +5,7 @@ import './insert.html';
 import '/imports/ui/autoform/afMyFormGroup.js';
 import '/imports/ui/autoform/datetimeRange.js';
 
-Template.dashboardManagedOrganizersAdd.helpers({
+Template.dashboardOrganizersAdd.helpers({
   Organizers: function() {
     return Organizers;
   }

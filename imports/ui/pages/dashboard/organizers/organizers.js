@@ -2,7 +2,7 @@ import './organizers.html';
 
 let MAX_ORGANIZERS_PER_USER = 100;
 
-Template.dashboardManagedOrganizers.helpers({
+Template.dashboardOrganizers.helpers({
   maxOrganizersCountReached: function() {
     return this.organizers().count() >= MAX_ORGANIZERS_PER_USER;
   },
@@ -10,12 +10,12 @@ Template.dashboardManagedOrganizers.helpers({
 });
 
 
-Template.dashboardManagedOrganizers.events({
+Template.dashboardOrganizers.events({
   'click [mo-action="delete"]': function(event, template) {
     event.preventDefault();
     // const target = $(event.currentTarget);
     const doc = this;
-    // Modal.show('dashboardManagedOrganizersRemoveModal', function() {
+    // Modal.show('dashboardOrganizersRemoveModal', function() {
     //   return doc;
     // });
     swal({

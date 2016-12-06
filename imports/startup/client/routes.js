@@ -323,7 +323,7 @@ Router.route("/dashboard/events/:timeframe", function() {
 
 /*
 ----------------------------
-Dashboard.ManagedOrganizers route
+Dashboard.Organizers route
 ----------------------------
 */
 Router.route("/dashboard/organizers", function() {
@@ -340,7 +340,7 @@ Router.route("/dashboard/organizers", function() {
     }
   });
   if (this.ready()) {
-    this.render('dashboardManagedOrganizers');
+    this.render('dashboardOrganizers');
   } else {
     this.render('loading');
   };
@@ -352,7 +352,7 @@ Router.route("/dashboard/organizers", function() {
 
 /*
 ----------------------------
-Dashboard.ManagedOrganizers.Add route
+Dashboard.Organizers.Add route
 ----------------------------
 */
 Router.route("/dashboard/organizers/add", function() {
@@ -369,7 +369,7 @@ Router.route("/dashboard/organizers/add", function() {
     }
   });
   if (this.ready()) {
-    this.render('dashboardManagedOrganizersAdd');
+    this.render('dashboardOrganizersAdd');
   } else {
     this.render('loading');
   };
@@ -380,7 +380,7 @@ Router.route("/dashboard/organizers/add", function() {
 
 /*
 ----------------------------
-Dashboard.ManagedOrganizers.Update route
+Dashboard.Organizers.Update route
 ----------------------------
 */
 Router.route("/dashboard/organizer/:_id/update", function() {
@@ -401,7 +401,7 @@ Router.route("/dashboard/organizer/:_id/update", function() {
     }
   });
   if (this.ready()) {
-    this.render('dashboardManagedOrganizersUpdate');
+    this.render('dashboardOrganizersUpdate');
   } else {
     this.render('loading');
   };

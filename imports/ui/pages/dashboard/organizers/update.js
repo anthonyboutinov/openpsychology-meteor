@@ -5,7 +5,7 @@ import './update.html';
 import '/imports/ui/autoform/afMyFormGroup.js';
 import '/imports/ui/autoform/datetimeRange.js';
 
-Template.dashboardManagedOrganizersUpdate.helpers({
+Template.dashboardOrganizersUpdate.helpers({
   Organizers: function() {
     return Organizers;
   }
