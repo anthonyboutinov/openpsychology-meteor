@@ -5,7 +5,7 @@ Template.dashboardOrganizerEvents.helpers({
 });
 
 Template.dashboardOrganizerEvents.events({
-  'click [mo-action="delete"]': function(event, template) {
+  'click [mo-action="remove"]': function(event, template) {
     event.preventDefault();
     // const target = $(event.currentTarget);
     const doc = this;

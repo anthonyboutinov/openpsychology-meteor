@@ -31,7 +31,7 @@
           <div class="pull-right">
             <a href="{{pathFor 'event' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-id-card-o" aria-hidden="true"></i> Страница</a>
             <a href="{{pathFor 'dashboard.organizer.event.update' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Редактировать</a>
-            <button class="btn btn-danger-alt" mo-action="delete"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Удалить</button>
+            <button class="btn btn-danger-alt" mo-action="remove"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Удалить</button>
           </div>
         </li>
         {{/with}}
