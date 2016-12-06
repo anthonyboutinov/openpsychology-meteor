@@ -25,10 +25,7 @@ Router.route("/organizer/:_id", function() {
         return this.ready();
       },
       events_: () => {
-        return Events.find().map((event) => {
-          event.category = Categories.findOne({_id: event.categoryId});
-          return event;
-        });
+        return Events.find();
       },
       organizer: Organizers.findOne({ _id: this.params._id }),
     }

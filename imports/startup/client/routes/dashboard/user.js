@@ -57,16 +57,10 @@ Router.route("/dashboard/user", function() {
         return this.ready();
       },
       ongoingEvents: () => {
-        return Events.find(findParamsOngoingEvents).map((event) => {
-          event.category = Categories.findOne({_id: event.categoryId});
-          return event;
-        });
+        return Events.find(findParamsOngoingEvents);
       },
       upcomingEvents: () => {
-        return Events.find(findParamsUpcomingEvents).map((event) => {
-          event.category = Categories.findOne({_id: event.categoryId});
-          return event;
-        });
+        return Events.find(findParamsUpcomingEvents);
       },
       gotMoreOngoingEvents: () => {
         return Counter.get('events.userRegistered.counts.ongoing') > Events.find(findParamsOngoingEvents).count();

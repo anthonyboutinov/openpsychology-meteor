@@ -48,13 +48,7 @@ Router.route('/search/:categoryUrlName', function() {
       searchbarSupported: true,
       showSearchbar: this.params.query.sb == "true",
       events_: () => {
-        if (subscribedToEvents) {
-          return Events.find().map((event) => {
-            event.category = Categories.findOne({_id: event.categoryId});
-            return event;
-          });
-        }
-        return [];
+        return Events.find();
       },
       subscribedToEvents: subscribedToEvents,
       subscriptionsReady: () => {

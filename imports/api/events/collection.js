@@ -1,5 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import { EventsSchema } from './schema.js';
+import { Categories } from '../categories';
 
 Event = function (doc) {
   _.extend(this, doc);
@@ -7,6 +8,10 @@ Event = function (doc) {
 
 Event.prototype = {
   constructor: Event,
+
+  /*
+   * Like functionality
+   */
 
   userLikedIt() {
     let userId = Meteor.user()._id;
@@ -26,6 +31,15 @@ Event.prototype = {
 
   likesCount() {
     return this.likes.length;
+  },
+
+
+  /*
+   * Category functionality
+   */
+
+  category() {
+    return Categories.findOne({_id: this.categoryId});
   }
 
 };

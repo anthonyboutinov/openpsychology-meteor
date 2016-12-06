@@ -33,10 +33,7 @@ Router.route("/dashboard/organizer/:_id/events", function() {
         return Organizers.findOne({_id: this.params._id});
       },
       events_: () => {
-        return Events.find({}, {orderBy: {'name': 1}}).map((event) => {
-          event.category = Categories.findOne({_id: event.categoryId});
-          return event;
-        });
+        return Events.find({}, {orderBy: {'name': 1}});
       },
     }
   });

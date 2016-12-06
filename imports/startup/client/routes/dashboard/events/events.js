@@ -27,10 +27,7 @@ Router.route("/dashboard/events/:timeframe", function() {
       },
       timeframe: this.params.timeframe,
       events_: () => {
-        return Events.find().map((event) => {
-          event.category = Categories.findOne({_id: event.categoryId});
-          return event;
-        });
+        return Events.find();
       },
       organizers: () => {
         return Organizers.find({}, {orderBy: {'name': 1}});
