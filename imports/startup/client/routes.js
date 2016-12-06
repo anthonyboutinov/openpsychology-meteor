@@ -227,6 +227,8 @@ Router.route("/dashboard/user", function() {
     timeframe: "ongoing"
   }).wait();
 
+  this.subscribe('events.liked').wait();
+
   const findParamsUpcomingEvents = queryByDate.setFindUpcoming({});
   const findParamsOngoingEvents = queryByDate.setFindOngoing({});
 
@@ -262,6 +264,9 @@ Router.route("/dashboard/user", function() {
       organizers: () => {
         return Organizers.find({}, {orderBy: {'name': 1}});
       },
+      eventsLikedCount: () => {
+        return Counter.get('events.liked.count');
+      }
     }
   });
   if (this.ready()) {

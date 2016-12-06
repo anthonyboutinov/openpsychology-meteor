@@ -116,23 +116,12 @@ if (Meteor.isServer) {
   });
 
 
-  /*
-  params: {
-    userId - ID,
-    options - Collection.find options dictionary
-  }
-  */
-  Meteor.publish('events.liked', function(params) {
-    check(params.userId, String);
-
+  Meteor.publish('events.liked', function() {
+    check(this.userId, String);
     let findParams = {
-      'likes.userId': params.userId
+      'likes.userId': this.userId
     };
-
-    // console.log(JSON.stringify(findParams));
-    const events = Events.find(findParams, params.options);
-    Counts.publish(this, 'events.liked.count', Events.find(findParams), {noReady: true});
-    return events;
+    return new Counter('events.liked.count', Events.find(findParams));
   });
 
 
