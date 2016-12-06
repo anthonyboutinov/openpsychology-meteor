@@ -86,6 +86,10 @@
 
   p {
     color: $gray;
+
+    &.text-muted {
+      @extend .text-muted;
+    }
   }
 }
 
