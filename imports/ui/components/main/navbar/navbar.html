@@ -37,13 +37,9 @@
                 <ul class="dropdown-menu">
                   <li><a href="{{pathFor 'dashboard.user'}}"><i class="fa fa-fw fa-user-circle-o" aria-hidden="true"></i> Профиль</a></li>
                   <li><a href="{{pathFor 'dashboard.events' timeframe='ongoing'}}"><i class="fa fa-fw fa-calendar-o" aria-hidden="true"></i> Мероприятия</a></li>
-                  <li><a href="#"><i class="fa fa-fw fa-bookmark" aria-hidden="true"></i> Закладки</a></li>
-                  <!-- <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Организации</li> -->
+                  <li><a href="{{pathFor 'dashboard.events.bookmarked'}}"><i class="fa fa-fw fa-bookmark" aria-hidden="true"></i> Закладки</a></li>
                   <li><a href="{{pathFor 'dashboard.organizers'}}"><i class="fa fa-fw fa-building" aria-hidden="true"></i> Организации</a></li>
-                  <!-- <li><a href="#"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Управлять</a></li> -->
-                  <!-- <li role="separator" class="divider"></li> -->
-                  <li><a href="#"><i class="fa fa-fw fa-cog" aria-hidden="true"></i> Настройки</a></li>
+                  <li><a href="{{pathFor 'dashboard.settings'}}"><i class="fa fa-fw fa-cog" aria-hidden="true"></i> Настройки</a></li>
                   <li>{{> atNavButton}}</li>
                 </ul>
               </li>

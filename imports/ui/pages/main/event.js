@@ -45,6 +45,10 @@ Template.event.helpers({
     const user = Meteor.user();
     return user && this.event.registeredForEvent ? this.event.registeredForEvent.includes(user._id) : false;
   },
+
+  eventBannerUrl: function() {
+    return this.event.bannerUrl ? this.event.bannerUrl : "https://placehold.it/800x300?text=" + this.event.title;
+  },
 });
 
 Template.event.events({

@@ -94,6 +94,10 @@ Template.list_item.helpers({
       return regular == 0 ? "bg-success" : "bg-hint";
     }
   },
+
+  eventImageUrl: function() {
+    return this.event.imageUrl ? this.event.imageUrl : "https://placehold.it/360x180?text=Нет изображения";
+  },
 });
 
 
