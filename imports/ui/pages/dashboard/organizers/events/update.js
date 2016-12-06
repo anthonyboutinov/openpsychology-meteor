@@ -2,7 +2,7 @@ import { Events } from '/imports/api/events/collection.js';
 
 import './update.html';
 
-import '/imports/ui/autoform/afMyFormGroup.js';
+import '/imports/ui/autoform/contemporary/afFormGroup.js';
 import '/imports/ui/autoform/datetimeRange.js';
 
 Template.dashboardOrganizerEventsUpdate.helpers({

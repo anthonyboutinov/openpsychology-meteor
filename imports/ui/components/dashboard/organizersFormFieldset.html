@@ -1,0 +1,38 @@
+<template name="organizersFormFieldset">
+  <fieldset>
+    <legend class="col-xs-12">Основная информация</legend>
+    {{> afQuickField name="name" template="contemporary" autofocus=''}}
+    <legend class="col-xs-12">Описание</legend>
+    {{> afQuickField name="description" template="bootstrap3"}}
+    {{> afQuickField name="imageUrl" template="contemporary"}}
+    {{> afQuickField name="bannerUrl" template="contemporary"}}
+    <legend class="col-xs-12">Контактная информация</legend>
+    <div class="row">
+      <div class="col-md-6">
+        {{> afQuickField name="location" template="bootstrap3"}}
+      </div>
+      <div class="col-md-6">
+        {{> afQuickField name="phoneNum" template="contemporary" prefix="+7"}}
+        {{> afQuickField name="email" template="contemporary"}}
+      </div>
+    </div>
+    <legend class="col-xs-12">Ссылки на социальные сети</legend>
+    <div class="row">
+      <div class="col-md-6">
+        {{> afQuickField name="socialLinkVK" template="contemporary" prefix="https://vk.com/"}}
+      </div>
+      <div class="col-md-6">
+        {{> afQuickField name="socialLinkOdnoklassniki" template="contemporary" prefix="https://ok.ru/"}}
+      </div>
+      <div class="col-md-6">
+        {{> afQuickField name="socialLinkFacebook" template="contemporary" prefix="https://facebook.com/"}}
+      </div>
+      <div class="col-md-6">
+        {{> afQuickField name="socialLinkYouTube" template="contemporary" prefix="https://youtube.com/"}}
+      </div>
+      <div class="col-md-6">
+        {{> afQuickField name="socialLinkTwitter" template="contemporary" prefix="https://twitter.com/"}}
+      </div>
+    </div>
+  </fieldset>
+</template>

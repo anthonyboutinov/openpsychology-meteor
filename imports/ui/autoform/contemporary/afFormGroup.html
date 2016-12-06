@@ -1,5 +1,5 @@
-<template name="afFormGroup_bootstrap3-horizontal_withprefix">
-  <div class="form-group {{#if afFieldIsInvalid name=this.name}}has-error{{/if}} {{afFormGroupClass}}" data-required={{required}} {{afFormGroupAtts}}>
+<template name="afFormGroup_contemporary">
+  <div class="form-group form-group-contemporary {{#if afFieldIsInvalid name=this.name}}has-error{{/if}} {{afFormGroupClass}}" data-required={{required}} {{afFormGroupAtts}}>
     {{#if skipLabel}}
     {{! We include the empty label as the easiest way to keep proper field alignment}}
     <label {{afFieldLabelAtts}}></label>
@@ -8,7 +8,7 @@
     {{/if}}
     <div class="{{rightColumnClass}}">
       <div class="input-group">
-        <div class="input-group-addon">{{prefix}}</div>
+        {{#if prefix}}<div class="input-group-addon">{{prefix}}</div>{{/if}}
         {{> afFieldInput afFieldInputAtts}}
       </div>
       <span class="help-block">{{{afFieldMessage name=this.name}}}</span>

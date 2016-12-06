@@ -2,8 +2,9 @@ import { Organizers } from '/imports/api/organizers/collection.js';
 
 import './update.html';
 
-import '/imports/ui/autoform/afMyFormGroup.js';
+import '/imports/ui/autoform/contemporary/afFormGroup.js';
 import '/imports/ui/autoform/datetimeRange.js';
+import '/imports/ui/components/dashboard/organizersFormFieldset.html';
 
 Template.dashboardOrganizersUpdate.helpers({
   Organizers: function() {

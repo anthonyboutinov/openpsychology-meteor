@@ -13,10 +13,21 @@ import './body.html';
  */
 
 Template.body.events({
-  "focus .form-group-contemporary .form-control": function(event, data, template){
-    $(event.target).parents(".form-group-contemporary").addClass("focused");
+  "focus .form-group .form-control": function(event, data, template){
+    let target = $(event.target);
+    target.parents(".form-group").addClass("focused");
   },
-  "blur .form-group-contemporary .form-control": function(event, data, template){
-    $(event.target).parents(".form-group-contemporary").removeClass("focused");
+  "blur .form-group .form-control": function(event, data, template){
+    let target = $(event.target);
+    target.parents(".form-group").removeClass("focused");
+    if (target.val()) {
+      target.parents(".form-group").find("label").addClass("fade");
+    } else {
+      target.parents(".form-group").find("label").removeClass("fade");
+    }
+  },
+  "click .form-group .input-group-addon": function(event, data, template){
+    let target = $(event.target);
+    target.parents(".form-group").find("input").focus();
   },
 });

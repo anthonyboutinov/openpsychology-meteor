@@ -303,3 +303,19 @@ fieldset > .form-group:not(.form-group-contemporary) > .control-label {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.control-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: "Cuprum", "Roboto", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: .05em;
+  color: #444;
+
+  &.fade {
+    opacity: 0.6;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
