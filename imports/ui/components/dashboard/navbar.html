@@ -18,13 +18,8 @@
               <li><a href="/"><i class="fa fa-fw fa-chevron-circle-left" aria-hidden="true"></i> Открытая психология</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              {{#if currentUser}}
               <li><a href="{{pathFor 'dashboard.user'}}">{{username}} <i class="fa fa-fw fa-user-circle" aria-hidden="true"></i></a></li>
-              <li><a href="/signout"><i class="fa fa-fw fa-sign-out" aria-hidden="true"></i> Выйти</a></li>
-              {{else}}
-              <li><a href="/signin"><i class="fa fa-fw fa-user-circle-o" aria-hidden="true"></i> Войти</a></li>
-              <li><a style="color: white;">{{> loginButtons}}</a></li>
-              {{/if}}
+              <li>{{> atNavButton}}</li>
             </ul>
           </div>
 

@@ -1,5 +1,5 @@
 <template name="atSocial">
   <button class="btn at-social-btn {{disabled}}" id="at-{{name}}" name="{{name}}">
-    <i class="{{iconClass}}"></i> {{buttonText}}
+    <i class="{{iconClass}}" aria-hidden="true"></i><span class="sr-only"> {{buttonText}}</span>
   </button>
 </template>

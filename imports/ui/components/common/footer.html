@@ -2,13 +2,15 @@
 
   <footer class="primary {{footerClass}}">
     <div class="{{containerClass}}">
+
+      {{#unless ultraCompact}}
       <div class="row">
         <div class="col-sm-6">
           <div class="logo">
             <img src="assets/logo.png" alt="Логотип сайта"><span>Открытая психология</span><br>
           </div>
 
-          <ul class="nav navbar-nav nav-inverse fs-xs nav-no-style">
+          <ul class="nav navbar-nav fs-xs nav-no-style">
             <li class="inline no-padding"><a href="#" class="link text-white p-r-10 b-r b-transparent-white">Реклама</a></li>
             <li class="inline no-padding"><a href="#" class="link text-white p-l-10 p-r-10 b-r b-transparent-white">О проекте</a></li>
             <li class="inline no-padding"><a href="#" class="link text-white p-r-10 b-r b-transparent-white">Условия</a></li>
@@ -27,12 +29,34 @@
           </ul>
           <div class="clearfix"></div>
 
-
           <div>Copyright<span aria-hidden="true"> ©</span> 2016 Открытая психология. Все права защищены.</div>
           <div>Разработка <a href="#">Anthony Boutinov</a><span aria-hidden="true">.</span></div>
         </div>
 
       </div>
+      {{else}}
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 fs-xs text-center">
+
+          <div class="logo">
+            <img src="assets/logo.png" alt="Логотип сайта"><span>Открытая психология</span><br>
+          </div>
+
+          <ul class="nav navbar-nav fs-xs nav-no-style">
+            <li class="inline no-padding"><a href="#" class="link p-l-10 p-r-10">Реклама</a></li>
+            <li class="inline no-padding"><a href="#" class="link p-l-10 p-r-10">О проекте</a></li>
+            <li class="inline no-padding"><a href="#" class="link p-l-10 p-r-10">Условия</a></li>
+            <li class="inline no-padding"><a href="#" class="link p-l-10 p-r-10">Блог</a></li>
+            <li class="inline no-padding"><a href="#" class="link p-l-10 p-r-10">Поддержка</a></li>
+          </ul>
+          <div class="clearfix"></div>
+
+          <div>Copyright<span aria-hidden="true"> ©</span> 2016 Открытая психология. Все права защищены.</div>
+          <div>Разработка <a href="#">Anthony Boutinov</a><span aria-hidden="true">.</span></div>
+
+        </div>
+      </div>
+      {{/unless}}
     </div>
   </footer>
 

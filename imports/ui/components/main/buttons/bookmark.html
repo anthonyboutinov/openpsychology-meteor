@@ -1,9 +1,11 @@
 <template name="bookmarkButton">
-  {{#with event}}
-  <button class="btn btn-default" data-toggle="tooltip" data-delay="1000" title="{{#if userBookmarkedIt}}Удалить из закладок{{else}}Добавить в закладки{{/if}}">
-    <i class="fa fa-fw {{faClass}}" aria-hidden="true"></i><span class="sr-only">
-      {{#if userBookmarkedIt}}Добавлено в закладки!{{else}}Добавить в закладки{{/if}}
-    </span>
-  </button>
-  {{/with}}
+  {{#if currentUser}}
+    {{#with event}}
+    <button class="btn btn-default" data-toggle="tooltip" data-delay="1000" title="{{#if userBookmarkedIt}}Удалить из закладок{{else}}Добавить в закладки{{/if}}">
+      <i class="fa fa-fw {{faClass}}" aria-hidden="true"></i><span class="sr-only">
+        {{#if userBookmarkedIt}}Добавлено в закладки!{{else}}Добавить в закладки{{/if}}
+      </span>
+    </button>
+    {{/with}}
+  {{/if}}
 </template>

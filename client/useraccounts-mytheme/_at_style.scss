@@ -1,0 +1,130 @@
+.at-form {
+  /*float: none;
+  margin: auto;
+  overflow: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 15px;*/
+}
+/*.at-form p {
+  font-size: 15px;
+  line-height: 20px;
+}*/
+/*.at-link.disabled {
+  color: #444;
+}*/
+.at-signin-link {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+/*.at-error,
+.at-result {
+  text-align: center;
+}*/
+.at-oauth {
+  margin-top: 10px;
+}
+button.at-social-btn {
+  /*display: block;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border-radius: 5px;
+  font-size: 16px;*/
+  width: 100%;
+  margin-bottom: 10px;
+
+  i {
+    // float: left;
+    // width: 40px;
+    font-size: 20px;
+    // margin-top: 1px;
+    // padding-right: 10px;
+    // padding-left: 5px;
+    // border-right: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  &#at-facebook {
+    @extend .btn-facebook;
+  }
+  &#at-vk {
+    @extend .btn-vk;
+  }
+  &#at-google {
+    @extend .btn-googleplus;
+  }
+  &#at-twitter {
+    @extend .btn-twitter;
+  }
+  &#at-odnoklassniki {
+    @extend .btn-odnoklassniki;
+  }
+}
+
+.at-sep {
+  text-transform: lowercase;
+  margin-bottom: 10px;
+}
+
+// .at-sep {
+//   text-align: center;
+//   position: relative;
+//   overflow: hidden;
+//   margin-bottom: 15px;
+//   text-transform: lowercase;
+// }
+// .at-sep:before,
+// .at-sep:after {
+//   display: block;
+//   content: " ";
+//   border-bottom: 1px solid #ddd;
+//   width: 100%;
+//   position: absolute;
+//   top: 48%;
+// }
+// .at-sep:before {
+//   left: -60%;
+// }
+// .at-sep:after {
+//   right: -60%;
+// }
+.at-input.validating * {
+  cursor: progress;
+}
+.at-pwd-form > form {
+  margin-top: 20px;
+  // margin-bottom: 20px;
+}
+.at-pwd-form > form label {
+  // margin-bottom: 5px;
+  // font-weight: 400;
+  // font-size: 14px;
+}
+#at-btn {
+//   font-size: 16px;
+//   padding: 10px 12px;
+  // margin-top: 15px;
+  // margin-bottom: 15px;
+}
+
+.at-signup-link {
+  // margin-top: 0px;
+  // margin-bottom: 20px;
+  margin-top: -26px;
+  margin-bottom: 33px;
+  text-align: right;
+}
+.at-pwd-link, {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: right;
+}
+.at-terms-link {
+  // text-align: center;
+  margin-top: 10px;
+  font-size: $font-size-h6;
+  color: $text-muted;
+}

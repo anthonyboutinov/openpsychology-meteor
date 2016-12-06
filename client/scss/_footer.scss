@@ -1,17 +1,6 @@
 footer.primary {
-
   padding-top: $grid-gutter-width;
   padding-bottom: $grid-gutter-width;
-  @media screen and (min-width: $screen-md-min) {
-    height: $footer-height;
-  }
-
-  a {
-    color: #d1d1d1;
-    &:hover, &:focus, &:active {
-      color: white;
-    }
-  }
 
   .logo {
     margin-bottom: 10px;
@@ -20,13 +9,42 @@ footer.primary {
       margin-right: 12px;
     }
     span {
-      color: white;
       font-size: $font-size-h4;
     }
   }
 
-  background-color: $navbar-inverse-bg;
-  color: $navbar-inverse-color;
-  border-color: $navbar-inverse-border;
+  .defaultLayout & {
+
+    @media screen and (min-width: $screen-md-min) {
+      height: $footer-height;
+    }
+
+    .logo {
+      span {
+        color: #fff;
+      }
+    }
+
+    a {
+      color: #d1d1d1;
+      &:hover, &:focus, &:active {
+        color: white;
+      }
+    }
+
+
+
+    background-color: $navbar-inverse-bg;
+    color: $navbar-inverse-color;
+    border-color: $navbar-inverse-border;
+  }
+
+
+  .accountsLayout & {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: transparent;
+    color: $text-muted;
+  }
 
 }

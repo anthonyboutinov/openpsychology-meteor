@@ -14,9 +14,9 @@ Event.prototype = {
    */
 
   userLikedIt() {
-    let userId = Meteor.user()._id;
-    if (!userId || !this.likes) return false;
-    return this.likes.map(function(like) { return like.userId; }).includes(userId);
+    let user = Meteor.user();
+    if (!user || !this.likes) return false;
+    return this.likes.map(function(like) { return like.userId; }).includes(user._id);
   },
 
   like() {
@@ -37,9 +37,9 @@ Event.prototype = {
    */
 
   userBookmarkedIt() {
-    let userId = Meteor.user()._id;
-    if (!userId || !this.bookmarks) return false;
-    return this.bookmarks.map(function(bookmark) { return bookmark.userId; }).includes(userId);
+    let user = Meteor.user();
+    if (!user || !this.bookmarks) return false;
+    return this.bookmarks.map(function(bookmark) { return bookmark.userId; }).includes(user._id);
   },
 
   bookmark() {

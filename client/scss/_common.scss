@@ -272,7 +272,7 @@
     display: table;
   }
 }
-fieldset > .form-group > .control-label {
+fieldset > .form-group:not(.form-group-contemporary) > .control-label {
   line-height: 34px;
 }
 
@@ -282,7 +282,7 @@ fieldset > .form-group > .control-label {
 
   &:focus {
     box-shadow: none;
-    background-color: #f0f0f0;
+    background-color: $input-focus-bg;
   }
 }
 
@@ -296,4 +296,10 @@ fieldset > .form-group > .control-label {
 
 .panel-default {
   box-shadow: none;
+}
+
+.alert {
+  border-radius: 1px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

@@ -1,3 +1,5 @@
 <template name="atNavButton">
-  <button type="button" id="at-nav-button" class="btn btn-default navbar-btn">{{text}}</button>
+  {{#with text}}
+  <a href="#" id="at-nav-button"><i class="fa fa-fw {{faClass}}" aria-hidden="true"></i> {{this}}</a>
+  {{/with}}
 </template>

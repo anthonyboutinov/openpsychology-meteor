@@ -48,7 +48,7 @@ $hisroty-color:          #40d95e;
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-$body-bg:               #f1f1f1 !default;
+$body-bg:               #fafafa;//f1f1f1 !default;
 //** Global text color on `<body>`.
 $text-color:            $gray-dark !default;
 
@@ -235,6 +235,7 @@ $btn-border-radius-small:        $border-radius-small !default;
 
 //** `<input>` background color
 $input-bg:                       #fff !default;
+$input-focus-bg:                 #f0f0f0;
 //** `<input disabled>` background color
 $input-bg-disabled:              $gray-lighter !default;
 
