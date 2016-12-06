@@ -2,15 +2,10 @@ import './like.html';
 
 Template.likeButton.helpers({
   'count': function() {
-    return 10;
-  },
-  'userLikedIt': function() {
-    // return Meteor.user() ? Meteor.call('likes.userLikedIt', this.event._id) : false;
-    return false;
+    return this.event.likes.length;
   },
   'faClass': function() {
-    const likedIt = false;
-    if (likedIt) {
+    if (this.event.userLikedIt()) {
       return "fa-heart";
     } else {
       return "fa-heart-o";
@@ -23,17 +18,16 @@ Template.likeButton.events({
     if (!Meteor.user()) {
       return;
     }
-
     const target = $(event.currentTarget);
 
-    const likedIt = target.find('i.fa').hasClass("fa-heart");
-    if (likedIt) {
-      // Meteor.call('likes.remove', template.data.event._id);
+    if (this.event.userLikedIt()) {
+      console.log("call unlike");
+      Meteor.call('event.unlike', template.data.event._id);
+      target.find('i.fa').removeClass('animated bounceIn');
     } else {
-      // Meteor.call('likes.add', template.data.event._id);
+      console.log("call like");
+      Meteor.call('event.like', template.data.event._id);
+      target.find('i.fa').addClass('animated bounceIn');
     }
-    target.find('i.fa').toggleClass('animated bounceIn')
-    .toggleClass('fa-heart fa-heart-o');
-
   }
 });

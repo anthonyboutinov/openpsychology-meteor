@@ -2,6 +2,7 @@ import { Categories } from '../categories';
 
 import { LocationSchema } from '../schemas/location.js';
 import { EventDatesSchema } from '../schemas/eventDates.js';
+import { LikeSchema } from '../schemas/like.js';
 
 const PriceSchema = new SimpleSchema({
   regular: {
@@ -132,6 +133,14 @@ export const EventsSchema = new SimpleSchema({
   registeredForEvent: {
     type: [String],
     label: "Зарегистрированные на событие пользователи",
+    autoform: {
+      type: "hidden",
+    },
+    defaultValue: [],
+  },
+
+  likes: {
+    type: [LikeSchema],
     autoform: {
       type: "hidden",
     },
