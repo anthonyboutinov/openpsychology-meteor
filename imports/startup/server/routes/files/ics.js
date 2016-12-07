@@ -19,7 +19,7 @@ Router.route('/files/ics/:eventId', function () {
 
     console.log(location);
     return {
-      uid: event._id + daterange.dateFrom.toString(),
+      uid: event._id + daterange.dateFrom.getTime(),
       summary: event.title + ", " + event.category.singularName,
       dtStart: daterange.dateFrom,
       dtEnd: daterange.dateTo,

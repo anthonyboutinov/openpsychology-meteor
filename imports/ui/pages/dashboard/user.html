@@ -33,8 +33,8 @@
                 <p>Чтобы не пропустить встречи, подпишитесь на Ваш личный календарь, и&nbsp;информация о&nbsp;встречах будет автоматически загружаться в&nbsp;приложение Календарь на&nbsp;вашем смартфоне и/или компьютере.</p>
                 <p>Если Вы закроете это уведомление, Вы сможете найти этот функционал в&nbsp;<em>Настройках</em>.</p>
 
-                <span class="btn btn-default btn-sm m-t-10"
-                data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="http://localhost:3000/files/ics/user/{{currentUser._id}} <a href='/files/ics/user/{{currentUser._id}}' target='_blank'><i class='fa fa-fw fa-external-link' aria-hidden='true'></i><span class='sr-only'>Перейти по ссылке</span>">
+                <span class="btn btn-default btn-sm m-t-10" id="myCalendarBtn"
+                data-toggle="popover" data-placement="bottom" data-container="#myCalendarBtn" data-html="true" data-content="http://localhost:3000/files/ics/user/{{currentUser._id}}<a class='m-l-char' href='/files/ics/user/{{currentUser._id}}' target='_blank'><i class='fa fa-fw fa-external-link' aria-hidden='true'></i><span class='sr-only'>Перейти по ссылке</span>">
                   <i class="fa fa-fw fa-calendar" aria-hidden="true"></i>
                   Мой календарь
                 </span>
