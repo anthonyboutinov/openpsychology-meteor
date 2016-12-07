@@ -10,12 +10,6 @@
     {{> afQuickField name="imageUrl" template="contemporary"}}
     {{> afQuickField name="bannerUrl" template="contemporary"}}
 
-    <!-- {{#afEachArrayItem name="dates"}}
-      {{> afFieldInput name=this.current.dateFrom template="datetimeRange"}}
-      <button type="button" class="btn btn-primary autoform-remove-item"><span class="glyphicon glyphicon-minus"></span></button>
-    {{/afEachArrayItem}}
-    <button type="button" class="btn btn-primary autoform-add-item" data-autoform-field="dates"><span class="glyphicon glyphicon-plus"></span></button> -->
-
     <legend class="col-xs-12">Контактная информация</legend>
     <div class="row">
       <div class="col-md-7">
@@ -24,7 +18,8 @@
       <div class="col-md-5">
         <p class="text-muted fs-xs">
           <div class="visible-md-block visible-lg-block m-t-15"></div>
-          Остальные данные для&nbsp;контактов берутся из&nbsp;данных Организации. Их можно изменить <a href="{{pathFor 'dashboard.events.update' _id=event.organizer._id}}">здесь</a>.
+          Остальные данные для&nbsp;контактов берутся из&nbsp;данных Организации. Их можно изменить
+          <a href="{{pathFor 'dashboard.organizer.update' _id=event.organizer._id}}" target="blank">здесь&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>.
         </p>
       </div>
     </div>

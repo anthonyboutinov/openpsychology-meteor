@@ -12,6 +12,21 @@ Template.dashboardOrganizersUpdate.helpers({
   }
 });
 
+Template.dashboardOrganizersUpdate.onRendered(function(){
+
+  $('select').select2({
+    placeholder: "Выберите",
+    theme: "contemporary",
+  }).on("select2:open", function(event) {
+    let target = $(event.target);
+    formControlFunctions.focus(target);
+  }).on("select2:close", function(event) {
+    let target = $(event.target);
+    formControlFunctions.blur(target);
+  });
+
+});
+
 
 let hooksObject = {
   before: {

@@ -2,6 +2,15 @@ import './eventsFormFieldset.html';
 
 import * as formControlFunctions from '/imports/ui/formControlFunctions.js';
 
+
+// Template.eventsFormFieldset.helpers({
+//   organizerId() {
+//     console.log(this);
+//     console.log(this.organizer());
+//     return this.organizer()._id;
+//   }
+// });
+
 Template.eventsFormFieldset.onRendered(function(){
 
   $('select').select2({

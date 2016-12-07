@@ -5,11 +5,28 @@ import './update.html';
 import '/imports/ui/autoform/contemporary/afFormGroup.js';
 import '/imports/ui/autoform/datetimeRange.js';
 import '/imports/ui/components/dashboard/eventsFormFieldset.js';
+import * as formControlFunctions from '/imports/ui/formControlFunctions.js';
+
 
 Template.dashboardOrganizerEventsUpdate.helpers({
   Events: function() {
     return Events;
   },
+});
+
+Template.dashboardOrganizerEventsUpdate.onRendered(function(){
+
+  $('select').select2({
+    placeholder: "Выберите",
+    theme: "contemporary",
+  }).on("select2:open", function(event) {
+    let target = $(event.target);
+    formControlFunctions.focus(target);
+  }).on("select2:close", function(event) {
+    let target = $(event.target);
+    formControlFunctions.blur(target);
+  });
+
 });
 
 let hooksObject = {
