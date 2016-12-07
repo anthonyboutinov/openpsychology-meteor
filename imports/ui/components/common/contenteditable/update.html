@@ -1,4 +1,5 @@
 <template name="contenteditableUpdate">
   <span contenteditable="true" data-id="contenteditableField">{{valueOrPlaceholder}}</span>
+  {{#if helpText}}<div class="help-block">{{helpText}}</div>{{/if}}
   <button class="btn btn-primary btn-sm hidden" data-id="contenteditableConfirmButton">Сохранить</button>
 </template>

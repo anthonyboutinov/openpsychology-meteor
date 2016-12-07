@@ -10,6 +10,14 @@ span[contenteditable] {
   &:focus {
     border-bottom-color: $input-focus-border;
   }
+
+  & ~ div {
+    position: absolute;
+    font-family: $font-family-base;
+    font-size: 11px;
+    opacity: 0.7;
+    margin: 3px 0 0 0;
+  }
 }
 
 [data-conteneditable="true"] {
