@@ -9,6 +9,12 @@ Template.dashboardUser.helpers({
   profileName() {
     return Meteor.user().profile.name;
   },
+  showWelcomeNotification() {
+    return Meteor.user().profile.settings.showWelcomeNotification;
+  },
+  showCalendarSubscriptionFunctionalityNotification() {
+    return Meteor.user().profile.settings.showCalendarSubscriptionFunctionalityNotification;
+  }
 });
 
 Template.dashboardUser.onRendered(function(){

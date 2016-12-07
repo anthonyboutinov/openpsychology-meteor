@@ -1,13 +1,39 @@
+export const UserSettingsSchema = new SimpleSchema({
+  showWelcomeNotification: {
+    type: Boolean,
+    defaultValue: true,
+    optional: true,
+    autoform: {
+      hidden: true
+    }
+  },
+  showCalendarSubscriptionFunctionalityNotification: {
+    type: Boolean,
+    optional: true,
+    autoform: {
+      hidden: true
+    }
+  },
+  showOrganizerWelcomeScreen: {
+    type: Boolean,
+    defaultValue: true,
+    optional: true,
+    autoform: {
+      hidden: true
+    }
+  },
+});
+
 export const UserProfileSchema = new SimpleSchema({
+  settings: {
+    type: UserSettingsSchema,
+    defaultValue: {},
+  },
   name: {
     type: String,
     label: "Имя, Фамилия",
     optional: true,
   },
-  // birthday: {
-  //     type: Date,
-  //     optional: true
-  // },
   gender: {
     type: String,
     label: "Пол",
@@ -28,7 +54,8 @@ export const UserProfileSchema = new SimpleSchema({
       "Омск",
       "Самара",
     ],
-  }
+  },
+
   // organization : {
   //     type: String,
   //     optional: true
