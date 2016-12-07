@@ -23,7 +23,7 @@
 
               {{#if showWelcomeNotification}}
               <div class="alert alert-default alert-closable" role="alert">
-                <a href="#" data-action="alert-close" role="button" class="pull-right link-hoverreveal"><i class="fa fa-times" aria-hidden="true"></i><span class="sr-only">Закрыть</span></a>
+                <a href="#" alert-close="{{SystemNotifications.showWelcomeNotification}}" role="button" class="pull-right link-hoverreveal alert-close"><i class="fa fa-times" aria-hidden="true"></i><span class="sr-only">Закрыть</span></a>
                 <p>Добро пожаловать в&nbsp;личный кабинет! Здесь Вы можете просмотреть все мероприятия, на&nbsp;которые Вы зарегистрируетесь, Ваши закладки и&nbsp;лайки.</p>
                 <p>Если Вы хотите размещать свои мероприятия, <a href="{{pathFor 'dashboard.organizers'}}">создайте Организатора</a>.</p>
               </div>
@@ -31,7 +31,7 @@
 
               {{#if showCalendarSubscriptionFunctionalityNotification}}
               <div class="alert alert-default alert-closable" role="alert" id="myCalendarContainer">
-                <a href="#" data-action="alert-close" role="button" class="pull-right link-hoverreveal"><i class="fa fa-times" aria-hidden="true"></i><span class="sr-only">Закрыть</span></a>
+                <a href="#" alert-close="{{SystemNotifications.showCalendarSubscriptionFunctionalityNotification}}" role="button" class="pull-right link-hoverreveal alert-close"><i class="fa fa-times" aria-hidden="true"></i><span class="sr-only">Закрыть</span></a>
                 <p>Чтобы не пропустить встречи, подпишитесь на Ваш личный календарь, и&nbsp;информация о&nbsp;встречах будет автоматически загружаться в&nbsp;приложение Календарь на&nbsp;вашем смартфоне и/или компьютере.</p>
                 <p>Если Вы закроете это уведомление, Вы сможете найти этот функционал в&nbsp;<em>Настройках</em>.</p>
 

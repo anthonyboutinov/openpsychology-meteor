@@ -2,12 +2,12 @@
   padding-right: 30px;
 
   &:hover {
-    [data-action="alert-close"] {
+    .alert-close {
       opacity: 0.4;
     }
   }
 
-  [data-action="alert-close"] {
+  .alert-close {
     margin-right: -15px;
     opacity: 0;
     &:hover {

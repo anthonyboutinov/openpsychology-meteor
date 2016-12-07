@@ -31,6 +31,14 @@ if (Meteor.isServer) {
       return Meteor.users.update({ _id: Meteor.userId() }, {$set: {"profile.name": value}});
     },
 
+    'user.profile.systemNotifications.remove'(title) {
+      check(title, String);
+      check(this.userId, String);
+      // unsetSpecifier = {};
+      // unsetSpecifier["profile.settings." + field] = "";
+      return Meteor.users.update({ _id: Meteor.userId() }, {$pull: {"profile.systemNotifications": title}});
+    },
+
   });
 
 }

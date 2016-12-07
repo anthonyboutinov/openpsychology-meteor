@@ -1,19 +1,6 @@
+import { SystemNotifications } from '../systemNotifications.js';
+
 export const UserSettingsSchema = new SimpleSchema({
-  showWelcomeNotification: {
-    type: Boolean,
-    defaultValue: true,
-    optional: true,
-    autoform: {
-      hidden: true
-    }
-  },
-  showCalendarSubscriptionFunctionalityNotification: {
-    type: Boolean,
-    optional: true,
-    autoform: {
-      hidden: true
-    }
-  },
   showOrganizerWelcomeScreen: {
     type: Boolean,
     defaultValue: true,
@@ -25,6 +12,12 @@ export const UserSettingsSchema = new SimpleSchema({
 });
 
 export const UserProfileSchema = new SimpleSchema({
+  systemNotifications: {
+    type: [String],
+    defaultValue: [
+      SystemNotifications.showWelcomeNotification
+    ],
+  },
   settings: {
     type: UserSettingsSchema,
     defaultValue: {},
@@ -55,22 +48,4 @@ export const UserProfileSchema = new SimpleSchema({
       "Самара",
     ],
   },
-
-  // organization : {
-  //     type: String,
-  //     optional: true
-  // },
-  // website: {
-  //     type: String,
-  //     regEx: SimpleSchema.RegEx.Url,
-  //     optional: true
-  // },
-  // bio: {
-  //     type: String,
-  //     optional: true
-  // },
-  // country: {
-  //     type: Schema.UserCountry,
-  //     optional: true
-  // }
 });
