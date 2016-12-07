@@ -15,31 +15,9 @@
     </div>
     <div class="panel-body">
 
-      {{#autoForm collection=Events id="updateEventForm" doc=event type="update" trimString=true template="bootstrap3-horizontal"}}
-        <fieldset>
-          <legend class="col-xs-12">Основная информация</legend>
-          {{> afQuickField name="title" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" autofocus=''}}
-          {{> afQuickField name="categoryId" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
-          {{> afQuickField name="price" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
-          {{> afQuickField name="dates" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
-          <legend class="col-xs-12">Описание</legend>
-          {{> afQuickField name="description" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
-          {{> afQuickField name="imageUrl" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
-          {{> afQuickField name="bannerUrl" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
-
-          <!-- {{#afEachArrayItem name="dates"}}
-            {{> afFieldInput name=this.current.dateFrom template="datetimeRange"}}
-            <button type="button" class="btn btn-primary autoform-remove-item"><span class="glyphicon glyphicon-minus"></span></button>
-          {{/afEachArrayItem}}
-          <button type="button" class="btn btn-primary autoform-add-item" data-autoform-field="dates"><span class="glyphicon glyphicon-plus"></span></button> -->
-
-          <legend class="col-xs-12">Контактная информация</legend>
-          {{> afQuickField name="location" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
-
-        </fieldset>
-        <div class="col-sm-9 col-sm-offset-3">
-          <button type="submit" class="btn btn-primary btn-wider">Обновить</button>
-        </div>
+      {{#autoForm collection=Events id="updateEventForm" doc=event type="update" trimString=true template="bootstrap3"}}
+        {{> eventsFormFieldset}}
+        <button type="submit" class="btn btn-primary btn-wider">Обновить</button>
       {{/autoForm}}
 
     </div>

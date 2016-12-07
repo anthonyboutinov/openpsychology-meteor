@@ -4,6 +4,7 @@ import './update.html';
 
 import '/imports/ui/autoform/contemporary/afFormGroup.js';
 import '/imports/ui/autoform/datetimeRange.js';
+import '/imports/ui/components/dashboard/eventsFormFieldset.js';
 
 Template.dashboardOrganizerEventsUpdate.helpers({
   Events: function() {

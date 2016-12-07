@@ -1,0 +1,14 @@
+.daterangepicker .input-mini {
+  outline: none;
+
+  &:focus {
+    border-color: $input-focus-border;
+    background-color: $input-focus-bg;
+  }
+
+  &.active {
+    border-color: $input-focus-border;
+    box-shadow: 0px 0px 2px transparentize($input-focus-border, 0.5);
+    // background: darken($input-focus-bg, 4%);
+  }
+}

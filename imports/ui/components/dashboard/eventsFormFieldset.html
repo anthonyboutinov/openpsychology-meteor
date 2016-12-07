@@ -1,0 +1,33 @@
+<template name="eventsFormFieldset">
+  <fieldset>
+    <legend class="col-xs-12">Основная информация</legend>
+    {{> afQuickField name="title" template="contemporary" autofocus=""}}
+    {{> afQuickField name="categoryId" template="contemporary" data-minimumResultsForSearch="Infinity"}}
+    {{> afQuickField name="price" template="bootstrap3"}}
+    {{> afQuickField name="dates" template="bootstrap3"}}
+    <legend class="col-xs-12">Описание</legend>
+    {{> afQuickField name="description" template="bootstrap3"}}
+    {{> afQuickField name="imageUrl" template="contemporary"}}
+    {{> afQuickField name="bannerUrl" template="contemporary"}}
+
+    <!-- {{#afEachArrayItem name="dates"}}
+      {{> afFieldInput name=this.current.dateFrom template="datetimeRange"}}
+      <button type="button" class="btn btn-primary autoform-remove-item"><span class="glyphicon glyphicon-minus"></span></button>
+    {{/afEachArrayItem}}
+    <button type="button" class="btn btn-primary autoform-add-item" data-autoform-field="dates"><span class="glyphicon glyphicon-plus"></span></button> -->
+
+    <legend class="col-xs-12">Контактная информация</legend>
+    <div class="row">
+      <div class="col-md-7">
+        {{> afQuickField name="location" template="bootstrap3"}}
+      </div>
+      <div class="col-md-5">
+        <p class="text-muted fs-xs">
+          <div class="visible-md-block visible-lg-block m-t-15"></div>
+          Остальные данные для&nbsp;контактов берутся из&nbsp;данных Организации. Их можно изменить <a href="{{pathFor 'dashboard.events.update' _id=event.organizer._id}}">здесь</a>.
+        </p>
+      </div>
+    </div>
+
+  </fieldset>
+</template>
