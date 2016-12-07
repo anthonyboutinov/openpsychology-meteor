@@ -29,12 +29,12 @@ Template.contenteditableUpdate.events({
     target.text(target.html().replace("<br>", ""));
     event.preventDefault();
 
+    const val = target.text();
     if (val != "" && val != template.data.placeholder && val != template.data.state.get('storedValue')) {
       makeCall(template);
+    } else if (val == template.data.state.get('storedValue')) {
+      template.data.state.set('storedValue', false);
     }
-    // } else {
-    //   template.data.state.set('storedValue', false);
-    // }
   },
 
   "blur [data-id='contenteditableField']": function(event, template) {
