@@ -8,7 +8,11 @@
   <div class="panel-section">
     <div class="panel-heading">
       <!-- <div class="panel-title">Профиль</div> -->
-      <h3>Имя пользователя</h3>
+      <h3>
+        {{#if profileName}}{{profileName}}{{else}}
+          {{> setupUsernameContenteditable}}
+        {{/if}}
+      </h3>
     </div>
     <div class="panel-body">
 

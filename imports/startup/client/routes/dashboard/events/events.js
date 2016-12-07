@@ -11,8 +11,9 @@ Router.route("/dashboard/events/:timeframe", function() {
   this.subscribe('categories').wait();
   this.subscribe('organizers.managedByUser').wait();
 
+  const userId = Meteor.user()._id;
   this.subscribe('events.userRegistered', {
-    userId: Meteor.user()._id,
+    userId: userId,
     timeframe: this.params.timeframe,
     options: {
       limit: 100,

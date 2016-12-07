@@ -34,6 +34,10 @@ h3, .h3 {
 }
 
 
+.btn {
+  font-family: $font-family-base;
+}
+
 .dropdown-menu > li > a {
   &, & > i {
     -webkit-transition: none;

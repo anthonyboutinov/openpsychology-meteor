@@ -13,8 +13,9 @@ Router.route("/dashboard/user", function() {
   this.subscribe('categories').wait();
   this.subscribe('organizers.managedByUser').wait();
 
+  const userId = Meteor.user()._id;
   this.subscribe('events.userRegistered', {
-    userId: Meteor.user()._id,
+    userId: userId,
     timeframe: "ongoing",
     options: {
       limit: 2,
@@ -23,7 +24,7 @@ Router.route("/dashboard/user", function() {
   }).wait();
 
   this.subscribe('events.userRegistered', {
-    userId: Meteor.user()._id,
+    userId: userId,
     timeframe: "upcoming",
     options: {
       limit: 2,
@@ -32,17 +33,17 @@ Router.route("/dashboard/user", function() {
   }).wait();
 
   this.subscribe('events.userRegistered.counts', {
-    userId: Meteor.user()._id,
+    userId: userId,
     timeframe: "past"
   }).wait();
 
   this.subscribe('events.userRegistered.counts', {
-    userId: Meteor.user()._id,
+    userId: userId,
     timeframe: "upcoming"
   }).wait();
 
   this.subscribe('events.userRegistered.counts', {
-    userId: Meteor.user()._id,
+    userId: userId,
     timeframe: "ongoing"
   }).wait();
 

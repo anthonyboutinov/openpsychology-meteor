@@ -320,3 +320,21 @@ fieldset > .form-group:not(.form-group-contemporary) > .control-label {
     backface-visibility: hidden;
   }
 }
+
+span[contenteditable] {
+  border-bottom: 2px solid $input-border;
+  outline: none;
+  min-width: 2em;
+  display: inline-block;
+  &:focus {
+    border-bottom-color: $input-focus-border;
+  }
+}
+
+
+.h3, h3 {
+  .btn-sm {
+    margin-top: -1px;
+    margin-bottom: -1px;
+  }
+}
