@@ -1,6 +1,6 @@
 import './user.html';
 
-import '/imports/ui/components/dashboard/setupUsernameContenteditable.js';
+import '/imports/ui/components/common/contenteditable';
 
 Template.dashboardUser.helpers({
   pastEventsCount() {
