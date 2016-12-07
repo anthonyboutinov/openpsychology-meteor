@@ -8,9 +8,11 @@
 
   legend {
     margin-bottom: 10px;
+    min-height: 38px;
+    padding: 20px 0 0 0;
   }
 
-  & > .panel-heading, legend {
+  & > .panel-heading {
     padding: 20px 0px 7px 0px;
     min-height: 48px;
   }
