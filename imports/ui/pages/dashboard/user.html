@@ -28,13 +28,13 @@
                 <p>Если Вы хотите размещать свои мероприятия, <a href="{{pathFor 'dashboard.organizers'}}">создайте Организатора</a>.</p>
               </div>
 
-              <div class="alert alert-default alert-closable" role="alert">
+              <div class="alert alert-default alert-closable" role="alert" id="myCalendarContainer">
                 <a href="#" data-action="alert-close" role="button" class="pull-right link-hoverreveal"><i class="fa fa-times" aria-hidden="true"></i><span class="sr-only">Закрыть</span></a>
                 <p>Чтобы не пропустить встречи, подпишитесь на Ваш личный календарь, и&nbsp;информация о&nbsp;встречах будет автоматически загружаться в&nbsp;приложение Календарь на&nbsp;вашем смартфоне и/или компьютере.</p>
                 <p>Если Вы закроете это уведомление, Вы сможете найти этот функционал в&nbsp;<em>Настройках</em>.</p>
 
-                <span class="btn btn-default btn-sm m-t-10" id="myCalendarBtn"
-                data-toggle="popover" data-placement="bottom" data-container="#myCalendarBtn" data-html="true" data-content="http://localhost:3000/files/ics/user/{{currentUser._id}}<a class='m-l-char' href='/files/ics/user/{{currentUser._id}}' target='_blank'><i class='fa fa-fw fa-external-link' aria-hidden='true'></i><span class='sr-only'>Перейти по ссылке</span>">
+                <span class="btn btn-default btn-sm m-t-10"
+                data-toggle="popover" data-placement="bottom" data-container="#myCalendarContainer" data-viewport=".page-container > .container-fluid > .panel-section" data-html="true" data-content="http://localhost:3000/files/ics/user/{{currentUser._id}}<a class='m-l-char' href='/files/ics/user/{{currentUser._id}}' target='_blank'><i class='fa fa-fw fa-external-link' aria-hidden='true'></i><span class='sr-only'>Перейти по ссылке</span>">
                   <i class="fa fa-fw fa-calendar" aria-hidden="true"></i>
                   Мой календарь
                 </span>
