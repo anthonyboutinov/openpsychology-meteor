@@ -1,12 +1,8 @@
 <template name="atOauth">
   <div class="at-oauth">
     <p class="text-muted">Через социальную сеть</p>
-    <div class="row">
       {{#each oauthService}}
-        <div class="col-xs-3 col-sm-3">
-          {{> atSocial}}
-        </div>
+        {{> atSocial}}
       {{/each}}
-    </div>
   </div>
 </template>

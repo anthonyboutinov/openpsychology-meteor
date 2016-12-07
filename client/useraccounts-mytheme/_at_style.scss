@@ -34,8 +34,13 @@ button.at-social-btn {
   padding: 8px 10px;
   border-radius: 5px;
   font-size: 16px;*/
-  width: 100%;
+  // width: 100%;
   margin-bottom: 10px;
+  width: calc(25% - 4%);
+  margin-right: 4%;
+  &:last-child {
+    margin-right: 0;
+  }
 
   i {
     // float: left;

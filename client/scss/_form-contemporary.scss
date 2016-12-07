@@ -40,10 +40,12 @@
     min-height: 25px;
     padding: 0;
     background: none !important;
+    box-shadow: none;
   }
 
-  .form-control {
-    // margin-top: -4px;
+  &.has-feedback .form-control-feedback {
+    top: auto;
+    bottom: 0px;
   }
 
   .input-group {
