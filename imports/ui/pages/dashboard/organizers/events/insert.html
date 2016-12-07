@@ -8,13 +8,13 @@
     <li><a href="{{pathFor 'dashboard.organizer.events.add' _id=organizer._id}}" class="active">Добавить</a></li>
   </ul>
 
-  <div class="panel-section bg-white">
+  <div class="panel-section">
     <div class="panel-heading">
-      <div class="panel-title">Добавить событие</div>
+      <h3>Добавить событие</h3>
     </div>
     <div class="panel-body">
 
-      {{#autoForm collection=Events id="insertEventForm" doc=eventTemplateDoc organizer=organizer type="insert" trimString=true template="bootstrap3-horizontal" class="row"}}
+      {{#autoForm collection=Events id="insertEventForm" doc=eventTemplateDoc organizer=organizer type="insert" trimString=true template="bootstrap3-horizontal"}}
         <fieldset>
           <legend class="col-xs-12">Основная информация</legend>
           {{> afQuickField name="title" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" autofocus=''}}

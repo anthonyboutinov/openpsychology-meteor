@@ -7,13 +7,13 @@
     <li><a href="{{pathFor 'dashboard.organizer.events' _id=organizer._id}}" class="active">События</a></li>
   </ul>
 
+  <h3 class="panel-heading">События</h3>
+
   <div class="panel-section">
     <div class="panel-heading">
-      <div class="panel-title">События</div>
+      <div class="panel-title">Список событий организации «{{organizer.name}}»</div>
     </div>
     <div class="panel-body">
-
-      <h3>Список событий организации «{{organizer.name}}»</h3>
 
       <div class="fulldescription-actions">
         <a href="{{pathFor 'dashboard.organizer.events.add' _id=organizer._id}}" class="btn btn-success btn-wider"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Добавить</a>

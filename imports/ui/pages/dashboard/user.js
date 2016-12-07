@@ -6,6 +6,7 @@ Template.dashboardUser.helpers({
   },
 });
 
-// Template.dashboardUser.onRendered(function(){
-//   // atvImg();
-// });
+Template.dashboardUser.onRendered(function(){
+  // atvImg();
+  $('[data-toggle="popover"]').popover();
+});

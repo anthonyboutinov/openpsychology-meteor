@@ -1,0 +1,25 @@
+.alert-closable {
+  padding-right: 30px;
+
+  &:hover {
+    [data-action="alert-close"] {
+      opacity: 0.4;
+    }
+  }
+
+  [data-action="alert-close"] {
+    margin-right: -15px;
+    opacity: 0;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.alert-default {
+  background-color: #fff;
+  border: 1px solid $gray-lighter;
+  border-radius: $border-radius-small;
+
+  color: $text-muted;
+}

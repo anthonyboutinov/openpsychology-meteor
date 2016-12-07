@@ -1,3 +1,10 @@
+.dashboardLayout {
+  .container-fluid {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
 #document-body {
   & > .header {
     position: fixed;
