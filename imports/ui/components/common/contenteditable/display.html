@@ -1,6 +1,6 @@
 <template name="contenteditable">
   {{#if displayValue}}
-    <span data-conteneditable="true" role="button" title="Нажмите дважды, чтобы изменить">{{value}}</span>
+    <span data-conteneditable="true" role="textbox" title="Нажмите дважды, чтобы изменить">{{value}}</span>
   {{else}}
     {{> contenteditableUpdate}}
   {{/if}}

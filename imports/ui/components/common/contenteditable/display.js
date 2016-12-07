@@ -9,6 +9,10 @@ Template.contenteditable.onCreated(function() {
 
 Template.contenteditable.helpers({
   displayValue: function() {
+    if (!this.state) {
+      this.state = new ReactiveDict();
+      this.state.set('storedValue', false);
+    }
     return this.state.get("storedValue") ? false : this.value;
   },
 });

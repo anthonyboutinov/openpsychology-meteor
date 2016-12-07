@@ -13,7 +13,7 @@ Router.route("/dashboard/user", function() {
   this.subscribe('categories').wait();
   this.subscribe('organizers.managedByUser').wait();
 
-  const userId = Meteor.user()._id;
+  const userId = Meteor.userId();
   this.subscribe('events.userRegistered', {
     userId: userId,
     timeframe: "ongoing",
@@ -50,7 +50,7 @@ Router.route("/dashboard/user", function() {
   this.subscribe('events.liked.count').wait();
   this.subscribe('events.bookmarked.count').wait();
 
-  const findParamsLastBookmarkedEvent = {'bookmarks.userId': Meteor.user()._id};
+  const findParamsLastBookmarkedEvent = {'bookmarks.userId': Meteor.userId()};
 
   this.subscribe('events.bookmarked.lastOne').wait();
 

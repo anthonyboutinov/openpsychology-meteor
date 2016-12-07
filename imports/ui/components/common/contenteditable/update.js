@@ -25,10 +25,16 @@ Template.contenteditableUpdate.helpers({
 Template.contenteditableUpdate.events({
   "keydown [data-id='contenteditableField']": function(event, template) {
     if (event.keyCode != 13) return;
-    // const target = $(event.target);
+    const target = $(event.target);
+    target.text(target.html().replace("<br>", ""));
     event.preventDefault();
-    makeCall(template);
-    // target.text(target.html().replace("<br>", ""));
+
+    if (val != "" && val != template.data.placeholder && val != template.data.state.get('storedValue')) {
+      makeCall(template);
+    }
+    // } else {
+    //   template.data.state.set('storedValue', false);
+    // }
   },
 
   "blur [data-id='contenteditableField']": function(event, template) {

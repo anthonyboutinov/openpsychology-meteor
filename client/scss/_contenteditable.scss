@@ -4,6 +4,8 @@ span[contenteditable] {
   outline: none;
   min-width: 2em;
   display: inline-block;
+  max-width: 100%;
+  overflow-wrap: break-word;
 
   &:focus {
     border-bottom-color: $input-focus-border;
@@ -15,6 +17,8 @@ span[contenteditable] {
   border-bottom: 2px solid transparent;
   margin-bottom: -2px;
   cursor:text;
+  max-width: 100%;
+  overflow-wrap: break-word;
 
   -webkit-transition: border-bottom .8s linear 2s;
   -moz-transition: border-bottom .8s linear 2s;
