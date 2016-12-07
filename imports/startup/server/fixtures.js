@@ -13,7 +13,7 @@ Meteor.startup(() => {
   if ( !hasAdmin ) {
     Accounts.createUser({
       email: 'anton4488@gmail.com',
-      password: 'password'
+      password: 'password',
     });
   }
 

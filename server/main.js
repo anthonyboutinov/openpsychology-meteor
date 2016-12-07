@@ -1,5 +1,5 @@
-import '/imports/startup/server';
-
-import '/imports/api/user.js';
+import '/imports/api/users';
 import '/imports/api/organizers';
 import '/imports/api/events';
+
+import '/imports/startup/server';

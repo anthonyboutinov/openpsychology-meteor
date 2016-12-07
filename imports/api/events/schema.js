@@ -37,17 +37,6 @@ const OrganizerShortenedSchema = new SimpleSchema({
 });
 
 export const EventsSchema = new SimpleSchema({
-
-  createdAt: {
-    type: Date,
-    label: "Время создания",
-    // value: function() {
-    //   return new Date();
-    // },
-    autoform: {
-      group: "Мета",
-    },
-  },
   categoryId: {
     type: String,
     label: "Категория",

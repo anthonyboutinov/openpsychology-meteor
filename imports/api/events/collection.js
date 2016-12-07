@@ -77,3 +77,4 @@ export const Events = new Mongo.Collection("events", {
 });
 
 Events.attachSchema(EventsSchema);
+Events.attachBehaviour('timestampable');
