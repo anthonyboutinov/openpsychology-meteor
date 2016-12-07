@@ -2,6 +2,10 @@ import './sidenavbar.html';
 
 Template.dashboardSidenavbar.helpers({
 
+  username: function() {
+    const user = Meteor.user();
+    return user.profile.name ? user.profile.name : user.emails[0].address;
+  },
   isActive: function(name) {
     return Router.current().route.getName() == name ? "active" : false;
   },
