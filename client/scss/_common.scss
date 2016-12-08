@@ -333,3 +333,16 @@ fieldset > .form-group:not(.form-group-contemporary) > .control-label {
     margin-bottom: -3px;
   }
 }
+
+
+.img-bg-blur {
+  position: absolute;
+  left: -40px;
+  right: -40px;
+  top: -40px;
+  bottom: -40px;
+  background-position: center;
+  background-size: 110%;
+  background-repeat: no-repeat;
+  filter: blur(30px);
+}

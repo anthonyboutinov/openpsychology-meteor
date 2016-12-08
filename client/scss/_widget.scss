@@ -130,15 +130,7 @@
   }
 
   &-blur {
-    position: absolute;
-    left: -40px;
-    right: -40px;
-    top: -40px;
-    bottom: -40px;
-    background-position: center;
-    background-size: 110%;
-    background-repeat: no-repeat;
-    filter: blur(30px);
+    @extend .img-bg-blur;
     opacity: 0;
     -webkit-transition: opacity .2s cubic-bezier(0.645, 0.045, 0.355, 1);
     -moz-transition: opacity .2s cubic-bezier(0.645, 0.045, 0.355, 1);
