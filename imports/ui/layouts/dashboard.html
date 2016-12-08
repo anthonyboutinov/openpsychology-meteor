@@ -6,7 +6,11 @@
         {{> dashboardNavbar}}
       </div>
       <nav class="page-sidebar">
-        {{> dashboardSidenavbar}}
+        <div class="scrollbar-macos">
+          <div style="height: calc(100vh - 50px);">
+            {{> dashboardSidenavbar}}
+          </div>
+        </div>
       </nav>
       <div class="page-container">
         <div class="container-fluid">
