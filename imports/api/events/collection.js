@@ -1,6 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import { EventsSchema } from './schema.js';
 import { Categories } from '../categories';
+import { Coaches } from '/imports/api/coaches/collection.js';
 
 Event = function (doc) {
   _.extend(this, doc);
@@ -64,6 +65,10 @@ Event.prototype = {
 
   category() {
     return Categories.findOne({_id: this.categoryId});
+  },
+
+  coaches() {
+    return Coaches.find({_id: {$in: this.coaches}}, {orderBy: {name: 1}});
   },
 
 

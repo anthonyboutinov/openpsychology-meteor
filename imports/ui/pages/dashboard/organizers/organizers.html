@@ -28,10 +28,11 @@
         {{#each org in organizers}}
         {{#with org}}
         <li>
-          <h4 class="font-headings inline-block"><img src="https://placehold.it/40x40" class="m-r-20">{{name}}</h4>
+          <a href="{{pathFor 'dashboard.organizer' _id=_id}}" class="link-hoverreveal">
+            <h4 class="font-headings inline-block"><img src="https://placehold.it/40x40" class="m-r-20">{{name}}</h4>
+          </a>
           <div class="row">
             <div class="col-sm-7">
-              <a href="#" class="btn btn-info-alt"><i class="fa fa-fw fa-bar-chart" aria-hidden="true"></i> Статистика</a>
               <a href="{{pathFor 'organizer' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-id-card-o" aria-hidden="true"></i> Страница</a>
               <a href="{{pathFor 'dashboard.organizer.update' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Редактировать</a>
               <div class="btn-group">
@@ -52,7 +53,7 @@
                 </div>
               </div>
               <div class="position-relative">
-                <a href="{{pathFor 'dashboard.organizer.events' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> События</a>
+                <!-- <a href="{{pathFor 'dashboard.organizer.events' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> События</a> -->
                 <a href="{{pathFor 'dashboard.organizer.events.add' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-calendar-plus-o" aria-hidden="true"></i> Добавить событие</a>
               </div>
             </div>

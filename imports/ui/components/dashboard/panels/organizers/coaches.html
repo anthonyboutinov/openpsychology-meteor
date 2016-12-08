@@ -1,0 +1,16 @@
+<template name="dashboardPanelOrganizersCoaches">
+
+  <div class="panel-section panel-section-opaque">
+    <div class="panel-heading">
+      <div class="panel-title">Тренера/ведущие</div>
+    </div>
+    <div class="panel-body">
+
+      {{#each coach in organizer.coaches}}
+        {{coach.name}}<br>
+      {{/each}}
+
+    </div>
+  </div>
+
+</template>

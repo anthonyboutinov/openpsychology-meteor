@@ -1,0 +1,12 @@
+<template name="dashboardOrganizer">
+  <ul class="breadcrumb">
+    <li><a href="{{pathFor 'dashboard.home'}}">Личный кабинет</a></li>
+    <li><a href="{{pathFor 'dashboard.organizers'}}">Организации</a></li>
+    <li><a href="{{pathFor 'dashboard.organizer' _id=organizer._id}}" class="active">{{organizer.name}}</a></li>
+  </ul>
+
+  <h3 class="panel-heading">{{organizer.name}}</h3>
+
+  {{> dashboardPanelOrganizersCoaches}}
+
+</template>

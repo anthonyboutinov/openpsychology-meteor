@@ -1,5 +1,6 @@
 import './events';
 
-import './insert.js';
 import './organizers.js';
+import './organizer.js';
+import './insert.js';
 import './update.js';

@@ -4,6 +4,7 @@ import { LocationSchema } from '../schemas/location.js';
 import { EventDatesSchema } from '../schemas/eventDates.js';
 import { LikeSchema } from '../schemas/like.js';
 import { BookmarkSchema } from '../schemas/bookmark.js';
+import { Coaches } from '/imports/api/coaches/collection.js';
 
 const PriceSchema = new SimpleSchema({
   regular: {
@@ -122,11 +123,44 @@ export const EventsSchema = new SimpleSchema({
   organizer: {
     label: "Организация",
     type: OrganizerShortenedSchema,
+    autoform: {
+      hidden: true,
+    }
+  },
+
+  'coachesIds': {
+    type: Array,
+    label: "Тренера/ведущие",
+    defaultValue: [],
+    maxCount: 50,
+    autoform: {
+      group: "Описание",
+    },
+  },
+  'coachesIds.$': {
+    type: String,
+    label: "Тренер",
+    autoform: {
+      type: 'select',
+      options: function() {
+        console.log(this);
+        Coaches.find({organizerId: this._id}, {orderBy: {'name': 1}}).map(function(doc) {
+          return {
+            value: doc._id,
+            label: doc.name
+          }
+        });
+      }
+    },
+    optional: true,
   },
 
   dates: {
     type: [EventDatesSchema],
     label: "Даты проведения",
+    autoform: {
+      group: "Описание",
+    }
   },
 
   registeredForEvent: {
