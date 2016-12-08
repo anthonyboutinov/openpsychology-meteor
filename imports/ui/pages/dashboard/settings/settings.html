@@ -9,49 +9,109 @@
 
   <div class="panel-section panel-section-opaque">
     <div class="panel-heading">
-      <div class="panel-title">Аккаунт</div>
+      <div class="panel-title">Профиль</div>
     </div>
     <div class="panel-body">
 
-      <a href="{{pathFor 'dashboard.resetPassword'}}">Изменить пароль</a>
+      <div class="row">
+        <div class="col-md-6">
 
-      Изменить email
-      <!-- {{#autoForm collection=Meteor.users id="updateUserForm" type="update" doc=currentUser trimString=true template="bootstrap3"}}
-        {{> afQuickField name="emails" template="contemporary"}}
-      {{/autoForm}} -->
+          <h3>Сменить имя</h3>
 
-      Изменить имя
+          <div class="form-group form-group-contemporary">
+            <label class="fonm-label">Ваши имя, фамилия</label>
+            <input class="form-control" type="text" value="Иван Иванов">
+          </div>
+
+        </div>
+        <div class="col-md-6">
+
+          <h3>Сменить город</h3>
+
+          <div class="form-group form-group-contemporary">
+            <label class="fonm-label">Город</label>
+            <input class="form-control" type="text" value="Казань">
+          </div>
+
+        </div>
+      </div>
 
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-12">
 
-      <div class="panel-section panel-section-opaque">
-        <div class="panel-heading bg-danger">
-          <div class="panel-title text-danger">Опасная зона</div>
-        </div>
-        <div class="panel-body">
-          <h3>Удаление аккаунта</h3>
+  <div class="panel-section panel-section-opaque">
+    <div class="panel-heading">
+      <div class="panel-title">Аккаунт</div>
+    </div>
+    <div class="panel-body">
 
-          <p>Если Вы удалите аккаунт, его будет невозможно восстановить. Пожалуйста, будьте уверены в Ваших намерениях.</p>
+      <div class="row">
+        <dvi class="col-md-6">
+          <h3>Сменить пароль</h3>
 
-          <p>Вместе с аккаунтом будут удалены организации (<strong>и все мероприятия</strong>, связанные с ними), для которых Вы являетесь владельцем. Вы можете передать права на каждую из представленных организаций другому пользователю перед тем как удалить свой аккаунт.</p>
+          <div class="form-group form-group-contemporary">
+            <label class="fonm-label">Текущий пароль</label>
+            <input class="form-control" type="password">
+          </div>
 
-          <p>Список организаций, подлежащих к удалению вместе с аккаунтом:</p>
-          <ul>
-            <li>Первая организация <a href="#" class="btn btn-sm btn-danger-alt">Передать другому пользователю</a></li>
-            <li>Вторая организация <a href="#" class="btn btn-sm btn-danger-alt">Передать другому пользователю</a></li>
-          </ul>
+          <div class="form-group form-group-contemporary">
+            <label class="fonm-label">Новый пароль</label>
+            <input class="form-control" type="password">
+          </div>
 
-          <button class="btn btn-danger-alt" mo-action="deleteUser">
-            <i class="fa fa-fw fa-trash" aria-hidden="true"></i>
-            Удалить аккаунт и организации
-          </button>
+          <div class="form-group form-group-contemporary">
+            <label class="fonm-label">Новый пароль (повтор)</label>
+            <input class="form-control" type="password">
+          </div>
 
-        </div>
+          <button class="btn btn-primary btn-wider">Сменить пароль</button>
+
+        </dvi>
+        <dvi class="col-md-6">
+          <h3>Сменить email</h3>
+
+          <div class="form-group form-group-contemporary">
+            <label class="fonm-label">Ваш email</label>
+            <input class="form-control" type="text" value="someone@example.com">
+          </div>
+
+          <!-- {{#autoForm collection=Meteor.users id="updateUserForm" type="update" doc=currentUser trimString=true template="bootstrap3"}}
+            {{> afQuickField name="emails" template="contemporary"}}
+          {{/autoForm}} -->        </dvi>
       </div>
+
+
+
+
+
+    </div>
+  </div>
+
+
+
+
+  <div class="panel-section panel-section-opaque">
+    <div class="panel-heading bg-danger">
+      <div class="panel-title text-danger">Опасная зона</div>
+    </div>
+    <div class="panel-body">
+      <h3>Удаление аккаунта</h3>
+
+      <p>Если Вы удалите аккаунт, его будет невозможно восстановить. Пожалуйста, будьте уверены в Ваших намерениях.</p>
+
+      <p>Вместе с аккаунтом будут удалены организации (<strong>и все мероприятия</strong>, связанные с ними), для которых Вы являетесь владельцем. Вы можете передать права на каждую из представленных организаций другому пользователю перед тем как удалить свой аккаунт.</p>
+
+      <p>Список организаций, подлежащих к удалению вместе с аккаунтом:</p>
+      <ul>
+        <li>Первая организация <a href="#" class="btn btn-sm btn-danger-alt">Передать другому пользователю</a></li>
+        <li>Вторая организация <a href="#" class="btn btn-sm btn-danger-alt">Передать другому пользователю</a></li>
+      </ul>
+
+      <button class="btn btn-danger-alt" mo-action="deleteUser">
+        <i class="fa fa-fw fa-trash" aria-hidden="true"></i>
+        Удалить аккаунт и организации
+      </button>
 
     </div>
   </div>
