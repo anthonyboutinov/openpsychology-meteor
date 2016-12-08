@@ -1,13 +1,14 @@
 import './events.html';
 
-Template.dashboardOrganizerEvents.helpers({
+
+Template.dashboardPanelOrganizerEvents.helpers({
 
 });
 
-Template.dashboardOrganizerEvents.events({
+Template.dashboardPanelOrganizerEvents.events({
+
   'click [mo-action="remove"]': function(event, template) {
     event.preventDefault();
-    // const target = $(event.currentTarget);
     const doc = this;
     swal({
       title: "Вы уверены?",
@@ -23,4 +24,5 @@ Template.dashboardOrganizerEvents.events({
       swal("Удалено!", doc.category().singularName + " «" + doc.title + "» удалено.", "success");
     });
   },
+
 });

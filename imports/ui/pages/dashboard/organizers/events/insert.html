@@ -4,13 +4,12 @@
     <li><a href="{{pathFor 'dashboard.home'}}">Личный кабинет</a></li>
     <li><a href="{{pathFor 'dashboard.organizers'}}">Организации</a></li>
     <li><a href="{{pathFor 'dashboard.organizer' _id=organizer._id}}">{{organizer.name}}</a></li>
-    <li><a href="{{pathFor 'dashboard.organizer.events' _id=organizer._id}}">События</a></li>
-    <li><a href="{{pathFor 'dashboard.organizer.events.add' _id=organizer._id}}" class="active">Добавить</a></li>
+    <li><a href="{{pathFor 'dashboard.organizer.events.add' _id=organizer._id}}" class="active">Добавить мероприятие</a></li>
   </ul>
 
   <div class="panel-section">
     <div class="panel-heading">
-      <h3>Добавить событие</h3>
+      <h3>Добавить мероприятие</h3>
     </div>
     <div class="panel-body">
 
