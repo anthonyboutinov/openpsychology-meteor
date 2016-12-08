@@ -31,7 +31,7 @@ AccountsTemplates.configure({
     termsUrl: 'terms-of-use',
 
     // Redirects
-    homeRoutePath: '/',
+    // homeRoutePath: '/',
     redirectTimeout: 4000,
 
     // Hooks
@@ -75,7 +75,11 @@ AccountsTemplates.configureRoute('signIn', {
 // AccountsTemplates.configureRoute('changePwd');
 AccountsTemplates.configureRoute('enrollAccount');
 AccountsTemplates.configureRoute('forgotPwd');
-AccountsTemplates.configureRoute('resetPwd');
+AccountsTemplates.configureRoute('resetPwd', {
+  name: 'dashboard.resetPassword',
+  path: '/dashboard/settings/resetPassword',
+  template: 'dashboardLayout'
+});
 // AccountsTemplates.configureRoute('signIn');
 AccountsTemplates.configureRoute('signUp');
 AccountsTemplates.configureRoute('verifyEmail');

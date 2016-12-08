@@ -49,10 +49,10 @@ Meteor.startup(() => {
 
   if (Events.find().count() == 0) {
 
-    const categories = Categories.find({}, {fields: {'_id': 1}}).fetch().map((v) => {return v._id});
+    const categories = Categories.find({}, {fields: {'_id': 1}}).fetch();//.map((v) => {return v._id});
     console.log("Categories: ", categories);
 
-    const organizers = Organizers.find({}, {fields: {'_id': 1}}).fetch().map((v) => {return v._id});
+    const organizers = Organizers.find({}, {fields: {'_id': 1}}).fetch();//.map((v) => {return v._id});
     console.log("Organizers: ", organizers);
 
     const dates = [

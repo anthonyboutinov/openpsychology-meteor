@@ -17,7 +17,7 @@ if (Meteor.isServer) {
   }
   */
   Meteor.publish('events', function(params) {
-    const categoryIds = Categories.find({urlName: {$in: params.categoriesUrlNamesList}}).map( (v) => {return v._id} );
+    const categoryIds = Categories.find({urlName: {$in: params.categoriesUrlNamesList}}, {fields: {_id: 1}}).map((v)=>{return v._id});
     let findParams = {categoryId: {$in: categoryIds}};
 
     findParams = queryByDate.setFindContainsText(findParams, params.constainsText);

@@ -9,15 +9,13 @@ import '/imports/ui/components/main/searchbar/searchbar.js';
 
 Template.defaultLayout.events({
   "click #showSearchbar": function(event, template){
+    event.preventDefault();
     if (this.showSearchbar) {
-      event.preventDefault();
       Router.go(window.location.pathname);
     } else if (this.searchbarSupported) {
-      event.preventDefault();
       Router.go(window.location.pathname + "?sb=true");
     } else {
-      event.preventDefault();
-      const allCategoriesUrlNames = Categories.find({}, {reactive: false, fields: {urlName: 1}}).map((v) => {return v.urlName}).join("");
+      const allCategoriesUrlNames = Categories.find({}, {fields: {urlName: 1}}).map((v)=>{return v.urlName}).join("");
       Router.go("/search/" + allCategoriesUrlNames + "?sb=true")
     }
 

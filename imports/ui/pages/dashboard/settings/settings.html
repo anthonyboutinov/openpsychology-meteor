@@ -1,0 +1,30 @@
+<template name="dashboardSettings">
+
+  <ul class="breadcrumb">
+    <li><a href="{{pathFor 'dashboard.home'}}">Личный кабинет</a></li>
+    <li><a href="{{pathFor 'dashboard.settings'}}" class="active">Настройки</a></li>
+  </ul>
+
+  <h3 class="panel-heading">Настройки</h3>
+
+  <div class="panel-section">
+    <div class="panel-heading">
+      Аккаунт
+    </div>
+    <div class="panel-body">
+
+      <a href="{{pathFor 'dashboard.resetPassword'}}">Изменить пароль</a>
+
+      Изменить email
+      <!-- {{#autoForm collection=Meteor.users id="updateUserForm" type="update" doc=currentUser trimString=true template="bootstrap3"}}
+        {{> afQuickField name="emails" template="contemporary"}}
+      {{/autoForm}} -->
+
+      Изменить имя
+
+      Удалить аккаунт
+
+    </div>
+  </div>
+
+</template>
