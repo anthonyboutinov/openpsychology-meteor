@@ -64,7 +64,38 @@ Event.prototype = {
 
   category() {
     return Categories.findOne({_id: this.categoryId});
-  }
+  },
+
+
+
+
+  locationLabel() {
+    return this.location.city + (this.location.line1 ? ", " + this.location.line1 : "") + (this.location.additionalInfo ? ", " + this.location.additionalInfo : "");
+  },
+  salePriceLabel() {
+    const price = this.price.sale;
+    return price == 0 ? "Бесплатно" : price + "₽";
+  },
+  regularPriceLabel() {
+    const price = this.price.regular;
+    if (price === undefined) return "";
+    return price == 0 ? "Бесплатно" : price + "₽";
+  },
+  deltaPriceLabel() {
+    const sale = this.price.sale;
+    const regular = this.price.regular;
+    return (regular - sale) + "₽";
+  },
+  salePriceIsSet() {
+    return this.price.sale != null && this.price.sale !== this.price.regular;
+  },
+  registrationIsOpen() {
+    return this.dates[this.dates.length - 1].dateFrom > new Date();
+  },
+  currentUserHasRegistered() {
+    const user = Meteor.user();
+    return user ? this.registeredForEvent.includes(user._id) : false;
+  },
 
 };
 

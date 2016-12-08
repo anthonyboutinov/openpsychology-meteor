@@ -63,6 +63,7 @@ export const OrganizersSchema = new SimpleSchema({
     autoform: {
       group: "Контакты",
       // 'help-text': "Email скрыт от посетителей сайта. Посетители могут отправлять сообщения на эту почту только через форму обратной связи"
+      placeholder: "petrov@example.com",
     }
   },
   phoneNum: {
@@ -74,6 +75,7 @@ export const OrganizersSchema = new SimpleSchema({
     optional: true,
     autoform: {
       group: "Контакты",
+      placeholder: "9000000000",
     }
   },
   location: {

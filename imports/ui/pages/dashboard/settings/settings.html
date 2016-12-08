@@ -14,27 +14,26 @@
     <div class="panel-body">
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
+            <h3>Сменить имя</h3>
+            {{#autoForm collection="Meteor.users" doc=currentUserDoc id="updateUserProfileForm" type="update"}}
+              {{> afQuickField name='profile.name' template="contemporary"}}
+            {{/autoForm}}
 
-          <h3>Сменить имя</h3>
-
-          <div class="form-group form-group-contemporary">
-            <label class="fonm-label">Имя, фамилия</label>
-            <input class="form-control" type="text" value="Иван Иванов">
-          </div>
-
+            <h3>Сменить город</h3>
+            {{#autoForm collection="Meteor.users" doc=currentUserDoc id="updateUserProfileForm" type="update"}}
+              {{> afQuickField name='profile.city' template="contemporary"}}
+            {{/autoForm}}
         </div>
-        <div class="col-md-6">
-
-          <h3>Сменить город</h3>
-
-          <div class="form-group form-group-contemporary">
-            <label class="fonm-label">Город</label>
-            <input class="form-control" type="text" value="Казань">
-          </div>
-
+        <div class="col-md-4">
+          <h3>Демографические данные</h3>
+          {{#autoForm collection="Meteor.users" doc=currentUserDoc id="updateUserProfileForm" type="update"}}
+            {{> afQuickField name='profile.gender' template="contemporary"}}
+            {{> afQuickField name='profile.birthyear' template="contemporary"}}
+          {{/autoForm}}
         </div>
       </div>
+      <p class="text-muted m-b-0"><small>Изменения вступают в силу сразу.</small></p>
 
     </div>
   </div>
@@ -47,7 +46,7 @@
     <div class="panel-body">
 
       <div class="row">
-        <dvi class="col-md-6">
+        <div class="col-md-6">
           <h3>Сменить пароль</h3>
 
           <div class="form-group form-group-contemporary">
@@ -67,18 +66,15 @@
 
           <button class="btn btn-primary btn-wider">Сменить пароль</button>
 
-        </dvi>
-        <dvi class="col-md-6">
+        </div>
+        <div class="col-md-6">
           <h3>Сменить email</h3>
-
           <div class="form-group form-group-contemporary">
             <label class="fonm-label">Ваш email</label>
             <input class="form-control" type="text" value="someone@example.com">
           </div>
-
-          <!-- {{#autoForm collection=Meteor.users id="updateUserForm" type="update" doc=currentUser trimString=true template="bootstrap3"}}
-            {{> afQuickField name="emails" template="contemporary"}}
-          {{/autoForm}} -->        </dvi>
+          <p class="text-muted m-b-0"><small>Изменения вступают в силу сразу.</small></p>
+        </div>
       </div>
 
 

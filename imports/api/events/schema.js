@@ -11,12 +11,19 @@ const PriceSchema = new SimpleSchema({
     label: "Обычная стоимость",
     optional: true,
     min: 0,
+    defaultValue: 0,
+    autoform: {
+      placeholder: "Бесплатно"
+    }
   },
   sale: {
     type: Number,
     label: "С учетом скидки",
     optional: true,
     min: 0,
+    autoform: {
+      placeholder: "Скидки нет"
+    }
   },
 });
 
@@ -49,7 +56,9 @@ export const EventsSchema = new SimpleSchema({
             label: doc.singularName
           }
         });
-      }
+      },
+      "data-minimumResultsForSearch": "Infinity",
+      "data-placeholder": "Укажите категорию",
     },
   },
 

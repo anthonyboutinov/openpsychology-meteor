@@ -171,9 +171,18 @@
     color: $gray;
   }
 
+  .select2-results {
+    overflow-y: scroll;
+    max-height: 40vh;
+  }
+
   .select2-results__option--highlighted[aria-selected] {
     background-color: $brand-primary;
     color: white;
+  }
+
+  .select2-selection__clear {
+    padding-right: 5px;
   }
 }
 
