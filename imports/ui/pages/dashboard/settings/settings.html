@@ -7,9 +7,9 @@
 
   <h3 class="panel-heading">Настройки</h3>
 
-  <div class="panel-section">
+  <div class="panel-section panel-section-opaque">
     <div class="panel-heading">
-      Аккаунт
+      <div class="panel-title">Аккаунт</div>
     </div>
     <div class="panel-body">
 
@@ -22,7 +22,36 @@
 
       Изменить имя
 
-      Удалить аккаунт
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="panel-section panel-section-opaque">
+        <div class="panel-heading bg-danger">
+          <div class="panel-title text-danger">Опасная зона</div>
+        </div>
+        <div class="panel-body">
+          <h3>Удаление аккаунта</h3>
+
+          <p>Если Вы удалите аккаунт, его будет невозможно восстановить. Пожалуйста, будьте уверены в Ваших намерениях.</p>
+
+          <p>Вместе с аккаунтом будут удалены организации (<strong>и все мероприятия</strong>, связанные с ними), для которых Вы являетесь владельцем. Вы можете передать права на каждую из представленных организаций другому пользователю перед тем как удалить свой аккаунт.</p>
+
+          <p>Список организаций, подлежащих к удалению вместе с аккаунтом:</p>
+          <ul>
+            <li>Первая организация <a href="#" class="btn btn-sm btn-danger-alt">Передать другому пользователю</a></li>
+            <li>Вторая организация <a href="#" class="btn btn-sm btn-danger-alt">Передать другому пользователю</a></li>
+          </ul>
+
+          <button class="btn btn-danger-alt" mo-action="deleteUser">
+            <i class="fa fa-fw fa-trash" aria-hidden="true"></i>
+            Удалить аккаунт и организации
+          </button>
+
+        </div>
+      </div>
 
     </div>
   </div>

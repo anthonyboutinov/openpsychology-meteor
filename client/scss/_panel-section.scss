@@ -15,6 +15,7 @@
   & > .panel-heading {
     padding: 20px 0px 7px 0px;
     min-height: 48px;
+    border-radius: 0;
   }
 
   & > .panel-heading > .panel-title, legend {
@@ -63,6 +64,32 @@
   h3, .h3 {
     letter-spacing: normal;
     margin: 10px 0;
+  }
+
+  &-opaque {
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    background-color: #fff;
+    border-radius: 2px;
+
+    & > .panel-body {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    & > .panel-heading {
+      margin-left: -1px;
+      margin-right: -1px;
+      margin-top: -1px;
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+      padding-left: 21px;
+      padding-right: 21px;
+
+      &.bg-danger {
+        border-bottom: 4px solid $brand-danger;
+        margin-bottom: 4px;
+      }
+    }
   }
 
 }

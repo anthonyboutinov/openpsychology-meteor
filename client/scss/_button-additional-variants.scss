@@ -69,9 +69,21 @@ $btn-alt-bg-activehover-transparecy:  0.6;
 
 @mixin btn-alt ($color) {
   @extend .btn-default;
+
+  // &.btn-wider {
+  //   border-left: 1px solid transparentize($color, 0.5);
+  //   border-right: 1px solid transparentize($color, 0.5);
+  //
+  //   &:active,&.active,&.hover,&:hover,&.focus,&:focus {
+  //     border-left-color: transparent;
+  //     border-right-color: transparent;
+  //   }
+  // }
+
   & > i.fa {
     color: $color;
   }
+
   &:active, &.active {
     background-color: transparentize($color, $btn-alt-bg-active-transparecy);
     &:hover, &.hover,
