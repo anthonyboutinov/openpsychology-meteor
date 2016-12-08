@@ -17,15 +17,15 @@
             {{> bookmarkButton event=event}}
             {{> likeButton event=event}}
 
-            {{#if event.currentUserHasRegistered}}
-              {{#unless registeredForEvent}}
-              <button id="registerForEvent" class="btn btn-sm btn-success all-caps" data-toggle="tooltip" data-delay="250" title="18 человек уже зарегистрировались">Зарегистрироваться{{#if event.salePriceIsSet}} <span class="hidden-xs">и получить скидку</span><span class="visible-xs-inline">со скидкой</span>{{/if}}</button>
+            {{#if event.registrationIsOpen}}
+              {{#unless event.currentUserHasRegistered}}
+                <button id="registerForEvent" class="btn btn-sm btn-success all-caps" data-toggle="tooltip" data-delay="250" title="18 человек уже зарегистрировались">Зарегистрироваться{{#if event.salePriceIsSet}} <span class="hidden-xs">и получить скидку</span><span class="visible-xs-inline">со скидкой</span>{{/if}}</button>
               {{else}}
-              <button id="unregisterFromEvent" class="btn btn-sm btn-danger all-caps" data-toggle="tooltip" data-delay="250" title="18 человек уже зарегистрировались">Отменить регистрацию</button>
+                <button id="unregisterFromEvent" class="btn btn-sm btn-danger all-caps" data-toggle="tooltip" data-delay="250" title="18 человек уже зарегистрировались">Отменить регистрацию</button>
               {{/unless}}
             {{/if}}
             {{#unless event.registrationIsOpen}}
-            <span class="btn-sized all-caps text-muted">Мероприятие окончено</span>
+              <span class="btn-sized all-caps text-muted">Мероприятие окончено</span>
             {{/unless}}
 
           </div>

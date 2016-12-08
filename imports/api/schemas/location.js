@@ -15,7 +15,7 @@ export const LocationSchema = new SimpleSchema({
     autoform: {
       options: "allowed",
       "data-placeholder": "Укажите город",
-    }
+    },
   },
   line1: {
     type: String,

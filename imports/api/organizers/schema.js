@@ -81,7 +81,6 @@ export const OrganizersSchema = new SimpleSchema({
   location: {
     type: LocationSchema,
     label: "Адрес",
-    optional: true,
     autoform: {
       group: "Контакты",
     }
