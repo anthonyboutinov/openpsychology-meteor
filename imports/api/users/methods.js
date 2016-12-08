@@ -36,6 +36,7 @@ if (Meteor.isServer) {
       check(this.userId, String);
       // unsetSpecifier = {};
       // unsetSpecifier["profile.settings." + field] = "";
+      console.log(title);
       return Meteor.users.update({ _id: Meteor.userId() }, {$pull: {"profile.systemNotifications": title}});
     },
 

@@ -8,40 +8,33 @@
     <li><a href="{{pathFor 'dashboard.events'}}" class="active">{{panelLabel}}</a></li>
   </ul>
 
-  <div class="panel-section">
-    <div class="panel-heading m-b-30">
-      <h3>{{panelLabel}}{{#if timeframe}} мероприятия{{/if}}</h3>
-    </div>
-    <div class="panel-body">
+  <h3 class="panel-heading">{{panelLabel}}{{#if timeframe}} мероприятия{{/if}}</h3>
 
-      {{#if events_.count}}
-        <div class="row">
+  {{#if events_.count}}
+    <div class="row">
 
-          {{#each event in events_}}
-            {{#if shouldClearfix @index 2}}
-            <div class="clearfix hidden-xs"></div>
-            {{/if}}
-
-            <div class="col-sm-6 m-b-60 list-items-bordered">
-              {{> list_item event=event}}
-            </div>
-          {{/each}}
-
-        </div>
-      {{else}}
-        {{#if timeframe}}
-          <p class="text-muted">Здесь будут отображаться {{panelLabelLowercase}} мероптиятия, на которые Вы зарегистрируетесь.</p>
-        {{else}}
-          {{#if groupIs 'liked'}}
-            <p class="text-muted">Здесь буту отображаться мероприятия, которым вы поставите «лайк».</p>
-          {{else}}
-            <p class="text-muted">Здесь буту отображаться мероприятия, которые вы добавите в закладки.</p>
-          {{/if}}
+      {{#each event in events_}}
+        {{#if shouldClearfix @index 2}}
+        <div class="clearfix hidden-xs"></div>
         {{/if}}
-      {{/if}}
+
+        <div class="col-sm-6 m-b-60 list-item-bordered list-item-centered">
+          {{> list_item event=event}}
+        </div>
+      {{/each}}
 
     </div>
-  </div>
+  {{else}}
+    {{#if timeframe}}
+      <p class="text-muted">Здесь будут отображаться {{panelLabelLowercase}} мероптиятия, на которые Вы зарегистрируетесь.</p>
+    {{else}}
+      {{#if groupIs 'liked'}}
+        <p class="text-muted">Здесь буту отображаться мероприятия, которым вы поставите «лайк».</p>
+      {{else}}
+        <p class="text-muted">Здесь буту отображаться мероприятия, которые вы добавите в закладки.</p>
+      {{/if}}
+    {{/if}}
+  {{/if}}
 
 
 </template>

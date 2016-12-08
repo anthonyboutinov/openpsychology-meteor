@@ -16,13 +16,21 @@ Template.dashboardUser.helpers({
   showCalendarSubscriptionFunctionalityNotification() {
     return Meteor.user().profile.systemNotifications.includes(SystemNotifications.showCalendarSubscriptionFunctionalityNotification);
   },
+  SystemNotifications() {
+    return SystemNotifications;
+  },
+  hasNotifications() {
+    return Meteor.user().profile.systemNotifications.length;
+  }
 });
 
 Template.dashboardUser.events({
   "click [alert-close]"(event, template) {
     const target = $(event.currentTarget);
     const title = target.attr("alert-close");
-    Meteor.call("user.profile.systemNotifications.remove", title);
+    Meteor.call("user.profile.systemNotifications.remove", title, function(error, result) {
+      if (error) console.log(error);
+    });
   },
 });
 

@@ -51,11 +51,6 @@
   & > .panel-body {
     padding: 0 0px 20px 0px;
 
-    .list-item {
-      margin-left: auto;
-      margin-right: auto;
-    }
-
     .alert:last-child, .widget:last-child {
       margin-bottom: 0;
     }
@@ -90,6 +85,13 @@
         margin-bottom: 4px;
       }
     }
+
+    .fulldescription-actions {
+      margin-left: -20px;
+      margin-right: -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
   }
 
 }
@@ -98,7 +100,7 @@ h3, .h3 {
   &.panel-heading {
     letter-spacing: normal;
     margin: 0;
-    padding: 20px 0px 7px 0px;
-    min-height: 48px;
+    padding: 20px 0px 17px 0px;
+    min-height: 64px;
   }
 }

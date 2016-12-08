@@ -41,10 +41,6 @@
     }
   }
 
-  .list-items-bordered > & {
-    border: 1px solid rgba(0,0,0,0.1);
-  }
-
   &-date {
     color: $gray-light;
 
@@ -59,6 +55,15 @@
     border-radius: $border-radius-base;
     background-color: $gray-lightest;
     padding: 5px 10px 8px;
+  }
+
+  &-bordered & {
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+
+  &-centered & {
+    margin-left: auto;
+    margin-right: auto;
   }
 
 }
