@@ -1,11 +1,20 @@
 <template name="dashboardOrganizer">
-  <ul class="breadcrumb">
-    <li><a href="{{pathFor 'dashboard.home'}}">Личный кабинет</a></li>
-    <li><a href="{{pathFor 'dashboard.organizers'}}">Организации</a></li>
-    <li><a href="{{pathFor 'dashboard.organizer' _id=organizer._id}}" class="active">{{organizer.name}}</a></li>
-  </ul>
+  <div class="container-fluid-wings dashboard-page-heading">
+    <div class="widget-img-bg-blur" style="background-image: url('/assets/green.jpg')"></div>
+    <ul class="breadcrumb">
+      <li><a href="{{pathFor 'dashboard.home'}}">Личный кабинет</a></li>
+      <li><a href="{{pathFor 'dashboard.organizers'}}">Организации</a></li>
+      <li><a href="{{pathFor 'dashboard.organizer' _id=organizer._id}}" class="active">{{organizer.name}}</a></li>
+    </ul>
 
-  <h3 class="panel-heading">{{organizer.name}}</h3>
+    <div class="row">
+      <div class="col-md-5">
+        <h1>{{organizer.name}}</h1>
+      </div>
+      <div class="col-md-7">
+      </div>
+    </div>
+  </div>
 
   {{> dashboardPanelOrganizerEvents}}
 
