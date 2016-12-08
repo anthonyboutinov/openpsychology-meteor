@@ -1,5 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import { OrganizersSchema } from './schema.js';
+import { Events } from '../events/collection.js';
 
 Organizer = function (doc) {
   _.extend(this, doc);
@@ -7,6 +8,10 @@ Organizer = function (doc) {
 
 Organizer.prototype = {
   constructor: Organizer,
+
+  events() {
+    return Events.find({organizerId: this.organizerId}, {orderBy: {'dates.dateFrom': -1}});
+  },
 
   socialLinkVKAbsoluteURL: function () {
     return "https://vk.com/" + this.socialLinkVK;

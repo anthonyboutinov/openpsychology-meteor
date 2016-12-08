@@ -74,7 +74,7 @@
       <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'organizers'}}">
         {{#each org in organizers}}
         <li>
-          <a href="{{pathFor 'organizer' _id=org._id}}">
+          <a href="{{pathFor 'dashboard.organizer' _id=org._id}}">
             <span class="title">{{org.name}}</span>
             <span class="icon-thumbnail {{organizerIsActive org._id}}">
               {{textThumbnailAcronym org.name}}

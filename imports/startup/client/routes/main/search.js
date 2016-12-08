@@ -30,7 +30,7 @@ Router.route('/search/:categoryUrlName', function() {
         to:   SessionStore.get('events.search.dates.to'),
       },
       options: {
-        sort: {'dates.dateFrom': -1},
+        orderBy: {'dates.dateFrom': -1},
         limit: SessionStore.get('events.limit'),
       }
     }).wait();

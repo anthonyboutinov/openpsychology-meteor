@@ -10,6 +10,7 @@ if (Meteor.isServer) {
   });
 
   Meteor.publish('organizers.managedByUser', function() {
+    check(this.userId, String);
     return Organizers.find({ 'managedBy.userId': this.userId }, {orderBy: 'createdAt', limit: 100});
   });
 

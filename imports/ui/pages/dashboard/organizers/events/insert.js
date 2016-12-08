@@ -22,7 +22,7 @@ Template.dashboardOrganizerEventsAdd.helpers({
 Template.dashboardOrganizerEventsAdd.onRendered(function(){
 
   $('select:not([data-minimumResultsForSearch="Infinity"])').select2({
-    
+
     theme: "contemporary",
   }).on("select2:open", function(event) {
     let target = $(event.target);
@@ -33,7 +33,7 @@ Template.dashboardOrganizerEventsAdd.onRendered(function(){
   });
 
   $('select[data-minimumResultsForSearch="Infinity"]').select2({
-    
+
     theme: "contemporary",
     minimumResultsForSearch: Infinity,
   }).on("select2:open", function(event) {
@@ -83,7 +83,7 @@ let hooksObject = {
     },
   },
   onSuccess: function(formType, result) {
-    Router.go('dashboard.organizer.events', _id=this.formAttributes.organizer);
+    Router.go('dashboard.organizer', _id=this.formAttributes.organizer);
   },
   onError: function(formType, error) {
     console.log(error);

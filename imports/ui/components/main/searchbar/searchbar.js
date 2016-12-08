@@ -25,7 +25,7 @@ Template.searchbar.helpers({
     return this.showSearchbar;
   },
   "categories": function() {
-    return Categories.find({}, {sort: {order: 1}});
+    return Categories.find({}, {orderBy: {order: 1}});
   },
 });
 

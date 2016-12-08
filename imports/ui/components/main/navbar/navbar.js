@@ -21,7 +21,7 @@ Template.navbar.helpers({
     return Router.current().route.getName() == "home" ? "active" : false;
   },
   categories: function() {
-    return Categories.find({}, {sort: {order: 1}});
+    return Categories.find({}, {orderBy: {order: 1}});
   },
 
   username: function() {

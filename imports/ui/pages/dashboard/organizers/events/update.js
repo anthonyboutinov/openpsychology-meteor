@@ -17,7 +17,7 @@ Template.dashboardOrganizerEventsUpdate.helpers({
 Template.dashboardOrganizerEventsUpdate.onRendered(function(){
 
   $('select:not([data-minimumResultsForSearch="Infinity"])').select2({
-    
+
     theme: "contemporary",
   }).on("select2:open", function(event) {
     let target = $(event.target);
@@ -28,7 +28,7 @@ Template.dashboardOrganizerEventsUpdate.onRendered(function(){
   });
 
   $('select[data-minimumResultsForSearch="Infinity"]').select2({
-    
+
     theme: "contemporary",
     minimumResultsForSearch: Infinity,
   }).on("select2:open", function(event) {
@@ -89,7 +89,7 @@ let hooksObject = {
     },
   },
   onSuccess: function(formType, result) {
-    Router.go('dashboard.organizer.events', _id=this.formAttributes.doc.organizer._id);
+    Router.go('dashboard.organizer', _id=this.formAttributes.doc.organizer._id);
   },
   onError: function(formType, error) {
     console.log(error);
