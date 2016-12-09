@@ -17,7 +17,18 @@
     {{> afQuickField name="bannerUrl"}}
 
     <legend>Тренера/ведущие</legend>
-    {{> afQuickField name="coachesIds"}}
+    <div class="row">
+      <div class="col-md-8">
+        {{> afQuickField name="coachesIds"}}
+        <a href="{{pathFor 'dashboard.organizer.coach.modify' organizerId=organizerId}}" target="_blank" class="btn btn-link btn-sm pull-right m-t-negative-10">
+          Создать нового тренера
+          <i class="fa fa-fw fa-external-link" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="col-md-4">
+        {{> afQuickField name="coachesCollectiveLabel"}}
+      </div>
+    </div>
 
     <legend>Контактная информация</legend>
     <div class="row">
@@ -28,8 +39,11 @@
         <p class="text-muted">
           <small>
             <div class="visible-md-block visible-lg-block m-t-15"></div>
-            Остальные данные для&nbsp;контактов берутся из&nbsp;данных Организации. Их можно изменить
-            <a href="{{pathFor 'dashboard.organizer.update' _id=event.organizer._id}}" target="blank">здесь&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>.
+            <p>Остальные данные для&nbsp;контактов берутся из&nbsp;данных Организации.</p>
+            <a href="{{pathFor 'dashboard.organizer.update' _id=organizerId}}" class="btn btn-link btn-sm" target="_blank">
+              Изменить контактные данные
+              <i class="fa fa-external-link" aria-hidden="true"></i>
+            </a>
         </small>
         </p>
       </div>

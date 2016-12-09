@@ -83,7 +83,7 @@ let hooksObject = {
     },
   },
   onSuccess: function(formType, result) {
-    Router.go('dashboard.organizer', _id=this.formAttributes.organizer);
+    Router.go('dashboard.organizer', {_id: this.formAttributes.organizer._id});
   },
   onError: function(formType, error) {
     console.log(error);

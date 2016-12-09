@@ -15,7 +15,6 @@ Organizer.prototype = {
   },
 
   coaches() {
-    console.log("o.coaches() called", Coaches.find({organizerId: this._id}, {orderBy: {'name': 1}}).count());
     return Coaches.find({organizerId: this._id}, {orderBy: {'name': 1}});
   },
 

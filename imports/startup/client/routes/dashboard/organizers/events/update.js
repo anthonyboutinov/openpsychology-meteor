@@ -10,9 +10,10 @@ Router.route("/dashboard/event/:_id/update", function() {
   this.subscribe('categories').wait();
   this.subscribe('organizers.managedByUser').wait();
   this.subscribe('event', this.params._id).wait();
-  this.subscribe('coaches.byOrganizer', this.params._id).wait();
+  this.subscribe('coaches.byOrganizer', this.params._id).wait(); // FIXME: organizerId required in url!
 
   const event = Events.findOne({ _id: this.params._id });
+  // let organizer = Organizers.findOne({_id: this.params._id});
 
   this.layout('dashboardLayout', {
     data: {
@@ -22,7 +23,8 @@ Router.route("/dashboard/event/:_id/update", function() {
       organizers: () => {
         return Organizers.find({}, {orderBy: {'name': 1}});
       },
-      event: event
+      event: event,
+      // organizer: organizer,
     }
   });
   if (this.ready()) {

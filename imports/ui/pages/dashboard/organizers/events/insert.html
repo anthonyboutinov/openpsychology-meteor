@@ -13,8 +13,8 @@
     </div>
     <div class="panel-body">
 
-      {{#autoForm collection=Events id="insertEventForm" doc=eventTemplateDoc organizer=organizer type="insert" template="contemporary"}}
-        {{> eventsFormFieldset}}
+      {{#autoForm collection=Events id="insertEventForm" doc=eventTemplateDoc organizer=organizer type="insert" template="contemporary" validation="submit"}}
+        {{> eventsFormFieldset organizerId=organizer._id}}
         <button type="submit" class="btn btn-primary btn-wider">Добавить</button>
       {{/autoForm}}
 

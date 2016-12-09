@@ -128,40 +128,56 @@ export const EventsSchema = new SimpleSchema({
     }
   },
 
-  'coachesIds': {
-    type: Array,
+  coachesIds: {
+    type: [String],
     label: "Тренера/ведущие",
     defaultValue: [],
     maxCount: 50,
     autoform: {
-      group: "Описание",
-    },
-  },
-  'coachesIds.$': {
-    type: String,
-    label: "Тренер",
-    autoform: {
+      group: "Тренера/ведущие",
       type: 'select',
+      multiple: "true",
+      'data-placeholder': "Нет тренера/ведущего",
       options: function() {
         return Coaches.find({}, {orderBy: {'name': 1}}).map(function(doc) {
-          console.log(doc._id, doc.name);
           return {
             value: doc._id,
             label: doc.name
           }
         });
       },
-      'data-placeholder': "Выберите человека",
     },
-    optional: true,
   },
+
   coachesCollectiveLabel: {
     type: String,
-    defaultValue: "Тренера/ведущие",
+    label: "Именование",
+    allowedValues: _.sortBy(["Тренер", "Ведущий", "Тренера", "Ведущие"], (v)=>{return v}/*лексикографически*/),
     autoform: {
+      group: "Тренера/ведущие",
       type: 'select',
-      options: _.sortBy(["Тренера/ведущие", "Тренер", "Ведущий", "Тренера", "Ведущие"], (v)=>{return v}/*лексикографически*/)
-    }
+      options: "allowed",
+      'data-placeholder': "Введущие",
+      "data-minimumResultsForSearch": "Infinity",
+    },
+    optional: true, //conditional optional via custom field:
+    custom: function () {
+      var shouldBeRequired = this.field('coachesIds').length > 0;
+
+      if (shouldBeRequired) {
+        // inserts
+        if (!this.operator) {
+          if (!this.isSet || this.value === null || this.value === "") return "required";
+        }
+
+        // updates
+        else if (this.isSet) {
+          if (this.operator === "$set" && this.value === null || this.value === "") return "required";
+          if (this.operator === "$unset") return "required";
+          if (this.operator === "$rename") return "required";
+        }
+      }
+    },
   },
 
   dates: {
