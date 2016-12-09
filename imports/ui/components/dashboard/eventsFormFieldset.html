@@ -3,23 +3,26 @@
     <legend>Основная информация</legend>
     <div class="row">
       <div class="col-md-8 col-md-push-4">
-        {{> afQuickField name="title" template="contemporary" autofocus=""}}
+        {{> afQuickField name="title" autofocus=""}}
       </div>
       <div class="col-md-4 col-md-pull-8">
-        {{> afQuickField name="categoryId" template="contemporary"}}
+        {{> afQuickField name="categoryId"}}
       </div>
     </div>
-    {{> afQuickField name="price" template="bootstrap3"}}
-    {{> afQuickField name="dates" template="bootstrap3"}}
+    {{> afQuickField name="price"}}
+    {{> afQuickField name="dates"}}
     <legend>Описание</legend>
-    {{> afQuickField name="description" template="bootstrap3"}}
-    {{> afQuickField name="imageUrl" template="contemporary"}}
-    {{> afQuickField name="bannerUrl" template="contemporary"}}
+    {{> afQuickField name="description"}}
+    {{> afQuickField name="imageUrl"}}
+    {{> afQuickField name="bannerUrl"}}
+
+    <legend>Тренера/ведущие</legend>
+    {{> afQuickField name="coachesIds"}}
 
     <legend>Контактная информация</legend>
     <div class="row">
       <div class="col-md-7">
-        {{> afQuickField name="location" template="bootstrap3"}}
+        {{> afQuickField name="location"}}
       </div>
       <div class="col-md-5">
         <p class="text-muted">
