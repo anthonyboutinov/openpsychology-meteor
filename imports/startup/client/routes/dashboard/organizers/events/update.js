@@ -1,4 +1,3 @@
-import { Categories }  from '/imports/api/categories/index.js';
 import { Events }      from '/imports/api/events/collection.js';
 import { Organizers } from '/imports/api/organizers/collection.js';
 
@@ -11,6 +10,7 @@ Router.route("/dashboard/event/:_id/update", function() {
   this.subscribe('categories').wait();
   this.subscribe('organizers.managedByUser').wait();
   this.subscribe('event', this.params._id).wait();
+  this.subscribe('coaches.byOrganizer', this.params._id).wait();
 
   const event = Events.findOne({ _id: this.params._id });
 

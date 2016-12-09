@@ -143,16 +143,25 @@ export const EventsSchema = new SimpleSchema({
     autoform: {
       type: 'select',
       options: function() {
-        console.log(this);
-        Coaches.find({organizerId: this._id}, {orderBy: {'name': 1}}).map(function(doc) {
+        return Coaches.find({}, {orderBy: {'name': 1}}).map(function(doc) {
+          console.log(doc._id, doc.name);
           return {
             value: doc._id,
             label: doc.name
           }
         });
-      }
+      },
+      'data-placeholder': "Выберите человека",
     },
     optional: true,
+  },
+  coachesCollectiveLabel: {
+    type: String,
+    defaultValue: "Тренера/ведущие",
+    autoform: {
+      type: 'select',
+      options: _.sortBy(["Тренера/ведущие", "Тренер", "Ведущий", "Тренера", "Ведущие"], (v)=>{return v}/*лексикографически*/)
+    }
   },
 
   dates: {
