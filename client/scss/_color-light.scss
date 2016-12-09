@@ -1,0 +1,31 @@
+.color-light {
+  &, & > a {
+    color: #fff;
+  }
+}
+
+ul.color-light > li > a {
+  color: #eee;
+  &:hover, &:focus, &.hover, &.hocus {
+    color: #fff;
+  },
+  &:active, &.active {
+    color: #fff;
+  }
+}
+
+ul.breadcrumb.color-light > li > a {
+  &:hover, &:focus, &.hover, &.hocus {
+    color: #f0f0f0;
+  },
+  &:active, &.active {
+    color: #fff;
+  }
+}
+ul.breadcrumb.color-light > li > a {
+  color: #d5d5d5;
+}
+
+.breadcrumb.color-light > li + li:before {
+  color: rgba(255, 255, 255, 0.5);
+}
