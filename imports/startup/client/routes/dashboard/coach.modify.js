@@ -25,11 +25,7 @@ Router.route("/dashboard/organizer/:organizerId/coach/:coachId?", function() {
         return Organizers.findOne({_id: this.params.organizerId});
       },
       coach: () => {
-        if (this.params.coachId) {
-          return Coaches.findOne(this.params.coachId);
-        } else {
-          return null;
-        }
+        return this.params.coachId ? Coaches.findOne(this.params.coachId) : null;
       },
     }
   });

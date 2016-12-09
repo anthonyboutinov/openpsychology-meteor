@@ -7,31 +7,29 @@
     <div class="panel-body">
 
       <div class="fulldescription-actions">
-        <a href="{{pathFor 'dashboard.organizer.events.add' _id=organizer._id}}" class="btn btn-success btn-wider"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Добавить</a>
+        <a href="{{pathFor 'dashboard.organizer.event.modify' organizerId=organizer._id}}" class="btn btn-success btn-wider"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Добавить</a>
       </div>
 
         {{#if organizer.events.count}}
 
           <ul class="content-list">
             {{#each event in organizer.events}}
-              {{#with event}}
-                <li>
-                  <span class="btn-sized">
-                    {{title}}
-                  </span>
-                  <div class="pull-right">
-                    <a href="{{pathFor 'event' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-id-card-o" aria-hidden="true"></i> Страница</a>
-                    <a href="{{pathFor 'dashboard.organizer.event.update' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Редактировать</a>
-                    <button class="btn btn-danger-alt" mo-action="remove"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Удалить</button>
-                  </div>
-                </li>
-              {{/with}}
+              <li>
+                <span class="btn-sized">
+                  {{event.title}} - {{event.coachesIds.length}}
+                </span>
+                <div class="pull-right">
+                  <a href="{{pathFor 'event' _id=organizer._id}}" class="btn btn-default"><i class="fa fa-fw fa-id-card-o" aria-hidden="true"></i> Страница</a>
+                  <a href="{{pathFor 'dashboard.organizer.event.modify' organizerId=organizer._id eventId=event._id}}" class="btn btn-default"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Редактировать</a>
+                  <button class="btn btn-danger-alt" mo-action="remove"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Удалить</button>
+                </div>
+              </li>
             {{/each}}
           </ul>
 
         {{else}}
 
-          <a href="{{pathFor 'dashboard.organizer.events.add' _id=organizer._id}}" class="btn btn-success btn-xl">
+          <a href="{{pathFor 'dashboard.organizer.event.modify' organizerId=organizer._id}}" class="btn btn-success btn-xl">
             <i class="fa fa-fw fa-plus" aria-hidden="true"></i> Добавить мероприятие
           </a>
 

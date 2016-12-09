@@ -1,2 +1,1 @@
-import './insert.js';
-import './update.js';
+import './modify.js';

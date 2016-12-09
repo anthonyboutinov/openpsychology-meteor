@@ -203,6 +203,9 @@
     margin: 2px -5px 2px 10px;
     padding: 0 8px 0 7px;
     line-height: 21px;
+    max-width: calc(50% - 30px);
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     .select2-selection__choice__remove {
       color: #626262;

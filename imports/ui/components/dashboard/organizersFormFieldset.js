@@ -1,10 +1,10 @@
-import './eventsFormFieldset.html';
+import './organizersFormFieldset.html';
 
 import '/imports/ui/autoform/contemporary/afFormGroup.js';
 import '/imports/ui/autoform/datetimeRange.js';
 import * as formControlFunctions from '/imports/ui/formControlFunctions.js';
 
-Template.eventsFormFieldset.onRendered(function(){
+Template.organizersFormFieldset.onRendered(function(){
 
   this.$('select:not([data-minimumResultsForSearch="Infinity"])').select2({
 

@@ -87,6 +87,15 @@ export const OrganizersSchema = new SimpleSchema({
     }
   },
 
+  socialLinkVK: {
+    type: 'String',
+    label: "Ссылка ВКонтакте",
+    optional: true,
+    autoform: {
+      group: "Ссылки на социальные сети",
+      'data-prefix': "http://vk.com/",
+    },
+  },
   socialLinkOdnoklassniki: {
     type: 'String',
     label: "Ссылка Одноклассники",

@@ -1,0 +1,43 @@
+<template name="dashboardOrganizerEventModify">
+
+  <ul class="breadcrumb">
+    <li><a href="{{pathFor 'dashboard.home'}}">Личный кабинет</a></li>
+    <li><a href="{{pathFor 'dashboard.organizers'}}">Организации</a></li>
+    <li><a href="{{pathFor 'dashboard.organizer' _id=organizer._id}}">{{organizer.name}}</a></li>
+    {{#if event}}
+    <li><a href="{{pathFor 'dashboard.organizer.event' _id=event._id}}">{{event.title}}</a></li>
+    <li><a href="{{pathFor 'dashboard.organizer.event.modify' organizerId=organizer._id eventId=event._id}}" class="active">Редактировать</a></li>
+    {{else}}
+    <li><a href="{{pathFor 'dashboard.organizer.event.modify' organizerId=organizer._id}}" class="active">Добавить мероприятие</a></li>
+    {{/if}}
+  </ul>
+
+  <div class="panel-section">
+    {{#if event}}
+
+      <div class="panel-heading">
+        <h3>Редактировать {{event.name}}</h3>
+      </div>
+      <div class="panel-body">
+        {{#autoForm collection=Events id="eventsForm" type="update" doc=event organizer=organizer validation="submit" template="contemporary"}}
+          {{> eventsFormFieldset organizer=organizer}}
+          <button type="submit" class="btn btn-primary btn-wider">Сохранить</button>
+        {{/autoForm}}
+      </div>
+
+    {{else}}
+
+      <div class="panel-heading">
+        <h3>Добавить мероприятие</h3>
+      </div>
+      <div class="panel-body">
+        {{#autoForm collection=Events id="eventsForm" type="insert" doc=eventTemplateDoc organizer=organizer validation="submit"  template="contemporary"}}
+          {{> eventsFormFieldset organizer=organizer}}
+          <button type="submit" class="btn btn-primary btn-wider">Добавить</button>
+        {{/autoForm}}
+      </div>
+
+    {{/if}}
+  </div>
+
+</template>

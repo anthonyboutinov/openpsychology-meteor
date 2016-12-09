@@ -1,11 +1,7 @@
 import { Coaches } from '/imports/api/coaches/collection.js';
 
 import './coach.modify.html';
-
-import '/imports/ui/autoform/contemporary/afFormGroup.js';
-import '/imports/ui/autoform/datetimeRange.js';
-import '/imports/ui/components/dashboard/coachesFormFieldset.html';
-import * as formControlFunctions from '/imports/ui/formControlFunctions.js';
+import '/imports/ui/components/dashboard/coachesFormFieldset.js';
 
 
 Template.dashboardCoachModify.helpers({

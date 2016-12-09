@@ -20,7 +20,7 @@
     <div class="row">
       <div class="col-md-8">
         {{> afQuickField name="coachesIds"}}
-        <a href="{{pathFor 'dashboard.organizer.coach.modify' organizerId=organizerId}}" target="_blank" class="btn btn-link btn-sm pull-right m-t-negative-10">
+        <a href="{{pathFor 'dashboard.organizer.coach.modify' organizerId=organizer._id}}" target="_blank" class="btn btn-link btn-sm pull-right m-t-negative-10">
           Создать нового тренера
           <i class="fa fa-fw fa-external-link" aria-hidden="true"></i>
         </a>
@@ -40,7 +40,7 @@
           <small>
             <div class="visible-md-block visible-lg-block m-t-15"></div>
             <p>Остальные данные для&nbsp;контактов берутся из&nbsp;данных Организации.</p>
-            <a href="{{pathFor 'dashboard.organizer.update' _id=organizerId}}" class="btn btn-link btn-sm" target="_blank">
+            <a href="{{pathFor 'dashboard.organizer.update' _id=organizer._id}}" class="btn btn-link btn-sm" target="_blank">
               Изменить контактные данные
               <i class="fa fa-external-link" aria-hidden="true"></i>
             </a>
