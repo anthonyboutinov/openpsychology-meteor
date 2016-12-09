@@ -30,10 +30,10 @@ Coach.prototype = {
     return "https://facebook.com/" + this.socialLinkFacebook;
   },
   socialLinkYouTubeAbsoluteURL: function () {
-    return "https://youtube.ru/" + this.socialLinkYouTube;
+    return "https://youtube.com/" + this.socialLinkYouTube;
   },
   socialLinkTwitterAbsoluteURL: function () {
-    return "https://twitter.ru/" + this.socialLinkTwitter;
+    return "https://twitter.com/" + this.socialLinkTwitter;
   },
 
 };

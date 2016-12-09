@@ -1,10 +1,16 @@
-const CoachSchema = new SimpleSchema({
+export const CoachesSchema = new SimpleSchema({
 
   _id: {
-    type: String
+    type: String,
+    autoform: {
+      hidden: true,
+    }
   },
   organizerId: {
-    type: String
+    type: String,
+    autoform: {
+      hidden: true,
+    }
   },
 
   name: {
@@ -32,6 +38,7 @@ const CoachSchema = new SimpleSchema({
     optional: true,
     label: "Фотография",
     autoform: {
+      type: "file",
       group: "Основная информация",
     },
   },
@@ -42,6 +49,7 @@ const CoachSchema = new SimpleSchema({
     optional: true,
     autoform: {
       group: "Ссылки на социальные сети",
+      'data-prefix': "http://vk.com/",
     },
   },
   socialLinkOdnoklassniki: {
@@ -50,6 +58,7 @@ const CoachSchema = new SimpleSchema({
     optional: true,
     autoform: {
       group: "Ссылки на социальные сети",
+      'data-prefix': "http://ok.ru/",
     },
   },
   socialLinkFacebook: {
@@ -58,6 +67,7 @@ const CoachSchema = new SimpleSchema({
     optional: true,
     autoform: {
       group: "Ссылки на социальные сети",
+      'data-prefix': "http://facebook.com/",
     },
   },
   socialLinkYouTube: {
@@ -66,6 +76,7 @@ const CoachSchema = new SimpleSchema({
     optional: true,
     autoform: {
       group: "Ссылки на социальные сети",
+      'data-prefix': "http://youtube.com/",
     },
   },
   socialLinkTwitter: {
@@ -74,6 +85,7 @@ const CoachSchema = new SimpleSchema({
     optional: true,
     autoform: {
       group: "Ссылки на социальные сети",
+      'data-prefix': "http://twitter.com/",
     },
   },
 

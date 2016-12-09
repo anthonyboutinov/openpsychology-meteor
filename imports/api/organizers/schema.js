@@ -76,6 +76,7 @@ export const OrganizersSchema = new SimpleSchema({
     autoform: {
       group: "Контакты",
       placeholder: "9000000000",
+      'data-prefix': "+7",
     }
   },
   location: {
@@ -85,20 +86,14 @@ export const OrganizersSchema = new SimpleSchema({
       group: "Контакты",
     }
   },
-  socialLinkVK: {
-    type: 'String',
-    label: "Ссылка ВКонтакте",
-    optional: true,
-    autoform: {
-      group: "Ссылки на социальные сети",
-    },
-  },
+
   socialLinkOdnoklassniki: {
     type: 'String',
     label: "Ссылка Одноклассники",
     optional: true,
     autoform: {
       group: "Ссылки на социальные сети",
+      'data-prefix': "http://ok.ru/",
     },
   },
   socialLinkFacebook: {
@@ -107,6 +102,7 @@ export const OrganizersSchema = new SimpleSchema({
     optional: true,
     autoform: {
       group: "Ссылки на социальные сети",
+      'data-prefix': "http://facebook.com/",
     },
   },
   socialLinkYouTube: {
@@ -115,6 +111,7 @@ export const OrganizersSchema = new SimpleSchema({
     optional: true,
     autoform: {
       group: "Ссылки на социальные сети",
+      'data-prefix': "http://youtube.com/",
     },
   },
   socialLinkTwitter: {
@@ -123,8 +120,10 @@ export const OrganizersSchema = new SimpleSchema({
     optional: true,
     autoform: {
       group: "Ссылки на социальные сети",
+      'data-prefix': "http://twitter.com/",
     },
   },
+
   managedBy: {
     type: [ManagedBy],
     label: "Управляющие",

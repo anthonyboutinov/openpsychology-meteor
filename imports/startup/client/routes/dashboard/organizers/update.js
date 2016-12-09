@@ -7,7 +7,6 @@ Dashboard.Organizers.Update route
 */
 Router.route("/dashboard/organizer/:_id/update", function() {
   this.subscribe('organizers.managedByUser').wait();
-  this.subscribe('organizer', this.params._id).wait();
 
   this.layout('dashboardLayout', {
     data: {

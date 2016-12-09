@@ -4,6 +4,10 @@ export function focus(target) {
 
 export function blur(target) {
   target.parents(".form-group").removeClass("focused");
+  checkIfHasValue(target);
+}
+
+export function checkIfHasValue(target) {
   if (target.val()) {
     target.parents(".form-group").find("label").addClass("fade");
   } else {

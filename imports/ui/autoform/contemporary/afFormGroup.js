@@ -34,6 +34,31 @@ Template["afFormGroup_contemporary"].helpers({
 
   prefix: function() {
     var atts = _.omit(this.afFieldInputAtts || {}, 'input-col-class');
-    return atts.prefix;
+    return atts.prefix || atts['data-prefix'];
   }
 });
+
+// Template["afFormGroup_contemporary"].onRendered(function(){
+//
+//   $('select:not([data-minimumResultsForSearch="Infinity"])').select2({
+//     theme: "contemporary",
+//   }).on("select2:open", function(event) {
+//     let target = $(event.target);
+//     formControlFunctions.focus(target);
+//   }).on("select2:close", function(event) {
+//     let target = $(event.target);
+//     formControlFunctions.blur(target);
+//   });
+//
+//   $('select[data-minimumResultsForSearch="Infinity"]').select2({
+//     theme: "contemporary",
+//     minimumResultsForSearch: Infinity,
+//   }).on("select2:open", function(event) {
+//     let target = $(event.target);
+//     formControlFunctions.focus(target);
+//   }).on("select2:close", function(event) {
+//     let target = $(event.target);
+//     formControlFunctions.blur(target);
+//   });
+//
+// });

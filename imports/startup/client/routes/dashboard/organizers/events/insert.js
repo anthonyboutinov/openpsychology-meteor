@@ -10,7 +10,6 @@ Dashboard.Organizer.Events.Add route
 Router.route("/dashboard/organizer/:_id/events/add", function() {
   this.subscribe('categories').wait();
   this.subscribe('organizers.managedByUser').wait();
-  this.subscribe('organizer', this.params._id).wait();
 
   let organizer = Organizers.findOne({_id: this.params._id});
 

@@ -10,13 +10,13 @@ if (Meteor.isServer) {
 
   Meteor.publish('coaches.byOrganizer', function(organizerId) {
     check(organizerId, String);
-    return Coaches.find({ 'organierId': organizerId }, {orderBy: 'name', limit: 300});
+    return Coaches.find({organizerId: organizerId}, {orderBy: {'name': 1}});
   });
 
   Meteor.publish('coaches.forEvent', function(eventId) {
     check(eventId, String);
     const coachesIds = _plunk(Events.findOne(eventId, {fields: {coachesIds: 1}}), 'coachesIds');
-    return Coaches.find({_id: {$in: coachesIds}}, {orderBy: 'name'});
+    return Coaches.find({_id: {$in: coachesIds}}, {orderBy: {'name': 1}});
   });
 
 }

@@ -28,3 +28,13 @@ Template.body.events({
     target.parents(".form-group").find("input").focus();
   },
 });
+
+Template.body.onRendered(function(){
+
+  setInterval(function(){
+    $(".form-group .form-control").each(function(index, element){
+      formControlFunctions.checkIfHasValue($(element));
+    });
+  }, 1300);
+
+});

@@ -1,6 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import { OrganizersSchema } from './schema.js';
-import { Events } from '../events/collection.js';
+import { Events } from '/imports/api/events/collection.js';
+import { Coaches } from '/imports/api/coaches/collection.js';
 
 Organizer = function (doc) {
   _.extend(this, doc);
@@ -10,7 +11,12 @@ Organizer.prototype = {
   constructor: Organizer,
 
   events() {
-    return Events.find({organizerId: this.organizerId}, {orderBy: {'dates.dateFrom': -1}});
+    return Events.find({'organizer._id': this._id}, {orderBy: {'dates.dateFrom': -1}});
+  },
+
+  coaches() {
+    console.log("o.coaches() called", Coaches.find({organizerId: this._id}, {orderBy: {'name': 1}}).count());
+    return Coaches.find({organizerId: this._id}, {orderBy: {'name': 1}});
   },
 
   socialLinkVKAbsoluteURL: function () {
