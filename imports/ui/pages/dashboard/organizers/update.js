@@ -15,7 +15,7 @@ Template.dashboardOrganizersUpdate.helpers({
 
 Template.dashboardOrganizersUpdate.onRendered(function(){
 
-  $('select:not([data-minimumResultsForSearch="Infinity"])').select2({
+  this.$('select:not([data-minimumResultsForSearch="Infinity"])').select2({
 
     theme: "contemporary",
   }).on("select2:open", function(event) {
@@ -26,7 +26,7 @@ Template.dashboardOrganizersUpdate.onRendered(function(){
     formControlFunctions.blur(target);
   });
 
-  $('select[data-minimumResultsForSearch="Infinity"]').select2({
+  this.$('select[data-minimumResultsForSearch="Infinity"]').select2({
 
     theme: "contemporary",
     minimumResultsForSearch: Infinity,

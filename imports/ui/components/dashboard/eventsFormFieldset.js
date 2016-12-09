@@ -13,7 +13,7 @@ import * as formControlFunctions from '/imports/ui/formControlFunctions.js';
 
 Template.eventsFormFieldset.onRendered(function(){
 
-  $('select:not([data-minimumResultsForSearch="Infinity"])').select2({
+  this.$('select:not([data-minimumResultsForSearch="Infinity"])').select2({
 
     theme: "contemporary",
   }).on("select2:open", function(event) {
@@ -24,7 +24,7 @@ Template.eventsFormFieldset.onRendered(function(){
     formControlFunctions.blur(target);
   });
 
-  $('select[data-minimumResultsForSearch="Infinity"]').select2({
+  this.$('select[data-minimumResultsForSearch="Infinity"]').select2({
 
     theme: "contemporary",
     minimumResultsForSearch: Infinity,

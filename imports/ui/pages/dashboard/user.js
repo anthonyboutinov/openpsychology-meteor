@@ -36,5 +36,5 @@ Template.dashboardUser.events({
 
 
 Template.dashboardUser.onRendered(function(){
-  $('[data-toggle="popover"]').popover();
+  this.$('[data-toggle="popover"]').popover();
 });

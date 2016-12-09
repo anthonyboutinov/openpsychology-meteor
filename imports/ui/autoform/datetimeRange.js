@@ -7,7 +7,7 @@ AutoForm.addInputType("datetimerange", {
 
 Template["afInputDateTimeRange"].onRendered(function(){
 
-  let inputField = $('#' + this.data.atts.id);
+  let inputField = this.$('#' + this.data.atts.id);
   inputField.daterangepicker({
     "showWeekNumbers": true,
     "timePicker": true,

@@ -3,7 +3,7 @@ import './update.html';
 import * as selectAllText from '/imports/ui/selectAllText.js';
 
 function makeCall(template) {
-  const target = $("[data-id='contenteditableField']");
+  const target = template.$("[data-id='contenteditableField']");
   const val = target.text();
   if (val && val != template.data.placeholder) {
     Meteor.call(template.data.meteorCallName, val, function(error, result) {
@@ -41,9 +41,9 @@ Template.contenteditableUpdate.events({
     const target = $(event.target);
     const val = target.text();
     if (val != "" && val != template.data.placeholder && val != template.data.state.get('storedValue')) {
-      $("[data-id='contenteditableConfirmButton']").removeClass("hidden");
+      template.$("[data-id='contenteditableConfirmButton']").removeClass("hidden");
     } else {
-      $("[data-id='contenteditableConfirmButton']").addClass("hidden");
+      template.$("[data-id='contenteditableConfirmButton']").addClass("hidden");
       template.data.state.set('storedValue', false);
     }
   },
@@ -54,8 +54,7 @@ Template.contenteditableUpdate.events({
 });
 
 Template.contenteditableUpdate.onRendered(function() {
-
-  $("[data-id='contenteditableField']").on("focus", function(event) {
+  this.$("[data-id='contenteditableField']").on("focus", function(event) {
     selectAllText._(event.target);
   }).focus();
 

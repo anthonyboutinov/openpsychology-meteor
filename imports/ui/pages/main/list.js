@@ -53,7 +53,7 @@ Template.list.onDestroyed(function() {
 
 Template.list.onRendered(function() {
   if (this.data.subscribedToEvents) {
-    let footerHeight = $("#document-footer").outerHeight() + $(window).height();
+    let footerHeight = this.$("#document-footer").outerHeight() + $(window).height();
     this.interval = setInterval(() => {
 
       if (!this.data.subscriptionsReady()) {
