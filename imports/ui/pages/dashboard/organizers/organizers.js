@@ -21,7 +21,7 @@ Template.dashboardOrganizers.events({
       type: "input",
       inputType: "password",
       showCancelButton: true,
-      confirmButtonColor: "#DD6B55",
+      confirmButtonColor: "#d9534f",
       confirmButtonText: "Удалить",
       closeOnConfirm: false,
       html: false

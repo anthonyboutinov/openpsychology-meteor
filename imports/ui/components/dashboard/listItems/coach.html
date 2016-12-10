@@ -1,0 +1,20 @@
+<template name="coachListItem">
+  {{#with coach}}
+    <li>
+      <div class="row">
+        <div class="col-md-6">
+          <span class="btn-sized overflow-ellipsis">
+            {{name}}
+          </span>
+        </div>
+        <div class="col-md-6">
+          <div class="pull-right">
+            <a href="{{pathFor 'coach' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-id-card-o" aria-hidden="true"></i> Страница</a>
+            <a href="{{pathFor 'dashboard.organizer.coach.modify' organizerId=organizerId coachId=_id}}" class="btn btn-default"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Редактировать</a>
+            <button class="btn btn-danger-alt" mo-action="remove"><i class="fa fa-fw fa-trash" aria-hidden="true"></i><span class="sr-only"> Удалить</span></button>
+          </div>
+        </div>
+      </div>
+    </li>
+  {{/with}}
+</template>

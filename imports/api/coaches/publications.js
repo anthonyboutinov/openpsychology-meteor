@@ -1,7 +1,7 @@
-import { check } from 'meteor/check';
-import { Coaches } from './collection.js';
-
 if (Meteor.isServer) {
+
+  import { check } from 'meteor/check';
+  import { Coaches } from './collection.js';
 
   Meteor.publish('coach', function(_id) {
     check(_id, String);
@@ -15,7 +15,7 @@ if (Meteor.isServer) {
 
   Meteor.publish('coaches.forEvent', function(eventId) {
     check(eventId, String);
-    const coachesIds = _plunk(Events.findOne(eventId, {fields: {coachesIds: 1}}), 'coachesIds');
+    const coachesIds = Events.findOne(eventId, {fields: {coachesIds: 1}}).coachesIds;
     return Coaches.find({_id: {$in: coachesIds}}, {orderBy: {'name': 1}});
   });
 

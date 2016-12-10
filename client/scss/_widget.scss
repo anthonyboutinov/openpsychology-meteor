@@ -18,32 +18,6 @@
       display: block;
     }
 
-    & > ul.widget-controls {
-      margin: 0;
-      padding: 0;
-      position: absolute;
-      top: 21px;
-      right: 15px;
-      font-size: 12px;
-
-      & > li {
-        padding-left: 3px;
-        display: inline-block;
-        list-style: none;
-        line-height: 0;
-
-        & > a {
-          color: $gray-light;
-          padding-top: 10px;
-          padding-bottom: 10px;
-
-          &:hover, &:focus, &:active {
-            color: $gray-dark;
-          }
-        }
-      }
-    }
-
     &-inline-block {
       margin: 20px 15px 10px 15px;
       display: inline-block;
@@ -51,6 +25,32 @@
       & > a {
         padding: 0;
         display: inline-block;
+      }
+    }
+  }
+
+  &-controls {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 21px;
+    right: 15px;
+    font-size: 12px;
+
+    & > li {
+      padding-left: 3px;
+      display: inline-block;
+      list-style: none;
+      line-height: 0;
+
+      & > a {
+        color: $gray-light;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        &:hover, &:focus, &:active {
+          color: $gray-dark;
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
 import { check } from 'meteor/check';
 import { Events } from './collection.js';
-import * as queryByDate from '../../../both/queryByDate.js';
-import { Categories } from '../categories';
+import * as queryByDate from '/both/queryByDate.js';
+import { Categories } from '/imports/api/categories';
 
 if (Meteor.isServer) {
 

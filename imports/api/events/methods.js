@@ -2,8 +2,8 @@ if (Meteor.isServer) {
 
   import { check } from 'meteor/check';
   import { Events } from './collection.js';
-  import { Categories } from '../categories';
-  import { Organizers } from '../organizers/collection.js';
+  import { Categories } from '/imports/api/categories';
+  import { Organizers } from '/imports/api/organizers/collection.js';
 
   Meteor.methods({
 

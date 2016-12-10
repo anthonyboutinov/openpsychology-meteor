@@ -1,3 +1,3 @@
 import './collection.js';
-import './publications.js';
-import './methods.js';
+if (Meteor.isServer) import './publications.js';
+if (Meteor.isServer) import './methods.js';

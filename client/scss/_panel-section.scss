@@ -18,7 +18,7 @@
     border-radius: 0;
   }
 
-  & > .panel-heading > .panel-title, legend {
+  & > .panel-heading .panel-title, legend {
     color: #626262;
     text-transform: uppercase;
     display: inline-block;
@@ -38,9 +38,14 @@
     position: relative;
     z-index: 3;
 
-    & > .panel-title {
+    .panel-title {
       margin: 0;
       padding: 0;
+    }
+
+    .panel-controls {
+      @extend .widget-controls;
+      right: 20px !important;
     }
 
     h1, h2, h3, .h1, .h2, .h3 {
@@ -48,8 +53,10 @@
     }
   }
 
+
   & > .panel-body {
     padding: 0 0px 20px 0px;
+    max-height: none;
 
     .alert:last-child, .widget:last-child {
       margin-bottom: 0;
