@@ -36,6 +36,10 @@ Template.dashboardSidenavbar.helpers({
   subMenuIsOpen: function(id) {
     return SessionStore.get("dashboard.sidenavbar.subMenuIsOpen." + id) ? "open" : false;
   },
+
+  iconThumbnailClass(variable) {
+    return variable ? "bg-transparent" : false;
+  },
 });
 
 Template.dashboardSidenavbar.events({

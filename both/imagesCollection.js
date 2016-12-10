@@ -22,7 +22,7 @@ this.Images = new FilesCollection({
   If upload is not continued during this time, memory used for this upload will be freed. And uploaded chunks is removed. Server will no longer wait for upload, and if upload will be tied to be continued - Server will return 408 Error (Can't continue upload, session expired. Start upload again.)
   */
   continueUploadTTL: 600, //seconds
-})
+});
 
 if (Meteor.isClient) {
   Meteor.subscribe('files.images.all');
@@ -32,5 +32,10 @@ if (Meteor.isServer) {
   Meteor.publish('files.images.all', function () {
     return Images.collection.find({});
   });
+
+  // Meteor.publish('files.images.organizersManagedBuUser', function() {
+  //
+  // });
+
   // Images.allowClient();
 }

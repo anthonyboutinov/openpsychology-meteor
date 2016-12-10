@@ -18,21 +18,38 @@ Organizer.prototype = {
     return Coaches.find({organizerId: this._id}, {orderBy: {'name': 1}});
   },
 
-  socialLinkVKAbsoluteURL: function () {
+  socialLinkVKAbsoluteURL() {
     return "https://vk.com/" + this.socialLinkVK;
   },
-  socialLinkOdnoklassnikiAbsoluteURL: function () {
+  socialLinkOdnoklassnikiAbsoluteURL() {
     return "https://ok.ru/" + this.socialLinkOdnoklassniki;
   },
-  socialLinkFacebookAbsoluteURL: function () {
+  socialLinkFacebookAbsoluteURL() {
     return "https://facebook.com/" + this.socialLinkFacebook;
   },
-  socialLinkYouTubeAbsoluteURL: function () {
+  socialLinkYouTubeAbsoluteURL() {
     return "https://youtube.ru/" + this.socialLinkYouTube;
   },
-  socialLinkTwitterAbsoluteURL: function () {
+  socialLinkTwitterAbsoluteURL() {
     return "https://twitter.ru/" + this.socialLinkTwitter;
   },
+
+  imageFile() {
+    return this.imageUrl ? Images.findOne(this.imageUrl) : false;
+  },
+  imageLink() {
+    const imageFile = this.imageFile();
+    return imageFile ? imageFile.link() : "https://placehold.it/40x40?text=NA";
+  },
+
+  bannerFile() {
+    return this.imageUrl ? Images.findOne(this.bannerUrl) : false;
+  },
+
+  bannerLink() {
+    const imageFile = this.bannerFile();
+    return imageFile ? imageFile.link() : "https://placehold.it/700x400?text=" + this.name;
+  }
 };
 
 export const Organizers = new Mongo.Collection("organizers", {

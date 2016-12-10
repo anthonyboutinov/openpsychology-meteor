@@ -76,9 +76,12 @@
         <li>
           <a href="{{pathFor 'dashboard.organizer' _id=org._id}}">
             <span class="title">{{org.name}}</span>
-            <span class="icon-thumbnail {{organizerIsActive org._id}}">
-              {{textThumbnailAcronym org.name}}
-              <!-- <i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> -->
+            <span class="icon-thumbnail {{iconThumbnailClass org.imageUrl}}">
+              {{#if org.imageUrl}}
+                <img class="img-organizer-logo-sm img-responsive" src="{{org.imageLink}}">
+              {{else}}
+                {{textThumbnailAcronym org.name}}
+              {{/if}}
             </span>
           </a>
         </li>

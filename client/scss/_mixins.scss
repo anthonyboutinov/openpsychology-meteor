@@ -16,3 +16,22 @@
 
   }
 }
+
+@mixin collection-img ($side) {
+  width: $side;
+  height: auto;
+  max-height: $side;
+
+  &-sm{
+    width: $line-height-computed + 10px;
+    height: auto;
+    max-height: $line-height-computed + 10px;
+
+    h4 & {
+      margin-top: -7px;
+      margin-bottom: -6px;
+      margin-right: 9px;
+    }
+  }
+
+}
