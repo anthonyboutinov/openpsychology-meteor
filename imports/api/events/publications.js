@@ -52,7 +52,6 @@ if (Meteor.isServer) {
     const findParams = {
       'organizer._id': params._idOrganizer
     };
-    console.log(findParams);
     Counts.publish(this, 'events.byOrganizer.count', Events.find(findParams), {noReady: true});
     const events = Events.find(findParams, params.options);
     return events;

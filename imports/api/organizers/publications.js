@@ -6,7 +6,7 @@ if (Meteor.isServer) {
 
   Meteor.publish('organizer', function(_id) {
     check(_id, String);
-    return Organizers.find({_id: _id});
+    return Organizers.find(_id);
   });
 
   Meteor.publish('organizers.managedByUser', function() {
@@ -16,7 +16,8 @@ if (Meteor.isServer) {
 
   Meteor.publish('organizer.byEventId', function(_id) {
     check(_id, String);
-    let organizerId = Events.findOne({_id: _id}).organizer._id;
+    const event = Events.findOne(_id);
+    let organizerId = event.organizer._id;
     return Organizers.find({_id: organizerId});
   });
 

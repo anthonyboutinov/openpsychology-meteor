@@ -135,8 +135,7 @@ export const EventsSchema = new SimpleSchema({
     maxCount: 50,
     autoform: {
       group: "Тренера/ведущие",
-      type: 'select',
-      multiple: "true",
+      type: 'select-multiple',
       'data-placeholder': "Нет тренера/ведущего",
       options: function() {
         return Coaches.find({}, {orderBy: {'name': 1}}).map(function(doc) {

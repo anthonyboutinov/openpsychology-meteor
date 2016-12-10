@@ -8,3 +8,4 @@ Router.configure({
 import './accounts.js';
 import './main';
 import './dashboard';
+import './loading.js';

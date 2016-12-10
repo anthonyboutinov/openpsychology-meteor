@@ -349,3 +349,9 @@ fieldset > .form-group:not(.form-group-contemporary) > .control-label {
   background-repeat: no-repeat;
   filter: blur(30px);
 }
+
+.overflow-ellipsis {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}

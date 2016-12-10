@@ -2,7 +2,7 @@ export const LocationSchema = new SimpleSchema({
   city: {
     type: String,
     label: "Город",
-    allowedValues: [
+    allowedValues: _.sortBy([
       "Москва",
       "Новосибирск",
       "Екатеринбург",
@@ -11,7 +11,7 @@ export const LocationSchema = new SimpleSchema({
       "Челябинск",
       "Омск",
       "Самара",
-    ],
+    ], (v)=>{return v}),
     autoform: {
       options: "allowed",
       "data-placeholder": "Укажите город",
