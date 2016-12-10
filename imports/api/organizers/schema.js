@@ -39,8 +39,11 @@ export const OrganizersSchema = new SimpleSchema({
     optional: true,
     autoform: {
       group: "Описание",
-      type: 'file',
-      // 'help-text': "Отображается на странице организатора",
+      type: 'fileUpload',
+      collection: 'Images',
+      uploadTemplate: 'uploadField',
+      previewTemplate: 'uploadPreview',
+      template: "bootstrap3",
     }
   },
   imageUrl: {
@@ -49,7 +52,11 @@ export const OrganizersSchema = new SimpleSchema({
     optional: true,
     autoform: {
       group: "Описание",
-      type: 'file',
+      type: 'fileUpload',
+      collection: 'Images',
+      uploadTemplate: 'uploadField',
+      previewTemplate: 'uploadPreview',
+      template: "bootstrap3",
       // 'help-text': "Рекомендуется: 96⨉96 px (разшенение 3⨉). Масштабируется в разрешение 32⨉32 px"
     }
   },

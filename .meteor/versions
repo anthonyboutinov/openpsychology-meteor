@@ -94,6 +94,9 @@ oauth1@1.1.11
 oauth2@1.1.11
 observe-sequence@1.0.14
 ordered-dict@1.0.9
+ostrio:autoform-files@1.0.8
+ostrio:cookies@2.0.5
+ostrio:files@1.7.5
 peppelg:bootstrap-3-modal@1.0.4
 perak:markdown@1.0.5
 promise@0.8.8

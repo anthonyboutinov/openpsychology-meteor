@@ -170,6 +170,25 @@
   border: 1px solid transparent;
   white-space: nowrap;
   @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-base, $line-height-base, $btn-border-radius-base);
+  text-overflow: ellipsis;
+}
+
+.btn-height, &.btn-sm-height {
+  vertical-align: middle;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.btn-height {
+  font-size: $font-size-base;
+  line-height: calc($line-height-computed + 6px * 2);
+}
+.btn-sm-height {
+  line-height: calc(floor(($font-size-small * $line-height-base)) + 5px * 2);
+  font-size: $font-size-small;
+}
+.btn-lg-height {
+  line-height: calc(floor(($font-size-large * $line-height-base)) + 10px * 2);
+  font-size: $font-size-large;
 }
 
 
@@ -354,4 +373,12 @@ fieldset > .form-group:not(.form-group-contemporary) > .control-label {
   overflow-x: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+}
+
+.bg-danger {
+  background-color: $state-danger-bg;
+}
+
+strong.mild, .strong.mild {
+  font-weight: 500;
 }

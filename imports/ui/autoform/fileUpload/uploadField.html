@@ -1,0 +1,32 @@
+<template name="uploadField">
+  <div class="">
+    {{#if this}}
+      {{log}}
+      <button data-reset-file="" class="btn btn-sm btn-danger-alt m-r-15">
+        <i class="fa fa-fw fa-times" aria-hidden="true"></i>
+        Отменить
+      </button>
+
+      {{#if stateIs "active"}}
+        <span class="text-muted btn-sm-height"><strong class="mild">Загружается файл</strong> "{{file.name}}"{{#if timeLeft}}, <strong class="mild">осталось {{timeLeft}}</strong>{{/if}}</span>
+      {{else}}
+        {{#if stateIs "aborted"}}
+          <span class="text-muted btn-sm-height text-danger"><strong class="mild">Не удалось загрузить файл</strong> "{{file.name}}"</span>
+        {{else}}
+          {{#if stateIs "paused"}}
+            <span class="text-muted btn-sm-height"><strong class="mild">Возникла пауза при загрузке файла</strong> "{{file.name}}"</span>
+          {{else}}{{! state is equal to 'completed'}}
+            <span class="text-muted btn-sm-height"><strong class="mild">Готово, файл подготваливается</strong></span>
+          {{/if}}
+        {{/if}}
+      {{/if}}
+      <div class="progress m-t-10 m-b-0 animated fadeIn {{ifAbortedProgressClass}}" style="{{ifAbortedProgressStyle}}">
+        <div class="progress-bar progress-bar-striped {{progressStateClass}} animated fadeIn" role="progressbar" aria-valuenow="{{progressValue}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progressValue}}%; min-width: 1%;">
+          <span class="sr-only">{{progressValue}}% загружено</span>
+        </div>
+      </div>
+    {{else}}
+      <input data-files-collection-upload="" type="file">
+    {{/if}}
+  </div>
+</template>
