@@ -14,6 +14,20 @@ if (Meteor.isServer) {
       return event;
     },
 
+    'event.remove'(eventId) {
+      check(eventId, String);
+      check(this.userId, String);
+      const managedOrganizers = Organizers.find({'managedBy.userId': this.userId}, {fields: {_id: 1}}).map(function(doc){return doc._id});
+      return Events.remove({_id: eventId, 'organizer._id': {$in: managedOrganizers}});
+    },
+
+    'events.remove'(eventIds) {
+      check(eventIds, Array);
+      check(this.userId, String);
+      const managedOrganizers = Organizers.find({'managedBy.userId': this.userId}, {fields: {_id: 1}}).map(function(doc){return doc._id});
+      return Events.remove({_id: {$in: eventIds}, 'organizer._id': {$in: managedOrganizers}});
+    },
+
     'event.registerForEvent'(eventId, setRegistered) {
       check(eventId, String);
       check(setRegistered, Boolean);
@@ -48,13 +62,6 @@ if (Meteor.isServer) {
       check(eventId, String);
       check(this.userId, String);
       return Events.update(eventId, { $pull: { bookmarks: {userId: this.userId}} });
-    },
-
-    'event.remove'(eventId) {
-      check(eventId, String);
-      check(this.userId, String);
-      const managedOrganizers = Organizers.find({'managedBy.userId': this.userId}, {fields: {_id: 1}}).map(function(doc){return doc._id});
-      return Events.remove({_id: eventId, 'organizer._id': {$in: managedOrganizers}});
     },
 
   });

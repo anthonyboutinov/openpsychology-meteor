@@ -83,6 +83,10 @@ em {
   position: relative;
 }
 
+.dropdown-menu.drop-left {
+  right: 0;
+  left: auto;
+}
 
 // TODO: What was that?
 // .panel {

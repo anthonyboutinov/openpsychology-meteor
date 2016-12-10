@@ -13,11 +13,10 @@ Template.dashboardOrganizers.helpers({
 Template.dashboardOrganizers.events({
   'click [mo-action="remove"]': function(event, template) {
     event.preventDefault();
-    // const target = $(event.currentTarget);
     const doc = this;
     swal({
       title: "Вы уверены?",
-      text: "Организация «" + doc.name + "» и все мероприятия, закрепленные за ней будут безвозвратно удалены. Чтобы удалить организацию, Вы должны ввести свой пароль.",
+      text: "Организация «" + doc.name + "» и все мероприятия, закрепленные за ней, будут безвозвратно удалены. Чтобы удалить организацию, Вы должны ввести свой пароль.",
       type: "input",
       inputType: "password",
       showCancelButton: true,
