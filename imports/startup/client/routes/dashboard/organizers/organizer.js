@@ -8,6 +8,7 @@ Dashboard.Organizers route
 ----------------------------
 */
 Router.route("/dashboard/organizer/:_id", function() {
+  this.subscribe('categories').wait();
   this.subscribe('organizers.managedByUser').wait();
 
   this.subscribe('coaches.byOrganizer', this.params._id).wait();

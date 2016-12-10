@@ -10,6 +10,9 @@ Coach = function (doc) {
 Coach.prototype = {
   constructor: Coach,
 
+  /*
+   * Basics
+   */
   organizer() {
     return Organizers.findOne(this.organizerId);
   },

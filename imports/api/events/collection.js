@@ -11,11 +11,19 @@ Event.prototype = {
   constructor: Event,
 
   /*
-   * Remove
+   * Basics
    */
-   remove() {
-     return Meteor.call('event.remove', this._id);
-   },
+  remove(handler) {
+    Meteor.call('event.remove', this._id, handler);
+  },
+
+  category() {
+    return Categories.findOne(this.categoryId);
+  },
+
+  coaches() {
+    return Coaches.find({_id: {$in: this.coaches}}, {orderBy: {name: 1}});
+  },
 
   /*
    * Like functionality
@@ -28,11 +36,11 @@ Event.prototype = {
   },
 
   like() {
-    return Meteor.call('event.like', this._id);
+    Meteor.call('event.like', this._id);
   },
 
   unlike() {
-    return Meteor.call('event.unlike', this._id);
+    Meteor.call('event.unlike', this._id);
   },
 
   likesCount() {
@@ -51,25 +59,13 @@ Event.prototype = {
   },
 
   bookmark() {
-    return Meteor.call('event.bookmark', this._id);
+    Meteor.call('event.bookmark', this._id);
   },
 
   removeBookmark() {
-    return Meteor.call('event.removeBookmark', this._id);
+    Meteor.call('event.removeBookmark', this._id);
   },
 
-
-  /*
-   * Category functionality
-   */
-
-  category() {
-    return Categories.findOne({_id: this.categoryId});
-  },
-
-  coaches() {
-    return Coaches.find({_id: {$in: this.coaches}}, {orderBy: {name: 1}});
-  },
 
 
 

@@ -15,7 +15,7 @@ export const CoachesSchema = new SimpleSchema({
 
   name: {
     type: String,
-    label: "Имя, фамилия",
+    label: "Имя, [отчество], фамилия",
     min: 4,
     max: 100,
     autoform: {

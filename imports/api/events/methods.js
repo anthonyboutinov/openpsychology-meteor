@@ -20,45 +20,41 @@ if (Meteor.isServer) {
       check(this.userId, String);
 
       if (setRegistered) {
-        Events.update(eventId, { $push: { registeredForEvent: this.userId} });
+        return Events.update(eventId, { $push: { registeredForEvent: this.userId} });
       } else {
-        Events.update(eventId, { $pull: { registeredForEvent: this.userId} });
+        return Events.update(eventId, { $pull: { registeredForEvent: this.userId} });
       }
     },
 
     'event.like'(eventId) {
       check(eventId, String);
       check(this.userId, String);
-      Events.update(eventId, { $push: { likes: {createdAt: new Date(), userId: this.userId}} });
+      return Events.update(eventId, { $push: { likes: {createdAt: new Date(), userId: this.userId}} });
     },
 
     'event.unlike'(eventId) {
       check(eventId, String);
       check(this.userId, String);
-      Events.update(eventId, { $pull: { likes: {userId: this.userId}} });
+      return Events.update(eventId, { $pull: { likes: {userId: this.userId}} });
     },
 
     'event.bookmark'(eventId) {
       check(eventId, String);
       check(this.userId, String);
-      Events.update(eventId, { $push: { bookmarks: {createdAt: new Date(), userId: this.userId}} });
+      return Events.update(eventId, { $push: { bookmarks: {createdAt: new Date(), userId: this.userId}} });
     },
 
     'event.removeBookmark'(eventId) {
       check(eventId, String);
       check(this.userId, String);
-      Events.update(eventId, { $pull: { bookmarks: {userId: this.userId}} });
+      return Events.update(eventId, { $pull: { bookmarks: {userId: this.userId}} });
     },
 
     'event.remove'(eventId) {
       check(eventId, String);
       check(this.userId, String);
-      let organizerId = Events.findOne({_id: eventId}).organizer._id;
-      if ( !Organizers.findOne({_id: organizerId}, {managedBy: { userId: this.userId}}) ) {
-        // TODO: throw error
-        return false;
-      }
-      Events.remove({_id: eventId});
+      const managedOrganizers = Organizers.find({'managedBy.userId': this.userId}, {fields: {_id: 1}}).map(function(doc){return doc._id});
+      return Events.remove({_id: eventId, 'organizer._id': {$in: managedOrganizers}});
     },
 
   });

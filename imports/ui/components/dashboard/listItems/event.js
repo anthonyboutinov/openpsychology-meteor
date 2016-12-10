@@ -1,36 +1,34 @@
-import './coach.html';
+import './event.html';
 
-Template.coachListItem.helpers({
-  firstPartNameLabel() {
-    return this.name.substr(0, _.lastIndexOf(this.name, " "));
-  },
-  secondPartNameLabel() {
-    return this.name.substr(_.lastIndexOf(this.name, " ") + 1);
-  },
-});
+// Template.eventListItem.helpers({
+//
+// });
 
-Template.coachListItem.events({
+Template.eventListItem.events({
+
   'click [mo-action="remove"]'(event, template) {
     event.preventDefault();
     const doc = this;
+    console.log(doc.category());
     swal({
       title: "Вы уверены?",
-      text:  doc.name + " будет удален.",
+      text: doc.category().singularName + " «" + doc.title + "» будет удалено!",
       type: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d9534f",
       confirmButtonText: "Удалить",
       closeOnConfirm: false,
       html: false
-    }, function(){
-      Meteor.call('coach.remove', doc._id, function(error, result) {
+    }, function() {
+      doc.remove(function(error, result) {
         if (error || !result) {
           const text = (error ? error.message : "Действие не имеет результата.") + " Отчет об ошибке отправлен разработчикам для устранения. Пожалуйста, подождите, скоро мы все исправим!😉";
           swal("Ошибка", text, "error");
         } else {
-          swal("Удалено!", doc.name + " удален.", "success");
+          swal("Удалено!", doc.category().singularName + " «" + doc.title + "» удалено.", "success");
         }
       });
     });
-  }
+  },
+
 });
