@@ -1,0 +1,6 @@
+<template name="settingsProfileCityForm">
+  <h3>Сменить город</h3>
+  {{#autoForm collection="Meteor.users" doc=currentUserDoc id="updateUserProfileForm_city" type="update" template="contemporary"}}
+    {{> afQuickField name='profile.city'}}
+  {{/autoForm}}
+</template>

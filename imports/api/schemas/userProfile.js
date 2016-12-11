@@ -47,7 +47,7 @@ export const UserProfileSchema = new SimpleSchema({
     optional: true,
     allowedValues: function() {
       const legalAge = 13;
-      const range = _.range(1920, new Date().getFullYear() - legalAge).map((v)=>{return v.toString()});
+      const range = _.range(1920, new Date().getFullYear() - legalAge);
       return range;
     },
     autoform: {

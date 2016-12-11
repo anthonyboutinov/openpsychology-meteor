@@ -12,32 +12,18 @@
       <div class="panel-title">Профиль</div>
     </div>
     <div class="panel-body">
-
       <div class="row">
         <div class="col-md-8">
-            <h3>Сменить имя</h3>
-            {{#autoForm collection="Meteor.users" doc=currentUserDoc id="updateUserProfileForm" type="update" template="contemporary"}}
-              {{> afQuickField name='profile.name'}}
-            {{/autoForm}}
-
-            <h3>Сменить город</h3>
-            {{#autoForm collection="Meteor.users" doc=currentUserDoc id="updateUserProfileForm" type="update" template="contemporary"}}
-              {{> afQuickField name='profile.city'}}
-            {{/autoForm}}
+          {{> settingsProfileNameForm}}
+          {{> settingsProfileCityForm}}
         </div>
         <div class="col-md-4">
-          <h3>Демографические данные</h3>
-          {{#autoForm collection="Meteor.users" doc=currentUserDoc id="updateUserProfileForm" type="update" template="contemporary"}}
-            {{> afQuickField name='profile.gender'}}
-            {{> afQuickField name='profile.birthyear'}}
-          {{/autoForm}}
+          {{> settingsProfileDemographicsForm}}
         </div>
       </div>
       <p class="text-muted m-b-0"><small>Изменения вступают в силу сразу.</small></p>
-
     </div>
   </div>
-
 
   <div class="panel-section panel-section-opaque">
     <div class="panel-heading">
@@ -77,15 +63,8 @@
         </div>
       </div>
 
-
-
-
-
     </div>
   </div>
-
-
-
 
   <div class="panel-section panel-section-opaque">
     <div class="panel-heading bg-danger">
