@@ -29,6 +29,9 @@ Router.route('/search/:categoryUrlName', function() {
         from: SessionStore.get('events.search.dates.from'),
         to:   SessionStore.get('events.search.dates.to'),
       },
+      addFindParams: {
+        isPublished: true,
+      },
       options: {
         orderBy: {'dates.dateFrom': -1},
         limit: SessionStore.get('events.limit'),

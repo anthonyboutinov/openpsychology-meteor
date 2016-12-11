@@ -14,6 +14,9 @@ Router.route("/organizer/:_id", function() {
   this.subscribe('organizer', this.params._id).wait();
   this.subscribe('events.byOrganizer', {
     _idOrganizer: this.params._id,
+    addFindParams: {
+      isPublished: true,
+    },
     options: {
       orderBy: {'dates.dateFrom': -1},
       limit: QUERY_LIMIT,

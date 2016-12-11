@@ -15,8 +15,9 @@ if (Meteor.isServer) {
 
   Meteor.publish('coaches.forEvent', function(eventId) {
     check(eventId, String);
-    const coachesIds = Events.findOne(eventId, {fields: {coachesIds: 1}}).coachesIds;
-    return Coaches.find({_id: {$in: coachesIds}}, {orderBy: {'name': 1}});
+    const event = Events.findOne(eventId, {fields: {coachesIds: 1}});
+    if (!event) return [];
+    return Coaches.find({_id: {$in: event.coachesIds}}, {orderBy: {'name': 1}});
   });
 
 }

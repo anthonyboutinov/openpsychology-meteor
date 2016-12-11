@@ -5,6 +5,8 @@ Router.configure({
   layoutTemplate: 'defaultLayout'
 });
 
+// Router.plugin('dataNotFound', {notFoundTemplate: 'notFound'});
+
 import './accounts.js';
 import './main';
 import './dashboard';

@@ -17,7 +17,8 @@ if (Meteor.isServer) {
   Meteor.publish('organizer.byEventId', function(_id) {
     check(_id, String);
     const event = Events.findOne(_id);
-    let organizerId = event.organizer._id;
+    if (!event) return [];
+    const organizerId = event.organizer._id;
     return Organizers.find({_id: organizerId});
   });
 

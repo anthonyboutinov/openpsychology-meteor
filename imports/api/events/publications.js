@@ -2,6 +2,7 @@ import { check } from 'meteor/check';
 import { Events } from './collection.js';
 import * as queryByDate from '/both/queryByDate.js';
 import { Categories } from '/imports/api/categories';
+import { Organizers } from '/imports/api/organizers/collection.js';
 
 if (Meteor.isServer) {
 
@@ -18,7 +19,11 @@ if (Meteor.isServer) {
   */
   Meteor.publish('events', function(params) {
     const categoryIds = Categories.find({urlName: {$in: params.categoriesUrlNamesList}}, {fields: {_id: 1}}).map((v)=>{return v._id});
+
     let findParams = {categoryId: {$in: categoryIds}};
+    if (params.addFindParams) {
+      _.extend(findParams, params.addFindParams);
+    }
 
     findParams = queryByDate.setFindContainsText(findParams, params.constainsText);
 
@@ -49,9 +54,13 @@ if (Meteor.isServer) {
   Meteor.publish('events.byOrganizer', function(params) {
     check(params._idOrganizer, String);
 
-    const findParams = {
+    let findParams = {
       'organizer._id': params._idOrganizer
     };
+    if (params.addFindParams) {
+      _.extend(findParams, params.addFindParams);
+    }
+
     Counts.publish(this, 'events.byOrganizer.count', Events.find(findParams), {noReady: true});
     const events = Events.find(findParams, params.options);
     return events;
@@ -184,7 +193,24 @@ if (Meteor.isServer) {
 
 
   Meteor.publish('event', function(_id) {
-    return Events.find({ _id: _id});
+    console.log(_id);
+    // Find event and fetch it to know needed properties
+    const event = Events.findOne(_id, {fileds: {isPublished: 1, organizer: 1}});
+    console.log(event);
+    if (event && event.isPublished) {
+      // If event is published -- return it
+      return Events.find(_id);
+    } else if (event && this.userId) {
+      // If event is not published but there is a user logged in
+      // Find if this event is from an managed organizer
+      const organizerThatIsManagedByThisUser = Organizers.findOne({_id: event.organizer._id, 'managedBy.userId': this.userId}, {fileds: {_id: 1}});
+      console.log(organizerThatIsManagedByThisUser);
+      if (organizerThatIsManagedByThisUser) {
+        // If so, display this hidden event (to organizer who manages it)
+        return Events.find(_id);
+      }
+    }
+    return [];
   });
 
 }
