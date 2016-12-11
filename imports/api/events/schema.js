@@ -187,6 +187,20 @@ export const EventsSchema = new SimpleSchema({
     }
   },
 
+  isPublished: {
+    type: Boolean,
+    label: "Настройка видимости",
+    optional: true,
+    autoform: {
+      group: "Основная информация",
+      template: "bootstrap3",
+      type: "boolean-radios-optimized",
+      trueLabel: "<i class='fa fa-fw fa-eye' aria-hidden='true'></i> Опубликовано",
+      falseLabel: "<i class='fa fa-fw fa-eye-slash' aria-hidden='true'></i> Скрыто",
+      'data-defaultValue': true,
+    },
+  },
+
   registeredForEvent: {
     type: [String],
     label: "Зарегистрированные на событие пользователи",

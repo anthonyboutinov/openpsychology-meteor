@@ -300,6 +300,16 @@
     content: " ";
     display: table;
   }
+
+  & > div > .radio {
+    display: inline-block;
+    margin-right: 30px;
+    margin-top: 0;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }
 fieldset > .form-group:not(.form-group-contemporary) > .control-label {
   line-height: 34px;

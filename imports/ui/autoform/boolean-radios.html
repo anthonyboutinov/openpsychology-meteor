@@ -1,0 +1,17 @@
+<template name="afBooleanRadioGroupOptimized">
+  <div {{dsk}}>
+    <div class="radio">
+      <label><input type="radio" value="true" name="{{this.name}}" {{trueAtts}} /> {{#with this.atts.trueLabel}}{{{this}}}{{else}}Да{{/with}}</label>
+    </div>
+    {{#if this.atts.falseLabel}}
+    <div class="radio">
+      <label><input type="radio" value="false" name="{{this.name}}" {{falseAtts}} /> {{#with this.atts.falseLabel}}{{{this}}}{{else}}Нет{{/with}}</label>
+    </div>
+    {{/if}}
+    {{#if this.atts.nullLabel}}
+    <div class="radio">
+      <label><input type="radio" value="null" name="{{this.name}}" {{nullAtts}} /> {{{this.atts.nullLabel}}}</label>
+    </div>
+    {{/if}}
+  </div>
+</template>
