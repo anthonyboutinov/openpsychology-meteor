@@ -35,13 +35,13 @@ export function onRendered(templateInstance){
 };
 
 export const ev = {
-  'blur input[type="text"].form-control'(event, template) {
+  'blur .form-control'(event, template) {
     $(event.currentTarget).parents("form").submit();
   },
 };
 
-export const hlprs = {
-  currentUserDoc() {
-    return Meteor.user();
-  },
-};
+// export const hlprs = {
+//   currentUserDoc() {
+//     return Meteor.user();
+//   },
+// };

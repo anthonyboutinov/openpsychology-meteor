@@ -1,6 +1,6 @@
 <template name="settingsProfileNameForm">
   <h3>Сменить имя</h3>
-  {{#autoForm collection="Meteor.users" doc=currentUserDoc id="updateUserProfileForm_name" type="update" template="contemporary"}}
+  {{#autoForm collection="Meteor.users" doc=currentUser id="updateUserProfileForm_name" type="update" template="contemporary"}}
     {{> afQuickField name='profile.name'}}
   {{/autoForm}}
 </template>

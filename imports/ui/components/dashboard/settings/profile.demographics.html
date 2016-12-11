@@ -1,6 +1,6 @@
 <template name="settingsProfileDemographicsForm">
   <h3>Демографические данные</h3>
-  {{#autoForm collection="Meteor.users" doc=currentUserDoc id="updateUserProfileForm_demographics" type="update" template="contemporary"}}
+  {{#autoForm collection="Meteor.users" doc=currentUser id="updateUserProfileForm_demographics" type="update" template="contemporary"}}
     {{> afQuickField name='profile.gender'}}
     {{> afQuickField name='profile.birthyear'}}
   {{/autoForm}}
