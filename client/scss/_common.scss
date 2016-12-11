@@ -376,6 +376,7 @@ fieldset > .form-group:not(.form-group-contemporary) > .control-label {
   overflow-x: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  white-space: nowrap;
 }
 
 .bg-danger {
@@ -384,4 +385,18 @@ fieldset > .form-group:not(.form-group-contemporary) > .control-label {
 
 strong.mild, .strong.mild {
   font-weight: 500;
+}
+
+a.disabled {
+  &, ul.dropdown-menu > li > & {
+    cursor: default;
+    &, &:hover, &:focus, &:active {
+      color: $gray-doublelight;
+    }
+  }
+  ul.dropdown-menu > li > & {
+    &, &:hover, &:focus, &:active {
+      background-color: transparent;
+    }
+  }
 }

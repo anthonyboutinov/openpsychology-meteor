@@ -3,39 +3,39 @@
   <div class="panel-section panel-section-opaque">
     <div class="panel-heading">
       <div class="panel-title">Тренера/ведущие</div>
-      <ul class="panel-controls">
+      <!-- <ul class="panel-controls">
         <li><a href="#" mo-action=""><i class="fa fa-fw fa-ellipsis-h"></i></a></li>
-      </ul>
+      </ul> -->
     </div>
     <div class="panel-body">
 
-      <div class="fulldescription-actions">
-        <a href="{{pathFor 'dashboard.organizer.coach.modify' organizerId=organizer._id}}" class="btn btn-success btn-wider"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Добавить</a>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-fw fa-ellipsis-h" aria-hidden="true"></i><span class="sr-only">Ещё</span>
-          </button>
-          <ul class="dropdown-menu drop-left" role="menu">
-            <li><a href="#" mo-action="removeAll">Удалить все</a></li>
-          </ul>
+      {{#if organizer.coaches.count}}
+
+        <div class="fulldescription-actions">
+          <a href="{{pathFor 'dashboard.organizer.coach.modify' organizerId=organizer._id}}" class="btn btn-success btn-wider"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Добавить</a>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-fw fa-ellipsis-h" aria-hidden="true"></i><span class="sr-only">Ещё</span>
+            </button>
+            <ul class="dropdown-menu drop-left" role="menu">
+              <li><a href="#" mo-action="removeAll">Удалить все</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
 
-        {{#if organizer.coaches.count}}
+        <ul class="content-list">
+          {{#each coach in organizer.coaches}}
+            {{> coachListItem coach=coach}}
+          {{/each}}
+        </ul>
 
-          <ul class="content-list">
-            {{#each coach in organizer.coaches}}
-              {{> coachListItem coach=coach}}
-            {{/each}}
-          </ul>
+      {{else}}
 
-        {{else}}
+        <a href="{{pathFor 'dashboard.organizer.coach.modify' organizerId=organizer._id}}" class="btn btn-success btn-xl">
+          <i class="fa fa-fw fa-plus" aria-hidden="true"></i> Добавить тренера/ведущего
+        </a>
 
-          <a href="{{pathFor 'dashboard.organizer.coach.modify' organizerId=organizer._id}}" class="btn btn-success btn-xl">
-            <i class="fa fa-fw fa-plus" aria-hidden="true"></i> Добавить тренера/ведущего
-          </a>
-
-        {{/if}}
+      {{/if}}
 
     </div>
   </div>

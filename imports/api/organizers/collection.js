@@ -38,18 +38,17 @@ Organizer.prototype = {
     return this.imageUrl ? Images.findOne(this.imageUrl) : false;
   },
   imageLink() {
-    const imageFile = this.imageFile();
-    return imageFile ? imageFile.link() : "https://placehold.it/40x40?text=NA";
+    const file = this.imageFile();
+    return file ? file.link() : "https://placehold.it/40x40?text=NA";
   },
 
   bannerFile() {
-    return this.imageUrl ? Images.findOne(this.bannerUrl) : false;
+    return this.bannerUrl ? Images.findOne(this.bannerUrl) : false;
   },
-
   bannerLink() {
-    const imageFile = this.bannerFile();
-    return imageFile ? imageFile.link() : "https://placehold.it/700x400?text=" + this.name;
-  }
+    const file = this.bannerFile();
+    return file ? file.link() : '/assets/green.jpg';// "https://placehold.it/700x400?text=" + this.name;
+  },
 };
 
 export const Organizers = new Mongo.Collection("organizers", {

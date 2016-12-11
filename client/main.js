@@ -4,7 +4,7 @@ moment.locale('ru');
 import 'jquery';
 import 'sweetalert';
 import 'jquery.scrollbar';
-// import './lib/filesize.js';
+// import 'colorify';
 
 import '../imports/startup/client';
 import '../imports/api';

@@ -4,28 +4,24 @@
   }
 }
 
-ul.color-light > li > a {
-  color: #eee;
+ul.breadcrumb.color-light > li > a, .btn.color-light {
   &:hover, &:focus, &.hover, &.hocus {
-    color: #fff;
+    color: #f0f0f0 !important;
   },
   &:active, &.active {
-    color: #fff;
+    color: #fff !important;
   }
 }
-
-ul.breadcrumb.color-light > li > a {
-  &:hover, &:focus, &.hover, &.hocus {
-    color: #f0f0f0;
-  },
-  &:active, &.active {
-    color: #fff;
-  }
-}
-ul.breadcrumb.color-light > li > a {
-  color: #d5d5d5;
+ul.breadcrumb.color-light > li > a, .btn.color-light {
+  color: #d5d5d5 !important;
 }
 
 .breadcrumb.color-light > li + li:before {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.btn.color-light {
+  &:hover, &:focus, &.hover, &.hocus {
+    background-color: opacify($btn-default-hover-bg, 0.1) !important;
+  }
 }
