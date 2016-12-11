@@ -133,6 +133,7 @@ export const EventsSchema = new SimpleSchema({
     label: "Тренера/ведущие",
     defaultValue: [],
     maxCount: 50,
+    optional: true,
     autoform: {
       group: "Тренера/ведущие",
       type: 'select-multiple',
