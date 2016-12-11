@@ -1,14 +1,9 @@
 <template name="settingsEmailForm">
   <h3>Сменить email</h3>
-  <!-- <div class="form-group form-group-contemporary">
-    <label class="fonm-label">Ваш email</label>
-    <input class="form-control" type="text" value="someone@example.com">
-  </div> -->
   {{#autoForm collection="Meteor.users" doc=currentUser id="updateUserForm_email" type="update" template="contemporary"}}
     {{> afQuickField name='emails.0.address'}}
   {{/autoForm}}
   <p class="text-muted {{#if emailVerified}}m-b-0{{/if}}"><small>Изменения вступают в силу сразу.</small></p>
-
   {{#unless emailVerified}}
     <div class="alert alert-warning">
       <div class="alert-body">

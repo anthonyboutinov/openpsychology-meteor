@@ -16,7 +16,7 @@ Template.settingsEmailForm.helpers({
   },
 });
 
-// This solution is temporary, until this code moves into autoform-contemporary
+// TODO: This solution is temporary, until this code moves into autoform-contemporary
 Template.settingsProfileCityForm.onRendered(TemplateSetup.onRendered);
 Template.settingsProfileDemographicsForm.onRendered(TemplateSetup.onRendered);
 
@@ -24,7 +24,7 @@ let hooksObject = {
   before: {
     update: function(doc) {
       if (this.currentDoc.emails.length > 1) {
-        throw "Current email update autoForm solution does not support multiple emails in user document!";
+        throw "Autoform #updateUserForm_email onBeforeUpdate hook: Current email update autoForm solution does not support multiple emails in user document!";
       }
       return {
         $set: {
