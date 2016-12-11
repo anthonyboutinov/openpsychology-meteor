@@ -14,25 +14,27 @@
             <img class="img-responsive pull-left m-r-10 img-organizer-logo" src="{{organizer.imageLink}}">
             {{organizer.name}}
           </h1>
-
-          <a href="{{pathFor 'organizer' _id=organizer._id}}" class="btn btn-default {{pageHeadingColorClass}}"><i class="fa fa-fw fa-id-card-o" aria-hidden="true"></i> Страница</a>
-          <a href="{{pathFor 'dashboard.organizer.update' _id=organizer._id}}" class="btn btn-default {{pageHeadingColorClass}}"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Редактировать</a>
-          <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle {{pageHeadingColorClass}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-fw fa-ellipsis-h" aria-hidden="true"></i><span class="sr-only">Ещё</span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Редактировать список администраторов</a></li>
-              <li><a href="#">Передать права другой учетной записи</a></li>
-              <li><a href="#" mo-action="remove">Удалить организацию</a></li>
-            </ul>
-          </div>
-
         </div>
         <div class="col-md-5">
 
         </div>
       </div>
+    </div>
+  </div>
+  <div class="dashboard-page-heading-actions">
+    <a href="{{pathFor 'organizer' _id=organizer._id}}" class="btn btn-default {{pageHeadingColorClass}}"><i class="fa fa-fw fa-id-card-o" aria-hidden="true"></i> Страница</a>
+    <a href="{{pathFor 'dashboard.organizer.update' _id=organizer._id}}" class="btn btn-default {{pageHeadingColorClass}}"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Редактировать</a>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle {{pageHeadingColorClass}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-fw fa-ellipsis-h" aria-hidden="true"></i><span class="sr-only">Ещё</span>
+      </button>
+      {{#with organizer}}
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Редактировать список администраторов</a></li>
+        <li><a href="#">Передать права другой учетной записи</a></li>
+        <li><a href="#" mo-action="remove">Удалить организацию</a></li>
+      </ul>
+      {{/with}}
     </div>
   </div>
 

@@ -17,7 +17,8 @@ Template.dashboardSidenavbar.helpers({
     return this.timeframe == name ? "active" : false;
   },
   organizerIsActive: function(_id) {
-    return this.organizer && this.organizer._id == _id ? "active" : false;
+    if (!this.organizer) return false;
+    return this.organizer()._id == _id ? "active" : false;
   },
   // eventsIsActive: function() { // Нет необходимости в этом, так как сейчас и так нет страницы Events. Только ее подвиды.
   //   let name = 'events';

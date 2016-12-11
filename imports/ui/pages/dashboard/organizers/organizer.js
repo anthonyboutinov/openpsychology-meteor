@@ -3,6 +3,7 @@ import './organizer.html';
 import '/imports/ui/components/dashboard/panels/organizer/coaches.js';
 import '/imports/ui/components/dashboard/panels/organizer/events.js';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { organizerRemoveUI } from '/imports/ui/components/dashboard/action.organizerRemoveUI.js';
 
 function getImageLightness(imageSrc,callback) {
     var img = document.createElement("img");
@@ -45,6 +46,10 @@ Template.dashboardOrganizer.helpers({
     const midBrightnessValue = 180;
     return bannerBrightness && bannerBrightness <= midBrightnessValue ? "color-light" : "";
   },
+});
+
+Template.dashboardOrganizer.events({
+  'click [mo-action="remove"]': organizerRemoveUI
 });
 
 Template.dashboardOrganizer.onCreated(function(){
