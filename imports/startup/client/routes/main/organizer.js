@@ -1,6 +1,7 @@
 import { Categories }  from '/imports/api/categories/index.js';
 import { Events }      from '/imports/api/events/collection.js';
 import { Organizers } from '/imports/api/organizers/collection.js';
+import { composeTitle } from '/imports/startup/client/routes/composeTitle.js';
 
 let QUERY_LIMIT = 6 * 5;
 
@@ -40,5 +41,12 @@ Router.route("/organizer/:_id", function() {
   };
 
 }, {
-  name: "organizer"
+  name: "organizer",
+  title: _.throttle(function() {
+    const data = this._layout._data();
+    let title = data ? data.organizer.name : false;
+    SessionStore.set("router.mainSiteSection.lastVisitedPageTitle", title);
+    title = composeTitle(title);
+    return title;
+  }, 300),
 });

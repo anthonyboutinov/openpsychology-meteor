@@ -14,8 +14,10 @@
         </div>
         <div class="navbar-collapse">
           <div class="position-relative">
-            <ul class="nav navbar-nav navbar-left">
-              <li><a href="/"><i class="fa fa-fw fa-chevron-circle-left" aria-hidden="true"></i> Открытая психология</a></li>
+            <ul class="nav navbar-nav navbar-left" style="max-width: 70%;">
+              {{#with lastMainSiteRoute}}
+              <li style="max-width: 100%;"><a href="{{href}}" class="overflow-ellipsis"><i class="fa fa-fw fa-chevron-circle-left" aria-hidden="true"></i> {{label}}</a></li>
+              {{/with}}
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="{{pathFor 'dashboard.user'}}"><i class="fa fa-fw fa-user-circle" aria-hidden="true"></i> {{username}}</a></li>

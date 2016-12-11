@@ -1,5 +1,6 @@
 import { Categories }  from '/imports/api/categories/index.js';
 import { Events }      from '/imports/api/events/collection.js';
+import { composeTitle } from '/imports/startup/client/routes/composeTitle.js';
 
 let QUERY_LIMIT = 6 * 5;
 
@@ -62,4 +63,9 @@ Router.route('/search/:categoryUrlName', function() {
   this.render('list');
 }, {
   name: "search",
+  title: function(){
+    const title = "Поиск";
+    SessionStore.set("router.mainSiteSection.lastVisitedPageTitle", title);
+    return composeTitle(title);
+  },
 });

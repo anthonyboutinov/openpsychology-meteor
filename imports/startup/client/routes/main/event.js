@@ -1,6 +1,7 @@
 import { Categories }  from '/imports/api/categories/index.js';
 import { Events }      from '/imports/api/events/collection.js';
 import { Organizers } from '/imports/api/organizers/collection.js';
+import { composeTitle } from '/imports/startup/client/routes/composeTitle.js';
 
 /*
 ----------------------------
@@ -37,5 +38,11 @@ Router.route("/event/:_id", function() {
   };
 
 }, {
-  name: "event"
+  name: "event",
+  title: _.throttle(function() {
+    const data = this._layout._data();
+    const title = data ? data.event.title : false;
+    SessionStore.set("router.mainSiteSection.lastVisitedPageTitle", title);
+    return composeTitle(title);
+  }, 300),
 });

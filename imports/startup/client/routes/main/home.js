@@ -1,5 +1,6 @@
 import { Categories }  from '/imports/api/categories/index.js';
 import { Events }      from '/imports/api/events/collection.js';
+import { composeTitle } from '/imports/startup/client/routes/composeTitle.js';
 
 /*
 ----------------------------
@@ -22,4 +23,9 @@ Router.route('/', function () {
   };
 }, {
   name: "home",
+  title: function() {
+    const title = false;
+    SessionStore.set("router.mainSiteSection.lastVisitedPageTitle", title);
+    return composeTitle(title);
+  }
 });

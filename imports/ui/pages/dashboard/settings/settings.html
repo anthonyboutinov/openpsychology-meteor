@@ -16,18 +16,18 @@
       <div class="row">
         <div class="col-md-8">
             <h3>Сменить имя</h3>
-            {{#autoForm collection="Meteor.users" doc=currentUserDoc id="updateUserProfileForm" type="update"}}
+            {{#autoForm collection="Meteor.users" doc=currentUserDoc id="updateUserProfileForm" type="update" template="contemporary"}}
               {{> afQuickField name='profile.name'}}
             {{/autoForm}}
 
             <h3>Сменить город</h3>
-            {{#autoForm collection="Meteor.users" doc=currentUserDoc id="updateUserProfileForm" type="update"}}
+            {{#autoForm collection="Meteor.users" doc=currentUserDoc id="updateUserProfileForm" type="update" template="contemporary"}}
               {{> afQuickField name='profile.city'}}
             {{/autoForm}}
         </div>
         <div class="col-md-4">
           <h3>Демографические данные</h3>
-          {{#autoForm collection="Meteor.users" doc=currentUserDoc id="updateUserProfileForm" type="update"}}
+          {{#autoForm collection="Meteor.users" doc=currentUserDoc id="updateUserProfileForm" type="update" template="contemporary"}}
             {{> afQuickField name='profile.gender'}}
             {{> afQuickField name='profile.birthyear'}}
           {{/autoForm}}
