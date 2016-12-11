@@ -15,10 +15,29 @@
     line-height: 1.5;
   }
 
+  input {
+    @extend .form-control;
+    margin-bottom: 0 !important;
+  }
+
   button {
     @extend .btn;
     @extend .btn-default;
-    color: #fff;
+
+    &.confirm {
+      box-shadow: none !important;
+      color: #fff !important;
+    }
+
+    &.cancel {
+      @extend .btn-default;
+      &:hover {
+        background-color: $btn-default-hover-bg !important;
+      }
+      &:active, &:focus {
+        background-color: $btn-default-focus-bg !important;
+      }
+    }
   }
 }
 

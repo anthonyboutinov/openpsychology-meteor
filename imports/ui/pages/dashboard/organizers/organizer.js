@@ -49,7 +49,7 @@ Template.dashboardOrganizer.helpers({
 });
 
 Template.dashboardOrganizer.events({
-  'click [mo-action="remove"]': organizerRemoveUI
+  'click [mo-action="removeOrganizer"]': organizerRemoveUI
 });
 
 Template.dashboardOrganizer.onCreated(function(){
