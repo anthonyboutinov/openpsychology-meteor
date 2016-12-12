@@ -17,6 +17,7 @@
 
   input {
     @extend .form-control;
+    display: none;
     margin-bottom: 0 !important;
   }
 

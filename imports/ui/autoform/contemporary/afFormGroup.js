@@ -21,10 +21,10 @@ Template["afFormGroup_contemporary"].helpers({
     atts = AutoForm.Utility.addClass(atts, "control-label");
     return atts;
   },
-  rightColumnClass: function () {
-    var atts = this.afFieldInputAtts || {};
-    return atts['input-col-class'] || "";
-  },
+  // rightColumnClass: function () {
+  //   var atts = this.afFieldInputAtts || {};
+  //   return atts['input-col-class'] || "";
+  // },
   skipLabel: function () {
     var self = this;
 
