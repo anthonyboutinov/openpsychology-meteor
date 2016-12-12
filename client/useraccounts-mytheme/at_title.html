@@ -1,6 +1,12 @@
 <template name="atTitle">
   <div class="at-title">
     <h1>Открытая психология</h1>
-    <div class="h4 text-muted">{{title}}</div>
+    <div class="h4 text-muted">
+      {{#if atDisabled}}
+        Пожалуйста, подождите... <i class="fa fa-fw fa-pulse fa-spinner" aria-hidden="true"></i>
+      {{else}}
+        {{title}}
+     {{/if}}
+    </div>
   </div>
 </template>

@@ -57,7 +57,9 @@ Template.dashboardOrganizer.onCreated(function(){
   this.data.bannerBrightness = new ReactiveVar(false);
   bb = this.data.bannerBrightness;
 
-  const bannerLink = this.data.organizer().bannerLink();
+  const organizer = this.data.organizer();
+  if (!organizer) return;
+  const bannerLink = organizer.bannerLink();
   getImageLightness(bannerLink, function(brightness) {
     console.log(brightness);
     bb.set(brightness);

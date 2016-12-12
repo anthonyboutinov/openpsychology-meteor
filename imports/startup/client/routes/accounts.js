@@ -7,9 +7,9 @@ AccountsTemplates.configure({
     enablePasswordChange: true,
     forbidClientAccountCreation: false,
     overrideLoginErrors: true,
-    sendVerificationEmail: false,
+    sendVerificationEmail: true,
     lowercaseUsername: true,
-    focusFirstInput: true,
+    // focusFirstInput: !Meteor.isCordova,
 
     // Appearance
     showAddRemoveServices: false,
@@ -20,10 +20,10 @@ AccountsTemplates.configure({
 
     // Client-side Validation
     continuousValidation: false,
-    negativeFeedback: false,
+    negativeFeedback: true,
     negativeValidation: true,
-    positiveValidation: true,
-    positiveFeedback: true,
+    positiveValidation: false,
+    positiveFeedback: false,
     showValidating: true,
 
     // Privacy Policy and Terms of Use
@@ -31,28 +31,26 @@ AccountsTemplates.configure({
     termsUrl: 'terms-of-use',
 
     // Redirects
-    // homeRoutePath: '/',
-    redirectTimeout: 4000,
+    redirectTimeout: 0,
 
     // Hooks
-    // onLogoutHook: myLogoutFunc,
+    onLogoutHook: function(){
+      const path = SessionStore.get("router.mainSiteSection.lastVisitedPage") || '/';
+      Router.go(path);
+    },
     // onSubmitHook: mySubmitFunc,
     // preSignUpHook: myPreSubmitFunc,
     // postSignUpHook: myPostSubmitFunc,
 
     // Texts
-    // texts: {
-    //   button: {
-    //       signUp: "Register Now!"
-    //   },
-    //   socialSignUp: "Register",
-    //   socialIcons: {
-    //       "meteor-developer": "fa fa-rocket"
-    //   },
-    //   title: {
-    //       forgotPwd: "Recover Your Password"
-    //   },
-    // },
+    texts: {
+      resendVerificationEmailLink_pre: "Потеряли сообщение для подтверждения адреса email?",
+      resendVerificationEmailLink_link: "Отправить еще раз",
+      resendVerificationEmailLink_suff: "",
+      signInLink_pre: "Есть аккаунт?",
+      signInLink_link: "Войти",
+      signInLink_suff: "",
+    },
 });
 
 
@@ -65,12 +63,25 @@ AccountsTemplates.configureRoute('signIn', {
     path: '/login',
     // template: 'accounts',
     redirect: function(){
-        var user = Meteor.user();
-        if (user) {
-          Router.go('/dashboard/user/');
+        if (Meteor.user()) {
+          const path = SessionStore.get("router.mainSiteSection.lastVisitedPage") || '/dashboard/user/';
+          Router.go(path);
         }
     }
 });
+
+
+// Задать текст ошибок на поля: через удаление и добавление поля
+// AccountsTemplates.removeField('password');
+// AccountsTemplates.addField({
+//     _id: 'password',
+//     type: 'password',
+//     required: true,
+//     minLength: 6,
+//     re: /(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/,
+//     errStr: 'At least 1 digit, 1 lower-case and 1 upper-case',
+// });
+
 
 // AccountsTemplates.configureRoute('changePwd');
 AccountsTemplates.configureRoute('enrollAccount');
