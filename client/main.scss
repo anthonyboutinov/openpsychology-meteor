@@ -88,11 +88,20 @@
     width: 32px;
     height: 32px;
   }
+}
 
-  // &-xs {
-  //   width: 32px;
-  //   height: 32px;
-  // }
+.line-height-pic {
+  min-height: 48px;
+  span, div {
+    vertical-align: middle;
+  }
+
+  &-sm {
+    min-height: 32px;
+    span, div {
+      vertical-align: middle;
+    }
+  }
 }
 
 

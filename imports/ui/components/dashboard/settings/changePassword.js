@@ -13,7 +13,10 @@ Template.changePasswordForm.events({
       const newPasswordVal = newPassword.val();
       if (newPasswordVal.length >= 6) {
         if (newPasswordVal == passwordConfirm.val()) {
+          const submitButton = resetPasswordForm.find("button[type='submit']");
+          submitButton.attr("disabled", "true");
           Accounts.changePassword(oldPassword.val(), newPassword.val(), function changePasswordHandler(error){
+            submitButton.removeAttr("disabled");
             if (error) {
               console.log(error);
               if (error.error == 403) {
@@ -22,7 +25,6 @@ Template.changePasswordForm.events({
             } else {
               resetPasswordForm[0].reset();
               swal("Пароль успешно изменен!", "", "success");
-              console.log("success");
             }
           });
         } else {

@@ -51,22 +51,9 @@ export const EventsSchema = new SimpleSchema({
     type: String
   },
 
-  bannerImageId: {
-    type: String,
-    label: "Изображение-баннер",
-    optional: true,
-    autoform: {
-      group: "Описание",
-      type: 'fileUpload',
-      collection: 'Images',
-      uploadTemplate: 'uploadField',
-      previewTemplate: 'uploadPreview',
-      template: "bootstrap3",
-    }
-  },
   imageId: {
     type: String,
-    label: "Логотип",
+    label: "Изображение",
     optional: true,
     autoform: {
       group: "Описание",

@@ -5,13 +5,14 @@
 .inline {
   display: inline;
 }
-
 .inline-block {
   display: inline-block;
 }
-
 .block {
   display: block;
+}
+.table-cell {
+  display: table-cell;
 }
 
 .full-width {
@@ -387,6 +388,10 @@ fieldset > .form-group:not(.form-group-contemporary) > .control-label {
   text-overflow: ellipsis;
   max-width: 100%;
   white-space: nowrap;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 strong.mild, .strong.mild {

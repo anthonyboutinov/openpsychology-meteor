@@ -24,7 +24,7 @@
 
           <div class="fulldescription-banner-img">
             <div class="aspect-ratio aspect-ratio-2-1">
-              <img class="img-responsive img-external-noalpha" src="{{event.bannerLink}}">
+              <img class="img-responsive img-external-noalpha full-width" src="{{event.imageLink}}">
             </div>
           </div>
 
@@ -83,7 +83,7 @@
                   </span>
                 </div>
 
-                {{#if priceGTZero}}
+                {{#if showPricingNote}}
                   <div class="hint h6 text-center">Цена указана за 1 посещение</div>
                 {{/if}}
               </div>
@@ -162,7 +162,10 @@
                 <h4>Организатор:</h4>
                 {{#with organizer}}
                   <a href="{{pathFor 'organizer' _id=_id}}" class="v-middle">
-                    <img src="{{imageLink}}" class="profile-pic profile-pic-sm m-r-10" aria-hidden="true">{{nbsp name}}
+                    <img src="{{imageLink}}" class="profile-pic profile-pic-sm m-r-10 table-cell pull-left" aria-hidden="true"
+                    /><span class="table-cell">
+                        <div class="line-height-pic-sm"><span>{{nbsp name}}</span></div>
+                      </span>
                   </a>
                 {{/with}}
               </div>

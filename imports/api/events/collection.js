@@ -136,15 +136,7 @@ Event.prototype = {
   },
   imageLink() {
     const file = this.imageFile();
-    return file ? file.link() : "https://placehold.it/360x180?text=" + this.title;
-  },
-
-  bannerFile() {
-    return this.bannerImageId ? Images.findOne(this.bannerImageId) : false;
-  },
-  bannerLink() {
-    const file = this.bannerFile();
-    return file ? file.link() :  "https://placehold.it/780x260?text=" + this.title;
+    return file ? file.link() : "https://placehold.it/780x390?text=" + this.title;
   },
 
 };

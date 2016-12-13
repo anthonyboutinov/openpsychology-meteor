@@ -14,8 +14,8 @@ Template.event.helpers({
     return "Всего " + count + " встреч" + ending;
   },
 
-  priceGTZero() {
-    return this.event.price.regular > 0;
+  showPricingNote() {
+    return this.event.price.regular > 0 && this.event.dates.length > 1;
   },
 
   hasContactInformation() {

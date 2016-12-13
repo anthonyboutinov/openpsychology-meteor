@@ -49,7 +49,10 @@ Template.dashboardOrganizer.helpers({
 });
 
 Template.dashboardOrganizer.events({
-  'click [mo-action="removeOrganizer"]': organizerRemoveUI
+  'click [mo-action="removeOrganizer"]'(event, target) {
+    Router.go('dashboard.organizers');
+    _.bind(organizerRemoveUI, this, event, target)();
+  },
 });
 
 Template.dashboardOrganizer.onCreated(function(){
