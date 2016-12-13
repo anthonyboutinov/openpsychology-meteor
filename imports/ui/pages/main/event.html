@@ -14,7 +14,7 @@
               </strong>
             {{/unless}}
 
-            <a href="{{pathFor 'dashboard.organizer.event.modify' organizerId=organizerId eventId=event._id}}" class="btn btn-sm btn-primary">
+            <a href="{{pathFor 'dashboard.organizer.event.modify' organizerId=event.organizerId eventId=event._id}}" class="btn btn-sm btn-primary">
               <i class="fa fa-fw fa-edit" aria-hidden="true"></i>
               Редактировать
             </a>
@@ -23,7 +23,7 @@
           {{/if}}
 
           <div class="fulldescription-banner-img">
-            <div class="aspect-ratio aspect-ratio-3-1">
+            <div class="aspect-ratio aspect-ratio-2-1">
               <img class="img-responsive img-external-noalpha" src="{{event.bannerLink}}">
             </div>
           </div>
@@ -119,7 +119,7 @@
                     {{#with coach}}
                       <a href="{{pathFor 'coach' _id=_id}}" class="text-center block">
                         <div aria-hidden="true">
-                          <img src="{{profilePicLink}}" class="img-responsive profile-pic">
+                          <img src="{{profilePicLink}}" class="img-responsive profile-pic m-b-10">
                         </div>
                         {{name}}
                       </a>
