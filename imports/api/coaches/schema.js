@@ -33,13 +33,17 @@ export const CoachesSchema = new SimpleSchema({
       rows: 3
     }
   },
-  profilePicUrl: {
+  profilePicId: {
     type: String,
     optional: true,
     label: "Фотография",
     autoform: {
-      type: "file",
       group: "Основная информация",
+      type: 'fileUpload',
+      collection: 'Images',
+      uploadTemplate: 'uploadField',
+      previewTemplate: 'uploadPreview',
+      template: "bootstrap3",
     },
   },
 

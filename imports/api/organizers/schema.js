@@ -33,7 +33,7 @@ export const OrganizersSchema = new SimpleSchema({
       group: "Описание",
     }
   },
-  bannerUrl: {
+  bannerImageId: {
     type: String,
     label: "Изображение-баннер",
     optional: true,
@@ -46,7 +46,7 @@ export const OrganizersSchema = new SimpleSchema({
       template: "bootstrap3",
     }
   },
-  imageUrl: {
+  imageId: {
     type: String,
     label: "Логотип",
     optional: true,
@@ -57,7 +57,7 @@ export const OrganizersSchema = new SimpleSchema({
       uploadTemplate: 'uploadField',
       previewTemplate: 'uploadPreview',
       template: "bootstrap3",
-      // 'help-text': "Рекомендуется: 96⨉96 px (разшенение 3⨉). Масштабируется в разрешение 32⨉32 px"
+      'help-block': "Рекомендуется: 120x120 px (разшенение @3⨉). Масштабируется в разрешение 40x40 px",
     }
   },
   email: {

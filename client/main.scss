@@ -29,6 +29,7 @@
 @import "scss/general";
 @import "scss/modal";
 @import "scss/common";
+@import "scss/markdown";
 @import "scss/dashboardLayout";
 @import "scss/button-additional-variants";
 @import "scss/widget";
@@ -75,20 +76,25 @@
 }
 
 
-
-
-
 .profile-pic {
-  border-radius: 50%;
   margin-top: 5px;
   margin-bottom: 5px;
   display: inline;
   vertical-align: middle;
+  max-width: 100%;
+
+  width: 48px;
+  height: 48px;
 
   &-sm {
-    width: 48px;
-    height: 48px;
+    width: 32px;
+    height: 32px;
   }
+
+  // &-xs {
+  //   width: 32px;
+  //   height: 32px;
+  // }
 }
 
 
@@ -238,4 +244,32 @@ i.fa-history {
   background-color: rgba(0,0,0,.1);
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+// AFTER ALL
+
+.bg-danger {
+  background-color: $state-danger-bg;
+}
+
+.bg-warning {
+  background-color: $state-warning-bg;
+}
+
+.bg-success {
+  background-color: $state-success-bg;
+}
+
+.bg-info {
+  background-color: $state-info-bg;
 }

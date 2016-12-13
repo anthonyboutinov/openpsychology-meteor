@@ -10,14 +10,27 @@ Organizer = function (doc) {
 Organizer.prototype = {
   constructor: Organizer,
 
+  /*
+   * Base
+   */
   events() {
-    return Events.find({'organizer._id': this._id}, {orderBy: {'dates.dateFrom': -1}});
+    return Events.find({organizerId: this._id}, {sort: {'dates.dateFrom': -1}});
   },
 
   coaches() {
-    return Coaches.find({organizerId: this._id}, {orderBy: {'name': 1}});
+    return Coaches.find({organizerId: this._id}, {sort: {'name': 1}});
   },
 
+  managedByUser() {
+    const userId = Meteor.userId();
+    if (!userId) return false;
+    const managedByUserIds = this.managedBy.map((v)=>{return v.userId});
+    return managedByUserIds.includes(userId);
+  },
+
+  /*
+   * Social links URLs
+   */
   socialLinkVKAbsoluteURL() {
     return "https://vk.com/" + this.socialLinkVK;
   },
@@ -34,8 +47,18 @@ Organizer.prototype = {
     return "https://twitter.ru/" + this.socialLinkTwitter;
   },
 
+  /*
+   * Location
+   */
+  locationLabel() {
+    return this.location.city + (this.location.line1 ? ", " + this.location.line1 : "") + (this.location.additionalInfo ? ", " + this.location.additionalInfo : "");
+  },
+
+  /*
+   * Images
+   */
   imageFile() {
-    return this.imageUrl ? Images.findOne(this.imageUrl) : false;
+    return this.imageId ? Images.findOne(this.imageId) : false;
   },
   imageLink() {
     const file = this.imageFile();
@@ -43,7 +66,7 @@ Organizer.prototype = {
   },
 
   bannerFile() {
-    return this.bannerUrl ? Images.findOne(this.bannerUrl) : false;
+    return this.bannerImageId ? Images.findOne(this.bannerImageId) : false;
   },
   bannerLink() {
     const file = this.bannerFile();
@@ -58,3 +81,4 @@ export const Organizers = new Mongo.Collection("organizers", {
 });
 
 Organizers.attachSchema(OrganizersSchema);
+Organizers.attachBehaviour('timestampable');

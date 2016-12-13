@@ -10,7 +10,7 @@ if (Meteor.isServer) {
     'event'(eventId) {
       let event = Events.findOne(eventId);
       event.category = Categories.findOne(event.categoryId);
-      event.organizer = Organizers.findOne(event.organizer._id);
+      event.organizer = Organizers.findOne(event.organizerId);
       return event;
     },
 
@@ -18,14 +18,14 @@ if (Meteor.isServer) {
       check(eventId, String);
       check(this.userId, String);
       const managedOrganizers = Organizers.find({'managedBy.userId': this.userId}, {fields: {_id: 1}}).map(function(doc){return doc._id});
-      return Events.remove({_id: eventId, 'organizer._id': {$in: managedOrganizers}});
+      return Events.remove({_id: eventId, organizerId: {$in: managedOrganizers}});
     },
 
     'events.remove'(eventIds) {
       check(eventIds, Array);
       check(this.userId, String);
       const managedOrganizers = Organizers.find({'managedBy.userId': this.userId}, {fields: {_id: 1}}).map(function(doc){return doc._id});
-      return Events.remove({_id: {$in: eventIds}, 'organizer._id': {$in: managedOrganizers}});
+      return Events.remove({_id: {$in: eventIds}, organizerId: {$in: managedOrganizers}});
     },
 
     'event.registerForEvent'(eventId, setRegistered) {

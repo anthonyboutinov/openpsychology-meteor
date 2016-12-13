@@ -19,7 +19,7 @@ Router.route("/organizer/:_id", function() {
       isPublished: true,
     },
     options: {
-      orderBy: {'dates.dateFrom': -1},
+      sort: {'dates.dateFrom': -1},
       limit: QUERY_LIMIT,
     }
   }).wait();
@@ -44,7 +44,7 @@ Router.route("/organizer/:_id", function() {
   name: "organizer",
   title: _.throttle(function() {
     const data = this._layout._data();
-    let title = data ? data.organizer.name : false;
+    let title = data && data.organizer ? data.organizer.name : false;
     SessionStore.set("router.mainSiteSection.lastVisitedPageTitle", title);
     title = composeTitle(title);
     return title;

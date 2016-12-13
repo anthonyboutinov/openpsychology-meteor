@@ -3,10 +3,10 @@ import './event.html';
 import '/imports/ui/components/main/calendar-event.js';
 
 Template.event.helpers({
-  showCalEventsCount: function(count) {
+  showCalEventsCount(count) {
     return count >= 2;
   },
-  calEventsCountLabel: function(count) {
+  calEventsCountLabel(count) {
     let ending = "и";
     if (count % 10 >= 5 || count % 10 == 0) {
       ending = "";
@@ -14,12 +14,19 @@ Template.event.helpers({
     return "Всего " + count + " встреч" + ending;
   },
 
-  priceGTZero: function() {
+  priceGTZero() {
     return this.event.price.regular > 0;
   },
 
-  eventBannerUrl: function() {
-    return this.event.bannerUrl ? this.event.bannerUrl : "https://placehold.it/800x300?text=" + this.event.title;
+  hasContactInformation() {
+    const organizer = this.event.organizer();
+    return organizer.socialLinkVK != null ||
+           organizer.socialLinkFacebook != null ||
+           organizer.socialLinkOdnoklassniki != null ||
+           organizer.socialLinkYouTube != null ||
+           organizer.socialLinkTwitter != null ||
+           organizer.phoneNum != null ||
+           organizer.email != null;
   },
 });
 

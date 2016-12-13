@@ -19,7 +19,7 @@ Router.route("/dashboard/user", function() {
     timeframe: "ongoing",
     options: {
       limit: 2,
-      orderBy: {'dates.dateFrom': 1}
+      sort: {'dates.dateFrom': 1}
     }
   }).wait();
 
@@ -28,7 +28,7 @@ Router.route("/dashboard/user", function() {
     timeframe: "upcoming",
     options: {
       limit: 2,
-      orderBy: {'dates.dateFrom': 1}
+      sort: {'dates.dateFrom': 1}
     }
   }).wait();
 
@@ -81,7 +81,7 @@ Router.route("/dashboard/user", function() {
         return Counter.get('events.userRegistered.counts.upcoming') - Events.find(findParamsUpcomingEvents).count();
       },
       organizers: () => {
-        return Organizers.find({}, {orderBy: {'name': 1}});
+        return Organizers.find({}, {sort: {'name': 1}});
       },
       eventsLikedCount: () => {
         return Counter.get('events.liked.count');

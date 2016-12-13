@@ -2,6 +2,7 @@ import { Mongo } from 'meteor/mongo';
 import { EventsSchema } from './schema.js';
 import { Categories } from '../categories';
 import { Coaches } from '/imports/api/coaches/collection.js';
+import { Organizers } from '/imports/api/organizers/collection.js';
 
 Event = function (doc) {
   _.extend(this, doc);
@@ -11,7 +12,7 @@ Event.prototype = {
   constructor: Event,
 
   /*
-   * Basics
+   * Base
    */
   remove(handler) {
     Meteor.call('event.remove', this._id, handler);
@@ -21,8 +22,21 @@ Event.prototype = {
     return Categories.findOne(this.categoryId);
   },
 
+  organizer() {
+    return Organizers.findOne(this.organizerId);
+  },
+
   coaches() {
-    return Coaches.find({_id: {$in: this.coaches}}, {orderBy: {name: 1}});
+    return Coaches.find({_id: {$in: this.coachesIds}}, {sort: {name: 1}});
+  },
+
+  userManagesThis() {
+    const userId = Meteor.userId();
+    if (!userId) return false;
+    const organizer = Organizers.findOne(this.organizerId, {fields: {managedBy: 1}});
+    if (!organizer) return false;
+    const managedByUserIds = organizer.managedBy.map((v)=>{return v.userId});
+    return managedByUserIds.includes(userId);
   },
 
   /*
@@ -47,7 +61,6 @@ Event.prototype = {
     return this.likes.length;
   },
 
-
   /*
    * Bookmark functionality
    */
@@ -66,21 +79,34 @@ Event.prototype = {
     Meteor.call('event.removeBookmark', this._id);
   },
 
-
-
-
-
+  /*
+   * Location
+   */
   locationLabel() {
     return this.location.city + (this.location.line1 ? ", " + this.location.line1 : "") + (this.location.additionalInfo ? ", " + this.location.additionalInfo : "");
   },
+
+  /*
+   * Price
+   */
+
   salePriceLabel() {
     const price = this.price.sale;
+    if (price === undefined) return null;
     return price == 0 ? "Бесплатно" : price + "₽";
   },
   regularPriceLabel() {
     const price = this.price.regular;
-    if (price === undefined) return "";
+    if (price === undefined) return null;
     return price == 0 ? "Бесплатно" : price + "₽";
+  },
+  priceLabel() {
+    const sale = this.price.sale;
+    if (sale != null) {
+      return this.salePriceLabel();
+    } else {
+      return this.regularPriceLabel();
+    }
   },
   deltaPriceLabel() {
     const sale = this.price.sale;
@@ -90,12 +116,35 @@ Event.prototype = {
   salePriceIsSet() {
     return this.price.sale != null && this.price.sale !== this.price.regular;
   },
+
+  /*
+   * Registration
+   */
   registrationIsOpen() {
     return this.dates[this.dates.length - 1].dateFrom > new Date();
   },
   currentUserHasRegistered() {
     const user = Meteor.user();
     return user ? this.registeredForEvent.includes(user._id) : false;
+  },
+
+  /*
+   * Images
+   */
+  imageFile() {
+    return this.imageId ? Images.findOne(this.imageId) : false;
+  },
+  imageLink() {
+    const file = this.imageFile();
+    return file ? file.link() : "https://placehold.it/360x180?text=" + this.title;
+  },
+
+  bannerFile() {
+    return this.bannerImageId ? Images.findOne(this.bannerImageId) : false;
+  },
+  bannerLink() {
+    const file = this.bannerFile();
+    return file ? file.link() :  "https://placehold.it/780x260?text=" + this.title;
   },
 
 };

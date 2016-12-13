@@ -42,6 +42,8 @@ let hooksObject = {
     insert: function(doc) {
       console.log("before: ", doc);
 
+      doc.organizerId = this.formAttributes.organizer._id;
+
       if (doc.dates) {
         doc.dates = doc.dates.map(function(subdoc) {
           let raw = subdoc.dateFrom;
@@ -56,15 +58,6 @@ let hooksObject = {
         doc.dates.sort(function(a, b) {
           return (a.dateFrom > b.dateFrom) ? 1 : ((a.dateFrom < b.dateFrom )? -1 : 0);
         });
-      }
-
-      let organizer = this.formAttributes.organizer;
-      doc.organizer = {
-        _id: organizer._id,
-        name: organizer.name,
-      };
-      if (organizer.imageUrl) {
-        doc.organizer.imageUrl = organizer.imageUrl;
       }
 
       doc.createdAt = new Date();

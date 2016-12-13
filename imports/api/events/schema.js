@@ -28,22 +28,6 @@ const PriceSchema = new SimpleSchema({
   },
 });
 
-const OrganizerShortenedSchema = new SimpleSchema({
-  _id: {
-    type: String,
-    label: "ID организатора",
-  },
-  name: {
-    type: String,
-    label: "Название организации",
-  },
-  imageUrl: {
-    type: String,
-    optional: true,
-    label: "URL изображения",
-  }
-});
-
 export const EventsSchema = new SimpleSchema({
   categoryId: {
     type: String,
@@ -63,22 +47,34 @@ export const EventsSchema = new SimpleSchema({
     },
   },
 
-  bannerUrl: {
+  organizerId: {
+    type: String
+  },
+
+  bannerImageId: {
     type: String,
     label: "Изображение-баннер",
     optional: true,
     autoform: {
       group: "Описание",
-      type: 'file',
+      type: 'fileUpload',
+      collection: 'Images',
+      uploadTemplate: 'uploadField',
+      previewTemplate: 'uploadPreview',
+      template: "bootstrap3",
     }
   },
-  imageUrl: {
+  imageId: {
     type: String,
     label: "Логотип",
     optional: true,
     autoform: {
       group: "Описание",
-      type: 'file',
+      type: 'fileUpload',
+      collection: 'Images',
+      uploadTemplate: 'uploadField',
+      previewTemplate: 'uploadPreview',
+      template: "bootstrap3",
     }
   },
 
@@ -120,14 +116,6 @@ export const EventsSchema = new SimpleSchema({
     }
   },
 
-  organizer: {
-    label: "Организация",
-    type: OrganizerShortenedSchema,
-    autoform: {
-      hidden: true,
-    }
-  },
-
   coachesIds: {
     type: [String],
     label: "Тренера/ведущие",
@@ -139,7 +127,7 @@ export const EventsSchema = new SimpleSchema({
       type: 'select-multiple',
       'data-placeholder': "Нет тренера/ведущего",
       options: function() {
-        return Coaches.find({}, {orderBy: {'name': 1}}).map(function(doc) {
+        return Coaches.find({}, {sort: {'name': 1}}).map(function(doc) {
           return {
             value: doc._id,
             label: doc.name

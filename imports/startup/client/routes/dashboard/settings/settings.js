@@ -14,7 +14,7 @@ Router.route("/dashboard/settings", function() {
         return this.ready();
       },
       organizers: () => {
-        return Organizers.find({}, {orderBy: {'name': 1}});
+        return Organizers.find({}, {sort: {'name': 1}});
       },
     }
   });

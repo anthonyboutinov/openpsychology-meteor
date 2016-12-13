@@ -22,22 +22,26 @@ Router.route('/search/:categoryUrlName', function() {
   SessionStore.set('categoryUrlName', categoryUrlName);
 
   const subscribedToEvents = categoriesUrlNamesList != false;
+
+  const eventsParams = {
+    categoriesUrlNamesList: categoriesUrlNamesList,
+    constainsText: SessionStore.get('events.search.text'),
+    datesRange: {
+      from: SessionStore.get('events.search.dates.from'),
+      to:   SessionStore.get('events.search.dates.to'),
+    },
+    addFindParams: {
+      isPublished: true,
+    },
+    options: {
+      sort: {'dates.dateFrom': -1},
+      limit: SessionStore.get('events.limit'),
+    }
+  };
+
   if (subscribedToEvents) {
-    this.subscribe('events', {
-      categoriesUrlNamesList: categoriesUrlNamesList,
-      constainsText: SessionStore.get('events.search.text'),
-      datesRange: {
-        from: SessionStore.get('events.search.dates.from'),
-        to:   SessionStore.get('events.search.dates.to'),
-      },
-      addFindParams: {
-        isPublished: true,
-      },
-      options: {
-        orderBy: {'dates.dateFrom': -1},
-        limit: SessionStore.get('events.limit'),
-      }
-    }).wait();
+    this.subscribe('events', eventsParams).wait();
+    this.subscribe('organizers.forEvents', eventsParams).wait();
   }
 
   this.layout('defaultLayout', {

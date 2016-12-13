@@ -1,5 +1,6 @@
 import { check } from 'meteor/check';
 import { Events } from './collection.js';
+import * as EventsPublishFunctions from './publishCommonFunctions.js';
 import * as queryByDate from '/both/queryByDate.js';
 import { Categories } from '/imports/api/categories';
 import { Organizers } from '/imports/api/organizers/collection.js';
@@ -18,29 +19,9 @@ if (Meteor.isServer) {
   }
   */
   Meteor.publish('events', function(params) {
-    const categoryIds = Categories.find({urlName: {$in: params.categoriesUrlNamesList}}, {fields: {_id: 1}}).map((v)=>{return v._id});
-
-    let findParams = {categoryId: {$in: categoryIds}};
-    if (params.addFindParams) {
-      _.extend(findParams, params.addFindParams);
-    }
-
-    findParams = queryByDate.setFindContainsText(findParams, params.constainsText);
-
-    let datesRangeAsDates = {};
-    if (params.datesRange && params.datesRange.from) {
-      datesRangeAsDates.from = queryByDate.parseDateRussianFormat(params.datesRange.from);
-    }
-    if (params.datesRange && params.datesRange.to) {
-      datesRangeAsDates.to = queryByDate.parseDateRussianFormat(params.datesRange.to);
-    }
-
-    findParams = queryByDate.setFindDatesRange(findParams, datesRangeAsDates);
-
-    // console.log(params);
-    // console.log(JSON.stringify(findParams));
-
+    const findParams = EventsPublishFunctions.getFindParams(params);
     Counts.publish(this, 'events.count', Events.find(findParams), {noReady: true});
+    console.log("EVENTS", findParams, params.options);
     return Events.find(findParams, params.options);
   });
 
@@ -55,7 +36,7 @@ if (Meteor.isServer) {
     check(params._idOrganizer, String);
 
     let findParams = {
-      'organizer._id': params._idOrganizer
+      organizerId: params._idOrganizer
     };
     if (params.addFindParams) {
       _.extend(findParams, params.addFindParams);
@@ -186,7 +167,8 @@ if (Meteor.isServer) {
     };
 
     return Events.find(findParams, {
-      limit: 1, orderBy: 'createdAt' // TODO: orberBy must be different
+      limit: 1,
+      /*sort: 'createdAt'*/ // TODO: sort must be different
     });
   });
 
@@ -203,7 +185,7 @@ if (Meteor.isServer) {
     } else if (event && this.userId) {
       // If event is not published but there is a user logged in
       // Find if this event is from an managed organizer
-      const organizerThatIsManagedByThisUser = Organizers.findOne({_id: event.organizer._id, 'managedBy.userId': this.userId}, {fileds: {_id: 1}});
+      const organizerThatIsManagedByThisUser = Organizers.findOne({_id: event.organizerId, 'managedBy.userId': this.userId}, {fileds: {_id: 1}});
       console.log(organizerThatIsManagedByThisUser);
       if (organizerThatIsManagedByThisUser) {
         // If so, display this hidden event (to organizer who manages it)

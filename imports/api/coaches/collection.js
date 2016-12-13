@@ -11,7 +11,7 @@ Coach.prototype = {
   constructor: Coach,
 
   /*
-   * Basics
+   * Base
    */
   organizer() {
     return Organizers.findOne(this.organizerId);
@@ -21,8 +21,9 @@ Coach.prototype = {
     return Events.find({coaches: this._id});
   },
 
-
-
+  /*
+   * Social links URLs
+   */
   socialLinkVKAbsoluteURL: function () {
     return "https://vk.com/" + this.socialLinkVK;
   },
@@ -39,6 +40,17 @@ Coach.prototype = {
     return "https://twitter.com/" + this.socialLinkTwitter;
   },
 
+  /*
+   * Images
+   */
+  profilePicFile() {
+    return this.profilePicId ? Images.findOne(this.profilePicId) : false;
+  },
+  profilePicLink() {
+    const file = this.profilePicFile();
+    return file ? file.link() : "https://placehold.it/48x48?text=NA";
+  },
+
 };
 
 export const Coaches = new Mongo.Collection("coaches", {
@@ -48,3 +60,4 @@ export const Coaches = new Mongo.Collection("coaches", {
 });
 
 Coaches.attachSchema(CoachesSchema);
+Coaches.attachBehaviour('timestampable');

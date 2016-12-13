@@ -11,6 +11,7 @@ Event route
 Router.route("/event/:_id", function() {
   this.subscribe('categories').wait();
   this.subscribe('event', this.params._id).wait();
+  this.subscribe('coaches.forEvent', this.params._id).wait();
   this.subscribe('organizer.byEventId', this.params._id).wait();
 
   const event = Events.findOne(this.params._id);

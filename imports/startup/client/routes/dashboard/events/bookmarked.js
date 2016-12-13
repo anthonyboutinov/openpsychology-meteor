@@ -13,7 +13,7 @@ Router.route("/dashboard/events/bookmarked", function() {
 
   this.subscribe('events.bookmarked', {
     limit: 100,
-    orderBy: {'dates.dateFrom': 1}
+    sort: {'dates.dateFrom': 1}
   }).wait();
 
   this.layout('dashboardLayout', {
@@ -26,7 +26,7 @@ Router.route("/dashboard/events/bookmarked", function() {
         return Events.find();
       },
       organizers: () => {
-        return Organizers.find({}, {orderBy: {'name': 1}});
+        return Organizers.find({}, {sort: {'name': 1}});
       },
       group: 'bookmarked',
     }

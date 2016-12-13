@@ -5,14 +5,25 @@ let QUERY_LIMIT = 6 * 5;
 import './organizer.html';
 
 Template.organizer.helpers({
-  formatedDate: function(date) {
+  formatedDate(date) {
     return moment(date).format('llll');
   },
-  calenderDate: function(date) {
+  calenderDate(date) {
     return moment(date).calendar();
   },
 
-  animationClass: function(index) {
+  animationClass(index) {
     return index > QUERY_LIMIT ? "animated fadeIn" : false;
+  },
+
+  hasContactInformation() {
+    const organizer = this.organizer;
+    return organizer.socialLinkVK != null ||
+           organizer.socialLinkFacebook != null ||
+           organizer.socialLinkOdnoklassniki != null ||
+           organizer.socialLinkYouTube != null ||
+           organizer.socialLinkTwitter != null ||
+           organizer.phoneNum != null ||
+           organizer.email != null;
   },
 });

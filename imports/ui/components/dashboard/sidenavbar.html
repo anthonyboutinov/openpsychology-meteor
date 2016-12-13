@@ -76,8 +76,8 @@
         <li>
           <a href="{{pathFor 'dashboard.organizer' _id=org._id}}">
             <span class="title">{{org.name}}</span>
-            <span class="icon-thumbnail {{iconThumbnailClass org.imageUrl}} {{organizerIsActive org._id}}">
-              {{#if org.imageUrl}}
+            <span class="icon-thumbnail {{iconThumbnailClass org.imageId}} {{organizerIsActive org._id}}">
+              {{#if org.imageId}}
                 <img class="img-organizer-logo-sm img-responsive" src="{{org.imageLink}}">
               {{else}}
                 {{textThumbnailAcronym org.name}}

@@ -17,7 +17,7 @@ Router.route("/dashboard/organizer/:_id", function() {
   this.subscribe('events.byOrganizer', {
     _idOrganizer: this.params._id,
     options: {
-      orderBy: {'dates.dateFrom': -1},
+      sort: {'dates.dateFrom': -1},
     }
   }).wait();
 
@@ -27,7 +27,7 @@ Router.route("/dashboard/organizer/:_id", function() {
         return this.ready();
       },
       organizers: () => {
-        return Organizers.find({}, {orderBy: {'name': 1}});
+        return Organizers.find({}, {sort: {'name': 1}});
       },
       organizer: () => {
         return Organizers.findOne(this.params._id);

@@ -13,8 +13,8 @@ this.Images = new FilesCollection({
   },
 
   storagePath() {
-    return "/Volumes/dev-op-meteor-files.esy.es/";
-    // return '/data/Meteor/uploads/openpsychology-meteor/';
+    // return "/Volumes/dev-op-meteor-files.esy.es/";
+    return '/data/Meteor/uploads/openpsychology-meteor/';
   },
 
   /*

@@ -4,8 +4,28 @@
       <div class="col-xs-12 col-lg-8">
         <section class="fulldescription-main">
 
-          {{#if organizer.bannerUrl}}
-          <img class="img-responsive img-external-noalpha" src="{{organizer.bannerUrl}}" alt="Изображение-баннер события">
+          {{#if organizer.managedByUser}}
+          <div class="fulldescription-editor">
+
+            <a href="{{pathFor 'dashboard.organizer' _id=organizer._id}}" class="btn btn-sm btn-primary">
+              <i class="fa fa-fw fa-dashboard" aria-hidden="true"></i>
+              Панель управления
+            </a>
+
+            <a href="{{pathFor 'dashboard.organizer.update' _id=organizer._id}}" class="btn btn-sm btn-primary">
+              <i class="fa fa-fw fa-edit" aria-hidden="true"></i>
+              Редактировать
+            </a>
+
+          </div>
+          {{/if}}
+
+          {{#if organizer.bannerImageId}}
+            <div class="fulldescription-banner-img">
+              <div class="aspect-ratio aspect-ratio-3-1">
+                <img class="img-responsive img-external-noalpha" src="{{organizer.bannerLink}}" alt="{{organizer.name}}">
+              </div>
+            </div>
           {{/if}}
           <h1 class="fulldescription-heading m-b-30">{{organizer.name}}</h1>
 
@@ -16,43 +36,45 @@
               {{#if organizer.location}}
               <div class="m-b-10">
                 <h4 class="m-t-0">Адрес:</h4>
-                {{organizer.location.city}}{{#if organizer.location.line1}}, {{organizer.location.line1}}{{/if}}{{#if organizer.location.additionalInfo}}, {{organizer.location.additionalInfo}}{{/if}}
+                {{organizer.locationLabel}}
               </div>
               {{/if}}
 
+              {{#if hasContactInformation}}
               <div class="m-t-15">
                 <h4>Контакты:</h4>
                 {{#with organizer}}
-                {{#if socialLinkVK}}
-                <a href="{{socialLinkVKAbsoluteURL}}" class="btn m-b-5 btn-vk"><i class="fa fa-fw fa-vk" aria-hidden="true"></i><span class="sr-only">ВКонтакте</span></a>
-                {{/if}}
-                {{#if socialLinkOdnoklassniki}}
-                <a href="{{socialLinkOdnoklassnikiAbsoluteURL}}" class="btn m-b-5 btn-odnoklassniki"><i class="fa fa-fw fa-odnoklassniki" aria-hidden="true"></i><span class="sr-only">Одноклассники</span></a>
-                {{/if}}
-                {{#if socialLinkFacebook}}
-                <a href="{{socialLinkFacebookAbsoluteURL}}" class="btn m-b-5 btn-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
-                {{/if}}
-                {{#if socialLinkYouTube}}
-                <a href="{{socialLinkYouTubeAbsoluteURL}}" class="btn m-b-5 btn-youtube"><i class="fa fa-fw fa-youtube" aria-hidden="true"></i><span class="sr-only">YouTube</span></a>
-                {{/if}}
-                {{#if socialLinkTwitter}}
-                <a href="{{socialLinkTwitterAbsoluteURL}}" class="btn m-b-5 btn-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
-                {{/if}}
-                {{#if phoneNum}}
-                <a href="{{phoneNumHref phoneNum}}" class="btn m-b-5 btn-secondary"><i class="fa fa-phone fa-fw" aria-hidden="true"></i>{{phoneNumLabel phoneNum}}</a>
-                {{/if}}
-                {{#if email}}
-                <button class="btn m-b-5 btn-secondary" title="Написать сообщение"><i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i><span class="sr-only">Написать сообщение</span></button>
-                {{/if}}
+                  {{#if socialLinkVK}}
+                    <a href="{{socialLinkVKAbsoluteURL}}" class="btn m-b-5 btn-vk"><i class="fa fa-fw fa-vk" aria-hidden="true"></i><span class="sr-only">ВКонтакте</span></a>
+                  {{/if}}
+                  {{#if socialLinkOdnoklassniki}}
+                    <a href="{{socialLinkOdnoklassnikiAbsoluteURL}}" class="btn m-b-5 btn-odnoklassniki"><i class="fa fa-fw fa-odnoklassniki" aria-hidden="true"></i><span class="sr-only">Одноклассники</span></a>
+                  {{/if}}
+                  {{#if socialLinkFacebook}}
+                    <a href="{{socialLinkFacebookAbsoluteURL}}" class="btn m-b-5 btn-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+                  {{/if}}
+                  {{#if socialLinkYouTube}}
+                    <a href="{{socialLinkYouTubeAbsoluteURL}}" class="btn m-b-5 btn-youtube"><i class="fa fa-fw fa-youtube" aria-hidden="true"></i><span class="sr-only">YouTube</span></a>
+                  {{/if}}
+                  {{#if socialLinkTwitter}}
+                    <a href="{{socialLinkTwitterAbsoluteURL}}" class="btn m-b-5 btn-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+                  {{/if}}
+                  {{#if phoneNum}}
+                    <a href="{{phoneNumHref phoneNum}}" class="btn m-b-5 btn-secondary"><i class="fa fa-phone fa-fw" aria-hidden="true"></i>{{phoneNumLabel phoneNum}}</a>
+                  {{/if}}
+                  {{#if email}}
+                    <button class="btn m-b-5 btn-secondary" title="Написать сообщение"><i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i><span class="sr-only">Написать сообщение</span></button>
+                  {{/if}}
                 {{/with}}
               </div>
+              {{/if}}
 
             </div>
-            <div class="col-xs-12 col-sm-12 col-lg-7">
-              {{#if organizer.description}}
-              {{#markdown}}{{nbsp organizer.description}}{{/markdown}}
-              {{/if}}
-            </div>
+            {{#if organizer.description}}
+              <div class="col-xs-12 col-sm-12 col-lg-7 markdown-body">
+                  {{#markdown}}{{nbsp organizer.description}}{{/markdown}}
+              </div>
+            {{/if}}
 
           </div><!-- eof .row -->
 
@@ -76,18 +98,11 @@
       </div>
 
       {{#each event in events_}}
-
-      {{#if shouldClearfix @index 3}}
-      <div class="clearfix visible-md-block visible-lg-block"></div>
-      {{/if}}
-
-      {{#if shouldClearfix @index 2}}
-      <div class="clearfix visible-sm-block"></div>
-      {{/if}}
-
-      <div class="col-sm-6 col-md-4 m-b-60 {{animationClass @index}} list-item-bordered">
-        {{> list_item event=event}}
-      </div>
+        {{#if shouldClearfix @index 3}}<div class="clearfix visible-md-block visible-lg-block"></div>{{/if}}
+        {{#if shouldClearfix @index 2}}<div class="clearfix visible-sm-block"></div>{{/if}}
+        <div class="col-sm-6 col-md-4 m-b-60 {{animationClass @index}} list-item-bordered">
+          {{> list_item event=event}}
+        </div>
       {{/each}}
 
     </section>

@@ -2,9 +2,9 @@
 
   <div class="list-item">
     {{#unless hideImage}}
-    <a href="/event/{{event._id}}">
+    <a href="{{pathFor 'event' _id=event._id}}">
       <div class="aspect-ratio aspect-ratio-2-1 m-b-10">
-        <img class="img-responsive img-external-noalpha" src="{{eventImageUrl}}" aria-hidden="true">
+        <img class="img-responsive img-external-noalpha" src="{{event.imageLink}}" aria-hidden="true">
       </div>
     </a>
     {{/unless}}
@@ -16,13 +16,13 @@
         {{> likeButton event=event}}
       </span>
       {{/unless}}
-      <a href="/event/{{event._id}}" class="link-unstyled">
+      <a href="{{pathFor 'event' _id=event._id}}" class="link-unstyled">
         <h5 class="block-title">{{event.category.singularName}}</h5>
         <h4>{{nbsp event.title}}</h4>
       </a>
     </div>
     <div class="list-item-text p-b-15">
-      <a href="/event/{{event._id}}" class="link-unstyled">
+      <a href="{{pathFor 'event' _id=event._id}}" class="link-unstyled">
         <div class="list-item-date {{dateInProgressClass}}">
           {{#unless eventHasPassed}}
             {{nearestUpcomingDate}} ({{calenderDate}})
@@ -44,11 +44,13 @@
 
       {{#unless hideAdditionalInfo}}
       <div class="m-t-10">
-        <span class="m-r-15 btn-sized {{priceBg}}">{{priceLabel}}</span>
+        <span class="m-r-15 btn-sized {{priceBg}}">{{event.priceLabel}}</span>
 
-        <a href="/organizer/{{event.organizer._id}}" class="link-hoverreveal">
-          <span aria-hidden="true"><img src="{{event.organizer.imageUrl}}" class="profile-pic">&nbsp;</span>{{nbsp event.organizer.name}}
+        {{#with event.organizer}}
+        <a href="{{pathFor 'organizer' _id=_id}}" class="link-hoverreveal">
+          <img src="{{imageLink}}" class="profile-pic-sm m-r-10" aria-hidden="true">{{nbsp name}}
         </a>
+        {{/with}}
       </div>
       {{/unless}}
 

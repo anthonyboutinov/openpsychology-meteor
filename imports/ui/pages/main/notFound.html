@@ -1,6 +1,10 @@
 <template name="notFound">
-  <div class="container notFound">
-    <h1>404</h1>
-    <h2>Извините, но мы не смогли найти такую страницу</h2>
-  </div>
+  {{#unless delayNotFoundMessage}}
+    <div class="container notFound">
+      <h1>404</h1>
+      <h2>Извините, но мы не смогли найти такую страницу</h2>
+    </div>
+  {{else}}
+    {{> loading}}
+  {{/unless}}
 </template>

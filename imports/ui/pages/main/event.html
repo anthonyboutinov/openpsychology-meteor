@@ -4,14 +4,28 @@
       <div class="col-xs-12 col-lg-8 m-b-60">
         <div class="fulldescription-main">
 
-          {{#unless event.isPublished}}
-          <div class="text-right text-warning bg-warning">
-            <strong class="btn-sized"><i class="fa fa-fw fa-eye-slash" aria-hidden="true"></i> Мероприятие скрыто от посетителей сайта</strong>
-          </div>
-          {{/unless}}
+          {{#if event.userManagesThis}}
+          <div class="fulldescription-editor {{#unless event.isPublished}}bg-warning text-warning{{/unless}}">
 
-          <div class="aspect-ratio aspect-ratio-3-1">
-            <img class="img-responsive img-external-noalpha" src="{{eventBannerUrl}}">
+            {{#unless event.isPublished}}
+              <strong class="btn-sized">
+                <i class="fa fa-fw fa-eye-slash" aria-hidden="true"></i>
+                Мероприятие скрыто от посетителей сайта
+              </strong>
+            {{/unless}}
+
+            <a href="{{pathFor 'dashboard.organizer.event.modify' organizerId=organizerId eventId=event._id}}" class="btn btn-sm btn-primary">
+              <i class="fa fa-fw fa-edit" aria-hidden="true"></i>
+              Редактировать
+            </a>
+
+          </div>
+          {{/if}}
+
+          <div class="fulldescription-banner-img">
+            <div class="aspect-ratio aspect-ratio-3-1">
+              <img class="img-responsive img-external-noalpha" src="{{event.bannerLink}}">
+            </div>
           </div>
 
           <h1 class="fulldescription-heading">{{nbsp event.title}}</h1>
@@ -25,9 +39,18 @@
 
             {{#if event.registrationIsOpen}}
               {{#unless event.currentUserHasRegistered}}
-                <button id="registerForEvent" class="btn btn-sm btn-success all-caps" data-toggle="tooltip" data-delay="250" title="18 человек уже зарегистрировались">Зарегистрироваться{{#if event.salePriceIsSet}} <span class="hidden-xs">и получить скидку</span><span class="visible-xs-inline">со скидкой</span>{{/if}}</button>
+                <button id="registerForEvent" class="btn btn-sm btn-success all-caps"
+                data-toggle="tooltip" data-delay="250" title="{{event.registeredForEvent.length}} человек уже зарегистрировались">
+                  Зарегистрироваться{{#if event.salePriceIsSet}}
+                    <span class="hidden-xs">и получить скидку</span>
+                    <span class="visible-xs-inline">со скидкой</span>
+                  {{/if}}
+                </button>
               {{else}}
-                <button id="unregisterFromEvent" class="btn btn-sm btn-danger all-caps" data-toggle="tooltip" data-delay="250" title="18 человек уже зарегистрировались">Отменить регистрацию</button>
+                <button id="unregisterFromEvent" class="btn btn-sm btn-danger all-caps"
+                data-toggle="tooltip" data-delay="250" title="{{event.registeredForEvent.length}} человек уже зарегистрировались">
+                  Отменить регистрацию
+                </button>
               {{/unless}}
             {{/if}}
             {{#unless event.registrationIsOpen}}
@@ -44,7 +67,9 @@
                 <h4 class="m-t-0">Стоимость:</h4>
                 <div class="text-center">
                   {{#if event.salePriceIsSet}}
-                  <span class="event-price event-price-sale" data-toggle="tooltip" data-delay="250" title="Скидка в {{event.deltaPriceLabel}} действует на&nbsp;каждое посещение данного мероприятия">
+                  <span class="event-price event-price-sale"
+                  data-toggle="tooltip" data-delay="250"
+                  title="Скидка в {{event.deltaPriceLabel}} действует на&nbsp;каждое посещение данного мероприятия">
                     <div>{{event.salePriceLabel}}</div>
                     с регистрацией
                   </span>
@@ -53,13 +78,13 @@
                   <span class="event-price event-price-regular">
                     <div>{{event.regularPriceLabel}}</div>
                     {{#if event.salePriceIsSet}}
-                    без регистрации
+                      без регистрации
                     {{/if}}
                   </span>
                 </div>
 
                 {{#if priceGTZero}}
-                <div class="hint h6 text-center">Цена указана за 1 посещение</div>
+                  <div class="hint h6 text-center">Цена указана за 1 посещение</div>
                 {{/if}}
               </div>
 
@@ -72,11 +97,11 @@
                 </a>
 
                 {{#if showCalEventsCount event.dates.length}}
-                <div class="hint text-center">{{calEventsCountLabel event.dates.length}}</div>
+                  <div class="hint text-center">{{calEventsCountLabel event.dates.length}}</div>
                 {{/if}}
 
                 {{#each calEvent in event.dates}}
-                {{>calendarEvent event=calEvent allCalEvents=event.dates}}
+                  {{>calendarEvent event=calEvent allCalEvents=event.dates}}
                 {{/each}}
 
               </div>
@@ -84,59 +109,70 @@
               <div class="m-t-15 m-b-10">
                 <h4>Место проведения:</h4>
                 {{event.locationLabel}}
-                <img src="http://placehold.it/300x300/?text=Карта" class="img-responsive m-t-15">
+                <!-- <img src="http://placehold.it/300x300/?text=Карта" class="img-responsive m-t-15"> -->
               </div>
 
-              <div class="m-t-15 m-b-10">
-                <h4>Тренер:</h4>
-                <a href="#" class="text-center block">
-                  <div aria-hidden="true"><img src="http://placehold.it/114x114" class="img-responsive profile-pic profile-pic-sm"></div>
-                  Иванов Иван Иванович
-                </a>
-              </div>
+              {{#if event.coachesIds.length}}
+                <div class="m-t-15 m-b-10">
+                  <h4>{{event.coachesCollectiveLabel}}:</h4>
+                  {{#each coach in event.coaches}}
+                    {{#with coach}}
+                      <a href="{{pathFor 'coach' _id=_id}}" class="text-center block">
+                        <div aria-hidden="true">
+                          <img src="{{profilePicLink}}" class="img-responsive profile-pic">
+                        </div>
+                        {{name}}
+                      </a>
+                    {{/with}}
+                  {{/each}}
+                </div>
+              {{/if}}
 
-              <div class="m-t-15 m-b-10">
-                <h4>Контакты:</h4>
-                {{#with organizer}}
-                {{#if socialLinkVK}}
-                <a href="{{socialLinkVKAbsoluteURL}}" class="btn m-b-5 btn-vk"><i class="fa fa-fw fa-vk" aria-hidden="true"></i><span class="sr-only">ВКонтакте</span></a>
-                {{/if}}
-                {{#if socialLinkOdnoklassniki}}
-                <a href="{{socialLinkOdnoklassnikiAbsoluteURL}}" class="btn m-b-5 btn-odnoklassniki"><i class="fa fa-fw fa-odnoklassniki" aria-hidden="true"></i><span class="sr-only">Одноклассники</span></a>
-                {{/if}}
-                {{#if socialLinkFacebook}}
-                <a href="{{socialLinkFacebookAbsoluteURL}}" class="btn m-b-5 btn-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
-                {{/if}}
-                {{#if socialLinkYouTube}}
-                <a href="{{socialLinkYouTubeAbsoluteURL}}" class="btn m-b-5 btn-youtube"><i class="fa fa-fw fa-youtube" aria-hidden="true"></i><span class="sr-only">YouTube</span></a>
-                {{/if}}
-                {{#if socialLinkTwitter}}
-                <a href="{{socialLinkTwitterAbsoluteURL}}" class="btn m-b-5 btn-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
-                {{/if}}
-                {{#if phoneNum}}
-                <a href="{{phoneNumHref phoneNum}}" class="btn m-b-5 btn-secondary"><i class="fa fa-phone fa-fw" aria-hidden="true"></i>{{phoneNumLabel phoneNum}}</a>
-                {{/if}}
-                {{#if email}}
-                <button class="btn m-b-5 btn-secondary" title="Написать сообщение"><i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i><span class="sr-only">Написать сообщение</span></button>
-                {{/if}}
-                {{/with}}
-              </div>
+              {{#if hasContactInformation}}
+                <div class="m-t-15 m-b-10">
+                  <h4>Контакты:</h4>
+                  {{#with organizer}}
+                    {{#if socialLinkVK}}
+                      <a href="{{socialLinkVKAbsoluteURL}}" class="btn m-b-5 btn-vk"><i class="fa fa-fw fa-vk" aria-hidden="true"></i><span class="sr-only">ВКонтакте</span></a>
+                    {{/if}}
+                    {{#if socialLinkOdnoklassniki}}
+                      <a href="{{socialLinkOdnoklassnikiAbsoluteURL}}" class="btn m-b-5 btn-odnoklassniki"><i class="fa fa-fw fa-odnoklassniki" aria-hidden="true"></i><span class="sr-only">Одноклассники</span></a>
+                    {{/if}}
+                    {{#if socialLinkFacebook}}
+                      <a href="{{socialLinkFacebookAbsoluteURL}}" class="btn m-b-5 btn-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+                    {{/if}}
+                    {{#if socialLinkYouTube}}
+                      <a href="{{socialLinkYouTubeAbsoluteURL}}" class="btn m-b-5 btn-youtube"><i class="fa fa-fw fa-youtube" aria-hidden="true"></i><span class="sr-only">YouTube</span></a>
+                    {{/if}}
+                    {{#if socialLinkTwitter}}
+                      <a href="{{socialLinkTwitterAbsoluteURL}}" class="btn m-b-5 btn-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+                    {{/if}}
+                    {{#if phoneNum}}
+                      <a href="{{phoneNumHref phoneNum}}" class="btn m-b-5 btn-secondary"><i class="fa fa-phone fa-fw" aria-hidden="true"></i>{{phoneNumLabel phoneNum}}</a>
+                    {{/if}}
+                    {{#if email}}
+                      <button class="btn m-b-5 btn-secondary" title="Написать сообщение"><i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i><span class="sr-only">Написать сообщение</span></button>
+                    {{/if}}
+                  {{/with}}
+                </div>
+              {{/if}}
 
 
               <div class="m-t-15">
                 <h4>Организатор:</h4>
                 {{#with organizer}}
-                <a href="/organizer/{{_id}}" class="v-middle">
-                  <span aria-hidden="true"><img src="{{imageUrl}}" class="img-responsive inline v-middle profile-pic">&nbsp;</span>{{nbsp name}}
-                </a>
+                  <a href="{{pathFor 'organizer' _id=_id}}" class="v-middle">
+                    <img src="{{imageLink}}" class="profile-pic profile-pic-sm m-r-10" aria-hidden="true">{{nbsp name}}
+                  </a>
                 {{/with}}
               </div>
 
             </div>
-            <div class="col-xs-12 col-sm-12 col-lg-7">
-
-              {{#markdown}}{{nbsp event.description}}{{/markdown}}
-            </div>
+            {{#if event.description}}
+              <div class="col-xs-12 col-sm-12 col-lg-7 markdown-body">
+                {{#markdown}}{{nbsp event.description}}{{/markdown}}
+              </div>
+            {{/if}}
 
           </div><!-- eof .row -->
 

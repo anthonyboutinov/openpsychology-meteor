@@ -75,28 +75,18 @@ Template.list_item.helpers({
     }
   },
 
-
-  priceLabel: function() {
-    const sale = this.event.price.sale;
-    if (sale != null) {
-      return sale == 0 ? "Бесплатно" : sale + "₽";
-    } else {
-      const regular = this.event.price.regular;
-      return regular == 0 ? "Бесплатно" : regular + "₽";
-    }
-  },
   priceBg: function() {
     const sale = this.event.price.sale;
     if (sale != null) {
-      return "bg-success";
+      return "bg-success text-success";
     } else {
       const regular = this.event.price.regular;
-      return regular == 0 ? "bg-success" : "bg-hint";
+      return regular == 0 ? "bg-success text-success" : "bg-hint";
     }
   },
 
   eventImageUrl: function() {
-    return this.event.imageUrl ? this.event.imageUrl : "https://placehold.it/360x180?text=Нет изображения";
+    return this.event.imageId ? this.event.imageId : "https://placehold.it/360x180?text=Нет изображения";
   },
 });
 
