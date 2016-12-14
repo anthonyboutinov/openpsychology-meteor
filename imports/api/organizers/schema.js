@@ -1,17 +1,6 @@
 import { LocationSchema } from '../schemas/location.js';
 import { Events } from '../events/collection.js';
 
-const ManagedBy = new SimpleSchema({
-  userId: {
-    type: String,
-  },
-  nonRetireable: {
-    type: Boolean,
-    label: "Обладатель объекта Организация",
-    optional: true
-  }
-});
-
 export const OrganizersSchema = new SimpleSchema({
   name: {
     type: String,
@@ -140,9 +129,38 @@ export const OrganizersSchema = new SimpleSchema({
     },
   },
 
-  managedBy: {
-    type: [ManagedBy],
-    label: "Управляющие",
-    // 'help-text': "Список людей, которые могут редактировать инфомрацию об организации; добавлять, изменять и удалять события",
+  'managedBy': {
+    type: Array,
+    label: "Участники организации",
+  },
+
+  'managedBy.$': {
+    type: Object,
+  },
+
+  'managedBy.$.userId': {
+    type: String,
+    label: "Пользователь",
+    autoform: {
+      type: 'select',
+      'data-placeholder': 'Найти по email или имени',
+      options() {
+        userIds = AutoForm.getFieldValue('managedBy').map((v)=>{
+          const user = Meteor.users.findOne(v.userId);
+          return {
+            value: v.userId,
+            label: user.emails[0].address + (user.profile.name || Meteor.userId() == v.userId ? " (" + (Meteor.userId() == v.userId ? "Вы" : user.profile.name) + ")" : "")
+          }
+        });
+        return userIds;
+      }
+    }
+  },
+  'managedBy.$.nonRetireable': {
+    type: Boolean,
+    optional: true,
+    autoform: {
+      template: "hidden",
+    }
   }
 });

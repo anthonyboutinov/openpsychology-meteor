@@ -30,11 +30,18 @@ a, a i, button, input[type="submit"] {
 }
 
 h1, .h1, h2, .h2, h3, .h3 {
-  font-family: $font-family-headings;
-  font-weight: 400;
+  &:not(.panel-title) {
+    font-family: $font-family-headings;
+    font-weight: 400;
+  }
 }
 h3, .h3 {
   letter-spacing: 0.2em;
+}
+
+.panel-title {
+  font-weight: $font-size-base;
+  letter-spacing: normal;
 }
 
 em {

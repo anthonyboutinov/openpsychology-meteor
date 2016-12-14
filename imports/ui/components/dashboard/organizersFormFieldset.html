@@ -1,38 +1,49 @@
 <template name="organizersFormFieldset">
   <fieldset>
-    <legend>Основная информация</legend>
-    {{> afQuickField name="name" autofocus=''}}
-    <legend>Описание</legend>
-    {{> afQuickField name="description"}}
-    {{> afQuickField name="imageId"}}
-    {{> afQuickField name="bannerImageId"}}
-    <legend>Контактная информация</legend>
-    <div class="row">
-      <div class="col-md-6">
-        {{> afQuickField name="location"}}
+    {{#if specialFormTypeIsCollaborators}}
+
+      <!-- <legend>Список участников</legend>
+      {{> afQuickField name="managedBy"}} -->
+
+    {{else}}{{#if specialFormTypeIsResign}}
+
+    {{else}}
+
+      <legend>Основная информация</legend>
+      {{> afQuickField name="name" autofocus=''}}
+      <legend>Описание</legend>
+      {{> afQuickField name="description"}}
+      {{> afQuickField name="imageId"}}
+      {{> afQuickField name="bannerImageId"}}
+      <legend>Контактная информация</legend>
+      <div class="row">
+        <div class="col-md-6">
+          {{> afQuickField name="location"}}
+        </div>
+        <div class="col-md-6">
+          {{> afQuickField name="phoneNum"}}
+          {{> afQuickField name="email"}}
+        </div>
       </div>
-      <div class="col-md-6">
-        {{> afQuickField name="phoneNum"}}
-        {{> afQuickField name="email"}}
+      <legend>Ссылки на социальные сети</legend>
+      <div class="row">
+        <div class="col-md-6">
+          {{> afQuickField name="socialLinkVK"}}
+        </div>
+        <div class="col-md-6">
+          {{> afQuickField name="socialLinkOdnoklassniki"}}
+        </div>
+        <div class="col-md-6">
+          {{> afQuickField name="socialLinkFacebook"}}
+        </div>
+        <div class="col-md-6">
+          {{> afQuickField name="socialLinkYouTube"}}
+        </div>
+        <div class="col-md-6">
+          {{> afQuickField name="socialLinkTwitter"}}
+        </div>
       </div>
-    </div>
-    <legend>Ссылки на социальные сети</legend>
-    <div class="row">
-      <div class="col-md-6">
-        {{> afQuickField name="socialLinkVK"}}
-      </div>
-      <div class="col-md-6">
-        {{> afQuickField name="socialLinkOdnoklassniki"}}
-      </div>
-      <div class="col-md-6">
-        {{> afQuickField name="socialLinkFacebook"}}
-      </div>
-      <div class="col-md-6">
-        {{> afQuickField name="socialLinkYouTube"}}
-      </div>
-      <div class="col-md-6">
-        {{> afQuickField name="socialLinkTwitter"}}
-      </div>
-    </div>
+
+    {{/if}}{{/if}}
   </fieldset>
 </template>

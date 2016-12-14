@@ -30,6 +30,10 @@ Event.prototype = {
     return Coaches.find({_id: {$in: this.coachesIds}}, {sort: {name: 1}});
   },
 
+  coachesCollectiveLabelSafeVersion() {
+    return this.coachesCollectiveLabel || "Тренера/ведущие";
+  },
+
   userManagesThis() {
     const userId = Meteor.userId();
     if (!userId) return false;

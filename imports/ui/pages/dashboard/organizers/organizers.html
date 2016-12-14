@@ -40,8 +40,8 @@
                   <i class="fa fa-fw fa-ellipsis-h" aria-hidden="true"></i><span class="sr-only">Ещё</span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Редактировать список администраторов</a></li>
-                  <li><a href="#">Передать права другой учетной записи</a></li>
+                  <li><a href="{{pathFor 'dashboard.organizer.update' _id=_id specialFormType='collaborators'}}">Редактировать список участников</a></li>
+                  <li><a href="{{pathFor 'dashboard.organizer.update' _id=_id specialFormType='resign'}}">Передать права другой учетной записи</a></li>
                   <li><a href="#" mo-action="remove">Удалить организацию</a></li>
                 </ul>
               </div>

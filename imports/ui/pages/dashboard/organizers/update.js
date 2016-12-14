@@ -4,23 +4,28 @@ import './update.html';
 import '/imports/ui/components/dashboard/organizersFormFieldset.js';
 
 Template.dashboardOrganizersUpdate.helpers({
-  Organizers: function() {
+  Organizers() {
     return Organizers;
+  },
+  __tempSolution() {
+    return !this.specialFormType;
   }
 });
 
 let hooksObject = {
   before: {
-    update: function(doc) {
-      doc.phoneNum = Phoneformat.cleanPhone(doc.phoneNum);
+    update(doc) {
+      if (doc.phoneNum) {
+        doc.phoneNum = Phoneformat.cleanPhone(doc.phoneNum);
+      }
       console.log(doc);
       return doc;
     },
   },
-  onSuccess: function(formType, result) {
-    Router.go('dashboard.organizers');
+  onSuccess(formType, result) {
+    Router.go('dashboard.organizer', {_id: this.formAttributes.doc._id});
   },
-  onError: function(formType, error) {
+  onError(formType, error) {
     console.log(error);
   },
 };
