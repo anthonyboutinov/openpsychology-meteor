@@ -44,7 +44,8 @@ Template.dashboardOrganizer.helpers({
   pageHeadingColorClass() {
     const bannerBrightness = this.bannerBrightness.get();
     const midBrightnessValue = 180;
-    return bannerBrightness && bannerBrightness <= midBrightnessValue ? "color-light" : "";
+    if (!bannerBrightness) return "color-light";
+    return bannerBrightness <= midBrightnessValue ? "color-light" : "";
   },
 });
 

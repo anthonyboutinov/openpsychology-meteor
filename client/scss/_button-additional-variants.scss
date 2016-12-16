@@ -62,39 +62,35 @@
   @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
 }
 
-$btn-alt-bg-hover-transparecy:        (1 - 0.14);
-$btn-alt-bg-focus-transparecy:        0.7;
+$btn-alt-bg-hover-transparecy:        0.8;
+$btn-alt-bg-focus-transparecy:        0.8;
 $btn-alt-bg-active-transparecy:       0.7;
 $btn-alt-bg-activehover-transparecy:  0.6;
 
 @mixin btn-alt ($color) {
   @extend .btn-default;
-
-  // &.btn-wider {
-  //   border-left: 1px solid transparentize($color, 0.5);
-  //   border-right: 1px solid transparentize($color, 0.5);
-  //
-  //   &:active,&.active,&.hover,&:hover,&.focus,&:focus {
-  //     border-left-color: transparent;
-  //     border-right-color: transparent;
-  //   }
-  // }
+  color: $color;
+  background-color: transparentize($color, 0.9);
 
   & > i.fa {
     color: $color;
   }
 
   &:active, &.active {
+    color: $color;
     background-color: transparentize($color, $btn-alt-bg-active-transparecy);
     &:hover, &.hover,
     &:focus, &.focus {
+      color: $color;
       background-color: transparentize($color, $btn-alt-bg-activehover-transparecy);
     }
   }
   &:focus, &.focus {
+    color: $color;
     background-color: transparentize($color, $btn-alt-bg-focus-transparecy);
   }
   &:hover, &.hover {
+    color: $color;
     background-color: transparentize($color, $btn-alt-bg-hover-transparecy);
   }
 }
