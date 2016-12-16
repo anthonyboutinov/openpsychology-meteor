@@ -1,14 +1,5 @@
 <template name="organizersFormFieldset">
   <fieldset>
-    {{#if specialFormTypeIsCollaborators}}
-
-      <!-- <legend>Список участников</legend>
-      {{> afQuickField name="managedBy"}} -->
-
-    {{else}}{{#if specialFormTypeIsResign}}
-
-    {{else}}
-
       <legend>Основная информация</legend>
       {{> afQuickField name="name" autofocus=''}}
       <legend>Описание</legend>
@@ -43,7 +34,5 @@
           {{> afQuickField name="socialLinkTwitter"}}
         </div>
       </div>
-
-    {{/if}}{{/if}}
   </fieldset>
 </template>

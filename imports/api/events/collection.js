@@ -34,13 +34,11 @@ Event.prototype = {
     return this.coachesCollectiveLabel || "Тренера/ведущие";
   },
 
-  userManagesThis() {
+  managedByUser() {
     const userId = Meteor.userId();
     if (!userId) return false;
-    const organizer = Organizers.findOne(this.organizerId, {fields: {managedBy: 1}});
-    if (!organizer) return false;
-    const managedByUserIds = organizer.managedBy.map((v)=>{return v.userId});
-    return managedByUserIds.includes(userId);
+    const organizer = Organizers.findOne(this.organizerId, {fields: {ownerId: 1, managedBy: 1}});
+    return organizer.managedByUser();
   },
 
   /*

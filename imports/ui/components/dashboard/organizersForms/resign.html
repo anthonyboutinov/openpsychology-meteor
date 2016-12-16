@@ -1,0 +1,13 @@
+<template name="organizersFormResign">
+  {{#autoForm collection=Organizers id="updateOrganizerForm" type="update" doc=this.organizer template="contemporary"}}
+    <div class="row">
+      <div class="col-md-6">
+        {{> afQuickField name="ownerId"}}
+        <span class="help-block m-t-negative-10 m-b-20">Владелец может удалить организацию по собственному желанию.</span>
+      </div>
+      <div class="col-md-6">
+        <button type="submit" class="btn btn-danger btn-wider">Передать права этой учетной записи</button>
+      </div>
+    </div>
+    {{/autoForm}}
+</template>

@@ -1,0 +1,31 @@
+<template name="organizersFormCollaborators">
+
+  {{#unless specialFormTypeIsResign}}
+
+    <div class="form-group">
+      <label class="control-label">Владелец</label>
+      <div class="row">
+          <div class="col-md-6">
+            <input type="text" class="form-control" disabled="true" value="{{ownerIdName}}">
+            <span class="help-block">Владелец может удалить организацию по собственному желанию.</span>
+          </div>
+          {{#if isOwner}}
+            <div class="col-md-6">
+              <a href="{{pathFor 'dashboard.organizer.update' _id=organizer._id specialFormType='resign'}}" class="btn btn-danger-alt m-b-10">Передать права другому участнику</a>
+            </div>
+          {{/if}}
+      </div>
+    </div>
+
+  {{else}}
+    {{> organizersFormResign}}
+  {{/unless}}
+
+  {{#autoForm collection=Organizers id="updateOrganizerForm" type="update" doc=this.organizer template="contemporary"}}
+    {{> afQuickField name="managedBy" disabled=specialFormTypeIsResign}}
+    {{#unless specialFormTypeIsResign}}
+      <button type="submit" class="btn btn-primary btn-wider">Сохранить изменения</button>
+    {{/unless}}
+  {{/autoForm}}
+
+</template>

@@ -17,14 +17,24 @@ if (Meteor.isServer) {
     'event.remove'(eventId) {
       check(eventId, String);
       check(this.userId, String);
-      const managedOrganizers = Organizers.find({'managedBy.userId': this.userId}, {fields: {_id: 1}}).map(function(doc){return doc._id});
+      const managedOrganizers = Organizers.find({
+        $or: [
+          {ownerId: this.userId},
+          {managedBy: this.userId}
+        ]
+      }, {fields: {_id: 1}}).map(function(doc){return doc._id});
       return Events.remove({_id: eventId, organizerId: {$in: managedOrganizers}});
     },
 
     'events.remove'(eventIds) {
       check(eventIds, Array);
       check(this.userId, String);
-      const managedOrganizers = Organizers.find({'managedBy.userId': this.userId}, {fields: {_id: 1}}).map(function(doc){return doc._id});
+      const managedOrganizers = Organizers.find({
+        $or: [
+          {ownerId: this.userId},
+          {managedBy: this.userId}
+        ]
+      }, {fields: {_id: 1}}).map(function(doc){return doc._id});
       return Events.remove({_id: {$in: eventIds}, organizerId: {$in: managedOrganizers}});
     },
 

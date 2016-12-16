@@ -7,7 +7,7 @@ if (Meteor.isServer) {
     'organizers.remove': function(_id) {
       check(_id, String);
       check(this.userId, String);
-      Organizers.remove({_id: _id, managedBy: { userId: this.userId, nonRetireable: true}});
+      return Organizers.remove({_id: _id, ownerId: this.userId});
     }
   });
 

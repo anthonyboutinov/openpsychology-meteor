@@ -24,8 +24,7 @@ Organizer.prototype = {
   managedByUser() {
     const userId = Meteor.userId();
     if (!userId) return false;
-    const managedByUserIds = this.managedBy.map((v)=>{return v.userId});
-    return managedByUserIds.includes(userId);
+    return this.ownerId == userId || this.managedBy.includes(userId);
   },
 
   /*

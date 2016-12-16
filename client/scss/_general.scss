@@ -35,17 +35,21 @@ h1, .h1, h2, .h2, h3, .h3 {
     font-weight: 400;
   }
 }
-h3, .h3 {
+.letter-spaced {
   letter-spacing: 0.2em;
 }
 
 .panel-title {
   font-weight: $font-size-base;
-  letter-spacing: normal;
+  // letter-spacing: normal;
 }
 
 em {
   text-decoration: underline;
+}
+
+p.small {
+  margin-bottom: 0.3em;
 }
 
 

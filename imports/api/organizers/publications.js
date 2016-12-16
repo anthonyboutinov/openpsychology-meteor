@@ -12,7 +12,12 @@ if (Meteor.isServer) {
 
   Meteor.publish('organizers.managedByUser', function() {
     check(this.userId, String);
-    return Organizers.find({ 'managedBy.userId': this.userId }, {/*sort: 'createdAt', */limit: 100});
+    return Organizers.find({
+      $or: [
+        {ownerId: this.userId},
+        {managedBy: this.userId}
+      ]
+    }, {sort: {createdAt: 1}, limit: 100});
   });
 
   Meteor.publish('organizer.byEventId', function(_id) {

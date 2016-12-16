@@ -129,38 +129,47 @@ export const OrganizersSchema = new SimpleSchema({
     },
   },
 
-  'managedBy': {
-    type: Array,
+  managedBy: {
+    type: [String],
     label: "Участники организации",
+    defaultValue: [],
+    optional: true,
+    maxCount: 50,
+    autoform: {
+      type: 'select-multiple',
+      'data-placeholder': 'Найти по email или имени',
+      options: _.throttle(function options() {
+        const currentlyVisibleUsers = Meteor.users.find({});
+        const userIds = currentlyVisibleUsers.map((user)=>{
+          return {
+            value: user._id,
+            label: user.emails[0].address + (user.profile.name || Meteor.userId() == user._id ? " (" + (Meteor.userId() == user._id ? "Вы" : user.profile.name) + ")" : "")
+          }
+        });
+        // console.log(userIds);
+        return userIds;
+      }, 2000)
+    }
   },
 
-  'managedBy.$': {
-    type: Object,
-  },
-
-  'managedBy.$.userId': {
+  ownerId: {
     type: String,
-    label: "Пользователь",
+    label: "Владелец",
     autoform: {
       type: 'select',
       'data-placeholder': 'Найти по email или имени',
-      options() {
-        userIds = AutoForm.getFieldValue('managedBy').map((v)=>{
-          const user = Meteor.users.findOne(v.userId);
+      options: _.throttle(function options() {
+        const currentlyVisibleUsers = Meteor.users.find({});
+        const userIds = currentlyVisibleUsers.map((user)=>{
           return {
-            value: v.userId,
-            label: user.emails[0].address + (user.profile.name || Meteor.userId() == v.userId ? " (" + (Meteor.userId() == v.userId ? "Вы" : user.profile.name) + ")" : "")
+            value: user._id,
+            label: user.emails[0].address + (user.profile.name || Meteor.userId() == user._id ? " (" + (Meteor.userId() == user._id ? "Вы" : user.profile.name) + ")" : "")
           }
         });
+        // console.log(userIds);
         return userIds;
-      }
+      }, 2000)
     }
   },
-  'managedBy.$.nonRetireable': {
-    type: Boolean,
-    optional: true,
-    autoform: {
-      template: "hidden",
-    }
-  }
+
 });

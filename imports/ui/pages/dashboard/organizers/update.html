@@ -12,24 +12,14 @@
       <h3>{{pageTitle.long}}</h3>
     </div>
     <div class="panel-body">
-
-      {{#if __tempSolution}}
-
-      {{#autoForm collection=Organizers id="updateOrganizerForm" type="update" doc=this.organizer template="contemporary"}}
-        {{> organizersFormFieldset}}
-        <button type="submit" class="btn btn-primary btn-wider m-t-20">Сохранить изменения</button>
-      {{/autoForm}}
-
+      {{#if specialFormType}}
+        {{> organizersFormCollaborators}}
       {{else}}
-
-      <div class="alert bg-warning text-warning">
-        <div class="alert-body">
-          <strong>Извините, этот фукнционал пока не реализован!</strong>
-        </div>
-      </div>
-
+        {{#autoForm collection=Organizers id="updateOrganizerForm" type="update" doc=this.organizer template="contemporary"}}
+          {{> organizersFormFieldset}}
+          <button type="submit" class="btn btn-primary btn-wider m-t-20">Сохранить изменения</button>
+        {{/autoForm}}
       {{/if}}
-
     </div>
   </div>
 

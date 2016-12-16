@@ -1,7 +1,7 @@
 import { Organizers } from '/imports/api/organizers/collection.js';
 
 import './insert.html';
-import '/imports/ui/components/dashboard/organizersFormFieldset.js';
+import '/imports/ui/components/dashboard/organizersForms/fieldset.js';
 
 
 Template.dashboardOrganizersAdd.helpers({
@@ -13,13 +13,8 @@ Template.dashboardOrganizersAdd.helpers({
 let hooksObject = {
   before: {
     insert: function(doc) {
+      doc.ownerId = Meteor.userId();
       doc.phoneNum = Phoneformat.cleanPhone(doc.phoneNum);
-      doc.managedBy = [
-        {
-          userId: Meteor.userId(),
-          nonRetireable: true
-        }
-      ];
       console.log(doc);
       return doc;
     },

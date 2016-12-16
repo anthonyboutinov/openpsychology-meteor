@@ -14,3 +14,7 @@ Template.registerHelper("phoneNumHref", function (string) {
 Template.registerHelper("phoneNumLabel", function (string) {
   return Phoneformat.formatLocal('RU', string);
 });
+
+Template.registerHelper("consoleLog", function (subject) {
+  console.log(subject);
+});
