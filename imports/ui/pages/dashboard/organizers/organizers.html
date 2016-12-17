@@ -41,8 +41,13 @@
                 </button>
                 <ul class="dropdown-menu" role="menu">
                   <li><a href="{{pathFor 'dashboard.organizer.update' _id=_id specialFormType='collaborators'}}">Редактировать список участников</a></li>
-                  <li><a href="{{pathFor 'dashboard.organizer.update' _id=_id specialFormType='resign'}}">Передать права другой учетной записи</a></li>
-                  <li><a href="#" mo-action="remove">Удалить организацию</a></li>
+                  {{#if this.ownedByUser}}
+                    <li><a href="{{pathFor 'dashboard.organizer.update' _id=_id specialFormType='resign'}}">Передать права другой учетной записи</a></li>
+                    <li><a href="#" mo-action="removeOrganizer">Удалить организацию</a></li>
+                  {{else}}
+                    <li><a href="#" class="disabled">Передать права другой учетной записи</a></li>
+                    <li><a href="#" class="disabled">Удалить организацию</a></li>
+                  {{/if}}
                 </ul>
               </div>
             </div>

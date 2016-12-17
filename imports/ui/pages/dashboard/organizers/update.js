@@ -43,6 +43,11 @@ let hooksObject = {
   },
   onSuccess(formType, result) {
     console.log(this);
+
+    if (this.updateDoc.$set.ownerId && this.updateDoc.$set.ownerId !=this.currentDoc.ownerId) {
+      swal("Успешно!", "Права на огранизацию «" + this.currentDoc.name + "» переданы другому пользователю!", "success");
+    }
+
     Router.go('dashboard.organizer', {_id: this.formAttributes.doc._id});
   },
   onError(formType, error) {

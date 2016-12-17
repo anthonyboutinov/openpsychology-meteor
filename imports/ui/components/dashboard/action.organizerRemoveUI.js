@@ -1,5 +1,16 @@
 export const organizerRemoveUI = function(event, template) {
   event.preventDefault();
+
+  // Safety check
+  // !Should never happen unless someone with malevolent intensions tries to manipulate page's HTML code.
+  //  And even if someone calls Meteor.call('organizers.remove', ...) directly, it won't have any effect,
+  //  because there's also a security check on the server side.
+  const userId = Meteor.userId();
+  if (!userId || this.ownerId != userId) {
+    swal("Запрещено!", "У Вас нет прав на это действие!", danger);
+    return;
+  }
+
   const doc = this;
   swal({
     title: "Вы уверены?",

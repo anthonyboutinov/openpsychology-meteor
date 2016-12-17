@@ -21,10 +21,16 @@ Organizer.prototype = {
     return Coaches.find({organizerId: this._id}, {sort: {'name': 1}});
   },
 
-  managedByUser() {
-    const userId = Meteor.userId();
+  managedByUser(userId) {
+    userId = userId || Meteor.userId();
     if (!userId) return false;
     return this.ownerId == userId || this.managedBy.includes(userId);
+  },
+
+  ownedByUser(userId) {
+    userId = userId || Meteor.userId();
+    if (!userId) return false;
+    return this.ownerId == userId;
   },
 
   /*

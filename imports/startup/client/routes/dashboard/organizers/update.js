@@ -34,6 +34,17 @@ Router.route("/dashboard/organizer/:_id/update/:specialFormType?", function() {
     }
   });
   if (this.ready()) {
+
+    // Safety check
+    //  Перекинуть на страницу редактирования участников вместо передачи прав,
+    //  если участник не является обладателем огранизации
+    if (this.params.specialFormType && this.params.specialFormType == "resign") {
+      const org = Organizers.findOne({_id: this.params._id});
+      if (org && org.ownerId != Meteor.userId()) {
+        this.redirect('dashboard.organizer.update', {_id: this.params._id, specialFormType: "collaborators"});
+      }
+    }
+
     this.render('dashboardOrganizersUpdate');
   } else {
     this.render('loading');

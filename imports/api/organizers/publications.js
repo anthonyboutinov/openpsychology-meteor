@@ -11,6 +11,7 @@ if (Meteor.isServer) {
   });
 
   Meteor.publish('organizers.managedByUser', function() {
+    if (!this.userId) return false;
     check(this.userId, String);
     return Organizers.find({
       $or: [
