@@ -40,6 +40,16 @@
       }
     }
   }
+
+  .sa-input-error {
+    display: none !important;
+  }
+
+  .sa-error-container {
+    margin: 0;
+    background-color: transparent;
+    padding-bottom: 0 !important;
+  }
 }
 
 .sweet-overlay {
