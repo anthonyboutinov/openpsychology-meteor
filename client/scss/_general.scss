@@ -68,6 +68,10 @@ p.small {
   &:hover, &:focus {
     color: #fff;
     background-color: $gray-doublelight;
+
+    .desaturate {
+      @include desaturate-invert;
+    }
   }
 }
 
@@ -97,6 +101,12 @@ p.small {
 .dropdown-menu.drop-left {
   right: 0;
   left: auto;
+}
+
+.dropdown-menu .divider {
+  margin: 5px 0;
+  height: 2px;
+  background-color: rgba(135, 135, 135, 0.2);
 }
 
 // TODO: What was that?

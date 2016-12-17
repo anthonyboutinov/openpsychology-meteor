@@ -11,6 +11,7 @@ Search events route
 */
 Router.route('/search/:categoryUrlName', function() {
   this.subscribe('categories').wait();
+  this.subscribe('organizers.managedByUser').wait();
 
   const categoryUrlName = this.params.categoryUrlName;
   const categoriesUrlNamesList = categoryUrlName != "none" ? categoryUrlName.split("") : false;

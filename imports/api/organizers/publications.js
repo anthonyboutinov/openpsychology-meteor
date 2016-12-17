@@ -18,7 +18,7 @@ if (Meteor.isServer) {
         {ownerId: this.userId},
         {managedBy: this.userId}
       ]
-    }, {sort: {createdAt: 1}, limit: 100});
+    }, {limit: 100});
   });
 
   Meteor.publish('organizer.byEventId', function(_id) {

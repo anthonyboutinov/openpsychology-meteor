@@ -13,6 +13,8 @@ Organizer route
 Router.route("/organizer/:_id", function() {
   this.subscribe('categories').wait();
   this.subscribe('organizer', this.params._id).wait();
+  this.subscribe('organizers.managedByUser').wait();
+
   this.subscribe('events.byOrganizer', {
     _idOrganizer: this.params._id,
     addFindParams: {

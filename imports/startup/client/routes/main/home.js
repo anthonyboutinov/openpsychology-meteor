@@ -9,6 +9,8 @@ Home route
 */
 Router.route('/', function () {
   this.subscribe('categories').wait();
+  this.subscribe('organizers.managedByUser').wait();
+
   this.layout('defaultLayout', {
     data: {
       subscriptionsReady: () => {

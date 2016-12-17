@@ -19,6 +19,14 @@
   width: 100%;
 }
 
+.round {
+  border-radius: 50%;
+}
+
+.desaturate {
+  @include desaturate;
+}
+
 
 
 .img-external-noalpha {
