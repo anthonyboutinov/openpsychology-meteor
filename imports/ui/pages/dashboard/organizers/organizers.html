@@ -33,8 +33,8 @@
           </a>
           <div class="row">
             <div class="col-sm-7">
-              <a href="{{pathFor 'organizer' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-id-card-o" aria-hidden="true"></i> Страница</a>
-              <a href="{{pathFor 'dashboard.organizer.update' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Редактировать</a>
+              <a href="{{pathFor 'organizer' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-id-card-o" aria-hidden="true"></i><span class="hidden-sm hidden-xs"> Страница</span></a>
+              <a href="{{pathFor 'dashboard.organizer.update' _id=_id}}" class="btn btn-default"><i class="fa fa-fw fa-edit" aria-hidden="true"></i><span class="hidden-sm hidden-xs"> Редактировать</span></a>
               <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-fw fa-ellipsis-h" aria-hidden="true"></i><span class="sr-only">Ещё</span>
@@ -52,11 +52,6 @@
               </div>
             </div>
             <div class="col-sm-5 text-right">
-              <div class="relative no-overflow" style="position: absolute;bottom: 0;overflow: hidden;">
-                <div class="widget-16-chart line-chart" style="height:100px;" data-line-color="success" data-points="true" data-point-color="white" data-stroke-width="2">
-                <svg><g class="nvd3 nv-wrap nv-lineChart" transform="translate(-10,10)"><g><rect width="290" height="80" style="opacity: 0;"></rect><g class="nv-x nv-axis"></g><g class="nv-y nv-axis"></g><g class="nv-linesWrap"><g class="nvd3 nv-wrap nv-line" transform="translate(0,0)"><defs><clipPath id="nv-edge-clip-98131"><rect width="290" height="80"></rect></clipPath></defs><g clip-path=""><g class="nv-groups"><g class="nv-group nv-series-0" style="stroke-opacity: 1; fill-opacity: 0.0; fill: rgb(39, 206, 188); stroke: rgb(39, 206, 188);"><path class="nv-line" d="M0,80L48.333333333333336,58.66666666666667L96.66666666666667,26.66666666666667L145,21.333333333333336L193.33333333333334,0L241.66666666666669,10.666666666666657L290,53.333333333333336"></path></g></g><g class="nv-scatterWrap" clip-path=""><g class="nvd3 nv-wrap nv-scatter nv-chart-98131" transform="translate(0,0)"><defs><clipPath id="nv-edge-clip-98131"><rect width="290" height="80"></rect></clipPath></defs><g clip-path=""><g class="nv-groups"><g class="nv-group nv-series-0" style="stroke-opacity: 1; fill-opacity: 0.5; stroke: rgb(39, 206, 188); fill: rgb(39, 206, 188);"><circle cx="0" cy="80" r="4" class="nv-point nv-point-0"></circle><circle cx="48.333333333333336" cy="58.66666666666667" r="4" class="nv-point nv-point-1"></circle><circle cx="96.66666666666667" cy="26.66666666666667" r="4" class="nv-point nv-point-2"></circle><circle cx="145" cy="21.333333333333336" r="4" class="nv-point nv-point-3"></circle><circle cx="193.33333333333334" cy="0" r="4" class="nv-point nv-point-4"></circle><circle cx="241.66666666666669" cy="10.666666666666657" r="4" class="nv-point nv-point-5"></circle><circle cx="290" cy="53.333333333333336" r="4" class="nv-point nv-point-6"></circle></g></g><g class="nv-point-paths"></g></g></g></g></g></g></g><g class="nv-legendWrap"></g><g class="nv-interactive"><g class=" nv-wrap nv-interactiveLineLayer"><g class="nv-interactiveGuideLine"></g></g></g></g></g></svg>
-                </div>
-              </div>
               <div class="position-relative">
                 <a href="{{pathFor 'dashboard.organizer.event.modify' organizerId=_id}}" class="btn btn-default"><i class="fa fa-fw fa-calendar-plus-o" aria-hidden="true"></i> Добавить мероприятие</a>
               </div>

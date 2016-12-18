@@ -5,14 +5,14 @@
       <div class="header">
         {{> dashboardNavbar}}
       </div>
-      <nav class="page-sidebar">
+      <nav class="page-sidebar" id="menu">
         <div class="scrollbar-macos">
           <div style="height: calc(100vh - 50px);">
             {{> dashboardSidenavbar}}
           </div>
         </div>
       </nav>
-      <div class="page-container">
+      <div class="page-container" id="panel">
         <div class="container-fluid">
           {{> yield}}
         </div>

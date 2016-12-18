@@ -44,7 +44,7 @@ Template.dashboardSidenavbar.helpers({
 });
 
 Template.dashboardSidenavbar.events({
-  "click [submenu-toggle]": function(event, template){
+  "click [submenu-toggle]"(event, template){
     event.preventDefault();
     let target = $(event.currentTarget);
     let id = target.attr("submenu-toggle");
@@ -55,5 +55,8 @@ Template.dashboardSidenavbar.events({
     if (id == "organizers" && currentValue == false) {
       SessionStore.set("dashboard.sidenavbar.subMenuIsOpen." + "events", false);
     }
-  }
+  },
+  'click [mo-action="logout"]'() {
+    AccountsTemplates.logout();
+  },
 });

@@ -76,9 +76,11 @@ p.small {
 }
 
 
-.container-fluid {
-  padding-left: 30px;
-  padding-right: 30px;
+@media screen and (min-width: $screen-sm-min) {
+  .container-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
 
 .text-danger {

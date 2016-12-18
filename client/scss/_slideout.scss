@@ -1,0 +1,86 @@
+.slideout-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 256px;
+  min-height: 100vh;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  z-index: 0;
+  // display: none;
+  transition: transform 300ms ease;
+  -webkit-transition: transform 300ms ease;
+}
+
+.slideout-menu-left {
+  left: 0;
+}
+
+.slideout-menu-right {
+  right: 0;
+}
+
+.slideout-panel {
+  position: relative;
+  z-index: 1;
+  will-change: transform;
+  background-color: #FFF; /* A background-color is required */
+  min-height: 100vh;
+  transform: translateX(0px);
+  transition: transform 300ms ease;
+  -webkit-transition: transform 300ms ease;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+  overflow: hidden;
+}
+
+.slideout-open .slideout-panel {
+  transform: translateX(256px);
+}
+
+.slideout-open .slideout-menu {
+  display: block;
+  transform: translateX(0px);
+}
+
+@media screen and (max-width: $screen-xs-max) {
+  .slideout-menu {
+    transform: translateX(-256px);
+  }
+}
+
+@media screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+  .slideout-panel {
+    margin-left: (256px - 190px);
+  }
+
+  .slideout-menu {
+    display: block;
+    transform: translateX(-190px);
+
+    &:hover {
+      transform: translateX(0px);
+    }
+  }
+
+  .btn-hamburger {
+    display: none;
+  }
+}
+
+@media screen and (min-width: $screen-md-min) {
+  .slideout-panel {
+    margin-left: 256px;
+  }
+
+  .slideout-menu {
+    display: block;
+  }
+
+  .btn-hamburger {
+    display: none;
+  }
+}

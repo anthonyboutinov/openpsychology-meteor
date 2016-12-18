@@ -2,7 +2,7 @@
 
   <ul class="nav nav-stacked m-b-60">
     <li>
-      <a href="{{pathFor 'dashboard.user'}}">
+      <a href="{{pathFor 'dashboard.user'}}" class="toggle-slideout">
         <span class="title">{{username}}</span>
         <span class="icon-thumbnail {{childThereofIsActive 'dashboard.user'}}">
           <i class="fa fa-fw fa-user-circle" aria-hidden="true"></i>
@@ -21,7 +21,7 @@
       </a>
       <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'events'}}">
         <li>
-          <a href="{{pathFor 'dashboard.events' timeframe='ongoing'}}">
+          <a href="{{pathFor 'dashboard.events' timeframe='ongoing'}}" class="toggle-slideout">
             <span class="title">Текущие</span>
             <span class="icon-thumbnail {{eventsTimeframeIsActive 'ongoing'}}">
               Т
@@ -30,7 +30,7 @@
           </a>
         </li>
         <li>
-          <a href="{{pathFor 'dashboard.events' timeframe='upcoming'}}">
+          <a href="{{pathFor 'dashboard.events' timeframe='upcoming'}}" class="toggle-slideout">
             <span class="title">Предстоящие</span>
             <span class="icon-thumbnail {{eventsTimeframeIsActive 'upcoming'}}">
               П
@@ -39,7 +39,7 @@
           </a>
         </li>
         <li>
-          <a href="{{pathFor 'dashboard.events' timeframe='past'}}">
+          <a href="{{pathFor 'dashboard.events' timeframe='past'}}" class="toggle-slideout">
             <span class="title">Завершенные</span>
             <span class="icon-thumbnail {{eventsTimeframeIsActive 'past'}}">
               З
@@ -50,7 +50,7 @@
       </ul>
     </li>
     <li>
-      <a href="{{pathFor 'dashboard.events.bookmarked'}}">
+      <a href="{{pathFor 'dashboard.events.bookmarked'}}" class="toggle-slideout">
         <span class="title">Закладки</span>
         <span class="icon-thumbnail {{isActive 'dashboard.events.bookmarked'}}">
           <i class="fa fa-fw fa-bookmark" aria-hidden="true"></i>
@@ -59,7 +59,7 @@
     </li>
     <li role="separator" class="divider"></li>
     <li>
-      <a href="{{pathFor 'dashboard.organizers'}}">
+      <a href="{{pathFor 'dashboard.organizers'}}" class="toggle-slideout">
         <span class="title">
           Организации
           {{#if organizers.count}}
@@ -74,7 +74,7 @@
       <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'organizers'}}">
         {{#each org in organizers}}
         <li>
-          <a href="{{pathFor 'dashboard.organizer' _id=org._id}}">
+          <a href="{{pathFor 'dashboard.organizer' _id=org._id}}" class="toggle-slideout">
             <span class="title">{{org.name}}</span>
             <span class="icon-thumbnail {{iconThumbnailClass org.imageId}} {{organizerIsActive org._id}}">
               {{#if org.imageId}}
@@ -90,12 +90,19 @@
       {{/if}}
     </li>
     <li>
-      <a href="{{pathFor 'dashboard.settings'}}">
+      <a href="{{pathFor 'dashboard.settings'}}" class="toggle-slideout">
         <span class="title">
           Настройки
         </span>
         <span class="icon-thumbnail {{isActive 'dashboard.settings'}}">
           <i class="fa fa-fw fa-cog" aria-hidden="true"></i>
+        </span>
+      </a>
+    </li>
+    <li class="visible-xs-block">
+      <a href="#" mo-action="logout">
+        <span class="title">
+          Выйти
         </span>
       </a>
     </li>
