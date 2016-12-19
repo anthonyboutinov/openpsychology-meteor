@@ -1,6 +1,11 @@
 footer.primary {
   padding-top: $grid-gutter-width;
   padding-bottom: $grid-gutter-width;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 160px;
 
   .logo {
     margin-bottom: 10px;

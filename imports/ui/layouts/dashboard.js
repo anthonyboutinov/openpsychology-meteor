@@ -25,7 +25,9 @@ Template.dashboardLayout.onRendered(function(){
     resized, and so on.
   */
   const debouncedSetWindowWidthVar = _.debounce(function(reactiveVar) {
-    reactiveVar.set($(window).width());
+    if (reactiveVar) {
+      reactiveVar.set($(window).width());
+    }
   }, 500);
 
   $(window).resize(function() {
