@@ -55,6 +55,15 @@
 }
 
 
+.link-vk {
+  @include link-variant($btn-vk-bg);
+}
+
+.link-facebook {
+  @include link-variant($btn-facebook-bg);
+}
+
+
 /*
  * Other buttons
  */

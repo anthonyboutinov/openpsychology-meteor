@@ -56,3 +56,15 @@
   }
 
 }
+
+@mixin link-variant($color) {
+  color: $color;
+  &:hover, &.hover, &:focus, &.focus, &:active, &.active {
+    color: darken($color, 10%);
+  }
+  &:active, &.active {
+    &:hover, &.hover, &:focus, &.focus {
+      color: darken($color, 17%);
+    }
+  }
+}

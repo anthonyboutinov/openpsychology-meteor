@@ -9,11 +9,15 @@ body {
    position:relative;
 }
 // #document-body {
+// @media screen and (min-width: $screen-md-min) {
 //    padding-bottom: $footer-height;   /* Height of the footer */
+// }
 // }
 #document-footer {
   //  position:absolute;
    bottom:0;
    width:100%;
-   height: $footer-height;   /* Height of the footer */
+   @media screen and (min-width: $screen-md-min) {
+     height: $footer-height;   /* Height of the footer */
+   }
 }

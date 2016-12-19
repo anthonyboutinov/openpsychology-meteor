@@ -70,13 +70,3 @@
 .navbar-translucent {
   @include glass-pane($brand-primary);
 }
-
-// .navbar-inverse .navbar-nav {
-//   .dropdown-menu > li > a {
-//     &:hover, &:focus {
-//       & > i.fa {
-//         color: $brand-primary;
-//       }
-//     }
-//   }
-// }

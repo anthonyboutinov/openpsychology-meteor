@@ -1,14 +1,25 @@
 footer.primary {
   padding-top: $grid-gutter-width;
   padding-bottom: $grid-gutter-width;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 160px;
+
+  @media screen and (min-width: $screen-md-min) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    // height: $footer-height;
+
+    ul.nav {
+      & > li:first-child > a {
+        padding-left: 0;
+      }
+      & > li:last-child > a {
+        padding-right: 0;
+      }
+    }
+  }
 
   .logo {
-    margin-bottom: 10px;
     img {
       width: 32px;
       margin-right: 12px;
@@ -19,10 +30,6 @@ footer.primary {
   }
 
   .defaultLayout & {
-
-    @media screen and (min-width: $screen-md-min) {
-      height: $footer-height;
-    }
 
     .logo {
       span {
@@ -37,8 +44,6 @@ footer.primary {
       }
     }
 
-
-
     background-color: $navbar-inverse-bg;
     color: $navbar-inverse-color;
     border-color: $navbar-inverse-border;
@@ -52,10 +57,31 @@ footer.primary {
     color: $text-muted;
   }
 
+  @media screen and (max-width: $screen-sm-max) {
+    ul.nav > li {
+      display: inline-block;
+    }
+  }
+
+
+  .social-links {
+    font-size: $font-size-h3;
+    @media screen and (min-width: $screen-md-min) {
+      margin-top: -10px;
+      margin-bottom: 5px;
+    }
+  }
+
 }
 
 .footer-light {
   color: $text-muted;
   border-top: 2px solid rgba(0, 0, 0, 0.05);
   box-shadow: 0 -4px 3px rgba(0, 0, 0, 0.02);
+  a {
+    &, &:hover, &:focus, &:active {
+      background-color: transparent !important;
+    }
+  }
+
 }
