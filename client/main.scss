@@ -95,13 +95,15 @@
 .line-height-pic {
   min-height: 48px;
   span, div {
-    vertical-align: middle;
+    display: inline-block;
+    margin-top: 6px;
   }
 
   &-sm {
     min-height: 32px;
     span, div {
-      vertical-align: middle;
+      display: inline-block;
+      margin-top: 6px;
     }
   }
 }
