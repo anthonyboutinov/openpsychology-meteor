@@ -5,7 +5,7 @@ Template.footer.helpers({
     if (this.type == "dashboard" || this.ultraCompact) {
       return "footer-light";
     } else {
-      return "navbar-inverse";
+      return "footer-dark";
     }
   },
   containerClass: function() {

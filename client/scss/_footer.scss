@@ -26,29 +26,10 @@ footer.primary {
     }
     span {
       font-size: $font-size-h4;
+      font-family: $font-family-headings;
+      font-weight: 400;
     }
   }
-
-  .defaultLayout & {
-
-    .logo {
-      span {
-        color: #fff;
-      }
-    }
-
-    a {
-      color: #d1d1d1;
-      &:hover, &:focus, &:active {
-        color: white;
-      }
-    }
-
-    background-color: $navbar-inverse-bg;
-    color: $navbar-inverse-color;
-    border-color: $navbar-inverse-border;
-  }
-
 
   .accountsLayout & {
     padding-top: 15px;
@@ -84,4 +65,27 @@ footer.primary {
     }
   }
 
+}
+
+.footer-dark {
+  background-color: $navbar-inverse-bg;
+  color: transparentize($navbar-inverse-color, 0.2);
+  font-weight: 500;
+
+  .logo {
+    span {
+      color: #fff;
+    }
+  }
+
+  a {
+    color: $navbar-inverse-color;
+    &:hover, &:focus, &:active {
+      color: #fff;
+    }
+  }
+
+  .nav > li > a:hover, .nav > li > a:focus {
+    background-color: transparent;
+  }
 }

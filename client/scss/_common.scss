@@ -419,3 +419,10 @@ a.disabled {
     }
   }
 }
+
+.dropdown-menu {
+  max-width: 256px;
+  & > li > a {
+    @extend .overflow-ellipsis;
+  }
+}
