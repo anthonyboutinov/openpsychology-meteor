@@ -28,7 +28,7 @@ Template.mergedLayout.helpers({
     return this.sublayoutType == "dashboardLayout";
   },
   displaySidenavbar() {
-    console.log("displaySidenavbar triggered");
+    // console.log("displaySidenavbar triggered");
 
     const self = Template.instance();
 
@@ -43,7 +43,7 @@ Template.mergedLayout.helpers({
         }
         $('.scrollbar-macosx').scrollbar();
       });
-      console.log("displaySidenavbar triggered: true");
+      // console.log("displaySidenavbar triggered: true");
       return true;
     }
 
@@ -57,11 +57,10 @@ Template.mergedLayout.helpers({
           panel.removeClass("slideout-panel slideout-panel-left");
         });
       }
-      console.log("displaySidenavbar triggered: false");
+      // console.log("displaySidenavbar triggered: false");
       return false;
     }
 
-    console.log(self.windowWidth);
     const width = self.windowWidth.get();
     if (width < maxWindowWidthForSidenavbar) {
       _.defer(() => {
@@ -74,7 +73,7 @@ Template.mergedLayout.helpers({
         }
         $('.scrollbar-macosx').scrollbar();
       });
-      console.log("displaySidenavbar triggered: true");
+      // console.log("displaySidenavbar triggered: true");
       return true;
     } else {
       if (self.slideoutInstance) {
@@ -84,7 +83,7 @@ Template.mergedLayout.helpers({
           panel.removeClass("slideout-panel slideout-panel-left");
         });
       }
-      console.log("displaySidenavbar triggered: false");
+      // console.log("displaySidenavbar triggered: false");
       return false;
     }
   },

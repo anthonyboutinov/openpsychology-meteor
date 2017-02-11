@@ -20,12 +20,23 @@
 
 #document-body {
   & > .header {
-    position: fixed;
-    left: 0;
-    top: 0;
-    display: block;
-    width: 100%;
     z-index: 800;
+
+    &.dashboardmode-header {
+      position: fixed;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 100%;
+    }
+
+    @media screen and (max-width: $screen-sm-max) {
+      position: fixed;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 100%;
+    }
   }
 
   & > .page-sidebar {
