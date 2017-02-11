@@ -13,7 +13,9 @@ Organizer route
 Router.route("/organizer/:_id", function() {
   this.subscribe('categories').wait();
   this.subscribe('organizer', this.params._id).wait();
-  this.subscribe('organizers.managedByUser').wait();
+  if (Meteor.userId()) {
+    this.subscribe('organizers.managedByUser').wait();
+  }
 
   this.subscribe('events.byOrganizer', {
     _idOrganizer: this.params._id,
@@ -25,7 +27,7 @@ Router.route("/organizer/:_id", function() {
       limit: QUERY_LIMIT,
     }
   }).wait();
-  this.layout('defaultLayout', {
+  this.layout('mergedLayout', {
     data: {
       subscriptionsReady: () => {
         return this.ready();
@@ -34,6 +36,7 @@ Router.route("/organizer/:_id", function() {
         return Events.find();
       },
       organizer: Organizers.findOne({ _id: this.params._id }),
+      isMain: true,
     }
   });
   if (this.ready()) {

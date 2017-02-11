@@ -21,7 +21,7 @@ if (Meteor.isServer) {
   Meteor.publish('events', function(params) {
     const findParams = EventsPublishFunctions.getFindParams(params);
     Counts.publish(this, 'events.count', Events.find(findParams), {noReady: true});
-    console.log("EVENTS", findParams, params.options);
+    console.log("Events with params: ", findParams, params.options);
     return Events.find(findParams, params.options);
   });
 
@@ -175,10 +175,10 @@ if (Meteor.isServer) {
 
 
   Meteor.publish('event', function(_id) {
-    console.log(_id);
+    console.log("Event by id ", _id);
     // Find event and fetch it to know needed properties
     const event = Events.findOne(_id, {fileds: {isPublished: 1, organizer: 1}});
-    console.log(event);
+    // console.log(event);
     if (event && event.isPublished) {
       // If event is published -- return it
       return Events.find(_id);

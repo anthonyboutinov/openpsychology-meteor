@@ -16,8 +16,9 @@ Router.route("/dashboard/events/bookmarked", function() {
     sort: {'dates.dateFrom': 1}
   }).wait();
 
-  this.layout('dashboardLayout', {
+  this.layout('mergedLayout', {
     data: {
+      sublayoutType: "dashboardLayout",
       subscriptionsReady: () => {
         return this.ready();
       },

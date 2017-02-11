@@ -9,13 +9,16 @@ Home route
 */
 Router.route('/', function () {
   this.subscribe('categories').wait();
-  this.subscribe('organizers.managedByUser').wait();
+  if (Meteor.userId()) {
+    this.subscribe('organizers.managedByUser').wait();
+  }
 
-  this.layout('defaultLayout', {
+  this.layout('mergedLayout', {
     data: {
       subscriptionsReady: () => {
         return this.ready();
       },
+      isMain: true,
     }
   });
   if (this.ready()) {

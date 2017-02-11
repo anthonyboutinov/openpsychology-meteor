@@ -46,15 +46,19 @@
   transform: translateX(0px);
 }
 
-@media screen and (max-width: $screen-xs-max) {
+@media screen and (max-width: 375px) {
   .slideout-menu {
     transform: translateX(-256px);
   }
 }
 
-@media screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+@media screen and (min-width: 375px) and (max-width: $screen-sm-max) {
   .slideout-panel {
     margin-left: (256px - 190px);
+  }
+
+  .slideout-open .slideout-panel {
+    transform: translateX(ceil(256px / 12 * 7)) !important;
   }
 
   .slideout-menu {

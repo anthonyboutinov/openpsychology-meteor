@@ -8,8 +8,9 @@ Dashboard.Organizers route
 Router.route("/dashboard/organizers", function() {
   this.subscribe('organizers.managedByUser').wait();
 
-  this.layout('dashboardLayout', {
+  this.layout('mergedLayout', {
     data: {
+      sublayoutType: "dashboardLayout",
       subscriptionsReady: () => {
         return this.ready();
       },

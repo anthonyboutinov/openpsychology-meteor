@@ -1,8 +1,75 @@
 <template name="dashboardSidenavbar">
 
   <ul class="nav nav-stacked m-b-60">
+
+
+    <li class="visible-xs-block">
+      <a href="{{pathFor 'home'}}" class="toggle-slideout-away">
+        <span class="title">Домой</span>
+        <span class="icon-thumbnail {{childThereofIsActive 'home'}}">
+          <i class="fa fa-fw fa-home" aria-hidden="true"></i>
+        </span>
+      </a>
+    </li>
+
+    <li class="visible-xs-block">
+      <a href="#" submenu-toggle="search">
+        <span class="title">
+          Поиск
+          <span class="arrow {{subMenuIsOpen 'search'}} {{isActive 'search'}}"></span>
+        </span>
+        <span class="icon-thumbnail">
+          <i class="fa fa-fw fa-search" aria-hidden="true"></i>
+        </span>
+      </a>
+      <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'search'}}">
+        <li>
+          <a href="{{pathFor 'search' categoryUrlName='tseo'}}" class="toggle-slideout-away">
+            <span class="title">Всё</span>
+            <span class="icon-thumbnail  {{searchSubElementIsActive 'tseo'}}">
+              В
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="{{pathFor 'search' categoryUrlName='t'}}" class="toggle-slideout-away">
+            <span class="title">Тренинги</span>
+            <span class="icon-thumbnail {{searchSubElementIsActive 't'}}">
+              Т
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="{{pathFor 'search' categoryUrlName='s'}}" class="toggle-slideout-away">
+            <span class="title">Семинары</span>
+            <span class="icon-thumbnail {{searchSubElementIsActive 's'}}">
+              С
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="{{pathFor 'search' categoryUrlName='e'}}" class="toggle-slideout-away">
+            <span class="title">Образования</span>
+            <span class="icon-thumbnail {{searchSubElementIsActive 'e'}}">
+              О
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="{{pathFor 'search' categoryUrlName='o'}}" class="toggle-slideout-away">
+            <span class="title">Мероприятия онлайн</span>
+            <span class="icon-thumbnail {{searchSubElementIsActive 'o'}}">
+              МО
+            </span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+
+    {{#if currentUser}}
     <li>
-      <a href="{{pathFor 'dashboard.user'}}" class="toggle-slideout">
+      <a href="{{pathFor 'dashboard.user'}}" class="toggle-slideout-away">
         <span class="title">{{username}}</span>
         <span class="icon-thumbnail {{childThereofIsActive 'dashboard.user'}}">
           <i class="fa fa-fw fa-user-circle" aria-hidden="true"></i>
@@ -21,7 +88,7 @@
       </a>
       <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'events'}}">
         <li>
-          <a href="{{pathFor 'dashboard.events' timeframe='ongoing'}}" class="toggle-slideout">
+          <a href="{{pathFor 'dashboard.events' timeframe='ongoing'}}" class="toggle-slideout-away">
             <span class="title">Текущие</span>
             <span class="icon-thumbnail {{eventsTimeframeIsActive 'ongoing'}}">
               Т
@@ -30,7 +97,7 @@
           </a>
         </li>
         <li>
-          <a href="{{pathFor 'dashboard.events' timeframe='upcoming'}}" class="toggle-slideout">
+          <a href="{{pathFor 'dashboard.events' timeframe='upcoming'}}" class="toggle-slideout-away">
             <span class="title">Предстоящие</span>
             <span class="icon-thumbnail {{eventsTimeframeIsActive 'upcoming'}}">
               П
@@ -39,7 +106,7 @@
           </a>
         </li>
         <li>
-          <a href="{{pathFor 'dashboard.events' timeframe='past'}}" class="toggle-slideout">
+          <a href="{{pathFor 'dashboard.events' timeframe='past'}}" class="toggle-slideout-away">
             <span class="title">Завершенные</span>
             <span class="icon-thumbnail {{eventsTimeframeIsActive 'past'}}">
               З
@@ -50,7 +117,7 @@
       </ul>
     </li>
     <li>
-      <a href="{{pathFor 'dashboard.events.bookmarked'}}" class="toggle-slideout">
+      <a href="{{pathFor 'dashboard.events.bookmarked'}}" class="toggle-slideout-away">
         <span class="title">Закладки</span>
         <span class="icon-thumbnail {{isActive 'dashboard.events.bookmarked'}}">
           <i class="fa fa-fw fa-bookmark" aria-hidden="true"></i>
@@ -59,7 +126,7 @@
     </li>
     <li role="separator" class="divider"></li>
     <li>
-      <a href="{{pathFor 'dashboard.organizers'}}" class="toggle-slideout">
+      <a href="{{pathFor 'dashboard.organizers'}}" class="toggle-slideout-away">
         <span class="title">
           Организации
           {{#if organizers.count}}
@@ -74,7 +141,7 @@
       <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'organizers'}}">
         {{#each org in organizers}}
         <li>
-          <a href="{{pathFor 'dashboard.organizer' _id=org._id}}" class="toggle-slideout">
+          <a href="{{pathFor 'dashboard.organizer' _id=org._id}}" class="toggle-slideout-away">
             <span class="title">{{org.name}}</span>
             <span class="icon-thumbnail {{iconThumbnailClass org.imageId}} {{organizerIsActive org._id}}">
               {{#if org.imageId}}
@@ -90,7 +157,7 @@
       {{/if}}
     </li>
     <li>
-      <a href="{{pathFor 'dashboard.settings'}}" class="toggle-slideout">
+      <a href="{{pathFor 'dashboard.settings'}}" class="toggle-slideout-away">
         <span class="title">
           Настройки
         </span>
@@ -106,6 +173,19 @@
         </span>
       </a>
     </li>
+
+    {{else}}
+    <li class="visible-xs-block">
+      <a href="/login">
+        <span class="title">
+          Войти
+        </span>
+        <span class="icon-thumbnail">
+          <i class="fa fa-fw fa-user-circle" aria-hidden="true"></i>
+        </span>
+      </a>
+    </li>
+    {{/if}}
   </ul>
 
   <img src="http://placehold.it/400x400?text=Реклама" class="img-responsive">

@@ -11,7 +11,9 @@ Search events route
 */
 Router.route('/search/:categoryUrlName', function() {
   this.subscribe('categories').wait();
-  this.subscribe('organizers.managedByUser').wait();
+  if (Meteor.userId()) {
+    this.subscribe('organizers.managedByUser').wait();
+  }
 
   const categoryUrlName = this.params.categoryUrlName;
   const categoriesUrlNamesList = categoryUrlName != "none" ? categoryUrlName.split("") : false;
@@ -45,7 +47,7 @@ Router.route('/search/:categoryUrlName', function() {
     this.subscribe('organizers.forEvents', eventsParams).wait();
   }
 
-  this.layout('defaultLayout', {
+  this.layout('mergedLayout', {
     data: {
       currentCategories: () => {
         if (categoriesUrlNamesList) {
@@ -63,6 +65,7 @@ Router.route('/search/:categoryUrlName', function() {
       subscriptionsReady: () => {
         return this.ready();
       },
+      isMain: true,
     },
   });
   this.render('list');

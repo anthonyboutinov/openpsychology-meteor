@@ -115,3 +115,27 @@ p.small {
 // .panel {
 //   background-color: $gray-lightest;
 // }
+
+
+.version-sticker {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1px 0px 1px 5px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+
+  &.alpha {
+    background-color: rgba(221, 173, 77, 1);
+    color: #fff;
+  }
+
+  a {
+    color: #fff;
+    cursor: help;
+  }
+}
+
+.font-headings {
+  font-family: $font-family-headings;
+}

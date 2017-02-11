@@ -18,8 +18,9 @@ Router.route("/dashboard/organizer/:_id/update/:specialFormType?", function() {
     this.subscribe('users.whoManageOrganizer', this.params._id).wait();
   }
 
-  this.layout('dashboardLayout', {
+  this.layout('mergedLayout', {
     data: {
+      sublayoutType: "dashboardLayout",
       subscriptionsReady: () => {
         return this.ready();
       },

@@ -1,0 +1,42 @@
+<template name="mergedLayout">
+
+  <div id="document-container" class="{{sublayoutType}}">
+    <div id="document-body">
+
+      {{#if dashboardMode}}
+        <div class="header">
+          {{> dashboardNavbar}}
+        </div>
+      {{else}}
+        <div class="header">
+          {{> navbar}}
+        </div>
+        {{> searchbar}}
+      {{/if}}
+
+      {{#if displaySidenavbar}}
+      <nav class="page-sidebar" id="menu">
+        <div class="scrollbar-macosx">
+          <div class="scrollbar-macosx-wrapper">
+            {{> dashboardSidenavbar}}
+          </div>
+        </div>
+      </nav>
+      {{/if}}
+
+      <div class="{{#if displaySidenavbar}}page-container{{/if}}" id="panel">
+        {{#if dashboardMode}}
+        <div class="container-fluid">
+          {{> yield}}
+        </div>
+        {{else}}
+          {{> yield}}
+        {{/if}}
+        <div id="document-footer">
+          {{> footer type=sublayoutType}}
+        </div>
+      </div>
+     </div>
+  </div>
+
+</template>

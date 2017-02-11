@@ -16,6 +16,9 @@ Template.dashboardSidenavbar.helpers({
   eventsTimeframeIsActive: function(name) {
     return this.timeframe == name ? "active" : false;
   },
+  searchSubElementIsActive: function(query) {
+    return Router.current().route.getName() == 'search' && Router.current().params.categoryUrlName == query ? "active" : false;
+  },
   organizerIsActive: function(_id) {
     if (!this.organizer) return false;
     return this.organizer()._id == _id ? "active" : false;
@@ -41,6 +44,10 @@ Template.dashboardSidenavbar.helpers({
   iconThumbnailClass(variable) {
     return variable ? "bg-transparent" : false;
   },
+
+  isDashboard() {
+    return !this.isMain;
+  }
 });
 
 Template.dashboardSidenavbar.events({

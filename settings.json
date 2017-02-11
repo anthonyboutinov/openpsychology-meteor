@@ -1,0 +1,8 @@
+{
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "mongodb://***REMOVED***",
+      "DEPLOY_HOSTNAME": "eu-west-1.galaxy-deploy.meteor.com"
+    }
+  }
+}
