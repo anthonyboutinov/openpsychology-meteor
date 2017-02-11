@@ -20,8 +20,9 @@ Router.route("/dashboard/organizer/:_id", function() {
     }
   }).wait();
 
-  this.layout('dashboardLayout', {
+  this.layout('mergedLayout', {
     data: {
+      sublayoutType: "dashboardLayout",
       subscriptionsReady: () => {
         return this.ready();
       },

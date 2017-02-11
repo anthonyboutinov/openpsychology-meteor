@@ -57,8 +57,9 @@ Router.route("/dashboard/user", function() {
   const findParamsUpcomingEvents = queryByDate.setFindUpcoming({});
   const findParamsOngoingEvents = queryByDate.setFindOngoing({});
 
-  this.layout('dashboardLayout', {
+  this.layout('mergedLayout', {
     data: {
+      sublayoutType: "dashboardLayout",
       subscriptionsReady: () => {
         return this.ready();
       },

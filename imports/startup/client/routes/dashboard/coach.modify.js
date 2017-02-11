@@ -13,8 +13,9 @@ Router.route("/dashboard/organizer/:organizerId/coach/:coachId?", function() {
     this.subscribe('coach', this.params.coachId).wait();
   }
 
-  this.layout('dashboardLayout', {
+  this.layout('mergedLayout', {
     data: {
+      sublayoutType: "dashboardLayout",
       subscriptionsReady: () => {
         return this.ready();
       },

@@ -1,17 +1,21 @@
 <template name="navbar">
 
   <header role="banner">
-    <nav class="navbar navbar-inverse navbar-primary" role="navigation">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
+    <nav class="navbar navbar-inverse navbar-primary navbar-translucent" role="navigation">
+
+      <div class="visible-xs-block container-fluid">
+        <ul class="nav navbar-nav navbar-left">
+          <li class="pull-left"><a href="#" role="button" class="toggle-slideout">
+            <i class="fa fa-fw fa-bars" aria-hidden="true"></i>
+            <span class="sr-only">Показать/скрыть меню навигации</span>
+          </a></li>
+          <li class="pull-left">
+            <a href="#">Открытая психология</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="container hidden-xs">
         <div class="navbar-collapse">
           <ul class="nav navbar-nav navbar-center">
             <li>
@@ -38,10 +42,12 @@
                   <li><a href="{{pathFor 'dashboard.user'}}"><i class="fa fa-fw fa-user-circle-o" aria-hidden="true"></i> Профиль</a></li>
                   <li><a href="{{pathFor 'dashboard.events' timeframe='ongoing'}}"><i class="fa fa-fw fa-calendar-o" aria-hidden="true"></i> Мероприятия</a></li>
                   <li><a href="{{pathFor 'dashboard.events.bookmarked'}}"><i class="fa fa-fw fa-bookmark" aria-hidden="true"></i> Закладки</a></li>
-                  {{#if managedOrganizers}}
+                  {{#with managedOrganizers}}
+                    {{#if this.count}}
                     <li><a href="{{pathFor 'dashboard.organizers'}}"><i class="fa fa-fw fa-building" aria-hidden="true"></i> Организации</a></li>
                     <li class="divider"></li>
-                    {{#each organizer in managedOrganizers}}
+                    {{/if}}
+                    {{#each organizer in this}}
                       <li>
                         <a href="{{pathFor 'dashboard.organizer' _id=organizer._id}}">
                           {{#if organizer.imageId}}
@@ -53,8 +59,10 @@
                         </a>
                       </li>
                     {{/each}}
+                    {{#if this.count}}
                     <li class="divider"></li>
-                  {{/if}}
+                    {{/if}}
+                  {{/with}}
                   <li><a href="{{pathFor 'dashboard.settings'}}"><i class="fa fa-fw fa-cog" aria-hidden="true"></i> Настройки</a></li>
                   <li>{{> atNavButton}}</li>
                 </ul>
@@ -72,7 +80,7 @@
               {{#each category in categories}}
                 {{> navbar_category category=category currentCategories=currentCategories showSearchbar=showSearchbar}}
               {{/each}}
-              <li><a href="#">Статьи</a></li>
+              <!-- <li><a href="#">Статьи</a></li> -->
             </ul>
             <!-- eof Navbar center -->
 

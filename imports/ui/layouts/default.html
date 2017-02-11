@@ -2,12 +2,27 @@
 
   <div id="document-container" class="defaultLayout">
      <div id="document-body">
+
+
        {{> navbar}}
        {{> searchbar}}
-       {{> yield}}
-     </div>
-     <div id="document-footer">
-       {{> footer}}
+
+       {{#if showSidenavbar}}
+       <nav class="page-sidebar" id="menu">
+         <div class="scrollbar-macos">
+           <div style="height: calc(100vh - 50px);">
+             {{> dashboardSidenavbar}}
+           </div>
+         </div>
+       </nav>
+       {{/if}}
+
+       <div class="page-container" id="panel">
+         {{> yield}}
+       </div>
+       <div id="document-footer">
+         {{> footer}}
+       </div>
      </div>
   </div>
 

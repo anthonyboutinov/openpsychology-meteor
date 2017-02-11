@@ -15,8 +15,9 @@ Router.route("/dashboard/organizer/:organizerId/event/:eventId?", function() {
     this.subscribe('event', this.params.eventId).wait();
   }
 
-  this.layout('dashboardLayout', {
+  this.layout('mergedLayout', {
     data: {
+      sublayoutType: "dashboardLayout",
       subscriptionsReady: () => {
         return this.ready();
       },

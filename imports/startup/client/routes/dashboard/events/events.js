@@ -21,8 +21,9 @@ Router.route("/dashboard/events/:timeframe", function() {
     }
   }).wait();
 
-  this.layout('dashboardLayout', {
+  this.layout('mergedLayout', {
     data: {
+      sublayoutType: "dashboardLayout",
       subscriptionsReady: () => {
         return this.ready();
       },

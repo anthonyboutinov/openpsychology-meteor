@@ -55,7 +55,7 @@ AccountsTemplates.configure({
 
 
 Router.plugin('ensureSignedIn', {
-  except: _.pluck(AccountsTemplates.routes, 'name').concat(['home', 'event', 'organizer', 'search'])
+  except: _.pluck(AccountsTemplates.routes, 'name').concat(['home', 'event', 'organizer', 'search', 'version'])
 });
 
 AccountsTemplates.configureRoute('signIn', {

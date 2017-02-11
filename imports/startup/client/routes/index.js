@@ -10,7 +10,7 @@ Router.configure({
 Router.onStop(function () {
   SessionStore.set("router.mainSiteSection.lastVisitedPage", this.url);
 }, {
-  only: ['event', 'search', 'home', 'organizer']
+  only: ['event', 'search', 'home', 'organizer', 'version']
 });
 
 import './accounts.js';

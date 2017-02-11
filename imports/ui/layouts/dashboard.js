@@ -31,6 +31,7 @@ Template.dashboardLayout.onRendered(function(){
   }, 500);
 
   $(window).resize(function() {
+    console.log("dashboardLayout: Window Resize");
     debouncedSetWindowWidthVar(self.data.windowWidth);
   });
 
