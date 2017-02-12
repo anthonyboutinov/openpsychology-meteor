@@ -113,6 +113,7 @@ reactive-dict@1.1.8
 reactive-var@1.0.11
 reload@1.1.11
 retry@1.0.9
+reywood:iron-router-ga@0.7.1
 routepolicy@1.0.12
 rzymek:moment-locale-ru@2.14.1
 service-configuration@1.0.11
