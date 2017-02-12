@@ -1,8 +1,10 @@
 export const QUERY_LIMIT = 6 * 5;
 
 Router.configure({
-  // the default layout
-  layoutTemplate: 'loadingLayout'
+  // The default layout:
+  layoutTemplate: 'loadingLayout',
+  // Google Analytics, site-wide page tracking:
+  trackPageView: true,
 });
 
 // Router.plugin('dataNotFound', {notFoundTemplate: 'notFound'});

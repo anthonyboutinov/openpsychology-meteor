@@ -1,4 +1,12 @@
 {
+  "public": {
+    "analyticsSettings": {
+      "ga" : {
+        "id": "UA-91754281-1",
+        "trackUserId": true
+      }
+    }
+  },
   "galaxy.meteor.com": {
     "env": {
       "MONGO_URL": "mongodb://admin:3Le-DBH-7Wm-xH9@ds145009.mlab.com:45009/openpsychology",
