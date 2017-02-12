@@ -160,7 +160,7 @@
 
               <div class="m-t-15">
                 <h4>Организатор:</h4>
-                {{#with organizer}}
+                {{#with event.organizer}}
                   <a href="{{pathFor 'organizer' _id=_id}}" class="v-middle">
                     <img src="{{imageLink}}" class="profile-pic profile-pic-sm m-r-10 table-cell pull-left" aria-hidden="true"
                     /><span class="table-cell">

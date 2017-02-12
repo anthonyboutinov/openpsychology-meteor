@@ -48,12 +48,12 @@ useraccounts:iron-routing
 gwendall:body-events
 stuke:ics-generator
 natestrauser:select2
-reactive-dict
+reactive-dict@1.1.8
 zimme:collection-timestampable
-underscore
+underscore@1.0.10
 ostrio:autoform-files
 ostrio:files
 ostrio:iron-router-title
-accounts-google
+accounts-google@1.0.11
 mdg:seo
 reywood:iron-router-ga
