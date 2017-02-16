@@ -59,6 +59,10 @@
 
           </div>
 
+          {{#if event.managedByUser}}
+            {{> listOfUsers users=event.registeredUsers eventId=event._id}}
+          {{/if}}
+
           <div class="row fulldescription-body">
 
             <div class="col-xs-12 col-sm-12 col-lg-5">

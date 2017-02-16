@@ -1,6 +1,7 @@
 import './event.html';
 
 import '/imports/ui/components/main/calendar-event.js';
+import '/imports/ui/components/common/listOfUsers/';
 
 Template.event.helpers({
   showCalEventsCount(count) {

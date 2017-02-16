@@ -1,0 +1,22 @@
+<template name="listOfUsersSingleUser">
+  <div class="link anitmated zoomIn">
+    <div class="position-relative">
+      <div class="hidden {{#if dropdownIsActive _id}}animation-zoom-out-front{{/if}}">
+        <img src="https://placehold.it/32x32" class="img-responsive profile-pic round">
+      </div>
+      <img src="https://placehold.it/32x32" class="img-responsive profile-pic round">
+    </div>
+    <div class="list-of-users-name">{{username}}</div>
+  </div>
+</template>
+
+<template name="listOfUsersSingleUserDropdown">
+  <div class="open position-relative">
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="#" data-action="showPublicProfile">Профиль</a></li>
+      <li><a href="#" data-action="im-short">Написать сообщение</a></li>
+      <li><a href="#" data-action="im">Показать переписку</a></li>
+      <li><a href="#" data-action="reject">Отказать в регистрации</a></li>
+    </ul>
+  </div>
+</template>

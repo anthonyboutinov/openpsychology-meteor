@@ -38,15 +38,15 @@ if (Meteor.isServer) {
       return Events.remove({_id: {$in: eventIds}, organizerId: {$in: managedOrganizers}});
     },
 
-    'event.registerForEvent'(eventId, setRegistered) {
+    'event.registerForEvent'(eventId, setRegistered, userId = this.userId) {
       check(eventId, String);
       check(setRegistered, Boolean);
-      check(this.userId, String);
+      check(userId, String);
 
       if (setRegistered) {
-        return Events.update(eventId, { $push: { registeredForEvent: this.userId} });
+        return Events.update(eventId, { $push: { registeredForEvent: userId} });
       } else {
-        return Events.update(eventId, { $pull: { registeredForEvent: this.userId} });
+        return Events.update(eventId, { $pull: { registeredForEvent: userId} });
       }
     },
 
