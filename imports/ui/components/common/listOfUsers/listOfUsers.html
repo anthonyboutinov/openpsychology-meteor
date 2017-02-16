@@ -1,0 +1,16 @@
+<template name="listOfUsers">
+  {{#if users.count}}
+    <div class="list-of-users">
+      <ul class="list-inline">
+        {{#each user in usersProcessed}}
+          {{#with user}}
+            <li>
+              {{> dropdownTrigger name=_id template="listOfUsersSingleUser"}}
+              {{> dropdown name=_id template="listOfUsersSingleUserDropdown"}}
+            </li>
+          {{/with}}
+        {{/each}}
+      </ul>
+    </div>
+  {{/if}}
+</template>

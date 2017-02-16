@@ -112,12 +112,8 @@ Template.mergedLayout.events({
 });
 
 Template.mergedLayout.onRendered(function(){
-
   $('.scrollbar-macosx').scrollbar();
-
   this.windowWidth = new ReactiveVar($(window).width());
-  console.log(this.windowWidth.get());
-
   const self = this;
 
   /*
@@ -132,19 +128,21 @@ Template.mergedLayout.onRendered(function(){
   */
   const debouncedSetWindowWidthVar = _.debounce(function(reactiveVar) {
     if (reactiveVar) {
-      console.log("set window width: ", $(window).width());
-      reactiveVar.set($(window).width());
+      const width = $(window).width();
+      if (reactiveVar.get() == width) {
+        // console.log("window width not changed");
+        return;
+      }
+      // console.log("set window width: ", width);
+      reactiveVar.set(width);
     }
   }, 200);
 
   $(window).resize(function() {
     debouncedSetWindowWidthVar(self.windowWidth);
-    // console.log("set window width: ", $(window).width());
-    // self.windowWidth.set($(window).width());
   });
 
   const params = slideoutNewInstanceParameters();
-  console.log(params);
   // const slideoutInstance = new Slideout(params);
   // this.slideoutInstance = new ReactiveVar(slideoutInstance);
 });

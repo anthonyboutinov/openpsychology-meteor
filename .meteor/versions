@@ -69,6 +69,7 @@ launch-screen@1.1.0
 livedata@1.0.18
 localstorage@1.0.12
 logging@1.1.16
+lookback:dropdowns@1.4.2
 markdown@1.0.11
 matb33:collection-hooks@0.7.15
 mdg:seo@1.1.0
@@ -103,6 +104,8 @@ ostrio:iron-router-helper-class@1.0.1
 ostrio:iron-router-title@1.0.3
 peppelg:bootstrap-3-modal@1.0.4
 perak:markdown@1.0.5
+percolate:momentum@0.7.2
+percolate:velocityjs@1.1.0
 promise@0.8.8
 q42:autoform-markdown@1.0.0
 raix:eventemitter@0.1.3

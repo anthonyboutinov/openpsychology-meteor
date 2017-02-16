@@ -1,0 +1,11 @@
+<template name="im-short">
+  <div class="sweet-overlay" style="display:block;" data-action="close"></div>
+  <div class="im-short sweet-alert" style="display:block;">
+    <div class="im-short-title text-left m-b-10">
+      <a class="link" data-action="close"><i class="fa fa-times pull-right" aria-hidden="true"></i><span class="sr-only">Закрыть</span></a>
+      <span class="text-muted">Кому:</span> {{username}}
+    </div>
+    <textarea class="form-control" placeholder="Сообщение..." autofocus=""></textarea>
+    <button class="btn btn-wide btn-primary">Отправить</button>
+  </div>
+</template>

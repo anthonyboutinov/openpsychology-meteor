@@ -1,0 +1,20 @@
+.list-of-users {
+  border-bottom: 1px solid #f6f6f6;
+  margin-bottom: 30px;
+  margin-top: -30px;
+  // border-top: 1px solid #f6f6f6;
+  padding: 20px 30px;
+
+  &>ul {
+    margin: 0;
+
+    &>li {
+      min-width: 120px;
+      text-align: center;
+
+      .profile-pic {
+        margin-bottom: 4px;
+      }
+    }
+  }
+}

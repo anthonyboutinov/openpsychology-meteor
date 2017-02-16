@@ -129,6 +129,11 @@ Event.prototype = {
     const user = Meteor.user();
     return user ? this.registeredForEvent.includes(user._id) : false;
   },
+  registeredUsers() {
+    const users = Meteor.users.find({_id: {$in: this.registeredForEvent}});
+    console.log("events.collection.registeredUsers() users.count: ", users.count());
+    return users;
+  },
 
   /*
    * Images
