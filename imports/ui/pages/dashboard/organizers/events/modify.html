@@ -5,7 +5,7 @@
     <li><a href="{{pathFor 'dashboard.organizers'}}">Организации</a></li>
     <li><a href="{{pathFor 'dashboard.organizer' _id=organizer._id}}">{{organizer.name}}</a></li>
     {{#if event}}
-    <li><a href="{{pathFor 'dashboard.organizer.event' _id=event._id}}">{{event.title}}</a></li>
+    <li><a href="{{pathFor 'dashboard.organizer.event' organizerId=event.organizerId eventId=event._id}}">{{event.title}}</a></li>
     <li><a href="{{pathFor 'dashboard.organizer.event.modify' organizerId=organizer._id eventId=event._id}}" class="active">Редактировать</a></li>
     {{else}}
     <li><a href="{{pathFor 'dashboard.organizer.event.modify' organizerId=organizer._id}}" class="active">Добавить мероприятие</a></li>
