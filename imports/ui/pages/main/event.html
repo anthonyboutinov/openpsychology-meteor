@@ -14,6 +14,11 @@
               </strong>
             {{/unless}}
 
+            <a href="{{pathFor 'dashboard.organizer.event' organizerId=event.organizerId eventId=event._id}}" class="btn btn-sm btn-primary">
+              <i class="fa fa-fw fa-dashboard" aria-hidden="true"></i>
+              Панель управления
+            </a>
+
             <a href="{{pathFor 'dashboard.organizer.event.modify' organizerId=event.organizerId eventId=event._id}}" class="btn btn-sm btn-primary">
               <i class="fa fa-fw fa-edit" aria-hidden="true"></i>
               Редактировать

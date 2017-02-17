@@ -1,0 +1,52 @@
+<template name="dashboardOrganizerEvent">
+  <div class="container-fluid-wings dashboard-page-heading">
+    <div class="img-bg-blur" style="background-image: url('{{event.imageLink}}')"></div>
+    <div class="">
+      <ul class="breadcrumb {{pageHeadingColorClass}}">
+        <li><a href="{{pathFor 'dashboard.home'}}">Личный кабинет</a></li>
+        <li><a href="{{pathFor 'dashboard.organizers'}}">Организации</a></li>
+        <li><a href="{{pathFor 'dashboard.organizer' _id=event.organizerId}}">{{organizer.name}}</a></li>
+        <li><a href="{{pathFor 'dashboard.organizer.event' organizerId=event.organizerId eventId=event._id}}" class="active">{{event.title}}</a></li>
+      </ul>
+
+      <div class="row">
+        <div class="col-md-7">
+          <h1 class="{{pageHeadingColorClass}}">
+            {{event.title}}<br><small class="block-title">{{event.category.singularName}}</small>
+          </h1>
+        </div>
+        <div class="col-md-5">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard-page-heading-actions">
+    <a href="{{pathFor 'event' _id=event._id}}" class="btn btn-default {{pageHeadingColorClass}}"><i class="fa fa-fw fa-id-card-o" aria-hidden="true"></i><span class="hidden-xs"> Страница</span></a>
+    <a href="{{pathFor 'dashboard.organizer.event.modify' organizerId=organizer._id eventId=event._id}}" class="btn btn-default {{pageHeadingColorClass}}"><i class="fa fa-fw fa-edit" aria-hidden="true"></i><span class="hidden-xs"> Редактировать</span></a>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle {{pageHeadingColorClass}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-fw fa-ellipsis-h" aria-hidden="true"></i><span class="sr-only">Ещё</span>
+      </button>
+      {{#with event}}
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#" mo-action="closeBooking">Закрыть регистрацию</a></li>
+          <li><a href="#" mo-action="removeEvent">Удалить</a></li>
+        </ul>
+      {{/with}}
+    </div>
+  </div>
+
+  <div class="panel-section">
+    <div class="panel-heading">
+      <h3>
+        Зарегистрировавшиеся пользователи
+        <i class="fa fa-fw fa-address-book" aria-hidden="true"></i> {{event.registeredForEvent.length}}<span class="sr-only"> человек зарегистрировались</span>
+      </h3>
+    </div>
+    <div class="panel-body">
+      {{> listOfUsers users=event.registeredUsers eventId=event._id}}
+    </div>
+  </div>
+
+</template>

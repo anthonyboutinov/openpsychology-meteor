@@ -3,17 +3,14 @@ import { Organizers } from '/imports/api/organizers/collection.js';
 
 /*
 ----------------------------
-Dashboard.Organizer.Events.Add route
+Dashboard.Organizer.Event route
 ----------------------------
 */
-Router.route("/dashboard/modify/organizer/:organizerId/event/:eventId?", function() {
+Router.route("/dashboard/organizer/:organizerId/event/:eventId", function() {
   this.subscribe('categories').wait();
   this.subscribe('organizers.managedByUser').wait();
   this.subscribe('coaches.byOrganizer', this.params.organizerId).wait();
-
-  if (this.params.eventId) {
-    this.subscribe('event', this.params.eventId).wait();
-  }
+  this.subscribe('event', this.params.eventId).wait();
 
   this.layout('mergedLayout', {
     data: {
@@ -28,16 +25,16 @@ Router.route("/dashboard/modify/organizer/:organizerId/event/:eventId?", functio
         return Organizers.findOne({_id: this.params.organizerId});
       },
       event: () => {
-        return this.params.eventId ? Events.findOne(this.params.eventId) : null;
+        return Events.findOne(this.params.eventId);
       },
     }
   });
   if (this.ready()) {
-    this.render('dashboardOrganizerEventModify');
+    this.render('dashboardOrganizerEvent');
   } else {
     this.render('loading');
   };
 
 }, {
-  name: "dashboard.organizer.event.modify"
+  name: "dashboard.organizer.event"
 });
