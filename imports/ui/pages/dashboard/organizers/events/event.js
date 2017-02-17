@@ -10,10 +10,16 @@ Template.dashboardOrganizerEvent.helpers({
     return bannerBrightness <= midBrightnessValue ? "color-light" : "";
   },
 });
-//
-// Template.dashboardOrganizerEvent.events({
-//
-// });
+
+Template.dashboardOrganizerEvent.events({
+  'click [data-action="im-short-toAll"]'(event) {
+    event.preventDefault();
+    Blaze.renderWithData(Template["im-short"], {
+      users: this.event().registeredUsers(),
+      eventId: this.event()._id,
+    }, $('body')[0]);
+  },
+});
 
 Template.dashboardOrganizerEvent.onCreated(function(){
 
