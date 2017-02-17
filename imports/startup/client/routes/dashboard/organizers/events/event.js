@@ -11,6 +11,7 @@ Router.route("/dashboard/organizer/:organizerId/event/:eventId", function() {
   this.subscribe('organizers.managedByUser').wait();
   this.subscribe('coaches.byOrganizer', this.params.organizerId).wait();
   this.subscribe('event', this.params.eventId).wait();
+  this.subscribe('users.registeredForEvent', this.params.eventId).wait();
 
   this.layout('mergedLayout', {
     data: {

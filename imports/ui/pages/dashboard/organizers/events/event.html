@@ -30,23 +30,38 @@
       </button>
       {{#with event}}
         <ul class="dropdown-menu" role="menu">
-          <li><a href="#" mo-action="closeBooking">Закрыть регистрацию</a></li>
           <li><a href="#" mo-action="removeEvent">Удалить</a></li>
         </ul>
       {{/with}}
     </div>
   </div>
 
-  <div class="panel-section">
-    <div class="panel-heading">
-      <h3>
-        Зарегистрировавшиеся пользователи
-        <i class="fa fa-fw fa-address-book" aria-hidden="true"></i> {{event.registeredForEvent.length}}<span class="sr-only"> человек зарегистрировались</span>
-      </h3>
+  {{#if event.registeredForEvent.length}}
+    <div class="panel-section panel-section-opaque">
+      <div class="panel-heading">
+        <div class="panel-title">
+          Зарегистрировавшиеся пользователи
+          <i class="fa fa-fw fa-address-book" aria-hidden="true"></i> {{event.registeredForEvent.length}}<span class="sr-only"> человек зарегистрировались</span>
+        </div>
+      </div>
+      <div class="panel-body">
+
+        <div class="fulldescription-actions">
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-fw fa-ellipsis-h" aria-hidden="true"></i><span class="sr-only">Ещё</span>
+            </button>
+            <ul class="dropdown-menu drop-left" role="menu">
+              <li><a href="#" data-action="im-short">Отправить всем сообщение</a></li>
+              <li><a href="#" data-action="closeBooking">Закрыть регистрацию</a></li>
+              <li><a href="#" data-action="rejectAll">Отказать всем</a></li>
+            </ul>
+          </div>
+        </div>
+
+        {{> listOfUsers users=event.registeredUsers eventId=event._id}}
+      </div>
     </div>
-    <div class="panel-body">
-      {{> listOfUsers users=event.registeredUsers eventId=event._id}}
-    </div>
-  </div>
+  {{/if}}
 
 </template>
