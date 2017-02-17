@@ -3,10 +3,12 @@
     <li>
       <div class="row">
         <div class="col-md-6">
-          <span class="btn-sized overflow-ellipsis">
-            {{#unless isPublished}}<i class="fa fa-fw fa-eye-slash" aria-hidden="true"></i><span class="sr-only"> Скрыто</span>{{/unless}}
-            {{title}}
-          </span>
+          <a href="{{pathFor 'dashboard.organizer.event' organizerId=organizerId eventId=_id}}">
+            <span class="btn-sized overflow-ellipsis">
+              {{#unless isPublished}}<i class="fa fa-fw fa-eye-slash" aria-hidden="true"></i><span class="sr-only"> Скрыто</span>{{/unless}}
+              {{title}}
+            </span>
+          </a>
           <br>
           <button class="btn btn-info-alt btn-sm"><i class="fa fa-fw fa-heart" aria-hidden="true"></i> {{likes.length}}<span class="sr-only"> человек поставили «лайк»</span></button>
           <button class="btn btn-info-alt btn-sm"><i class="fa fa-fw fa-address-book" aria-hidden="true"></i> {{registeredForEvent.length}}<span class="sr-only"> человек зарегистрировались</span></button>
