@@ -38,3 +38,17 @@ Template.navbar.helpers({
     return user.profile.name ? user.profile.name : user.emails[0].address;
   },
 });
+
+Template.navbar.events({
+  "click #showSearchbar"(event, template) {
+    event.preventDefault();
+    if (this.showSearchbar) {
+      Router.go(window.location.pathname);
+    } else if (this.searchbarSupported) {
+      Router.go(window.location.pathname + "?sb=true");
+    } else {
+      const allCategoriesUrlNames = Categories.find({}, {fields: {urlName: 1}}).map((v)=>{return v.urlName}).join("");
+      Router.go("/search/" + allCategoriesUrlNames + "?sb=true")
+    }
+  },
+});
