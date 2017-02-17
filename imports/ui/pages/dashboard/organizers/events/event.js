@@ -19,6 +19,12 @@ Template.dashboardOrganizerEvent.events({
       eventId: this.event()._id,
     }, $('body')[0]);
   },
+  'click [data-action="toggleBooking"]'(event) {
+    event.preventDefault();
+    const thisevent = this.event();
+    const bookingOpen = thisevent.bookingOpen || false;
+    Meteor.call('event.toggleBooking', thisevent._id, !bookingOpen);
+  }
 });
 
 Template.dashboardOrganizerEvent.onCreated(function(){

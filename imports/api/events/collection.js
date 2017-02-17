@@ -122,8 +122,14 @@ Event.prototype = {
   /*
    * Registration
    */
-  registrationIsOpen() {
-    return this.dates[this.dates.length - 1].dateFrom > new Date();
+  notEndedAndBookingOpen() {
+    return this.bookingOpen && this.dates[this.dates.length - 1].dateFrom > new Date();
+  },
+  notEndedAndBookingClosed() {
+    return !this.bookingOpen && this.dates[this.dates.length - 1].dateFrom > new Date();
+  },
+  hasEnded() {
+    return !(this.dates[this.dates.length - 1].dateFrom > new Date());
   },
   currentUserHasRegistered() {
     const user = Meteor.user();

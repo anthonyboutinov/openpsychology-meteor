@@ -52,10 +52,12 @@
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-fw fa-ellipsis-h" aria-hidden="true"></i><span class="sr-only">Ещё</span>
             </button>
+            {{#unless event.hasEnded}}
             <ul class="dropdown-menu drop-left" role="menu">
-              <li><a href="#" data-action="closeBooking">Закрыть регистрацию</a></li>
+              <li><a href="#" data-action="toggleBooking">{{#if event.bookingOpen}}Закрыть{{else}}Возобновить{{/if}} регистрацию</a></li>
               <li><a href="#" data-action="rejectAll">Отказать всем</a></li>
             </ul>
+            {{/unless}}
           </div>
         </div>
 

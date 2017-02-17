@@ -42,7 +42,7 @@
             {{> bookmarkButton event=event}}
             {{> likeButton event=event}}
 
-            {{#if event.registrationIsOpen}}
+            {{#if event.notEndedAndBookingOpen}}
               {{#unless event.currentUserHasRegistered}}
                 <button id="registerForEvent" class="btn btn-sm btn-success all-caps"
                 data-toggle="tooltip" data-delay="250" title="{{event.registeredForEvent.length}} человек уже зарегистрировались">
@@ -58,9 +58,12 @@
                 </button>
               {{/unless}}
             {{/if}}
-            {{#unless event.registrationIsOpen}}
+            {{#if event.notEndedAndBookingClosed}}
+              <span class="btn-sized all-caps text-muted">Регистрация окончена</span>
+            {{/if}}
+            {{#if event.hasEnded}}
               <span class="btn-sized all-caps text-muted">Мероприятие окончено</span>
-            {{/unless}}
+            {{/if}}
 
           </div>
 

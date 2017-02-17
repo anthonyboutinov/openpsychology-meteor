@@ -74,5 +74,18 @@ if (Meteor.isServer) {
       return Events.update(eventId, { $pull: { bookmarks: {userId: this.userId}} });
     },
 
+    'event.toggleBooking'(eventId, bookingOpen) {
+      check(eventId, String);
+      check(bookingOpen, Boolean);
+      check(this.userId, String);
+      const managedOrganizers = Organizers.find({
+        $or: [
+          {ownerId: this.userId},
+          {managedBy: this.userId}
+        ]
+      }, {fields: {_id: 1}}).map(function(doc){return doc._id});
+      return Events.update({_id: eventId, organizerId: {$in: managedOrganizers}}, {$set: {bookingOpen: bookingOpen}});
+    },
+
   });
 }
