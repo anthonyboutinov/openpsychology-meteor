@@ -177,6 +177,21 @@ export const EventsSchema = new SimpleSchema({
     },
   },
 
+  bookingOpen: {
+    type: Boolean,
+    label: "Регистрация пользователей",
+    optional: true,
+    autoform: {
+      group: "Основная информация",
+      template: "bootstrap3",
+      type: "boolean-radios-optimized",
+      trueLabel: "<i class='fa fa-fw fa-check-square-o' aria-hidden='true'></i> Открыта",
+      falseLabel: "<i class='fa fa-fw fa-ban' aria-hidden='true'></i> Закрыта",
+      'data-defaultValue': true,
+    },
+    defaultValue: true,
+  },
+
   registeredForEvent: {
     type: [String],
     label: "Зарегистрированные на событие пользователи",

@@ -21,9 +21,7 @@ Template['im-short'].helpers({
     if (this.profile) {
       return username(this);
     } else {
-      const users = this.users.map((user)=> {return username(user)});
-      console.log(users);
-      return users;
+      return this.users.map((user)=> {return username(user)}).join(", ");
     }
   },
 });
