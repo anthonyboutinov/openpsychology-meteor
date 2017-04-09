@@ -9,13 +9,13 @@ let QUERY_LIMIT = 6 * 5;
 Search events route
 ----------------------------
 */
-Router.route('/search/:categoryUrlName', function() {
+Router.route('/search/:categoryUrlName?', function() {
   this.subscribe('categories').wait();
   if (Meteor.userId()) {
     this.subscribe('organizers.managedByUser').wait();
   }
 
-  const categoryUrlName = this.params.categoryUrlName;
+  const categoryUrlName = this.params.categoryUrlName || "seot";
   const categoriesUrlNamesList = categoryUrlName != "none" ? categoryUrlName.split("") : false;
 
   if (SessionStore.get('events.limit') == null || SessionStore.get('categoryUrlName') != categoryUrlName) {

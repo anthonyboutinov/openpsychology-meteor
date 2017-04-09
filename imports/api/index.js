@@ -6,5 +6,6 @@ if (Meteor.isServer) {
   import '/imports/api/organizers';
   import '/imports/api/events';
   import '/imports/api/coaches';
+  import '/imports/api/markdowns';
 
 }
