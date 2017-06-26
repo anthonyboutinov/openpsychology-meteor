@@ -4,17 +4,17 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-base@1.0.4             # Packages every Meteor app needs to have
+meteor-base@1.1.0             # Packages every Meteor app needs to have
 mobile-experience@1.0.4       # Packages for a great mobile UX
-mongo@1.1.16                   # The database Meteor supports right now
+mongo@1.1.18                   # The database Meteor supports right now
 blaze-html-templates@1.0.4    # Compile .html files into Meteor Blaze views
 reactive-var@1.0.11            # Reactive variable for tracker
-tracker@1.1.2                 # Meteor's client-side reactive programming library
+tracker@1.1.3                 # Meteor's client-side reactive programming library
 
 standard-minifier-css@1.3.4   # CSS minifier run for production mode
-standard-minifier-js@1.2.3    # JS minifier run for production mode
+standard-minifier-js@2.1.0    # JS minifier run for production mode
 es5-shim@4.6.15                # ECMAScript 5 compatibility for older browsers.
-ecmascript@0.6.3              # Enable ECMAScript2015+ syntax in app code
+ecmascript@0.8.0              # Enable ECMAScript2015+ syntax in app code
 shell-server@0.2.3            # Server-side component of the `meteor shell` command
 
 insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
@@ -29,10 +29,10 @@ smeevil:session-store
 tmeasday:publish-counts
 momentjs:moment
 rzymek:moment-locale-ru
-markdown@1.0.11
-accounts-password@1.3.4
-accounts-facebook@1.1.1
-accounts-twitter@1.2.1
+markdown@1.0.12
+accounts-password@1.3.6
+accounts-facebook@1.2.0
+accounts-twitter@1.3.0
 mrt:accounts-vk
 natestrauser:publish-performant-counts
 q42:autoform-markdown
@@ -48,16 +48,17 @@ useraccounts:iron-routing
 gwendall:body-events
 stuke:ics-generator
 natestrauser:select2
-reactive-dict@1.1.8
+reactive-dict@1.1.9
 zimme:collection-timestampable
 underscore@1.0.10
 ostrio:autoform-files
 ostrio:files
 ostrio:iron-router-title
-accounts-google@1.1.1
+accounts-google@1.2.0
 mdg:seo
 reywood:iron-router-ga
 lookback:dropdowns
-facebook-config-ui
-google-config-ui
-twitter-config-ui
+facebook-config-ui@1.0.0
+google-config-ui@1.0.0
+twitter-config-ui@1.0.0
+dynamic-import

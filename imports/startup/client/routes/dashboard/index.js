@@ -5,3 +5,4 @@ import './settings';
 import './home.js';
 import './user.js';
 import './coach.modify.js';
+import './im.js';

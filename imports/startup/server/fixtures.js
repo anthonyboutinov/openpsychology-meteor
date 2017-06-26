@@ -14,8 +14,28 @@ Meteor.startup(() => {
   if ( !hasAdmin ) {
     Accounts.createUser({
       email: 'anton4488@gmail.com',
-      password: 'password',
+      password: 'password'
     });
+
+    // permissions: {
+    //   canAssignAndEditUserRoles: true,
+    //
+    //   canBlockAndUnblockUserProfiles: true,
+    //   canVerifyUserProfiles: true,
+    //   canDeleteUserProfiles: true,
+    //
+    //   canViewGeneralStatsAndReports: true,
+    //   canViewRevenueStatsAndReports: true,
+    //   canViewParticularOrganizersStats: true,
+    //   canViewParticularUserStats: true,
+    //
+    //   canManageRecommendationSystem: true,
+    //
+    //   canWriteArticles: true,
+    //   canManageOtherWritersArticles: true,
+    // }
+
+    console.log(Meteor.users.findOne( { 'emails.address': 'anton4488@gmail.com' } ));
   }
 
 

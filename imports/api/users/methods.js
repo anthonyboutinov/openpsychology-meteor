@@ -31,13 +31,13 @@ if (Meteor.isServer) {
       return Meteor.users.update({ _id: Meteor.userId() }, {$set: {"profile.name": value}});
     },
 
-    'user.profile.systemNotifications.remove'(title) {
+    'user.appSpecific.systemNotifications.remove'(title) {
       check(title, String);
       check(this.userId, String);
       // unsetSpecifier = {};
       // unsetSpecifier["profile.settings." + field] = "";
       console.log(title);
-      return Meteor.users.update({ _id: Meteor.userId() }, {$pull: {"profile.systemNotifications": title}});
+      return Meteor.users.update({ _id: Meteor.userId() }, {$pull: {"appSpecific.systemNotifications": title}});
     },
 
     'user.remove'() {
