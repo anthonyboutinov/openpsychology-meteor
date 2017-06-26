@@ -32,11 +32,13 @@ Meteor.startup(() => {
         Roles.addUsersToRoles(id, user.roles, 'default-group');
       }
 
-    if (roles.length > 0) {
-    // Need _id of existing user record so this call must come
-    // after `Accounts.createUser` or `Accounts.onCreate`
-    Roles.addUsersToRoles(adminUserId, user.roles, 'default-group');
-  }
+      if (roles.length > 0) {
+        // Need _id of existing user record so this call must come
+        // after `Accounts.createUser` or `Accounts.onCreate`
+        Roles.addUsersToRoles(adminUserId, user.roles, 'default-group');
+      }
+
+    });
 
     // permissions: {
     //   canAssignAndEditUserRoles: true,
