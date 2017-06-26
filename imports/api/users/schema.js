@@ -1,4 +1,5 @@
 import { UserProfileSchema } from '../schemas/userProfile.js';
+import { AppSpecificUserDataSchema } from '../schemas/appSpecificUserData.js';
 
 export const UserSchema = new SimpleSchema({
     // username: {
@@ -77,6 +78,12 @@ export const UserSchema = new SimpleSchema({
     heartbeat: {
         type: Date,
         optional: true
+    },
+
+    // Custom fields for User schema that are not part of userProfile
+    appSpecific: {
+      type: AppSpecificUserDataSchema,
+      defaultValue: {}
     }
 });
 

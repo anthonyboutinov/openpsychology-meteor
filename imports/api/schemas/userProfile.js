@@ -1,27 +1,4 @@
-import { SystemNotifications } from '../systemNotifications.js';
-
-export const UserSettingsSchema = new SimpleSchema({
-  showOrganizerWelcomeScreen: {
-    type: Boolean,
-    defaultValue: true,
-    optional: true,
-    autoform: {
-      hidden: true
-    }
-  },
-});
-
 export const UserProfileSchema = new SimpleSchema({
-  systemNotifications: {
-    type: [String],
-    defaultValue: [
-      SystemNotifications.showWelcomeNotification
-    ],
-  },
-  settings: {
-    type: UserSettingsSchema,
-    defaultValue: {},
-  },
   name: {
     type: String,
     label: "Имя, Фамилия",
