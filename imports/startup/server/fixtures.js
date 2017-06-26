@@ -12,10 +12,31 @@ Meteor.startup(() => {
   const hasAdmin = Meteor.users.findOne( { 'emails.address': 'anton4488@gmail.com' } );
 
   if ( !hasAdmin ) {
-    Accounts.createUser({
-      email: 'anton4488@gmail.com',
-      password: 'password'
-    });
+
+    const users = [
+          {name:"Normal User",email:"user@local",roles:[]},
+          {name:"Альбина Вальярова",email:"albinaavg3@gmail.com", password: "password", roles:['admin']},
+          {name:"Anthony Boutinov",email:"anton4488@gmail.com", password: "password", roles:['super-admin']}
+        ];
+
+    _.each(users, function (user) {
+      const id = Accounts.createUser({
+        email: user.email,
+        password: user.password,
+        profile: { name: user.name }
+      });
+
+      if (user.roles.length > 0) {
+        // Need _id of existing user record so this call must come
+        // after `Accounts.createUser` or `Accounts.onCreate`
+        Roles.addUsersToRoles(id, user.roles, 'default-group');
+      }
+
+    if (roles.length > 0) {
+    // Need _id of existing user record so this call must come
+    // after `Accounts.createUser` or `Accounts.onCreate`
+    Roles.addUsersToRoles(adminUserId, user.roles, 'default-group');
+  }
 
     // permissions: {
     //   canAssignAndEditUserRoles: true,
