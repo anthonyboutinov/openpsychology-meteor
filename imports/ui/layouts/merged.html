@@ -18,7 +18,11 @@
       <nav class="page-sidebar" id="menu">
         <div class="scrollbar-macosx">
           <div class="scrollbar-macosx-wrapper">
-            {{> dashboardSidenavbar}}
+            {{#if viewAsAdmin}}
+              {{> adminSidenavbar}}
+            {{else}}
+              {{> dashboardSidenavbar}}
+            {{/if}}
           </div>
         </div>
       </nav>

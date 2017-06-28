@@ -1,3 +1,3 @@
-import './fixtures.js';
+import './fixtures';
 import './routes';
 // import './placeholderdata.js';

@@ -29,4 +29,5 @@ Router.onStop(function () {
 import './accounts.js';
 import './main';
 import './dashboard';
+import './admin';
 import './loading.js';

@@ -5,6 +5,8 @@ import '/imports/ui/components/common/footer.js';
 import '/imports/ui/components/dashboard/navbar.js';
 import '/imports/ui/components/dashboard/sidenavbar.js';
 
+import '/imports/ui/components/admin/sidenavbar.js';
+
 import '/imports/ui/components/main/navbar/navbar.js';
 import '/imports/ui/components/main/searchbar/searchbar.js';
 
