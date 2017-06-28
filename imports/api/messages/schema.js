@@ -11,7 +11,7 @@ export const MessageSchema = new SimpleSchema({
     type: String
   },
 
-  // Required to differetiate between IDs of organizers and people (may overlap)
+  // It is required to differetiate between IDs of organizers and people (may overlap)
   direction: {
     type: String,
     // accepts:

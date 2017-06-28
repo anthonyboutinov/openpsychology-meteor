@@ -64,6 +64,9 @@
                     {{/if}}
                   {{/with}}
                   <li><a href="{{pathFor 'dashboard.settings'}}"><i class="fa fa-fw fa-cog" aria-hidden="true"></i> Настройки</a></li>
+                  {{#if currentUserHasRole 'admin'}}
+                  <li><a href="{{pathFor 'admin'}}"><i class="fa fa-fw fa-terminal" aria-hidden="true"></i> Администрирование</a></li>
+                  {{/if}}
                   <li>{{> atNavButton}}</li>
                 </ul>
               </li>
