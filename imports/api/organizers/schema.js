@@ -1,6 +1,7 @@
 import { LocationSchema } from '../schemas/location.js';
 import { Events } from '../events/collection.js';
 
+
 export const OrganizersSchema = new SimpleSchema({
   name: {
     type: String,
@@ -29,7 +30,7 @@ export const OrganizersSchema = new SimpleSchema({
     autoform: {
       group: "Описание",
       type: 'fileUpload',
-      collection: 'Images',
+      collection: 'UserFiles',
       uploadTemplate: 'uploadField',
       previewTemplate: 'uploadPreview',
       template: "bootstrap3",
@@ -42,7 +43,7 @@ export const OrganizersSchema = new SimpleSchema({
     autoform: {
       group: "Описание",
       type: 'fileUpload',
-      collection: 'Images',
+      collection: 'UserFiles',
       uploadTemplate: 'uploadField',
       previewTemplate: 'uploadPreview',
       template: "bootstrap3",

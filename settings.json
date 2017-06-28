@@ -12,5 +12,11 @@
       "MONGO_URL": "mongodb://admin:3Le-DBH-7Wm-xH9@ds145009.mlab.com:45009/openpsychology",
       "DEPLOY_HOSTNAME": "eu-west-1.galaxy-deploy.meteor.com"
     }
+  },
+  "s3": {
+    "key": "AKIAI4NZMGEROGLI5EWA",
+    "secret": "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",
+    "bucket": "openpsychology",
+    "region": "us-east-2"
   }
 }

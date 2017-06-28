@@ -4,6 +4,7 @@ import { Categories } from '../categories';
 import { Coaches } from '/imports/api/coaches/collection.js';
 import { Organizers } from '/imports/api/organizers/collection.js';
 
+
 Event = function (doc) {
   _.extend(this, doc);
 };
@@ -145,7 +146,7 @@ Event.prototype = {
    * Images
    */
   imageFile() {
-    return this.imageId ? Images.findOne(this.imageId) : false;
+    return this.imageId ? UserFiles.findOne(this.imageId) : false;
   },
   imageLink() {
     const file = this.imageFile();
