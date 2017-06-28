@@ -58,7 +58,7 @@ export const EventsSchema = new SimpleSchema({
     autoform: {
       group: "Описание",
       type: 'fileUpload',
-      collection: 'Images',
+      collection: 'UserFiles',
       uploadTemplate: 'uploadField',
       previewTemplate: 'uploadPreview',
       template: "bootstrap3",

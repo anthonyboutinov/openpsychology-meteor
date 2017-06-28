@@ -3,6 +3,7 @@ import { CoachesSchema } from './schema.js';
 import { Organizers } from '/imports/api/organizers/collection.js';
 import { Events } from '/imports/api/events/collection.js';
 
+
 Coach = function (doc) {
   _.extend(this, doc);
 };
@@ -44,7 +45,7 @@ Coach.prototype = {
    * Images
    */
   profilePicFile() {
-    return this.profilePicId ? Images.findOne(this.profilePicId) : false;
+    return this.profilePicId ? UserFiles.findOne(this.profilePicId) : false;
   },
   profilePicLink() {
     const file = this.profilePicFile();

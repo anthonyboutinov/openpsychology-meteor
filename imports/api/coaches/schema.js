@@ -40,7 +40,7 @@ export const CoachesSchema = new SimpleSchema({
     autoform: {
       group: "Основная информация",
       type: 'fileUpload',
-      collection: 'Images',
+      collection: 'UserFiles',
       uploadTemplate: 'uploadField',
       previewTemplate: 'uploadPreview',
       template: "bootstrap3",

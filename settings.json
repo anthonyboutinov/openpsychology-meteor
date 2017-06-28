@@ -12,5 +12,11 @@
       "MONGO_URL": "mongodb://***REMOVED***",
       "DEPLOY_HOSTNAME": "eu-west-1.galaxy-deploy.meteor.com"
     }
+  },
+  "s3": {
+    "key": "***REMOVED***",
+    "secret": "***REMOVED***",
+    "bucket": "openpsychology",
+    "region": "us-east-2"
   }
 }

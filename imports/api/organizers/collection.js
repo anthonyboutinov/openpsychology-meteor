@@ -3,6 +3,7 @@ import { OrganizersSchema } from './schema.js';
 import { Events } from '/imports/api/events/collection.js';
 import { Coaches } from '/imports/api/coaches/collection.js';
 
+
 Organizer = function (doc) {
   _.extend(this, doc);
 };
@@ -63,7 +64,7 @@ Organizer.prototype = {
    * Images
    */
   imageFile() {
-    return this.imageId ? Images.findOne(this.imageId) : false;
+    return this.imageId ? UserFiles.findOne(this.imageId) : false;
   },
   imageLink() {
     const file = this.imageFile();
@@ -71,7 +72,7 @@ Organizer.prototype = {
   },
 
   bannerFile() {
-    return this.bannerImageId ? Images.findOne(this.bannerImageId) : false;
+    return this.bannerImageId ? UserFiles.findOne(this.bannerImageId) : false;
   },
   bannerLink() {
     const file = this.bannerFile();
