@@ -1,0 +1,8 @@
+{
+  "s3": {
+    "key": "***REMOVED***",
+    "secret": "***REMOVED***",
+    "bucket": "openpsychology",
+    "region": "us-east-2"
+  }
+}
