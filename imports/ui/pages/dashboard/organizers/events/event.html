@@ -36,34 +36,41 @@
     </div>
   </div>
 
-  {{#if event.registeredForEvent.length}}
+
     <div class="panel-section panel-section-opaque">
       <div class="panel-heading">
         <div class="panel-title">
           Зарегистрировавшиеся пользователи
-          <i class="fa fa-fw fa-address-book" aria-hidden="true"></i> {{event.registeredForEvent.length}}<span class="sr-only"> человек зарегистрировались</span>
+          {{#if event.registeredForEvent.length}}
+            <i class="fa fa-fw fa-address-book" aria-hidden="true"></i> {{event.registeredForEvent.length}}<span class="sr-only"> человек зарегистрировались</span>
+          {{/if}}
         </div>
       </div>
       <div class="panel-body">
+        {{#if event.registeredForEvent.length}}
 
-        <div class="fulldescription-actions">
-          <a href="#" data-action="im-short-toAll" class="btn btn-primary btn-wider"><i class="fa fa-fw fa-paper-plane" aria-hidden="true"></i> Написать всем</a>
-          <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-fw fa-ellipsis-h" aria-hidden="true"></i><span class="sr-only">Ещё</span>
-            </button>
-            {{#unless event.hasEnded}}
-            <ul class="dropdown-menu drop-left" role="menu">
-              <li><a href="#" data-action="toggleBooking">{{#if event.bookingOpen}}Закрыть{{else}}Возобновить{{/if}} регистрацию</a></li>
-              <li><a href="#" data-action="rejectAll">Отказать всем</a></li>
-            </ul>
-            {{/unless}}
+          <div class="fulldescription-actions">
+            <a href="#" data-action="im-short-toAll" class="btn btn-primary btn-wider"><i class="fa fa-fw fa-paper-plane" aria-hidden="true"></i> Написать всем</a>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-fw fa-ellipsis-h" aria-hidden="true"></i><span class="sr-only">Ещё</span>
+              </button>
+              {{#unless event.hasEnded}}
+              <ul class="dropdown-menu drop-left" role="menu">
+                <li><a href="#" data-action="toggleBooking">{{#if event.bookingOpen}}Закрыть{{else}}Возобновить{{/if}} регистрацию</a></li>
+                <li><a href="#" data-action="rejectAll">Отказать всем</a></li>
+              </ul>
+              {{/unless}}
+            </div>
           </div>
-        </div>
 
-        {{> listOfUsers users=event.registeredUsers eventId=event._id}}
+          {{> listOfUsers users=event.registeredUsers eventId=event._id}}
+
+        {{else}}
+          <div class="info-no-data">Нет зарегистрировашихся пользователей</div>
+        {{/if}}
       </div>
     </div>
-  {{/if}}
+
 
 </template>
