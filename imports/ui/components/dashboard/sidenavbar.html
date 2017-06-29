@@ -2,197 +2,100 @@
 
   <ul class="nav nav-stacked m-b-60">
 
+    {{> sidenavbarLi xsOnly=true _pathFor='home' label="Домой" faLabel='home'}}
+    {{> sidenavbarSearchAndCategories}}
 
-    <li class="visible-xs-block">
-      <a href="{{pathFor 'home'}}" class="toggle-slideout-away">
-        <span class="title">Домой</span>
-        <span class="icon-thumbnail {{childThereofIsActive 'home'}}">
-          <i class="fa fa-fw fa-home" aria-hidden="true"></i>
-        </span>
-      </a>
-    </li>
-
-    <li class="visible-xs-block">
-      <a href="#" submenu-toggle="search">
-        <span class="title">
-          Поиск
-          <span class="arrow {{subMenuIsOpen 'search'}} {{isActive 'search'}}"></span>
-        </span>
-        <span class="icon-thumbnail">
-          <i class="fa fa-fw fa-search" aria-hidden="true"></i>
-        </span>
-      </a>
-      <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'search'}}">
-        <li>
-          <a href="{{pathFor 'search' categoryUrlName='tseo'}}" class="toggle-slideout-away">
-            <span class="title">Всё</span>
-            <span class="icon-thumbnail  {{searchSubElementIsActive 'tseo'}}">
-              В
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="{{pathFor 'search' categoryUrlName='t'}}" class="toggle-slideout-away">
-            <span class="title">Тренинги</span>
-            <span class="icon-thumbnail {{searchSubElementIsActive 't'}}">
-              Т
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="{{pathFor 'search' categoryUrlName='s'}}" class="toggle-slideout-away">
-            <span class="title">Семинары</span>
-            <span class="icon-thumbnail {{searchSubElementIsActive 's'}}">
-              С
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="{{pathFor 'search' categoryUrlName='e'}}" class="toggle-slideout-away">
-            <span class="title">Образования</span>
-            <span class="icon-thumbnail {{searchSubElementIsActive 'e'}}">
-              О
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="{{pathFor 'search' categoryUrlName='o'}}" class="toggle-slideout-away">
-            <span class="title">Мероприятия онлайн</span>
-            <span class="icon-thumbnail {{searchSubElementIsActive 'o'}}">
-              МО
-            </span>
-          </a>
-        </li>
-      </ul>
-    </li>
-
+    <li role="separator" class="divider visible-xs-block"></li>
 
     {{#if currentUser}}
-    <li>
-      <a href="{{pathFor 'dashboard.user'}}" class="toggle-slideout-away">
-        <span class="title">{{username}}</span>
-        <span class="icon-thumbnail {{childThereofIsActive 'dashboard.user'}}">
-          <i class="fa fa-fw fa-user-circle" aria-hidden="true"></i>
-        </span>
-      </a>
-    </li>
-    <li>
-      <a href="{{pathFor 'dashboard.messages'}}" class="toggle-slideout-away">
-        <span class="title">Сообщения</span>
-        <span class="icon-thumbnail {{childThereofIsActive 'dashboard.messages'}}">
-          <i class="fa fa-fw fa-envelope" aria-hidden="true"></i>
-        </span>
-      </a>
-    </li>
-    <li>
-      <a href="#" submenu-toggle="events">
-        <span class="title">
-          Мероприятия
-          <span class="arrow {{subMenuIsOpen 'events'}} {{isActive 'dashboard.organizers'}}"></span>
-        </span>
-        <span class="icon-thumbnail">
-          <i class="fa fa-fw fa-calendar-o" aria-hidden="true"></i>
-        </span>
-      </a>
-      <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'events'}}">
-        <li>
-          <a href="{{pathFor 'dashboard.events' timeframe='ongoing'}}" class="toggle-slideout-away">
-            <span class="title">Текущие</span>
-            <span class="icon-thumbnail {{eventsTimeframeIsActive 'ongoing'}}">
-              Т
-              <!-- <i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> -->
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="{{pathFor 'dashboard.events' timeframe='upcoming'}}" class="toggle-slideout-away">
-            <span class="title">Предстоящие</span>
-            <span class="icon-thumbnail {{eventsTimeframeIsActive 'upcoming'}}">
-              П
-              <!-- <i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> -->
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="{{pathFor 'dashboard.events' timeframe='past'}}" class="toggle-slideout-away">
-            <span class="title">Завершенные</span>
-            <span class="icon-thumbnail {{eventsTimeframeIsActive 'past'}}">
-              З
-              <!-- <i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> -->
-            </span>
-          </a>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <a href="{{pathFor 'dashboard.events.bookmarked'}}" class="toggle-slideout-away">
-        <span class="title">Закладки</span>
-        <span class="icon-thumbnail {{isActive 'dashboard.events.bookmarked'}}">
-          <i class="fa fa-fw fa-bookmark" aria-hidden="true"></i>
-        </span>
-      </a>
-    </li>
-    <li role="separator" class="divider"></li>
-    <li>
-      <a href="{{pathFor 'dashboard.organizers'}}" class="toggle-slideout-away">
-        <span class="title">
-          Организации
-          {{#if organizers.count}}
-          <span class="arrow {{subMenuIsOpen 'organizers'}} {{childThereofIsActive 'dashboard.organizers'}}" submenu-toggle="organizers"></span>
-          {{/if}}
-        </span>
-        <span class="icon-thumbnail {{isActive 'dashboard.organizers'}}">
-          <i class="fa fa-fw fa-building-o" aria-hidden="true"></i>
-        </span>
-      </a>
-      {{#if organizers.count}}
-      <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'organizers'}}">
-        {{#each org in organizers}}
-        <li>
-          <a href="{{pathFor 'dashboard.organizer' _id=org._id}}" class="toggle-slideout-away">
-            <span class="title">{{org.name}}</span>
-            <span class="icon-thumbnail {{iconThumbnailClass org.imageId}} {{organizerIsActive org._id}}">
-              {{#if org.imageId}}
-                <img class="img-organizer-logo-sm img-responsive" src="{{org.imageLink}}">
-              {{else}}
-                {{textThumbnailAcronym org.name}}
-              {{/if}}
-            </span>
-          </a>
-        </li>
-        {{/each}}
-      </ul>
+      {{> sidenavbarLi _pathFor='dashboard.user' label=username faLabel='user-circle'}}
+      {{> sidenavbarLi _pathFor='dashboard.messages' label="Сообщения" faLabel='envelope'}}
+
+      <li>
+        <a href="#" submenu-toggle="events">
+          <span class="title">
+            Мероприятия
+            <span class="arrow {{subMenuIsOpen 'events'}} {{isActive 'dashboard.organizers'}}"></span>
+          </span>
+          <span class="icon-thumbnail">
+            <i class="fa fa-fw fa-calendar-o" aria-hidden="true"></i>
+          </span>
+        </a>
+        <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'events'}}">
+          <li>
+            <a href="{{pathFor 'dashboard.events' timeframe='ongoing'}}" class="toggle-slideout-away">
+              <span class="title">Текущие</span>
+              <span class="icon-thumbnail {{eventsTimeframeIsActive 'ongoing'}}">
+                Т
+                <!-- <i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> -->
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="{{pathFor 'dashboard.events' timeframe='upcoming'}}" class="toggle-slideout-away">
+              <span class="title">Предстоящие</span>
+              <span class="icon-thumbnail {{eventsTimeframeIsActive 'upcoming'}}">
+                П
+                <!-- <i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> -->
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="{{pathFor 'dashboard.events' timeframe='past'}}" class="toggle-slideout-away">
+              <span class="title">Завершенные</span>
+              <span class="icon-thumbnail {{eventsTimeframeIsActive 'past'}}">
+                З
+                <!-- <i class="fa fa-fw fa-folder-o" aria-hidden="true"></i> -->
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      {{> sidenavbarLi _pathFor='dashboard.events.bookmarked' label="Закладки" faLabel='bookmark'}}
+
+      <li>
+        <a href="{{pathFor 'dashboard.organizers'}}" class="toggle-slideout-away">
+          <span class="title">
+            Организации
+            {{#if organizers.count}}
+            <span class="arrow {{subMenuIsOpen 'organizers'}} {{childThereofIsActive 'dashboard.organizers'}}" submenu-toggle="organizers"></span>
+            {{/if}}
+          </span>
+          <span class="icon-thumbnail {{isActive 'dashboard.organizers'}}">
+            <i class="fa fa-fw fa-briefcase" aria-hidden="true"></i>
+          </span>
+        </a>
+        {{#if organizers.count}}
+        <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'organizers'}}">
+          {{#each org in organizers}}
+          <li>
+            <a href="{{pathFor 'dashboard.organizer' _id=org._id}}" class="toggle-slideout-away">
+              <span class="title">{{org.name}}</span>
+              <span class="icon-thumbnail {{iconThumbnailClass org.imageId}} {{organizerIsActive org._id}}">
+                {{#if org.imageId}}
+                  <img class="img-organizer-logo-sm img-responsive" src="{{org.imageLink}}">
+                {{else}}
+                  {{textThumbnailAcronym org.name}}
+                {{/if}}
+              </span>
+            </a>
+          </li>
+          {{/each}}
+        </ul>
+        {{/if}}
+      </li>
+
+      {{> sidenavbarLi _pathFor='dashboard.settings' label="Настройки" faLabel='cog'}}
+
+      {{#if currentUserHasRole 'admin' 'manager'}}
+        <li role="separator" class="divider visible-xs-block"></li>
+        {{> sidenavbarLi xsOnly=true _pathFor='admin' label="Администрирование" faLabel='terminal'}}
       {{/if}}
-    </li>
-    <li>
-      <a href="{{pathFor 'dashboard.settings'}}" class="toggle-slideout-away">
-        <span class="title">
-          Настройки
-        </span>
-        <span class="icon-thumbnail {{isActive 'dashboard.settings'}}">
-          <i class="fa fa-fw fa-cog" aria-hidden="true"></i>
-        </span>
-      </a>
-    </li>
-    <li class="visible-xs-block">
-      <a href="#" mo-action="logout">
-        <span class="title">
-          Выйти
-        </span>
-      </a>
-    </li>
+      {{> sidenavbarLogoutLi}}
 
     {{else}}
-    <li class="visible-xs-block">
-      <a href="/login">
-        <span class="title">
-          Войти
-        </span>
-        <span class="icon-thumbnail">
-          <i class="fa fa-fw fa-user-circle" aria-hidden="true"></i>
-        </span>
-      </a>
-    </li>
+      {{> sidenavbarLi xsOnly=true href='/login' label="Войти" faLabel='user-circle'}}
     {{/if}}
   </ul>
 
