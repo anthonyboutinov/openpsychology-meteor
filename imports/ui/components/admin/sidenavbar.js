@@ -1,4 +1,8 @@
 import './sidenavbar.html';
+import '/imports/ui/components/dashboard/sidenavbar/li.js';
+import '/imports/ui/components/dashboard/sidenavbar/logoutLi.js';
+import '/imports/ui/components/dashboard/sidenavbar/searchAndCategories.js';
+
 
 Template.adminSidenavbar.helpers({
 
@@ -12,9 +16,6 @@ Template.adminSidenavbar.helpers({
   },
   childThereofIsActive: function(name) {
     return Router.current().route.getName().indexOf(name) >= 0 ? "active" : false;
-  },
-  searchSubElementIsActive: function(query) {
-    return Router.current().route.getName() == 'search' && Router.current().params.categoryUrlName == query ? "active" : false;
   },
 
   textThumbnailAcronym: function(str) {

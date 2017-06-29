@@ -1,0 +1,55 @@
+<template name="sidenavbarSearchAndCategories">
+  <li class="visible-xs-block">
+    <a href="#" submenu-toggle="search">
+      <span class="title">
+        Поиск
+        <span class="arrow {{subMenuIsOpen 'search'}} {{isActive 'search'}}"></span>
+      </span>
+      <span class="icon-thumbnail">
+        <i class="fa fa-fw fa-search" aria-hidden="true"></i>
+      </span>
+    </a>
+    <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'search'}}">
+      <li>
+        <a href="{{pathFor 'search' categoryUrlName='tseo'}}" class="toggle-slideout-away">
+          <span class="title">Всё</span>
+          <span class="icon-thumbnail  {{searchSubElementIsActive 'tseo'}}">
+            В
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="{{pathFor 'search' categoryUrlName='t'}}" class="toggle-slideout-away">
+          <span class="title">Тренинги</span>
+          <span class="icon-thumbnail {{searchSubElementIsActive 't'}}">
+            Т
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="{{pathFor 'search' categoryUrlName='s'}}" class="toggle-slideout-away">
+          <span class="title">Семинары</span>
+          <span class="icon-thumbnail {{searchSubElementIsActive 's'}}">
+            С
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="{{pathFor 'search' categoryUrlName='e'}}" class="toggle-slideout-away">
+          <span class="title">Образования</span>
+          <span class="icon-thumbnail {{searchSubElementIsActive 'e'}}">
+            О
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="{{pathFor 'search' categoryUrlName='o'}}" class="toggle-slideout-away">
+          <span class="title">Мероприятия онлайн</span>
+          <span class="icon-thumbnail {{searchSubElementIsActive 'o'}}">
+            МО
+          </span>
+        </a>
+      </li>
+    </ul>
+  </li>
+</template>

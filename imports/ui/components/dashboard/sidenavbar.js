@@ -1,4 +1,7 @@
 import './sidenavbar.html';
+import '/imports/ui/components/dashboard/sidenavbar/li.js';
+import '/imports/ui/components/dashboard/sidenavbar/logoutLi.js';
+import '/imports/ui/components/dashboard/sidenavbar/searchAndCategories.js';
 
 Template.dashboardSidenavbar.helpers({
 
@@ -16,9 +19,7 @@ Template.dashboardSidenavbar.helpers({
   eventsTimeframeIsActive: function(name) {
     return this.timeframe == name ? "active" : false;
   },
-  searchSubElementIsActive: function(query) {
-    return Router.current().route.getName() == 'search' && Router.current().params.categoryUrlName == query ? "active" : false;
-  },
+
   organizerIsActive: function(_id) {
     if (!this.organizer) return false;
     return this.organizer()._id == _id ? "active" : false;
@@ -62,8 +63,5 @@ Template.dashboardSidenavbar.events({
     if (id == "organizers" && currentValue == false) {
       SessionStore.set("dashboard.sidenavbar.subMenuIsOpen." + "events", false);
     }
-  },
-  'click [mo-action="logout"]'() {
-    AccountsTemplates.logout();
   },
 });
