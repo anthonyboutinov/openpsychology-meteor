@@ -421,7 +421,7 @@ a.disabled {
 }
 
 .dropdown-menu {
-  max-width: 256px;
+  max-width: 356px; // TODO: Before that, I had 256px in here. Why???
   & > li > a {
     @extend .overflow-ellipsis;
   }

@@ -23,3 +23,17 @@ Template.registerHelper("currentUserHasRole", function() {
   const roles = _.initial(arguments);
   return _.intersection(Meteor.user().roles.__global_roles__, roles).length > 0;
 })
+
+// Allows to have multiple OR statements inside {{#if ...}}
+//
+// Example: {{#if eitherIsTrue (a foo='bar') (b 'one' 'two' 'three') c d}}
+// where a, b, c, d can be variables or other helpers with infinite number parameters
+Template.registerHelper("eitherIsTrue", function() {
+  const statements = _.initial(arguments);
+  for (var i = 0; i < statements.length; i++) {
+    if (statements[i]) {
+      return true;
+    }
+  }
+  return false;
+});

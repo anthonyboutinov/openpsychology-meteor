@@ -6,10 +6,10 @@ import * as queryByDate from '/both/queryByDate.js';
 
 /*
 ----------------------------
-Dashboard.Home route
+Dashboard.Promotions route
 ----------------------------
 */
-Router.route("/admin", function() {
+Router.route("/admin/promotions", function() {
   this.subscribe('categories').wait();
 
   const userId = Meteor.userId();
@@ -27,11 +27,11 @@ Router.route("/admin", function() {
     }
   });
   if (this.ready()) {
-    this.render('adminHome');
+    this.render('adminPromotions');
   } else {
     this.render('loading');
   };
 
 }, {
-  name: "admin"
+  name: "admin.promotions"
 });

@@ -2,6 +2,8 @@ import './event.html';
 
 import '/imports/ui/components/main/calendar-event.js';
 import '/imports/ui/components/common/listOfUsers/';
+import '/imports/ui/components/admin/addToGroupListItems.js';
+import '/imports/ui/components/admin/removeFromGroupListItems.js';
 
 Template.event.helpers({
   showCalEventsCount(count) {

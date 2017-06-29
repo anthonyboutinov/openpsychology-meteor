@@ -9,5 +9,6 @@ if (Meteor.isServer) {
   import '/imports/api/markdowns';
   import '/imports/api/messages';
   import '/imports/api/conversations';
+  import '/imports/api/groups';
 
 }
