@@ -1,0 +1,12 @@
+<template name="sidenavbarLi">
+  <li class="{{#if xsOnly}}visible-xs-block{{/if}}">
+    <a href="{{#if _pathFor}}{{pathFor _pathFor}}{{else}}{{href}}{{/if}}" class="toggle-slideout-away">
+      <span class="title">
+        {{label}}
+      </span>
+      <span class="icon-thumbnail {{isActive _pathFor}}">
+        <i class="fa fa-fw fa-{{faLabel}}" aria-hidden="true"></i>
+      </span>
+    </a>
+  </li>
+</template>

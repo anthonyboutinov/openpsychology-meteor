@@ -1,90 +1,19 @@
 <template name="adminSidenavbar">
-
   <ul class="nav nav-stacked m-b-60">
 
+    {{> sidenavbarLi xsOnly=true _pathFor='home' label="Домой" faLabel='home'}}
+    {{> sidenavbarSearchAndCategories}}
+    <li role="separator" class="divider visible-xs-block"></li>
 
-    <li class="visible-xs-block">
-      <a href="{{pathFor 'home'}}" class="toggle-slideout-away">
-        <span class="title">Домой</span>
-        <span class="icon-thumbnail {{childThereofIsActive 'home'}}">
-          <i class="fa fa-fw fa-home" aria-hidden="true"></i>
-        </span>
-      </a>
-    </li>
+    {{> sidenavbarLi _pathFor='admin' label='Обзор' faLabel='dashboard'}}
+    {{> sidenavbarLi _pathFor='admin.users' label='Пользователи' faLabel='user'}}
+    {{> sidenavbarLi _pathFor='admin.organizers' label='Организации' faLabel='briefcase'}}
+    {{> sidenavbarLi _pathFor='admin.promotions' label='Продвижение' faLabel='bullhorn'}}
+    {{> sidenavbarLi _pathFor='admin.ads' label='Реклама' faLabel='money'}}
 
-    <li class="visible-xs-block">
-      <a href="#" submenu-toggle="search">
-        <span class="title">
-          Поиск
-          <span class="arrow {{subMenuIsOpen 'search'}} {{isActive 'search'}}"></span>
-        </span>
-        <span class="icon-thumbnail">
-          <i class="fa fa-fw fa-search" aria-hidden="true"></i>
-        </span>
-      </a>
-      <ul class="nav nav-stacked sub-menu {{subMenuIsOpen 'search'}}">
-        <li>
-          <a href="{{pathFor 'search' categoryUrlName='tseo'}}" class="toggle-slideout-away">
-            <span class="title">Всё</span>
-            <span class="icon-thumbnail  {{searchSubElementIsActive 'tseo'}}">
-              В
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="{{pathFor 'search' categoryUrlName='t'}}" class="toggle-slideout-away">
-            <span class="title">Тренинги</span>
-            <span class="icon-thumbnail {{searchSubElementIsActive 't'}}">
-              Т
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="{{pathFor 'search' categoryUrlName='s'}}" class="toggle-slideout-away">
-            <span class="title">Семинары</span>
-            <span class="icon-thumbnail {{searchSubElementIsActive 's'}}">
-              С
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="{{pathFor 'search' categoryUrlName='e'}}" class="toggle-slideout-away">
-            <span class="title">Образования</span>
-            <span class="icon-thumbnail {{searchSubElementIsActive 'e'}}">
-              О
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="{{pathFor 'search' categoryUrlName='o'}}" class="toggle-slideout-away">
-            <span class="title">Мероприятия онлайн</span>
-            <span class="icon-thumbnail {{searchSubElementIsActive 'o'}}">
-              МО
-            </span>
-          </a>
-        </li>
-      </ul>
-    </li>
+    <li role="separator" class="divider visible-xs-block"></li>
 
-
-    <li>
-      <a href="{{pathFor 'dashboard.settings'}}" class="toggle-slideout-away">
-        <span class="title">
-          Настройки
-        </span>
-        <span class="icon-thumbnail {{isActive 'dashboard.settings'}}">
-          <i class="fa fa-fw fa-cog" aria-hidden="true"></i>
-        </span>
-      </a>
-    </li>
-    <li class="visible-xs-block">
-      <a href="#" mo-action="logout">
-        <span class="title">
-          Выйти
-        </span>
-      </a>
-    </li>
-
+    {{> sidenavbarLi xsOnly=true _pathFor='dashboard.user' label="Выйти из админки" faLabel='user-circle-o'}}
+    {{> sidenavbarLogoutLi}}
   </ul>
-
 </template>
