@@ -71,9 +71,9 @@ export const UserSchema = new SimpleSchema({
     //     type: Array,
     //     optional: true
     // },
-    'roles.$': {
-        type: String
-    },
+    // 'roles.$': {
+    //     type: String
+    // },
     // In order to avoid an 'Exception in setInterval callback' from Meteor
     heartbeat: {
         type: Date,

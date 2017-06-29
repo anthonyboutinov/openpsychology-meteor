@@ -1,7 +1,9 @@
 import { Categories }  from '/imports/api/categories/index.js';
 import { Events }      from '/imports/api/events/collection.js';
 import { Organizers } from '/imports/api/organizers/collection.js';
+// import { Groups } from '/imports/api/groups/collection.js';
 import { composeTitle } from '/imports/startup/client/routes/composeTitle.js';
+// import { currentUserHasRole } from '/imports/lib/helperFunctions.js';
 
 /*
 ----------------------------
@@ -10,6 +12,7 @@ Event route
 */
 Router.route("/event/:_id", function() {
   this.subscribe('categories').wait();
+
   this.subscribe('event', this.params._id).wait();
   this.subscribe('coaches.forEvent', this.params._id).wait();
   this.subscribe('organizer.byEventId', this.params._id).wait();
@@ -17,6 +20,11 @@ Router.route("/event/:_id", function() {
     this.subscribe('organizers.managedByUser').wait();
   }
   this.subscribe('users.registeredForEvent', this.params._id).wait();
+
+  // if currentUserHasRole 'admin'
+  if (_.intersection(Meteor.user().roles.__global_roles__, ['admin']).length > 0) {
+    this.subscribe('groups').wait();
+  }
 
   const event = Events.findOne(this.params._id);
   const organizer = Organizers.findOne();
