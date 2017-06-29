@@ -1,0 +1,11 @@
+<template name="removeFromGroupListItems">
+  {{#each group in groups}}
+    {{#if isInGroup group.items}}
+      {{> removeFromGroupListItems_li eventId=eventId group=group}}
+    {{/if}}
+  {{/each}}
+</template>
+
+<template name="removeFromGroupListItems_li">
+  <li><a href="#">{{group.name}}</a></li>
+</template>

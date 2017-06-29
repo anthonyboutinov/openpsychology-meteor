@@ -1,0 +1,11 @@
+<template name="addToGroupListItems">
+  {{#each group in groups}}
+    {{#unless isInGroup group.items}}
+      {{> addToGroupListItems_li eventId=eventId group=group}}
+    {{/unless}}
+  {{/each}}
+</template>
+
+<template name="addToGroupListItems_li">
+  <li><a href="#">{{group.name}}</a></li>
+</template>

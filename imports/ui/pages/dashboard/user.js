@@ -10,11 +10,8 @@ Template.dashboardUser.helpers({
   profileName() {
     return Meteor.user().profile.name;
   },
-  showWelcomeNotification() {
-    return Meteor.user().appSpecific.systemNotifications.includes(SystemNotifications.showWelcomeNotification);
-  },
-  showCalendarSubscriptionFunctionalityNotification() {
-    return Meteor.user().appSpecific.systemNotifications.includes(SystemNotifications.showCalendarSubscriptionFunctionalityNotification);
+  showNotification(titled) {
+    return Meteor.user().appSpecific.systemNotifications.includes(titled);
   },
   SystemNotifications() {
     return SystemNotifications;

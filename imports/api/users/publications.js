@@ -4,7 +4,11 @@ if (Meteor.isServer) {
   import { Organizers } from '/imports/api/organizers/collection.js';
   import { Events } from '/imports/api/events/collection.js';
 
-  const userFieldsToSendToCliens = {_id: 1, profile: 1, emails: 1}
+  const userFieldsToSendToCliens = {_id: 1, profile: 1, emails: 1, appSpecific: 1};
+
+  Meteor.publish(null, function() {
+  return Meteor.users.find({_id: this.userId}, {fields: userFieldsToSendToCliens});
+});
 
   Meteor.publish('users.whoManageOrganizer', function(organizerId) {
     check(organizerId, String);

@@ -1,4 +1,4 @@
-import { Markdowns }  from '/imports/api/markdowns/index.js';
+import { Markdowns }  from '/imports/api/markdowns';
 
 
 /*
