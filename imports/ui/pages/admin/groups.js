@@ -1,9 +1,9 @@
-import './promotions.html';
+import './groups.html';
 
 import { Groups } from '/imports/api/groups/collection.js';
 import { defaultReactiveTableSettings, formatDateFn, formatUserFn } from '/imports/lib/reactiveTableHelpers.js';
 
-Template.adminPromotions.helpers({
+Template.adminGroups.helpers({
   settings() {
     return _.extend(defaultReactiveTableSettings, {
       collection: Groups,
@@ -18,7 +18,7 @@ Template.adminPromotions.helpers({
   },
 });
 
-Template.adminPromotions.events({
+Template.adminGroups.events({
   'dblclick .reactive-table tbody tr': function (event) {
     var row = this;
     console.log(row);
