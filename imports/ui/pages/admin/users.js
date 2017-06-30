@@ -7,10 +7,11 @@ Template.adminUsers.helpers({
     return _.extend({
       collection: Meteor.users,
       fields: [
+        { key: 'createdAt', label: 'Создан', fn: formatDateFn },
+        { key: 'updatedAt', label: 'Обновлен', fn: formatDateFn },
         { key: '_id', label: 'ID', fn: formatObjectFn },
         { key: 'emails', label: 'Email', fn: formatObjectFn },
         { key: 'profile', label: 'Профиль', fn: formatObjectFn },
-        { key: 'appSpecific', label: 'App', fn: formatObjectFn },
         { key: 'roles', label: 'Роли', fn: formatObjectFn },
       ]
     }, defaultReactiveTableSettings)
