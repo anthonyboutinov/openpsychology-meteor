@@ -35,4 +35,8 @@ if (Meteor.isServer) {
     return Meteor.users.find({'roles.__global_roles__': 'admin'}, {fields: {_id: 1, profile: 1, emails: 1}});
   });
 
+  Meteor.publish('users.all', function() {
+    return Meteor.users.find({}, {fields: userFieldsToSendToCliens});
+  });
+
 }

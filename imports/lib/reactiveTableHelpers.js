@@ -3,11 +3,17 @@ export const formatDateFn = function (value, object, key) {
 }
 
 export const formatUserFn = function(value, object, key) {
-  console.log(value);
   if (value == 0) return "Системой";
   const user = Meteor.users.findOne(value);
   if (!user) return value;
   return user.profile.name ? user.profile.name : user.emails[0].address
+}
+
+export const formatObjectFn = function(value, object, key) {
+  if (!(key in object)) return "";
+  const output = typeof value == "object" ? JSON.stringify(value) : value;
+  const isRightAligned = typeof value == "number";
+  return new Spacebars.SafeString("<pre class=\"pre-inline" + (isRightAligned ? " text-right" : "") + "\"><code>" + output + "</code></pre>");
 }
 
 export const defaultReactiveTableSettings = {

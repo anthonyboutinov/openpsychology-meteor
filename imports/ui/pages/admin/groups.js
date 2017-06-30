@@ -1,20 +1,20 @@
 import './groups.html';
 
 import { Groups } from '/imports/api/groups/collection.js';
-import { defaultReactiveTableSettings, formatDateFn, formatUserFn } from '/imports/lib/reactiveTableHelpers.js';
+import { defaultReactiveTableSettings, formatDateFn, formatUserFn, formatObjectFn} from '/imports/lib/reactiveTableHelpers.js';
 
 Template.adminGroups.helpers({
   settings() {
-    return _.extend(defaultReactiveTableSettings, {
+    return _.extend({
       collection: Groups,
       fields: [
         { key: 'name', label: 'Название' },
-        { key: 'refKind', label: 'Тип объектов' },
-        { key: 'maxItems', label: 'Макс. вместимость' },
+        { key: 'refKind', label: 'Тип объектов', fn: formatObjectFn },
+        { key: 'maxItems', label: 'Макс. вместимость', fn: formatObjectFn },
         { key: 'updatedAt', label: 'Обновлено', fn: formatDateFn },
         { key: 'updatedBy', label: 'Обновлено кем', fn: formatUserFn },
       ]
-    })
+    }, defaultReactiveTableSettings)
   },
 });
 
