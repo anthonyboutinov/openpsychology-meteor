@@ -11,6 +11,7 @@ Router.route("/admin/organizers", function() {
 
   this.subscribe('categories').wait();
   this.subscribe('organizers.all').wait();
+  this.subscribe('users.admins').wait();
 
   this.layout('mergedLayout', {
     data: {
