@@ -12,6 +12,10 @@ export const GroupsSchema = new SimpleSchema({
     label: "Название группы",
   },
 
+  abbreviation: {
+    type: String
+  },
+
   refKind: {
     type: String,
     allowedValues: ["events", "organizers"],
@@ -42,6 +46,16 @@ export const GroupsSchema = new SimpleSchema({
     type: String
   },
 
+  acceptsOnlyWithMatchingAbbreviation: {
+    type: Boolean,
+    optional: true,
+    label: "Может включать только объекты с совпадающей аббревиатурой"
+  },
+
+  // Number of items to display
+  // Actual number may be up to 3 times bigger because some items may get hidden/unpublished
+  // during their lifecycle which will result in them not showing up on client's side.
+  // WARNING! When publishing, one must keep that in mind and use sorting and limiting.
   maxItems: {
     type: Number,
     optional: true,

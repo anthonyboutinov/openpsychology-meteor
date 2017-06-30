@@ -20,6 +20,7 @@ Template.registerHelper("log", function (subject = this) {
 });
 
 Template.registerHelper("currentUserHasRole", function() {
+  if (!Meteor.user()) { return false }
   const roles = _.initial(arguments);
   return _.intersection(Meteor.user().roles.__global_roles__, roles).length > 0;
 })
@@ -30,6 +31,7 @@ Template.registerHelper("currentUserHasRole", function() {
 // where a, b, c, d can be variables or other helpers with infinite number parameters
 Template.registerHelper("eitherIsTrue", function() {
   const statements = _.initial(arguments);
+  // console.log("eitheristrue", this, statements);
   for (var i = 0; i < statements.length; i++) {
     if (statements[i]) {
       return true;
