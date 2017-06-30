@@ -39,3 +39,8 @@ Template.registerHelper("eitherIsTrue", function() {
   }
   return false;
 });
+
+Template.registerHelper("equals", function(a, b) {
+  console.log(a, b);
+  return a === b;
+});

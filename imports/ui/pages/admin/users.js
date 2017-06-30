@@ -20,7 +20,7 @@ Template.adminUsers.helpers({
 
 Template.adminUsers.events({
   'dblclick .reactive-table tbody tr': function (event) {
-    var row = this;
-    console.log(row);
+    var doc = this;
+    Router.go('admin.editAny', {collectionName: 'users', _id: doc._id, prevPageTitle: "Пользователи"});
   }
 });

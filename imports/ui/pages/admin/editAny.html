@@ -1,0 +1,21 @@
+<template name="adminEditAny">
+
+  <ul class="breadcrumb">
+    <li><a href="{{pathFor 'admin'}}">Панель управления</a></li>
+    {{#if prevPageIsDeepInHierarchy}}<li>...</li>{{/if}}
+    <li><a href="#" bc-action="goback">{{prevPageTitle}}</a></li>
+    <li><a href="#" class="active">Универсальная форма редактирования</a></li>
+  </ul>
+
+  <div class="panel-section">
+
+      <div class="panel-heading">
+        <h3>Редактировать</h3>
+      </div>
+      <div class="panel-body">
+        {{> quickForm collection=collection id="adminEditAnyForm" type="update" doc=doc template="contemporary"}}
+      </div>
+
+  </div>
+
+</template>
