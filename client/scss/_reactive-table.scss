@@ -1,0 +1,37 @@
+// ReactieTable uses label inside menuitems, but they are bold by default, so bring it to normal
+// [role="menuitem"] > label {
+//   font-weight: normal;
+// }
+
+.pre-inline {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+}
+
+.reactive-table td {
+  min-width: 55px;
+}
+
+.reactive-table-navigation {
+  position: relative;
+
+  .fade {
+    opacity: 1 !important;
+  }
+
+  .page-number, .rows-per-page {
+    clear: none;
+
+    .form-control {
+      border-radius: $btn-border-radius-base;
+      margin-right: 3px;
+      margin-left: 3px;
+      text-align: center;
+      padding-top: 4px;
+    }
+  }
+}
