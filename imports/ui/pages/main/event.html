@@ -22,7 +22,7 @@
               </button>
               <ul class="dropdown-menu drop-left" role="menu">
                 <li class="dropdown-header">Добавить в группу</li>
-                {{> addToGroupListItems eventId=event._id}}
+                {{> addToGroupListItems eventId=event._id eventCategoryCode=event.category.urlName}}
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Удалить из группы</li>
                 {{> removeFromGroupListItems eventId=event._id}}

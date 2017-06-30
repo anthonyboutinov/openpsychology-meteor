@@ -3,7 +3,10 @@ import { Groups } from '/imports/api/groups/collection.js';
 
 Template.addToGroupListItems.helpers({
   groups() {
-    return Groups.find();
+    return Groups.find({$or: [
+      { acceptsOnlyWithMatchingAbbreviation: { $exists: false } },
+      { abbreviation: this.eventCategoryCode }
+    ]});
   },
   isInGroup(groupItems) {
     const ids = groupItems.map((e)=>{ return e.item });
