@@ -26,9 +26,11 @@ Router.route("/admin/editany/:collectionName/:_id/:prevPageTitle/:prevPageIsDeep
     // case "events":
     //   collection = Events;
     //   break;
-    // case "organizers":
-    //   collection = Organizers;
-    //   break;
+    case "organizers":
+      collection = Organizers;
+      this.subscribe("users.all").wait();
+      this.subscribe("organizer", _id).wait();
+      break;
     case "users":
       collection = Meteor.users._collection;
       this.subscribe("users.all").wait();

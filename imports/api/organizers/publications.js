@@ -10,6 +10,10 @@ if (Meteor.isServer) {
     return Organizers.find(_id);
   });
 
+  Meteor.publish('organizers.all', function() {
+    return Organizers.find({}, {reactive: false});
+  });
+
   Meteor.publish('organizers.managedByUser', function() {
     if (!this.userId) return false;
     check(this.userId, String);

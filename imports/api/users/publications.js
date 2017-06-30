@@ -40,7 +40,7 @@ if (Meteor.isServer) {
   });
 
   Meteor.publish('users.all', function() {
-    return Meteor.users.find({}, {fields: userFieldsToSendToAdmins});
+    return Meteor.users.find({}, {fields: userFieldsToSendToAdmins, reactive: false});
   });
 
 }

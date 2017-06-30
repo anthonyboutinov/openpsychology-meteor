@@ -10,7 +10,19 @@
   <div class="panel-section">
 
       <div class="panel-heading">
-        <h3>Редактировать</h3>
+        <h3>Редактировать объект ID {{doc._id}}</h3>
+        <h5 class="text-muted">
+          Создано
+          {{formatUser doc.createdBy}}
+          {{formatDate doc.createdAt}}<br>
+          {{#if doc.updatedAt}}
+            Изменено
+            {{formatUser doc.updatedBy}}
+            {{formatDate doc.updatedAt}}
+          {{else}}
+            Не изменялось
+          {{/if}}
+      </h5>
       </div>
       <div class="panel-body">
         {{> quickForm collection=collection id="adminEditAnyForm" type="update" doc=doc template="contemporary"}}

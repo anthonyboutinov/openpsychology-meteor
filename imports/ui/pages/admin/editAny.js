@@ -1,11 +1,10 @@
 import './editAny.html';
+import { formatDateFn, formatUserFn} from '/imports/lib/reactiveTableHelpers.js';
 
-// in:
-// collection
-// doc
-
-// Template.adminEditAny.helpers({
-// });
+Template.adminEditAny.helpers({
+  formatDate: formatDateFn,
+  formatUser: formatUserFn,
+});
 
 Template.adminEditAny.events({
   "click [bc-action='goback']"(event, template) {
