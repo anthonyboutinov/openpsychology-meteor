@@ -4,10 +4,10 @@ import * as queryByDate from '/both/queryByDate.js';
 
 /*
 ----------------------------
-Dashboard.Promotions route
+Dashboard.Groups route
 ----------------------------
 */
-Router.route("/admin/promotions", function() {
+Router.route("/admin/groups", function() {
   const userId = Meteor.userId();
   if (!_.contains(Meteor.user().roles.__global_roles__, 'admin')) {
     this.redirect("/dashboard/user");
@@ -27,7 +27,7 @@ Router.route("/admin/promotions", function() {
     }
   });
   if (this.ready()) {
-    this.render('adminPromotions');
+    this.render('adminGroups');
   } else {
     this.render('loading');
   };

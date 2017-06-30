@@ -1,2 +1,2 @@
 import './home.js';
-import './promotions.js';
+import './groups.js';
