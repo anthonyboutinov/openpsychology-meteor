@@ -5,6 +5,10 @@ if (Meteor.isServer) {
   import { Events } from '/imports/api/events/collection.js';
 
   const userFieldsToSendToCliens = {_id: 1, profile: 1, emails: 1, appSpecific: 1};
+  const userFieldsToSendToAdmins = _.extend(
+    { createdAt: 1, updatedAt: 1},
+    _.omit(userFieldsToSendToCliens, 'appSpecific')
+  );
 
   Meteor.publish(null, function() {
     return Meteor.users.find({_id: this.userId}, {fields: userFieldsToSendToCliens});
@@ -32,11 +36,11 @@ if (Meteor.isServer) {
   });
 
   Meteor.publish('users.admins', function() {
-    return Meteor.users.find({'roles.__global_roles__': 'admin'}, {fields: {_id: 1, profile: 1, emails: 1}});
+    return Meteor.users.find({'roles.__global_roles__': 'admin'}, {fields: userFieldsToSendToAdmins});
   });
 
   Meteor.publish('users.all', function() {
-    return Meteor.users.find({}, {fields: userFieldsToSendToCliens});
+    return Meteor.users.find({}, {fields: userFieldsToSendToAdmins});
   });
 
 }
