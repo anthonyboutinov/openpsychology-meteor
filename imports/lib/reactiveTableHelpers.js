@@ -1,9 +1,9 @@
 export const formatDateFn = function (value, object, key) {
-  return moment(value).calendar();
+  return moment(value).calendar().toLowerCase();
 }
 
 export const formatUserFn = function(value, object, key) {
-  if (value == 0) return "Системой";
+  if (value == 0) return "системой";
   const user = Meteor.users.findOne(value);
   if (!user) return value;
   return user.profile.name ? user.profile.name : user.emails[0].address

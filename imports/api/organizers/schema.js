@@ -137,6 +137,7 @@ export const OrganizersSchema = new SimpleSchema({
     optional: true,
     maxCount: 50,
     autoform: {
+      group: "Управление организацией",
       type: 'select-multiple',
       'data-placeholder': 'Найти по email или имени',
       options: _.throttle(function options() {
@@ -157,6 +158,7 @@ export const OrganizersSchema = new SimpleSchema({
     type: String,
     label: "Владелец",
     autoform: {
+      group: "Управление организацией",
       type: 'select',
       'data-placeholder': 'Найти по email или имени',
       options: _.throttle(function options() {

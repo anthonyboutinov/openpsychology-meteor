@@ -1,0 +1,12 @@
+<template name="adminOrganizers">
+
+  <ul class="breadcrumb">
+    <li><a href="{{pathFor 'admin'}}">Панель управления</a></li>
+    <li><a href="{{pathFor 'admin.groups'}}" class="active">Организаторы</a></li>
+  </ul>
+
+  <h3 class="panel-heading">Организаторы</h3>
+
+  {{> reactiveTable settings=settings}}
+
+</template>

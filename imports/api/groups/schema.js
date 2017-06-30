@@ -10,46 +10,9 @@ export const GroupsSchema = new SimpleSchema({
   name: {
     type: String,
     label: "Название группы",
-  },
-
-  abbreviation: {
-    type: String
-  },
-
-  refKind: {
-    type: String,
-    allowedValues: ["events", "organizers"],
     autoform: {
-      type: 'select',
-      options: "allowed",
-      'data-placeholder': "Тип объектов в группе",
-      "data-minimumResultsForSearch": "Infinity",
-    },
-  },
-
-  items: {
-    type: [Object],
-    label: "Элементы группы",
-    defaultValue: [],
-    autoform: {
-      hidden: true,
+      group: "Информация для интерфейса администраторов"
     }
-  },
-
-  "items.$.createdAt": {
-    type: Date
-  },
-  "items.$.byUserWithId": {
-    type: String
-  },
-  "items.$.item": {
-    type: String
-  },
-
-  acceptsOnlyWithMatchingAbbreviation: {
-    type: Boolean,
-    optional: true,
-    label: "Может включать только объекты с совпадающей аббревиатурой"
   },
 
   // Number of items to display
@@ -61,6 +24,61 @@ export const GroupsSchema = new SimpleSchema({
     optional: true,
     defaultValue: 3,
     label: "Максимальная вместимость группы",
+    autoform: {
+      group: "Настраивыемые параметры"
+    }
   },
+
+  items: {
+    type: [Object],
+    label: "Элементы группы",
+    defaultValue: [],
+    autoform: {
+      hidden: true,
+      group: "Настраивыемые параметры"
+    }
+  },
+
+  "items.$.createdAt": {
+    type: Date,
+    label: "Добавлено в группу когда"
+  },
+  "items.$.byUserWithId": {
+    type: String,
+    label: "Добавлено кем"
+  },
+  "items.$.item": {
+    type: String,
+    label: "Объект"
+  },
+
+  abbreviation: {
+    type: String,
+    autoform: {
+      group: "Техническая инфомрация"
+    }
+  },
+
+  refKind: {
+    type: String,
+    allowedValues: ["events", "organizers"],
+    autoform: {
+      type: 'select',
+      options: "allowed",
+      'data-placeholder': "Тип объектов в группе",
+      "data-minimumResultsForSearch": "Infinity",
+      group: "Техническая инфомрация"
+    },
+  },
+
+  acceptsOnlyWithMatchingAbbreviation: {
+    type: Boolean,
+    optional: true,
+    label: "Может включать только объекты с совпадающей аббревиатурой",
+    autoform: {
+      group: "Техническая инфомрация"
+    }
+  },
+
 
 });

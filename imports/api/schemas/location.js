@@ -13,6 +13,7 @@ export const LocationSchema = new SimpleSchema({
       "Самара",
     ], (v)=>{return v}),
     autoform: {
+      group: null,
       options: "allowed",
       "data-placeholder": "Укажите город",
     },
@@ -23,6 +24,7 @@ export const LocationSchema = new SimpleSchema({
     max: 128,
     optional: true,
     autoform: {
+      group: null,
       placeholder: "пр. Победы, д. 1к2"
     }
   },
@@ -32,6 +34,7 @@ export const LocationSchema = new SimpleSchema({
     optional: true,
     max: 128,
     autoform: {
+      group: null,
       placeholder: "2 этаж, оф. 201, вход со двора"
     }
   }
