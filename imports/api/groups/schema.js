@@ -3,7 +3,7 @@ export const GroupsSchema = new SimpleSchema({
   _id: {
     type: String,
     autoform: {
-      hidden: true,
+      type: "hidden",
     }
   },
 

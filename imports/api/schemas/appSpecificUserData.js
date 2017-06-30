@@ -6,7 +6,7 @@ export const UserSettingsSchema = new SimpleSchema({
     defaultValue: true,
     optional: true,
     autoform: {
-      hidden: true
+      type: "hidden",
     }
   },
 });
@@ -15,6 +15,7 @@ export const AppSpecificUserDataSchema = new SimpleSchema({
 
 systemNotifications: {
   type: [String],
+  label: "Системные уведомления",
   defaultValue: [
     SystemNotifications.showWelcomeNotification,
     SystemNotifications.showConfirmEmailNotification,
@@ -22,6 +23,7 @@ systemNotifications: {
   ],
 },
 settings: {
+  label: "Настройки",
   type: UserSettingsSchema,
   defaultValue: {},
 }
