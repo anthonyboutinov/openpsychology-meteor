@@ -2,23 +2,33 @@
   <section class="{{#if events_.count}}bg-white{{/if}} p-b-30">
     <div class="container">
 
-      {{#if events_.count}}
+      {{#if hasEvents}}
 
         <div class="row m-t-60">
 
+          {{#each event in eventsForGroups}}
+            {{#if shouldClearfix @index 3}}
+              <div class="clearfix visible-md-block visible-lg-block"></div>
+            {{/if}}
+            {{#if shouldClearfix @index 2}}
+              <div class="clearfix visible-sm-block"></div>
+            {{/if}}
+            <div class="col-sm-6 col-md-4 m-b-60 {{animationClass @index}}">
+              {{> list_item event=event isHighlited=true}}
+            </div>
+          {{/each}}
+
+
           {{#each event in events_}}
-
-          {{#if shouldClearfix @index 3}}
-          <div class="clearfix visible-md-block visible-lg-block"></div>
-          {{/if}}
-
-          {{#if shouldClearfix @index 2}}
-          <div class="clearfix visible-sm-block"></div>
-          {{/if}}
-
-          <div class="col-sm-6 col-md-4 m-b-60 {{animationClass @index}}">
-            {{> list_item event=event}}
-          </div>
+            {{#if shouldClearfix @index 3}}
+              <div class="clearfix visible-md-block visible-lg-block"></div>
+            {{/if}}
+            {{#if shouldClearfix @index 2}}
+              <div class="clearfix visible-sm-block"></div>
+            {{/if}}
+            <div class="col-sm-6 col-md-4 m-b-60 {{animationClass @index}}">
+              {{> list_item event=event}}
+            </div>
           {{/each}}
 
         </div>

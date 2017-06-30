@@ -1,5 +1,6 @@
 import { Categories }  from '/imports/api/categories/index.js';
 import { Events }      from '/imports/api/events/collection.js';
+import { Groups }      from '/imports/api/groups/collection.js';
 import { composeTitle } from '/imports/startup/client/routes/composeTitle.js';
 
 let QUERY_LIMIT = 6 * 5;
@@ -37,7 +38,7 @@ Router.route('/search/:categoryUrlName?', function() {
       isPublished: true,
     },
     options: {
-      sort: {'dates.dateFrom': -1},
+      sort: {'dates.dateFrom': 1},
       limit: SessionStore.get('events.limit'),
     }
   };
@@ -45,6 +46,14 @@ Router.route('/search/:categoryUrlName?', function() {
   if (subscribedToEvents) {
     this.subscribe('events', eventsParams).wait();
     this.subscribe('organizers.forEvents', eventsParams).wait();
+
+    // if we search by term or by date, then we don't want to display default Top Grou
+    if (!eventsParams.constainsText && !eventsParams.datesRange.from && !eventsParams.datesRange.to) {
+      this.subscribe('groups.byAbbreviations', categoriesUrlNamesList).wait();
+      _.each(categoriesUrlNamesList, (groupAbbreviation)=>{
+        this.subscribe('events.inGroup', groupAbbreviation).wait();
+      });
+    }
   }
 
   this.layout('mergedLayout', {
@@ -59,7 +68,26 @@ Router.route('/search/:categoryUrlName?', function() {
       searchbarSupported: true,
       showSearchbar: this.params.query.sb == "true",
       events_: () => {
-        return Events.find();
+        const groups = Groups.find({abbreviation: {$in: categoriesUrlNamesList}}, {fields: {items: 1}}).fetch();
+        if (!groups) { return false }
+        const groupItemIds = _.reduce(groups, (union, group)=>{
+          const groupItemsIds_ = group.items.map((e)=>{return e.item});
+          return _.union(union, groupItemsIds_);
+        }, []);
+        return Events.find({_id: {$nin: groupItemIds}}, {sort: {'dates.dateFrom': 1}});
+      },
+      eventsForGroups: () => {
+        const groups = Groups.find({abbreviation: {$in: categoriesUrlNamesList}}, {fields: {items: 1}}).fetch();
+        if (!groups) { return false }
+        const groupItemIds = _.reduce(groups, (union, group)=>{
+          const groupItemsIds_ = group.items.map((e)=>{return e.item});
+          return _.union(union, groupItemsIds_);
+        }, []);
+        const events = Events.find({_id: {$in: groupItemIds}}, {sort: {'dates.dateFrom': 1}});
+        return events;
+      },
+      hasEvents: () => {
+        return Events.find().count();
       },
       subscribedToEvents: subscribedToEvents,
       subscriptionsReady: () => {

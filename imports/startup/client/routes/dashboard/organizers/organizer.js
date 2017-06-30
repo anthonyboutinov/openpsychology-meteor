@@ -16,7 +16,7 @@ Router.route("/dashboard/organizer/:_id", function() {
   this.subscribe('events.byOrganizer', {
     _idOrganizer: this.params._id,
     options: {
-      sort: {'dates.dateFrom': -1},
+      sort: {'dates.dateFrom': 1},
     }
   }).wait();
 

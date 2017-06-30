@@ -15,7 +15,7 @@ Organizer.prototype = {
    * Base
    */
   events() {
-    return Events.find({organizerId: this._id}, {sort: {'dates.dateFrom': -1}});
+    return Events.find({organizerId: this._id}, {sort: {'dates.dateFrom': 1}});
   },
 
   coaches() {

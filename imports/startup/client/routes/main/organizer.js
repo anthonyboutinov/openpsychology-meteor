@@ -23,7 +23,7 @@ Router.route("/organizer/:_id", function() {
       isPublished: true,
     },
     options: {
-      sort: {'dates.dateFrom': -1},
+      sort: {'dates.dateFrom': 1},
       limit: QUERY_LIMIT,
     }
   }).wait();
