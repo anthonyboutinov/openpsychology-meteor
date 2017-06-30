@@ -33,5 +33,5 @@ Router.route("/admin/promotions", function() {
   };
 
 }, {
-  name: "admin.promotions"
+  name: "admin.groups"
 });

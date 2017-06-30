@@ -4,6 +4,7 @@ import * as EventsPublishFunctions from './publishCommonFunctions.js';
 import * as queryByDate from '/both/queryByDate.js';
 import { Categories } from '/imports/api/categories';
 import { Organizers } from '/imports/api/organizers/collection.js';
+import { Groups } from '/imports/api/groups/collection.js';
 
 if (Meteor.isServer) {
 
@@ -198,6 +199,26 @@ if (Meteor.isServer) {
       }
     }
     return [];
+  });
+
+
+  Meteor.publish('events.inGroup', function(groupAbbreviation) {
+    check(groupAbbreviation, String);
+
+    // Find group by its abbreviation, return only `items` field, and from array of items return an array of ids
+    const group = Groups.findOne({abbreviation: groupAbbreviation}, {fields: {items: 1}});
+    if (!group) {
+      throw new Meteor.Error("abbreviation-not-found", "Can't find group with abbreviation" + groupAbbreviation);
+    }
+    const groupItemIds = group.items.map((e)=>{
+      return e.item
+    });
+
+    return Events.find({_id: {$in: groupItemIds}, isPublished: true}, {
+      limit: group.maxItems,
+      sort: {'dates.dateFrom': 1}
+    });
+
   });
 
 }

@@ -21,10 +21,7 @@ Router.route("/event/:_id", function() {
   }
   this.subscribe('users.registeredForEvent', this.params._id).wait();
 
-  // if currentUserHasRole 'admin'
-  if (_.intersection(Meteor.user().roles.__global_roles__, ['admin']).length > 0) {
-    this.subscribe('groups').wait();
-  }
+  this.subscribe('groups').wait();
 
   const event = Events.findOne(this.params._id);
   const organizer = Organizers.findOne();

@@ -1,5 +1,4 @@
 import { Categories }  from '/imports/api/categories/index.js';
-import { Events }      from '/imports/api/events/collection.js';
 import { composeTitle } from '/imports/startup/client/routes/composeTitle.js';
 
 /*
@@ -12,6 +11,7 @@ Router.route('/', function () {
   if (Meteor.userId()) {
     this.subscribe('organizers.managedByUser').wait();
   }
+  this.subscribe('events.inGroup', "homescreen").wait();
 
   this.layout('mergedLayout', {
     data: {

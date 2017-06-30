@@ -1,6 +1,6 @@
 <template name="list_item">
 
-  <div class="list-item">
+  <div class="list-item {{#if isHighlited}}list-item-highlited{{/if}}">
     {{#unless hideImage}}
     <a href="{{pathFor 'event' _id=event._id}}">
       <div class="aspect-ratio aspect-ratio-2-1 m-b-10">
