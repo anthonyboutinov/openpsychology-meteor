@@ -1,12 +1,27 @@
 export const formatDateFn = function (value, object, key) {
+  if (!value) return "";
   return moment(value).calendar().toLowerCase();
 }
 
-export const formatUserFn = function(value, object, key) {
-  if (value == 0) return "системой";
+const getUserName = function(value) {
   const user = Meteor.users.findOne(value);
   if (!user) return value;
   return user.profile.name ? user.profile.name : user.emails[0].address
+}
+
+export const formatUserFn = function(value, object, key) {
+  if (value === null) return "";
+  if (value === "0") return "системой";
+  if (typeof value == 'object') {
+    if (value.length == 0) return "";
+    const mixedNames = _.reduce(value, (union, userId) => {
+      const name = getUserName(userId);
+      const concat = union.concat(name);
+      return concat;
+    }, []);
+    return mixedNames.join(", ");
+  }
+  return getUserName(value);
 }
 
 export const formatObjectFn = function(value, object, key) {

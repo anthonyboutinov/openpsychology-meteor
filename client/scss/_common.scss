@@ -27,6 +27,10 @@
   @include desaturate;
 }
 
+label {
+  font-weight: inherit;
+}
+
 
 
 .img-external-noalpha {

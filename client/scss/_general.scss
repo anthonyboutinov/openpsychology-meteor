@@ -185,21 +185,3 @@ p.small {
 .link {
   cursor: pointer;
 }
-
-// ReactieTable uses label inside menuitems, but they are bold by default, so bring it to normal
-[role="menuitem"] > label {
-  font-weight: normal;
-}
-
-.pre-inline {
-  background: none;
-  border: none;
-  border-radius: 0;
-  padding: 0;
-  margin: 0;
-  color: inherit;
-}
-
-.reactive-table td {
-  min-width: 55px;
-}
