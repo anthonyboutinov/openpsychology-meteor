@@ -7,8 +7,8 @@ if (Meteor.isServer) {
   const userFieldsToSendToCliens = {_id: 1, profile: 1, emails: 1, appSpecific: 1};
 
   Meteor.publish(null, function() {
-  return Meteor.users.find({_id: this.userId}, {fields: userFieldsToSendToCliens});
-});
+    return Meteor.users.find({_id: this.userId}, {fields: userFieldsToSendToCliens});
+  });
 
   Meteor.publish('users.whoManageOrganizer', function(organizerId) {
     check(organizerId, String);
@@ -29,6 +29,10 @@ if (Meteor.isServer) {
     const users = Meteor.users.find({_id: {$in: userIds}}, {fields: userFieldsToSendToCliens});
     console.log("users.registeredForEvent.count=",users.count());
     return users;
+  });
+
+  Meteor.publish('users.admins', function() {
+    return Meteor.users.find({'roles.__global_roles__': 'admin'}, {fields: {_id: 1, profile: 1, emails: 1}});
   });
 
 }

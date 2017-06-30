@@ -15,6 +15,7 @@ Router.route("/admin/promotions", function() {
 
   this.subscribe('categories').wait();
   this.subscribe('groups').wait();
+  this.subscribe('users.admins').wait();
 
   this.layout('mergedLayout', {
     data: {

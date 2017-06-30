@@ -185,3 +185,8 @@ p.small {
 .link {
   cursor: pointer;
 }
+
+// ReactieTable uses label inside menuitems, but they are bold by default, so bring it to normal
+[role="menuitem"] > label {
+  font-weight: normal;
+}
