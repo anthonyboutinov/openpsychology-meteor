@@ -20,7 +20,7 @@ Template.adminGroups.helpers({
 
 Template.adminGroups.events({
   'dblclick .reactive-table tbody tr': function (event) {
-    var row = this;
-    console.log(row);
+    var doc = this;
+    Router.go('admin.editAny', {collectionName: 'groups', _id: doc._id, prevPageTitle: "Группы"});
   }
 });

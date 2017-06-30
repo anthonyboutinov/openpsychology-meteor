@@ -4,7 +4,7 @@ export const ConversationSchema = new SimpleSchema({
   _id: {
     type: String,
     autoform: {
-      hidden: true,
+      type: "hidden",
     }
   },
 

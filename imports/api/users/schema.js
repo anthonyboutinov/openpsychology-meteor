@@ -14,10 +14,11 @@ export const UserSchema = new SimpleSchema({
         // For accounts-password, either emails or username is required, but not both. It is OK to make this
         // optional here because the accounts-password package does its own validation.
         // Third-party login packages may not require either. Adjust this schema as necessary for your usage.
-        optional: true
+        optional: true,
+        label: "Адреса email",
     },
     "emails.$": {
-        type: Object
+        type: Object,
     },
     "emails.$.address": {
         type: String,
@@ -25,7 +26,8 @@ export const UserSchema = new SimpleSchema({
         label: "Ваш email",
     },
     "emails.$.verified": {
-        type: Boolean
+        type: Boolean,
+        label: "Верифицирован"
     },
     // Use this registered_emails field if you are using splendido:meteor-accounts-emails-field / splendido:meteor-accounts-meld
     // registered_emails: {
@@ -43,13 +45,17 @@ export const UserSchema = new SimpleSchema({
 
     profile: {
         type: UserProfileSchema,
-        defaultValue: {}
+        defaultValue: {},
+        label: "Профиль пользователя",
     },
     // Make sure this services field is in your schema if you're using any of the accounts packages
     services: {
         type: Object,
         optional: true,
-        blackbox: true
+        blackbox: true,
+        autoform: {
+          type: "hidden",
+        }
     },
     // Add `roles` to your schema if you use the meteor-roles package.
     // Option 1: Object type
@@ -62,7 +68,10 @@ export const UserSchema = new SimpleSchema({
     roles: {
         type: Object,
         optional: true,
-        blackbox: true
+        blackbox: true,
+        autoform: {
+          type: "hidden",
+        }
     },
     // Option 2: [String] type
     // If you are sure you will never need to use role groups, then
@@ -77,13 +86,17 @@ export const UserSchema = new SimpleSchema({
     // In order to avoid an 'Exception in setInterval callback' from Meteor
     heartbeat: {
         type: Date,
-        optional: true
+        optional: true,
+        autoform: {
+          type: "hidden",
+        }
     },
 
     // Custom fields for User schema that are not part of userProfile
     appSpecific: {
       type: AppSpecificUserDataSchema,
-      defaultValue: {}
+      defaultValue: {},
+      label: "Дополнительная информация",
     }
 });
 

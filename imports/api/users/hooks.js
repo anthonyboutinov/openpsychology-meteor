@@ -2,7 +2,7 @@ import { Organizers } from '/imports/api/organizers/collection.js';
 
 Meteor.users.after.remove(function (userId, doc) {
   Organizers.remove({ownerId: userId});
-});
+}, {fetchPrevious: false});
 
 Meteor.users.before.update(function (userId, doc, fieldNames, modifier, options) {
 
@@ -17,4 +17,9 @@ Meteor.users.before.update(function (userId, doc, fieldNames, modifier, options)
   //
   //   modifier.$set.userProfile.permissions =
   // }
-});
+}, {fetchPrevious: false});
+
+
+Meteor.users.after.update(function (userId, doc, fieldNames, modifier, options) {
+  console.log("----------Meteor.users.after.update--------------\n\n", userId, doc, fieldNames, modifier, options);
+}, {fetchPrevious: false});

@@ -3,13 +3,13 @@ export const CoachesSchema = new SimpleSchema({
   _id: {
     type: String,
     autoform: {
-      hidden: true,
+      type: "hidden",
     }
   },
   organizerId: {
     type: String,
     autoform: {
-      hidden: true,
+      type: "hidden",
     }
   },
 
