@@ -1,3 +1,5 @@
+const QUERY_LIMIT = 6 * 5;
+
 Template.registerHelper("shouldClearfix", function(index, grid) {
   return index != 0 && index % grid == 0;
 });
@@ -13,6 +15,18 @@ Template.registerHelper("phoneNumHref", function (string) {
 
 Template.registerHelper("phoneNumLabel", function (string) {
   return Phoneformat.formatLocal('RU', string);
+});
+
+Template.registerHelper("formatedDate", function (date) {
+  return moment(date).format('llll');
+});
+
+Template.registerHelper("calenderDate", function (date) {
+  return moment(date).calendar();
+});
+
+Template.registerHelper("animationClass", function (index) {
+  return index > QUERY_LIMIT ? "animated fadeIn" : false;
 });
 
 Template.registerHelper("log", function (subject = this) {

@@ -2,6 +2,7 @@ import './organizer.html';
 
 import '/imports/ui/components/dashboard/panels/organizer/coaches.js';
 import '/imports/ui/components/dashboard/panels/organizer/events.js';
+import '/imports/ui/components/common/organizerInfo/contact.js';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { organizerRemoveUI } from '/imports/ui/components/dashboard/action.organizerRemoveUI.js';
 import { getImageLightness } from '/imports/lib/getImageLightness.js';

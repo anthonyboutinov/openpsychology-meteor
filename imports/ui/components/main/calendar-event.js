@@ -1,13 +1,6 @@
 import './calendar-event.html';
 
 Template.calendarEvent.helpers({
-  formatedDate: function(date) {
-    return moment(date).format('llll');
-  },
-  calenderDate: function(date) {
-    return moment(date).calendar();
-  },
-
   class: function() {
     const now = new Date();
     if (this.event.dateFrom < now) {
