@@ -10,9 +10,11 @@ Template.adminUsers.helpers({
         { key: 'createdAt', label: 'Создан', fn: formatDateFn },
         { key: 'updatedAt', label: 'Обновлен', fn: formatDateFn },
         { key: '_id', label: 'ID', fn: formatObjectFn },
-        { key: 'emails', label: 'Email', fn: formatObjectFn },
+        // { key: 'emails', label: 'Email', fn: formatObjectFn },
+        { key: 'emails.0.address', label: 'Email'},
+        { key: 'emails.0.verified', label: 'Верифицирован', fn: formatObjectFn },
         { key: 'profile', label: 'Профиль', fn: formatObjectFn },
-        { key: 'roles', label: 'Роли', fn: formatObjectFn },
+        { key: 'roles.__global_roles__', label: 'Роли', fn: formatObjectFn },
       ]
     }, defaultReactiveTableSettings)
   },

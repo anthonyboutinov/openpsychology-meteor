@@ -25,8 +25,12 @@ export const formatUserFn = function(value, object, key) {
 }
 
 export const formatObjectFn = function(value, object, key) {
-  if (!(key in object)) return "";
-  const output = typeof value == "object" ? JSON.stringify(value) : value;
+  if (value === null) return "";
+  if (value === false || value === true) {
+    return new Spacebars.SafeString("<pre class=\"pre-inline\"><code>" + value + "</code></pre>");
+  }
+  const output = typeof value == "object" ? ( _.isArray(value) ? value.join(", ") : JSON.stringify(value) ) : value;
+  // console.log(value, output);
   const isRightAligned = typeof value == "number";
   return new Spacebars.SafeString("<pre class=\"pre-inline" + (isRightAligned ? " text-right" : "") + "\"><code>" + output + "</code></pre>");
 }

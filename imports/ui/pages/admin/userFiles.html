@@ -1,0 +1,46 @@
+<template name="adminUserFiles">
+
+  <ul class="breadcrumb">
+    <li><a href="{{pathFor 'admin'}}">Панель управления</a></li>
+    <li><a href="{{pathFor 'admin.groups'}}" class="active">Загружаемые файлы</a></li>
+  </ul>
+
+  <h3 class="panel-heading">Загружаемые файлы</h3>
+
+  <div class="panel-section">
+    <!-- <div class="panel-heading">
+      <div class="panel-title">Список файлов</div>
+    </div> -->
+    <div class="panel-body">
+
+      <div class="fulldescription-actions">
+        <a href="https://console.aws.amazon.com/s3/buckets/openpsychology/?region=us-east-2&tab=overview" target="_blank" class="btn btn-primary btn-wider">Открыть AWS S3 Bucket</a>
+      </div>
+
+
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Название файла</th>
+            <th>Размер холста</th>
+            <th>Размер файла</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each img in images}}
+            <tr>
+              <td><a href="{{fileURL img}}">{{img.name}}</a></td>
+              <td>{{img.meta.width}}x{{img.meta.height}}</td>
+              <td>{{formatSize img.size}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+
+    </div>
+    <div class="panel-footer">
+      <span class="text-muted">Всего {{images.count}} файлов • {{totalSize}}</span>
+    </div>
+  </div>
+
+</template>

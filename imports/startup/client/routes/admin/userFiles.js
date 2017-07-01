@@ -1,17 +1,13 @@
 /*
 ----------------------------
-Dashboard.Groups route
+Dashboard.UserFiles route
 ----------------------------
 */
-Router.route("/admin/groups", function() {
+Router.route("/admin/userfiles", function() {
   const user = Meteor.user();
   if (!user || !_.contains(user.roles.__global_roles__, 'admin')) {
     this.redirect("/dashboard/user");
   }
-
-  this.subscribe('categories').wait();
-  this.subscribe('groups').wait();
-  this.subscribe('users.admins').wait();
 
   this.layout('mergedLayout', {
     data: {
@@ -23,11 +19,11 @@ Router.route("/admin/groups", function() {
     }
   });
   if (this.ready()) {
-    this.render('adminGroups');
+    this.render('adminUserFiles');
   } else {
     this.render('loading');
   };
 
 }, {
-  name: "admin.groups"
+  name: "admin.userFiles"
 });
