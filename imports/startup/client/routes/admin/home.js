@@ -2,8 +2,6 @@ import { Categories }  from '/imports/api/categories/index.js';
 // import { Events }      from '/imports/api/events/collection.js';
 // import { Organizers } from '/imports/api/organizers/collection.js';
 
-import * as queryByDate from '/both/queryByDate.js';
-
 /*
 ----------------------------
 Dashboard.Home route
@@ -12,8 +10,8 @@ Dashboard.Home route
 Router.route("/admin", function() {
   this.subscribe('categories').wait();
 
-  const userId = Meteor.userId();
-  if (!_.contains(Meteor.user().roles.__global_roles__, 'admin')) {
+  const user = Meteor.user();
+  if (!user || !_.contains(user.roles.__global_roles__, 'admin')) {
     this.redirect("/dashboard/user");
   }
 

@@ -1,4 +1,4 @@
-// FROM GIRTUB: https://github.com/meteor/meteor/issues/8645#issuecomment-302253375
+// FROM GITHUB: https://github.com/meteor/meteor/issues/8645#issuecomment-302253375
 /////
 
 // this is an expensive polyfill for clientside Buffer usage
@@ -11,3 +11,6 @@ global.Buffer = global.Buffer || require("buffer").Buffer; // eslint-disable-lin
 
 //
 /////
+
+
+i18n.setLanguage('ru');

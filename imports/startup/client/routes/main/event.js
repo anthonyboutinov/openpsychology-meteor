@@ -1,9 +1,7 @@
 import { Categories }  from '/imports/api/categories/index.js';
 import { Events }      from '/imports/api/events/collection.js';
 import { Organizers } from '/imports/api/organizers/collection.js';
-// import { Groups } from '/imports/api/groups/collection.js';
 import { composeTitle } from '/imports/startup/client/routes/composeTitle.js';
-// import { currentUserHasRole } from '/imports/lib/helperFunctions.js';
 
 /*
 ----------------------------
