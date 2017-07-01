@@ -2,9 +2,13 @@
  * Set up roles
  */
 
-const hasAdmin = Meteor.users.findOne( { 'emails.address': 'anton4488@gmail.com' } );
+const superadmin = Meteor.users.findOne( { 'emails.address': 'anton4488@gmail.com' } );
 
-if ( !hasAdmin ) {
+if (!superadmin.roles) {
+  Roles.addUsersToRoles(superadmin._id, ['super-admin', 'admin'], Roles.GLOBAL_GROUP);
+}
+
+if ( !superadmin ) {
 
   const users = [
     {name:"Альбина Вальярова",email:"albinaavg3@gmail.com", password: "password", roles:['admin']},

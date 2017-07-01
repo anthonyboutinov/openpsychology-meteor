@@ -1,13 +1,11 @@
-import * as queryByDate from '/both/queryByDate.js';
-
 /*
 ----------------------------
 Dashboard.Users route
 ----------------------------
 */
 Router.route("/admin/users", function() {
-  const userId = Meteor.userId();
-  if (!_.contains(Meteor.user().roles.__global_roles__, 'admin')) {
+  const user = Meteor.user();
+  if (!user || !_.contains(user.roles.__global_roles__, 'admin')) {
     this.redirect("/dashboard/user");
   }
 

@@ -45,7 +45,7 @@ if(Meteor.isServer){
 const storagePath = Meteor.isDevelopment ? "/data/Meteor/uploads/openpsychology-meteor/" : 'assets/app/uploads/UserFiles';
 
 // Declare the Meteor file collection on the Server
-const UserFiles = new FilesCollection({
+export const UserFiles = new FilesCollection({
   // debug: true,
   // throttle: false,
   chunkSize: 1024 * 768,

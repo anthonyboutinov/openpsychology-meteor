@@ -4,8 +4,8 @@ Dashboard.Organizers route
 ----------------------------
 */
 Router.route("/admin/organizers", function() {
-  const userId = Meteor.userId();
-  if (!_.contains(Meteor.user().roles.__global_roles__, 'admin')) {
+  const user = Meteor.user();
+  if (!user || !_.contains(user.roles.__global_roles__, 'admin')) {
     this.redirect("/dashboard/user");
   }
 
