@@ -1,6 +1,6 @@
 import './body.html';
 
-import * as formControlFunctions from '/imports/ui/formControlFunctions.js';
+import * as formControlFunctions from '/imports/lib/formControlFunctions.js';
 
 /*
  * Events for body work a bit differently.

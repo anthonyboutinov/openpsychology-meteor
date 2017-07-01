@@ -83,8 +83,7 @@ Router.route('/search/:categoryUrlName?', function() {
           const groupItemsIds_ = group.items.map((e)=>{return e.item});
           return _.union(union, groupItemsIds_);
         }, []);
-        const events = Events.find({_id: {$in: groupItemIds}}, {sort: {'dates.dateFrom': 1}});
-        return events;
+        return Events.find({_id: {$in: groupItemIds}}, {sort: {'dates.dateFrom': 1}})
       },
       hasEvents: () => {
         return Events.find().count();

@@ -1,6 +1,6 @@
 import './update.html';
 
-import * as selectAllText from '/imports/ui/selectAllText.js';
+import * as selectAllText from '/imports/lib/selectAllText.js';
 
 function makeCall(template) {
   const target = template.$("[data-id='contenteditableField']");
