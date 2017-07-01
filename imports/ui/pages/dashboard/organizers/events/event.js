@@ -1,5 +1,5 @@
 import './event.html';
-import { getImageLightness } from '/imports/ui/getImageLightness.js';
+import { getImageLightness } from '/imports/lib/getImageLightness.js';
 import '/imports/ui/components/common/listOfUsers/';
 
 Template.dashboardOrganizerEvent.helpers({

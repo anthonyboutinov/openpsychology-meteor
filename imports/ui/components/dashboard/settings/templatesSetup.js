@@ -1,4 +1,4 @@
-import * as formControlFunctions from '/imports/ui/formControlFunctions.js';
+import * as formControlFunctions from '/imports/lib/formControlFunctions.js';
 
 export function onRendered(templateInstance){
   if (!templateInstance) {

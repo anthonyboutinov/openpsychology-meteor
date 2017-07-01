@@ -4,7 +4,7 @@ import '/imports/ui/autoform/contemporary/afFormGroup.js';
 // import '/imports/ui/autoform/hidden/afFormGroup.js';
 import '/imports/ui/autoform/datetimeRange.js';
 import '/imports/ui/autoform/fileUpload';
-import * as formControlFunctions from '/imports/ui/formControlFunctions.js';
+import * as formControlFunctions from '/imports/lib/formControlFunctions.js';
 
 Template.organizersFormFieldset.onRendered(function(){
 

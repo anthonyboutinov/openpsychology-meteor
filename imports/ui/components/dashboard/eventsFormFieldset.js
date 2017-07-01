@@ -3,7 +3,7 @@ import './eventsFormFieldset.html';
 import '/imports/ui/autoform/contemporary/afFormGroup.js';
 import '/imports/ui/autoform/datetimeRange.js';
 import '/imports/ui/autoform/boolean-radios.js';
-import * as formControlFunctions from '/imports/ui/formControlFunctions.js';
+import * as formControlFunctions from '/imports/lib/formControlFunctions.js';
 
 Template.eventsFormFieldset.onRendered(function(){
 
