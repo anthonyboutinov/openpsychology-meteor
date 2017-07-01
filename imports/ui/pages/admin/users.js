@@ -9,7 +9,7 @@ Template.adminUsers.helpers({
       fields: [
         { key: 'createdAt', label: 'Создан', fn: formatDateFn },
         { key: 'updatedAt', label: 'Обновлен', fn: formatDateFn },
-        { key: '_id', label: 'ID', fn: formatObjectFn },
+        { key: '_id', label: 'ID', fn: formatObjectFn, hidden: true, },
         // { key: 'emails', label: 'Email', fn: formatObjectFn },
         { key: 'emails.0.address', label: 'Email'},
         { key: 'emails.0.verified', label: 'Верифицирован', fn: formatObjectFn },

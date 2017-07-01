@@ -1,19 +1,13 @@
 import './merged.html';
-
 import '/imports/ui/components/common/footer.js';
-
 import '/imports/ui/components/dashboard/navbar.js';
 import '/imports/ui/components/dashboard/sidenavbar.js';
-
 import '/imports/ui/components/admin/sidenavbar.js';
-
 import '/imports/ui/components/main/navbar/navbar.js';
 import '/imports/ui/components/main/searchbar/searchbar.js';
-
 import { ReactiveVar } from 'meteor/reactive-var';
 
 const Slideout = require('slideout');
-
 export const maxWindowWidthForSidenavbar = 768;
 
 const slideoutNewInstanceParameters = () => {
@@ -38,14 +32,12 @@ Template.mergedLayout.helpers({
       _.defer(() => {
         if (!self.slideoutInstance) {
           const params = slideoutNewInstanceParameters();
-          console.log(params);
           self.slideoutInstance = new ReactiveVar(new Slideout(params));
         } else if (self.slideoutInstance && self.slideoutInstance.get() == null) {
           self.slideoutInstance.set(new Slideout(slideoutNewInstanceParameters()));
         }
         $('.scrollbar-macosx').scrollbar();
       });
-      // console.log("displaySidenavbar triggered: true");
       return true;
     }
 
@@ -59,7 +51,6 @@ Template.mergedLayout.helpers({
           panel.removeClass("slideout-panel slideout-panel-left");
         });
       }
-      // console.log("displaySidenavbar triggered: false");
       return false;
     }
 
@@ -68,14 +59,12 @@ Template.mergedLayout.helpers({
       _.defer(() => {
         if (!self.slideoutInstance) {
           const params = slideoutNewInstanceParameters();
-          console.log(params);
           self.slideoutInstance = new ReactiveVar(new Slideout(params));
         } else if (self.slideoutInstance && self.slideoutInstance.get() == null) {
           self.slideoutInstance.set(new Slideout(slideoutNewInstanceParameters()));
         }
         $('.scrollbar-macosx').scrollbar();
       });
-      // console.log("displaySidenavbar triggered: true");
       return true;
     } else {
       if (self.slideoutInstance) {
@@ -85,7 +74,6 @@ Template.mergedLayout.helpers({
           panel.removeClass("slideout-panel slideout-panel-left");
         });
       }
-      // console.log("displaySidenavbar triggered: false");
       return false;
     }
   },
@@ -103,10 +91,8 @@ Template.mergedLayout.events({
     if (template.slideoutInstance && template.windowWidth.get() < maxWindowWidthForSidenavbar) {
       if (!$(event.target).hasClass("arrow")) {
         const slideoutInstance = template.slideoutInstance.get();
-        console.log(slideoutInstance);
         if (slideoutInstance._opened || slideoutInstance._opening) {
           slideoutInstance.toggle();
-          console.log(slideoutInstance);
         }
       }
     }
@@ -132,10 +118,8 @@ Template.mergedLayout.onRendered(function(){
     if (reactiveVar) {
       const width = $(window).width();
       if (reactiveVar.get() == width) {
-        // console.log("window width not changed");
         return;
       }
-      // console.log("set window width: ", width);
       reactiveVar.set(width);
     }
   }, 200);
@@ -145,6 +129,4 @@ Template.mergedLayout.onRendered(function(){
   });
 
   const params = slideoutNewInstanceParameters();
-  // const slideoutInstance = new Slideout(params);
-  // this.slideoutInstance = new ReactiveVar(slideoutInstance);
 });

@@ -9,6 +9,7 @@ Template.adminOrganizers.helpers({
       collection: Organizers,
       fields: [
         { key: 'name', label: 'Название' },
+        { key: '_id', label: 'ID', fn: formatObjectFn, hidden: true, },
         { key: 'location', label: 'Местположение', fn: formatObjectFn },
         { key: 'ownerId', label: 'Владелец', fn: formatUserFn },
         { key: 'managedBy', label: 'Управляющие', fn: formatUserFn },

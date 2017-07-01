@@ -88,8 +88,10 @@ let hooksObject = {
       return doc;
     },
   },
+  // Called when form does not have a `type` attribute
   onSuccess: function(formType, result) {
-    Router.go('dashboard.organizer.event', {organizerId: this.formAttributes.organizer._id, eventId: this.formAttributes.doc._id});
+    const eventId = this.formAttributes.doc._id || result;
+    Router.go('dashboard.organizer.event', {organizerId: this.formAttributes.organizer._id, eventId: eventId});
   },
   onError: function(formType, error) {
     console.log(error);
