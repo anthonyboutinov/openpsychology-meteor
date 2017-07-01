@@ -12,7 +12,7 @@ Router.route("/admin/editany/:collectionName/:_id/:prevPageTitle/:prevPageIsDeep
   // this.subscribe('categories').wait();
 
   const user = Meteor.user();
-  if (!user || !_.contains(user.roles.__global_roles__, 'admin')) {
+  if (!user || !user.roles || !_.contains(user.roles.__global_roles__, 'admin')) {
     this.redirect("/dashboard/user");
   }
 

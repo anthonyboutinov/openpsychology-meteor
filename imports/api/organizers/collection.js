@@ -25,13 +25,13 @@ Organizer.prototype = {
   managedByUser(userId) {
     userId = userId || Meteor.userId();
     if (!userId) return false;
-    return this.ownerId == userId || this.managedBy.includes(userId);
+    return this.ownerId === userId || (this.managedBy && _.contains(this.managedBy, userId));
   },
 
   ownedByUser(userId) {
     userId = userId || Meteor.userId();
     if (!userId) return false;
-    return this.ownerId == userId;
+    return this.ownerId === userId;
   },
 
   /*
