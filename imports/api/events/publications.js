@@ -180,25 +180,28 @@ if (Meteor.isServer) {
     // Find event and fetch it to know needed properties
     const event = Events.findOne(_id, {fileds: {isPublished: 1, organizer: 1}});
     // console.log(event);
-    if (event && event.isPublished) {
-      // If event is published -- return it
+    if (!event) return false;
+    if (event.isPublished) {
+      // If event is published, return it
       return Events.find(_id);
-    } else if (event && this.userId) {
+    } else if (this.userId) {
+      // console.log("----------------useriD: " ,this.userId);
       // If event is not published but there is a user logged in
       // Find if this event is from an managed organizer
       const isManaged = Organizers.find({
-        _id: this.organizerId,
+        _id: event.organizerId,
         $or: [
           {ownerId: this.userId},
           {managedBy: this.userId}
         ]
       }, {fields: {_id:1}}).count()
+      // console.log("----------------isManaged: " ,isManaged, this.organizerId);
       if (isManaged) {
         // If so, display this hidden event (to organizer who manages it)
         return Events.find(_id);
       }
+      return false;
     }
-    return [];
   });
 
 

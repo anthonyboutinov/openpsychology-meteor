@@ -8,4 +8,11 @@ if (Meteor.isServer) {
     return Categories.find({}, {reactive: false});
   });
 
+
+
+  // admin permission
+  //
+  //
+  Categories.permit('update').ifHasRole({role:'admin', group: Roles.GLOBAL_GROUP}).onlyProps(['singularName', 'pluralName', 'urlName']).allowInClientCode();
+
 }

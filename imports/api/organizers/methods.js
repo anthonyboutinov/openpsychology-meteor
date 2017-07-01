@@ -1,14 +1,13 @@
 import { check } from 'meteor/check';
 import { Organizers } from './collection.js';
 
-if (Meteor.isServer) {
+Meteor.methods({
 
-  Meteor.methods({
-    'organizers.remove': function(_id) {
-      check(_id, String);
-      check(this.userId, String);
-      return Organizers.remove({_id: _id, ownerId: this.userId});
-    }
-  });
+  // @secure
+  'organizers.remove': function(_id) {
+    check(_id, String);
+    Security.can(this.userId).remove(_id).for(Organizers).throw();
+    return Organizers.remove({_id: _id, ownerId: this.userId});
+  }
 
-}
+});
