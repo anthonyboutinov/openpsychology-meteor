@@ -4,7 +4,7 @@
 
 const superadmin = Meteor.users.findOne( { 'emails.address': 'anton4488@gmail.com' } );
 
-if (!superadmin.roles) {
+if (superasmin && !superadmin.roles) {
   Roles.addUsersToRoles(superadmin._id, ['super-admin', 'admin'], Roles.GLOBAL_GROUP);
 }
 
