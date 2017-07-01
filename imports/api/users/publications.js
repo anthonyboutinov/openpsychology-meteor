@@ -1,5 +1,3 @@
-if (Meteor.isServer) {
-
   import { check } from 'meteor/check';
   import { Organizers } from '/imports/api/organizers/collection.js';
   import { Events } from '/imports/api/events/collection.js';
@@ -42,5 +40,3 @@ if (Meteor.isServer) {
   Meteor.publish('users.all', function() {
     return Meteor.users.find({}, {fields: userFieldsToSendToAdmins, reactive: false});
   });
-
-}

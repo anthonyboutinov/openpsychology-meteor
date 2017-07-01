@@ -8,7 +8,8 @@
     // @noSecurityChecksRequired
     'event'(eventId) {
       let event = Events.findOne(eventId);
-      // TODO: check if these 2 lines are wstill relevant to the project's architecture
+      // TODO: Q: check if these 2 lines are still relevant to the project's architecture
+      //       A: Propably, yes. This speeds things up, but is not reactive which is not really a problem
       event.category = Categories.findOne(event.categoryId);
       event.organizer = Organizers.findOne(event.organizerId);
       return event;
@@ -19,14 +20,6 @@
       check(eventId, String);
       Security.can(this.userId).remove(eventId).for(Events).throw();
       return Events.remove(eventId);
-      // check(this.userId, String);
-      // const managedOrganizers = Organizers.find({
-      //   $or: [
-      //     {ownerId: this.userId},
-      //     {managedBy: this.userId}
-      //   ]
-      // }, {fields: {_id: 1}}).map(function(doc){return doc._id});
-      // return Events.remove({_id: eventId, organizerId: {$in: managedOrganizers}});
     },
 
     // @secure
@@ -36,14 +29,6 @@
         Security.can(this.userId).remove(eventId).for(Events).throw();
       });
       return Events.remove({_id: {$in: eventIds}});
-      // check(this.userId, String);
-      // const managedOrganizers = Organizers.find({
-      //   $or: [
-      //     {ownerId: this.userId},
-      //     {managedBy: this.userId}
-      //   ]
-      // }, {fields: {_id: 1}}).map(function(doc){return doc._id});
-      // return Events.remove({_id: {$in: eventIds}, organizerId: {$in: managedOrganizers}});
     },
 
     // @secure
@@ -51,61 +36,57 @@
       check(eventId, String);
       check(setRegistered, Boolean);
       check(userId, String);
-      Security.can(this.userId).update(eventId).for(Events).throw();
 
+      let modifier;
       if (setRegistered) {
-        return Events.update(eventId, { $push: { registeredForEvent: userId} });
+        modifier = { $push: { registeredForEvent: userId} };
       } else {
-        return Events.update(eventId, { $pull: { registeredForEvent: userId} });
+        modifier = { $pull: { registeredForEvent: userId} };
       }
+
+      Security.can(this.userId).update(eventId, modifier).for(Events).throw();
+      return Events.update(eventId, modifier);
     },
 
     // @secure
     'event.like'(eventId) {
       check(eventId, String);
-      // check(this.userId, String);
-      Security.can(this.userId).update(eventId).for(Events).throw();
-      return Events.update(eventId, { $push: { likes: {createdAt: new Date(), userId: this.userId}} });
+      const modifier = { $push: { likes: {createdAt: new Date(), userId: this.userId}} };
+      Security.can(this.userId).update(eventId, modifier).for(Events).throw();
+      return Events.update(eventId, modifier);
     },
 
     // @secure
     'event.unlike'(eventId) {
       check(eventId, String);
-      // check(this.userId, String);
-      Security.can(this.userId).update(eventId).for(Events).throw();
-      return Events.update(eventId, { $pull: { likes: {userId: this.userId}} });
+      const modifier = { $pull: { likes: {userId: this.userId}} };
+      Security.can(this.userId).update(eventId, modifier).for(Events).throw();
+      return Events.update(eventId, modifier);
     },
 
     // @secure
     'event.bookmark'(eventId) {
       check(eventId, String);
-      // check(this.userId, String);
-      Security.can(this.userId).update(eventId).for(Events).throw();
-      return Events.update(eventId, { $push: { bookmarks: {createdAt: new Date(), userId: this.userId}} });
+      const modifier = { $push: { bookmarks: {createdAt: new Date(), userId: this.userId}} };
+      Security.can(this.userId).update(eventId, modifier).for(Events).throw();
+      return Events.update(eventId, modifier);
     },
 
     // @secure
     'event.removeBookmark'(eventId) {
       check(eventId, String);
-      // check(this.userId, String);
-      Security.can(this.userId).update(eventId).for(Events).throw();
-      return Events.update(eventId, { $pull: { bookmarks: {userId: this.userId}} });
+      const modifier = { $pull: { bookmarks: {userId: this.userId}} };
+      Security.can(this.userId).update(eventId, modifier).for(Events).throw();
+      return Events.update(eventId, modifier);
     },
 
     // @secure
     'event.toggleBooking'(eventId, bookingOpen) {
       check(eventId, String);
       check(bookingOpen, Boolean);
-      // check(this.userId, String);
-      Security.can(this.userId).update(eventId).for(Events).throw();
-      return Events.update({_id: eventId}, {$set: {bookingOpen: bookingOpen}});
-      // const managedOrganizers = Organizers.find({
-      //   $or: [
-      //     {ownerId: this.userId},
-      //     {managedBy: this.userId}
-      //   ]
-      // }, {fields: {_id: 1}}).map(function(doc){return doc._id});
-      // return Events.update({_id: eventId, organizerId: {$in: managedOrganizers}}, {$set: {bookingOpen: bookingOpen}});
+      const modifier = {$set: {bookingOpen: bookingOpen}};
+      Security.can(this.userId).update(eventId, modifier).for(Events).throw();
+      return Events.update(eventId, modifier);
     },
 
   });
