@@ -25,7 +25,7 @@ Template.coachListItem.events({
     }, function(){
       Meteor.call('coach.remove', doc._id, function(error, result) {
         if (error || !result) {
-          const text = (error ? error.message : "Действие не имеет результата.") + " Отчет об ошибке отправлен разработчикам для устранения. Пожалуйста, подождите, скоро мы все исправим!😉";
+          const text = (error ? error.message : "Действие не имеет результата.");
           swal("Ошибка", text, "error");
         } else {
           swal("Удалено!", doc.name + " удален.", "success");

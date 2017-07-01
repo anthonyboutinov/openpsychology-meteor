@@ -5,44 +5,45 @@
         <div class="fulldescription-main">
 
           {{#if eitherIsTrue event.managedByUser (currentUserHasRole 'admin')}}
-          <div class="fulldescription-editor {{#unless event.isPublished}}bg-warning text-warning{{/unless}}">
+            <div class="fulldescription-editor {{#unless event.isPublished}}bg-warning text-warning{{/unless}}">
 
-            {{#unless event.isPublished}}
-              <strong class="btn-sized">
-                <i class="fa fa-fw fa-eye-slash" aria-hidden="true"></i>
-                Мероприятие скрыто от посетителей сайта
-              </strong>
-            {{/unless}}
+              {{#unless event.isPublished}}
+                <strong class="btn-sized">
+                  <i class="fa fa-fw fa-eye-slash" aria-hidden="true"></i>
+                  Мероприятие скрыто от посетителей сайта
+                </strong>
+              {{/unless}}
 
-            {{#if currentUserHasRole 'admin'}}
-            <div class="btn-group">
-              <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Управление группами...
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu drop-left" role="menu">
-                <li class="dropdown-header">Добавить в группу</li>
-                {{> addToGroupListItems eventId=event._id eventCategoryCode=event.category.urlName}}
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Удалить из группы</li>
-                {{> removeFromGroupListItems eventId=event._id}}
-              </ul>
+              {{#if currentUserHasRole 'admin'}}
+                {{#if event.managedByUser}}<br>{{/if}}
+                <div class="btn-group">
+                  <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Управление группами...
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu drop-left" role="menu">
+                    <li class="dropdown-header">Добавить в группу</li>
+                    {{> addToGroupListItems eventId=event._id eventCategoryCode=event.category.urlName}}
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Удалить из группы</li>
+                    {{> removeFromGroupListItems eventId=event._id}}
+                  </ul>
+                </div>
+              {{/if}}
+
+              {{#if event.managedByUser}}
+                <a href="{{pathFor 'dashboard.organizer.event' organizerId=event.organizerId eventId=event._id}}" class="btn btn-sm btn-primary">
+                  <i class="fa fa-fw fa-dashboard" aria-hidden="true"></i>
+                  Панель управления
+                </a>
+
+                <a href="{{pathFor 'dashboard.organizer.event.modify' organizerId=event.organizerId eventId=event._id}}" class="btn btn-sm btn-primary">
+                  <i class="fa fa-fw fa-edit" aria-hidden="true"></i>
+                  Редактировать
+                </a>
+              {{/if}}
+
             </div>
-            {{/if}}
-
-            {{#if event.managedByUser}}
-            <a href="{{pathFor 'dashboard.organizer.event' organizerId=event.organizerId eventId=event._id}}" class="btn btn-sm btn-primary">
-              <i class="fa fa-fw fa-dashboard" aria-hidden="true"></i>
-              Панель управления
-            </a>
-
-            <a href="{{pathFor 'dashboard.organizer.event.modify' organizerId=event.organizerId eventId=event._id}}" class="btn btn-sm btn-primary">
-              <i class="fa fa-fw fa-edit" aria-hidden="true"></i>
-              Редактировать
-            </a>
-            {{/if}}
-
-          </div>
           {{/if}}
 
           <div class="fulldescription-banner-img">
@@ -203,7 +204,8 @@
             </div>
             {{#if event.description}}
               <div class="col-xs-12 col-sm-12 col-lg-7 markdown-body">
-                {{#markdown}}{{nbsp event.description}}{{/markdown}}
+                {{{renderMarkdown (nbsp event.description)}}}
+                <!-- {{#markdown}}{{nbsp event.description}}{{/markdown}} -->
               </div>
             {{/if}}
 

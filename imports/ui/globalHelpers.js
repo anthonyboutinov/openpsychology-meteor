@@ -23,7 +23,7 @@ Template.registerHelper("currentUserHasRole", function() {
   if (!Meteor.user()) { return false }
   const roles = _.initial(arguments);
   const user = Meteor.user();
-  return user && _.intersection(user.roles.__global_roles__, roles).length > 0;
+  return user && user.roles && _.intersection(user.roles.__global_roles__, roles).length > 0;
 })
 
 // Allows to have multiple OR statements inside {{#if ...}}
