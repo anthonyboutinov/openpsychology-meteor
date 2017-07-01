@@ -1,0 +1,32 @@
+<template name="organizerInfoContatComponent">
+
+  {{#if hasContactInformation}}
+  <div class="m-t-15">
+    <h4>Контакты:</h4>
+    {{#with organizer}}
+      {{#if socialLinkVK}}
+        <a href="{{socialLinkVKAbsoluteURL}}" class="btn m-b-5 btn-vk"><i class="fa fa-fw fa-vk" aria-hidden="true"></i><span class="sr-only">ВКонтакте</span></a>
+      {{/if}}
+      {{#if socialLinkOdnoklassniki}}
+        <a href="{{socialLinkOdnoklassnikiAbsoluteURL}}" class="btn m-b-5 btn-odnoklassniki"><i class="fa fa-fw fa-odnoklassniki" aria-hidden="true"></i><span class="sr-only">Одноклассники</span></a>
+      {{/if}}
+      {{#if socialLinkFacebook}}
+        <a href="{{socialLinkFacebookAbsoluteURL}}" class="btn m-b-5 btn-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+      {{/if}}
+      {{#if socialLinkYouTube}}
+        <a href="{{socialLinkYouTubeAbsoluteURL}}" class="btn m-b-5 btn-youtube"><i class="fa fa-fw fa-youtube" aria-hidden="true"></i><span class="sr-only">YouTube</span></a>
+      {{/if}}
+      {{#if socialLinkTwitter}}
+        <a href="{{socialLinkTwitterAbsoluteURL}}" class="btn m-b-5 btn-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+      {{/if}}
+      {{#if phoneNum}}
+        <a href="{{phoneNumHref phoneNum}}" class="btn m-b-5 btn-secondary"><i class="fa fa-phone fa-fw" aria-hidden="true"></i>{{phoneNumLabel phoneNum}}</a>
+      {{/if}}
+      {{#if email}}
+        <button class="btn m-b-5 btn-secondary" title="Написать сообщение"><i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i><span class="sr-only">Написать сообщение</span></button>
+      {{/if}}
+    {{/with}}
+  </div>
+  {{/if}}
+
+</template>

@@ -70,9 +70,11 @@
   }
 
   &-opaque {
-    border: 1px solid rgba(0, 0, 0, 0.07);
+    border: 1px solid #ebebeb;
     background-color: #fff;
     border-radius: 2px;
+    border-width: 1px 1px 2px 1px;
+
 
     & > .panel-body {
       padding-left: 20px;
