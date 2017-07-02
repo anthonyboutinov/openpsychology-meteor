@@ -8,14 +8,15 @@
             <div class="fulldescription-editor {{#unless event.isPublished}}bg-warning text-warning{{/unless}}">
 
               {{#unless event.isPublished}}
-                <strong class="btn-sized">
+                <strong class="btn-sized display-block">
                   <i class="fa fa-fw fa-eye-slash" aria-hidden="true"></i>
                   Мероприятие скрыто от посетителей сайта
                 </strong>
               {{/unless}}
 
+              {{> groupExpirationInfo event=event}}
+
               {{#if currentUserHasRole 'admin'}}
-                {{#if event.managedByUser}}{{#unless event.isPublished}}<br>{{/unless}}{{/if}}
                 <div class="btn-group">
                   <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Управление группами...

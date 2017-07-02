@@ -1,6 +1,7 @@
 import './event.html';
 import { getImageLightness } from '/imports/lib/getImageLightness.js';
 import '/imports/ui/components/common/listOfUsers/';
+import '/imports/ui/components/dashboard/groupExpirationInfo.js';
 
 Template.dashboardOrganizerEvent.helpers({
   pageHeadingColorClass() {
