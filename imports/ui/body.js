@@ -1,10 +1,9 @@
 import './body.html';
-
-import * as formControlFunctions from '/imports/lib/formControlFunctions.js';
+import { FormControlHelperMethods } from '/imports/lib/formControlHelperMethods.js';
 
 /*
  * Events for body work a bit differently.
- * Here is a n example:
+ * Here is an example:
 
   "click .btn": function(e, data, tpl) {
     // e -> jquery event
@@ -17,11 +16,11 @@ import * as formControlFunctions from '/imports/lib/formControlFunctions.js';
 Template.body.events({
   "focus .form-group .form-control": function(event, data, template){
     let target = $(event.target);
-    formControlFunctions.focus(target);
+    FormControlHelperMethods.focus(target);
   },
   "blur .form-group .form-control": function(event, data, template){
     let target = $(event.target);
-    formControlFunctions.blur(target);
+    FormControlHelperMethods.blur(target);
   },
   "click .form-group .input-group-addon": function(event, data, template){
     let target = $(event.target);
@@ -33,7 +32,7 @@ Template.body.onRendered(function(){
 
   setInterval(function(){
     $(".form-group .form-control").each(function(index, element){
-      formControlFunctions.checkIfHasValue($(element));
+      FormControlHelperMethods.checkIfHasValue($(element));
     });
   }, 1300);
 

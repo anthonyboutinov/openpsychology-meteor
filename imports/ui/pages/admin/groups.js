@@ -8,11 +8,21 @@ Template.adminGroups.helpers({
     return _.extend({
       collection: Groups,
       fields: [
-        { key: 'name', label: 'Название' },
-        { key: 'refKind', label: 'Тип объектов', fn: formatObjectFn },
-        { key: 'maxItems', label: 'Макс. вместимость', fn: formatObjectFn },
-        { key: 'updatedAt', label: 'Обновлено', fn: formatDateFn },
-        { key: 'updatedBy', label: 'Обновлено кем', fn: formatUserFn },
+        { fieldId: 'name', key: 'name', label: 'Название', fn: (value, object)=>{
+          console.log(object);
+          if (_.has(object, 'link')) {
+            return new Spacebars.SafeString("<a href=\"" + object.link + " \">" + value + "</a>");
+          } else {
+            return value;
+          }
+        } },
+        { fieldId: 'refKind', key: 'refKind', label: 'Тип объектов', fn: formatObjectFn },
+        { fieldId: 'publishLimit', key: 'publishLimit', label: 'Отображать не более, шт.', cellClass: 'text-right' },
+        { fieldId: 'count', key: 'items', label: 'Всего, шт.', cellClass: 'text-right', fn: (value)=>{
+          return value.length;
+        } },
+        { fieldId: 'updatedAt', key: 'updatedAt', label: 'Обновлено', fn: formatDateFn },
+        { fieldId: 'updatedBy', key: 'updatedBy', label: 'Обновлено кем', fn: formatUserFn },
       ]
     }, defaultReactiveTableSettings)
   },

@@ -1,4 +1,4 @@
-import * as formControlFunctions from '/imports/lib/formControlFunctions.js';
+import { FormControlHelperMethods } from '/imports/lib/formControlHelperMethods.js';
 
 export function onRendered(templateInstance){
   if (!templateInstance) {
@@ -9,10 +9,10 @@ export function onRendered(templateInstance){
     theme: "contemporary",
   }).on("select2:open", function(event) {
     let target = $(event.target);
-    formControlFunctions.focus(target);
+    FormControlHelperMethods.focus(target);
   }).on("select2:close", function(event) {
     let target = $(event.target);
-    formControlFunctions.blur(target);
+    FormControlHelperMethods.blur(target);
     // THIS IS DIFFERENT HERE:
     target.parents("form").submit();
     _.delay(onRendered, 300, templateInstance);
@@ -23,10 +23,10 @@ export function onRendered(templateInstance){
     minimumResultsForSearch: Infinity,
   }).on("select2:open", function(event) {
     let target = $(event.target);
-    formControlFunctions.focus(target);
+    FormControlHelperMethods.focus(target);
   }).on("select2:close", function(event) {
     let target = $(event.target);
-    formControlFunctions.blur(target);
+    FormControlHelperMethods.blur(target);
     // THIS IS DIFFERENT HERE:
     target.parents("form").submit();
     _.delay(onRendered, 300, templateInstance);
@@ -39,9 +39,3 @@ export const ev = {
     $(event.currentTarget).parents("form").submit();
   },
 };
-
-// export const hlprs = {
-//   currentUserDoc() {
-//     return Meteor.user();
-//   },
-// };

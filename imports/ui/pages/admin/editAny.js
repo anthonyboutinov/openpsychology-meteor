@@ -29,7 +29,7 @@ let hooksObject = {
     history.back();
   },
   onError: function(formType, error) {
-    alert.log(error);
+    alert(error);
   },
 };
 AutoForm.addHooks(['adminEditAnyForm'], hooksObject);
