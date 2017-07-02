@@ -12,5 +12,6 @@ if (Meteor.isServer) {
   import './messages';
   import './conversations';
   import './groups';
+  import './accounts.js';
 
 }
