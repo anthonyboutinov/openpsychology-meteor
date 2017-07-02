@@ -1,7 +1,7 @@
 <template name="organizer">
   <div class="container p-b-30">
     <div class="row m-t-60">
-      <div class="col-xs-12 col-lg-8">
+      <div class="col-xs-12 col-max-vk-cover">
         <section class="fulldescription-main">
 
           {{#if organizer.managedByUser}}
@@ -22,12 +22,15 @@
 
           {{#if organizer.bannerImageId}}
             <div class="fulldescription-banner-img">
-              <div class="aspect-ratio aspect-ratio-3-1">
+              <div class="aspect-ratio aspect-ratio-vk-cover">
                 <img class="img-responsive img-external-noalpha" src="{{organizer.bannerLink}}" alt="{{organizer.name}}">
               </div>
             </div>
           {{/if}}
-          <h1 class="fulldescription-heading m-b-30">{{organizer.name}}</h1>
+          <h1 class="fulldescription-heading m-b-30">
+            <img class="img-responsive pull-left m-r-10 img-organizer-logo" src="{{organizer.imageLink}}">
+            {{organizer.name}}
+          </h1>
 
           <div class="row fulldescription-body">
             <div class="col-xs-12 col-sm-12 col-lg-5">
@@ -46,14 +49,23 @@
 
       </div>
 
-      <aside class="col-xs-12 col-sm-12 col-lg-4">
-
+      <aside class="col-xs-12 col-aside-vk-cover hidden-sm">
         <div class="m-b-60">
-          <img src="http://placehold.it/400x400?text=Реклама" class="img-responsive" style="position: relative;z-index: -1;">
+          <img src="http://placehold.it/400x400?text=Реклама" class="img-responsive">
+          <div class="text-muted h6">
+            <i class="fa fa-money" aria-hidden="true"></i> Реклама
+          </div>
         </div>
-
       </aside>
     </div>
+
+    <div class="m-b-60 m-t-30 visible-sm-block">
+      <img src="http://placehold.it/400x400?text=Реклама" class="img-responsive">
+      <div class="text-muted h6">
+        <i class="fa fa-money" aria-hidden="true"></i> Реклама
+      </div>
+    </div>
+
     {{#if events_.count}}
     <section class="row">
 

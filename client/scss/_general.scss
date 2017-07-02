@@ -185,3 +185,10 @@ p.small {
 .link {
   cursor: pointer;
 }
+
+.col-max-vk-cover {
+  max-width: 795px;
+}
+.col-aside-vk-cover {
+  max-width: calc(100% - 795px);
+}
