@@ -27,8 +27,8 @@ AccountsTemplates.configure({
     showValidating: true,
 
     // Privacy Policy and Terms of Use
-    privacyUrl: 'privacy',
-    termsUrl: 'terms-of-use',
+    privacyUrl: 'md/privacy',
+    termsUrl: 'md/terms-of-use',
 
     // Redirects
     redirectTimeout: 0,
@@ -55,7 +55,7 @@ AccountsTemplates.configure({
 
 
 Router.plugin('ensureSignedIn', {
-  except: _.pluck(AccountsTemplates.routes, 'name').concat(['home', 'event', 'organizer', 'search', 'version'])
+  except: _.pluck(AccountsTemplates.routes, 'name').concat(['home', 'event', 'organizer', 'search', 'version', 'markdown'])
 });
 
 AccountsTemplates.configureRoute('signIn', {

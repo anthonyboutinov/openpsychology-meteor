@@ -17,7 +17,7 @@ if (Meteor.isServer) {
           items: {
             createdAt: new Date(),
             byUserWithId: this.userId,
-            item: eventId,
+            _id: eventId,
             expiresAt: expiresAt
           }
         }
@@ -40,7 +40,7 @@ if (Meteor.isServer) {
     'event.removeFromGroup'(eventId, groupId) {
       check(eventId, String);
 
-      const modifier = { $pull: { items: { item: eventId } } };
+      const modifier = { $pull: { items: { _id: eventId } } };
       Security.can(this.userId).update(groupId, modifier).for(Groups).throw();
 
       return Groups.update(groupId, modifier);

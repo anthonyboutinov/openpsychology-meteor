@@ -24,7 +24,7 @@ Groups.after.update(function (userId, doc, fieldNames, modifier, options) {
       // pluck `item` field with itemId
       const itemIdsToRemove = _.pluck(filtered, 'item');
       // set `$pull` modifier
-      const modifier = { $pull: { items: { item: { $in: itemIdsToRemove } } } };
+      const modifier = { $pull: { items: { _id: { $in: itemIdsToRemove } } } };
       console.log({'Groups.after.update:: itemIdsToRemove': JSON.stringify(itemIdsToRemove)});
       // remove expired items from group
       Groups.update(doc._id, modifier);

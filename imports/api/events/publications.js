@@ -156,10 +156,8 @@ if (Meteor.isServer) {
 
 
   Meteor.publish('event', function(_id) {
-    console.log("Event by id ", _id);
     // Find event and fetch it to know needed properties
     const event = Events.findOne(_id, {fileds: {isPublished: 1, organizer: 1}});
-    // console.log(event);
     if (!event) return false;
     if (event.isPublished) {
       // If event is published, return it
@@ -193,7 +191,7 @@ if (Meteor.isServer) {
     if (!group) {
       throw new Meteor.Error("abbreviation-not-found", "Can't find group with abbreviation " + groupAbbreviation);
     }
-    const groupItemIds = _.pluck(group.items, 'item');
+    const groupItemIds = _.pluck(group.items, '_id');
 
     return Events.find({_id: {$in: groupItemIds}, isPublished: true}, {
       limit: group.publishLimit,

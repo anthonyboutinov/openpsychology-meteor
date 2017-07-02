@@ -9,7 +9,7 @@ Template.addToGroupListItems.helpers({
     ]});
   },
   isInGroup(groupItems) {
-    const ids = groupItems.map((e)=>{ return e.item });
+    const ids = groupItems.map((e)=>{ return e._id });
     return _.contains(ids, this.eventId);
   }
 });

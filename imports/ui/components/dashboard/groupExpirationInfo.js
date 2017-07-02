@@ -2,18 +2,18 @@ import './groupExpirationInfo.html';
 import { Groups } from '/imports/api/groups/collection.js';
 
 function _daysGoneIn(group, eventId) {
-  const item = _.find(group.items, (item)=>{ return item.item/*must be itemId */ === eventId });
+  const item = _.find(group.items, (item)=>{ return item._id === eventId });
   return moment(new Date()).diff(item.createdAt, 'minutes');
 }
 
 function _daysTotalIn(group, eventId) {
-  const item = _.find(group.items, (item)=>{ return item.item/*must be itemId */ === eventId });
+  const item = _.find(group.items, (item)=>{ return item._id === eventId });
   return moment(item.expiresAt).diff(item.createdAt, 'minutes');
 }
 
 Template.groupExpirationInfo.helpers({
   groups() {
-    return Groups.find({ 'items.item': this.event._id });
+    return Groups.find({ 'items._id': this.event._id });
   },
 
   progressBarValueIn(group) {
