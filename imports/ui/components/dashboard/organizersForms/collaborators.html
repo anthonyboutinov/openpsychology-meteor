@@ -11,7 +11,7 @@
           </div>
           {{#if isOwner}}
             <div class="col-md-6">
-              <a href="{{pathFor 'dashboard.organizer.update' _id=organizer._id specialFormType='resign'}}" class="btn btn-danger-alt m-b-10">Передать права другому участнику</a>
+              <a href="{{pathFor 'dashboard.organizer.update' _id=organizer._id specialFormType='transferOwnership'}}" class="btn btn-danger-alt m-b-10">Передать права другому участнику</a>
             </div>
           {{/if}}
       </div>

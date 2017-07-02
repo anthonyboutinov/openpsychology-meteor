@@ -1,5 +1,5 @@
 import './collaborators.html';
-import './resign.js';
+import './transferOwnership.js';
 
 import { Organizers } from '/imports/api/organizers/collection.js';
 import * as select2Users from './select2Users.js';
@@ -22,7 +22,7 @@ Template.organizersFormCollaborators.helpers({
     return this.organizer().ownerId == Meteor.userId();
   },
   specialFormTypeIsResign() {
-    return this.specialFormType == "resign";
+    return this.specialFormType == "transferOwnership";
   },
 });
 

@@ -58,7 +58,7 @@
         <p>Список организаций, подлежащих к удалению вместе с аккаунтом:</p>
         <ul>
           {{#each organizer in ownedOrganizers}}
-            <li>{{organizer.name}} — <a href="{{pathFor 'dashboard.organizer.update' _id=organizer._id specialFormType='resign'}}">Передать другому пользователю</a></li>
+            <li>{{organizer.name}} — <a href="{{pathFor 'dashboard.organizer.update' _id=organizer._id specialFormType='transferOwnership'}}">Передать другому пользователю</a></li>
           {{/each}}
         </ul>
       {{/if}}

@@ -10,7 +10,7 @@ Router.route("/dashboard/organizer/:_id/update/:specialFormType?", function() {
 
   const pageTitle = this.params.specialFormType == "collaborators" ?
                       {short: "Редактировать участников", long: "Редактировать список участников"} :
-                      (this.params.specialFormType == "resign" ?
+                      (this.params.specialFormType == "transferOwnership" ?
                         {short: "Передать права", long: "Передать права на владение другой учетной записи"} :
                         {short: "Редактировать", long: "Редактировать организацию"});
 
@@ -39,7 +39,7 @@ Router.route("/dashboard/organizer/:_id/update/:specialFormType?", function() {
     // Safety check
     //  Перекинуть на страницу редактирования участников вместо передачи прав,
     //  если участник не является обладателем огранизации
-    if (this.params.specialFormType && this.params.specialFormType == "resign") {
+    if (this.params.specialFormType && this.params.specialFormType == "transferOwnership") {
       const org = Organizers.findOne({_id: this.params._id});
       if (org && org.ownerId != Meteor.userId()) {
         this.redirect('dashboard.organizer.update', {_id: this.params._id, specialFormType: "collaborators"});
