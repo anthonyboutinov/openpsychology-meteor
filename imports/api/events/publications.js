@@ -108,11 +108,7 @@ if (Meteor.isServer) {
 
   Meteor.publish('events.liked.count', function() {
     check(this.userId, String);
-
-    let findParams = {
-      'likes.userId': this.userId
-    };
-
+    let findParams = { 'likes.userId': this.userId };
     return new Counter('events.liked.count', Events.find(findParams));
   });
 
@@ -124,11 +120,7 @@ if (Meteor.isServer) {
   */
   Meteor.publish('events.liked', function(options) {
     check(this.userId, String);
-
-    let findParams = {
-      'likes.userId': this.userId
-    };
-
+    let findParams = { 'likes.userId': this.userId };
     return Events.find(findParams, options);
   });
 
@@ -140,33 +132,21 @@ if (Meteor.isServer) {
   */
   Meteor.publish('events.bookmarked', function(options) {
     check(this.userId, String);
-
-    let findParams = {
-      'bookmarks.userId': this.userId
-    };
-
+    let findParams = { 'bookmarks.userId': this.userId };
     return Events.find(findParams, options);
   });
 
 
   Meteor.publish('events.bookmarked.count', function() {
     check(this.userId, String);
-
-    let findParams = {
-      'bookmarks.userId': this.userId
-    };
-
+    let findParams = { 'bookmarks.userId': this.userId };
     return new Counter('events.bookmarked.count', Events.find(findParams));
   });
 
 
   Meteor.publish('events.bookmarked.lastOne', function() {
     check(this.userId, String);
-
-    let findParams = {
-      'bookmarks.userId': this.userId
-    };
-
+    let findParams = { 'bookmarks.userId': this.userId };
     return Events.find(findParams, {
       limit: 1,
       /*sort: 'createdAt'*/ // TODO: sort must be different
@@ -211,14 +191,12 @@ if (Meteor.isServer) {
     // Find group by its abbreviation, return only `items` field, and from array of items return an array of ids
     const group = Groups.findOne({abbreviation: groupAbbreviation}, {fields: {items: 1}});
     if (!group) {
-      throw new Meteor.Error("abbreviation-not-found", "Can't find group with abbreviation" + groupAbbreviation);
+      throw new Meteor.Error("abbreviation-not-found", "Can't find group with abbreviation " + groupAbbreviation);
     }
-    const groupItemIds = group.items.map((e)=>{
-      return e.item
-    });
+    const groupItemIds = _.pluck(group.items, 'item');
 
     return Events.find({_id: {$in: groupItemIds}, isPublished: true}, {
-      limit: group.maxItems,
+      limit: group.publishLimit,
       sort: {'dates.dateFrom': 1}
     });
 

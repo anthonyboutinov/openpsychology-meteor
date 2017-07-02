@@ -7,7 +7,7 @@ Organizers.after.remove(function (userId, doc) {
   Coaches.remove({organizerId: doc._id});
   Events.remove({organizerId: doc._id});
   UserFiles.remove({_id: {$in: [doc.bannerImageId, doc.imageId]}});
-});
+}, {fetchPrevious: false});
 
 Organizers.after.insert(function (userId, doc) {
   const user = Meteor.user();
@@ -15,4 +15,4 @@ Organizers.after.insert(function (userId, doc) {
     const modifier = {$pull: {"appSpecific.systemNotifications": SystemNotifications.showWelcomeNotification}};
     Meteor.users.update(userId, modifier);
   }
-});
+}, {fetchPrevious: false});

@@ -1,4 +1,5 @@
 import './collection.js';
+import './hooks.js';
 
 if (Meteor.isServer) {
   import './security.js';
