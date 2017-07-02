@@ -12,6 +12,7 @@ Router.route("/dashboard/organizer/:organizerId/event/:eventId", function() {
   this.subscribe('coaches.byOrganizer', this.params.organizerId).wait();
   this.subscribe('event', this.params.eventId).wait();
   this.subscribe('users.registeredForEvent', this.params.eventId).wait();
+  this.subscribe('groups').wait(); // TODO: transfer less data
 
   this.layout('mergedLayout', {
     data: {

@@ -1,0 +1,17 @@
+<template name="groupExpirationInfo">
+  {{#each group in groups}}
+    <div>
+      <h5>
+        {{group.name}}
+        <small class="text-muted">
+          Осталось {{progressBarTimeLeftIn group}}
+        </small>
+      </h5>
+      <div class="progress">
+        <div class="progress-bar progress-bar-calendar"
+        role="progressbar" aria-valuenow="{{progressBarValueIn group}}" aria-valuemin="0" aria-valuemax="{{prograssbarMaxValueIn group}}"
+        style="width: {{progressBarPercentageIn group}}%"></div>
+      </div>
+    </div>
+  {{/each}}
+</template>

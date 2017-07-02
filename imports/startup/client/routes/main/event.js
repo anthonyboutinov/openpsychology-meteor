@@ -17,8 +17,10 @@ Router.route("/event/:_id", function() {
   if (Meteor.userId()) {
     this.subscribe('organizers.managedByUser').wait();
     const user = Meteor.user();
-    if (user && user.roles && user.roles[Roles.GLOBAL_GROUP] && _.contains(user.roles[Roles.GLOBAL_GROUP], 'admin')) {
-      console.log("CurrentUser has Admin role");
+    if (user
+      && user.roles
+      && user.roles[Roles.GLOBAL_GROUP]
+      && _.contains(user.roles[Roles.GLOBAL_GROUP], 'admin')) {
       this.subscribe('groups').wait();
     }
   }
