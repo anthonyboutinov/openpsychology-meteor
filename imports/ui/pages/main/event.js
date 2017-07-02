@@ -4,6 +4,7 @@ import '/imports/ui/components/main/calendar-event.js';
 import '/imports/ui/components/common/listOfUsers/';
 import '/imports/ui/components/admin/addToGroupListItems.js';
 import '/imports/ui/components/admin/removeFromGroupListItems.js';
+import '/imports/ui/components/dashboard/groupExpirationInfo.js';
 
 Template.event.helpers({
   showCalEventsCount(count) {
