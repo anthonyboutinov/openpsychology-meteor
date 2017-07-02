@@ -15,11 +15,22 @@ export const GroupsSchema = new SimpleSchema({
     }
   },
 
+  link: {
+    type: String,
+    label: "Ссылка",
+    optional: true,
+    autoform: {
+      group: "Информация для интерфейса администраторов"
+    }
+  },
+
   // Number of items to display
   // Actual number may be up to 3 times bigger because some items may get hidden/unpublished
   // during their lifecycle which will result in them not showing up on client's side.
   // WARNING! When publishing, one must keep that in mind and use sorting and limiting.
-  maxItems: {
+  //
+  // Used as publication's limit
+  publishLimit: {
     type: Number,
     optional: true,
     defaultValue: 3,
@@ -50,6 +61,10 @@ export const GroupsSchema = new SimpleSchema({
   "items.$.item": {
     type: String,
     label: "Объект"
+  },
+  "items.$.expiresAt": {
+    type: Date,
+    label: "Истекает",
   },
 
   abbreviation: {

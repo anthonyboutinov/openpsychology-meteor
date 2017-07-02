@@ -15,7 +15,7 @@
               {{/unless}}
 
               {{#if currentUserHasRole 'admin'}}
-                {{#if event.managedByUser}}<br>{{/if}}
+                {{#if event.managedByUser}}{{#unless event.isPublished}}<br>{{/unless}}{{/if}}
                 <div class="btn-group">
                   <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Управление группами...

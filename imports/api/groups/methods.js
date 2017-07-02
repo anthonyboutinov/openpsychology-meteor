@@ -7,8 +7,10 @@ if (Meteor.isServer) {
   Meteor.methods({
 
     // @secure
-    'event.addToGroup'(eventId, groupId) {
+    'event.addToGroup'(eventId, groupId, expiresAt) {
       check(eventId, String);
+      check(groupId, String);
+      check(expiresAt, Date);
 
       const modifier = {
         $push: {
@@ -16,14 +18,19 @@ if (Meteor.isServer) {
             createdAt: new Date(),
             byUserWithId: this.userId,
             item: eventId,
+            expiresAt: expiresAt
           }
         }
       };
       Security.can(this.userId).update(groupId, modifier).for(Groups).throw();
 
-      const isAlreadyInGroup = _.contains(Groups.findOne(groupId).items, eventId);
+      const group = Groups.findOne(groupId);
+      if (group.refKind != "events") {
+        throw new Meteor.Error("group-not-accepting-refKind", "Group you are trying to add to does not accept Event items.");
+      }
+      const isAlreadyInGroup = _.contains(group.items, eventId);
       if (isAlreadyInGroup) {
-        return false;
+        throw new Meteor.Error("group-item-not-unique", "Group you are trying to add to already has this item.");
       }
 
       return Groups.update(groupId, modifier);

@@ -9,7 +9,7 @@ const getUserName = function(value) {
   return user.profile.name ? user.profile.name : user.emails[0].address
 }
 
-export const formatUserFn = function(value, object, key) {
+export const formatUserFn = function(value) {
   if (value === null) return "";
   if (value === "0") return "системой";
   if (typeof value == 'object') {

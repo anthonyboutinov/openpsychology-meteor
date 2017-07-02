@@ -1,4 +1,4 @@
-import * as formControlFunctions from '/imports/lib/formControlFunctions.js';
+import { FormControlHelperMethods } from '/imports/lib/formControlHelperMethods.js';
 
 export function onRendered(template) {
   template.$('select').select2({
@@ -14,9 +14,9 @@ export function onRendered(template) {
     },
   }).on("select2:open", function(event) {
     let target = $(event.target);
-    formControlFunctions.focus(target);
+    FormControlHelperMethods.focus(target);
   }).on("select2:close", function(event) {
     let target = $(event.target);
-    formControlFunctions.blur(target);
+    FormControlHelperMethods.blur(target);
   });
 }
