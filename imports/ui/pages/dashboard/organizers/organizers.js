@@ -13,5 +13,5 @@ Template.dashboardOrganizers.helpers({
 
 
 Template.dashboardOrganizers.events({
-  'click [mo-action="remove"]': organizerRemoveUI
+  'click [mo-action="removeOrganizer"]': organizerRemoveUI
 });

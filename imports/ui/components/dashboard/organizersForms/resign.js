@@ -1,4 +1,4 @@
-import './resign.html';
+import './transferOwnership.html';
 
 import { Organizers } from '/imports/api/organizers/collection.js';
 import * as select2Users from './select2Users.js';
