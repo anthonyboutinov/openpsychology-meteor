@@ -58,7 +58,7 @@ export const GroupsSchema = new SimpleSchema({
     type: String,
     label: "Добавлено кем"
   },
-  "items.$.item": {
+  "items.$._id": {
     type: String,
     label: "Объект"
   },
