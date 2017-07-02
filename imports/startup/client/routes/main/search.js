@@ -71,7 +71,7 @@ Router.route('/search/:categoryUrlName?', function() {
         const groups = Groups.find({abbreviation: {$in: categoriesUrlNamesList}}, {fields: {items: 1}}).fetch();
         if (!groups) { return false }
         const groupItemIds = _.reduce(groups, (union, group)=>{
-          const groupItemsIds_ = group.items.map((e)=>{return e.item});
+          const groupItemsIds_ = group.items.map((e)=>{return e._id});
           return _.union(union, groupItemsIds_);
         }, []);
         return Events.find({_id: {$nin: groupItemIds}}, {sort: {'dates.dateFrom': 1}});
@@ -80,7 +80,7 @@ Router.route('/search/:categoryUrlName?', function() {
         const groups = Groups.find({abbreviation: {$in: categoriesUrlNamesList}}, {fields: {items: 1}}).fetch();
         if (!groups) { return false }
         const groupItemIds = _.reduce(groups, (union, group)=>{
-          const groupItemsIds_ = group.items.map((e)=>{return e.item});
+          const groupItemsIds_ = group.items.map((e)=>{return e._id});
           return _.union(union, groupItemsIds_);
         }, []);
         return Events.find({_id: {$in: groupItemIds}}, {sort: {'dates.dateFrom': 1}})

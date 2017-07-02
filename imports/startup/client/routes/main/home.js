@@ -12,6 +12,7 @@ Router.route('/', function () {
     this.subscribe('organizers.managedByUser').wait();
   }
   this.subscribe('events.inGroup', "homescreen").wait();
+  this.subscribe('organizers.forEvents.inGroup', "homescreen").wait();
 
   this.layout('mergedLayout', {
     data: {

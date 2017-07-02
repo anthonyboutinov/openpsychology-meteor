@@ -1,6 +1,7 @@
 import { check } from 'meteor/check';
 import { Organizers } from './collection.js';
 import { Events } from '/imports/api/events/collection.js';
+import { Groups } from '/imports/api/groups/collection.js';
 import * as EventsPublishFunctions from '/imports/api/events/publishCommonFunctions.js';
 
 if (Meteor.isServer) {
@@ -31,6 +32,22 @@ if (Meteor.isServer) {
     if (!event) return [];
     const organizerId = event.organizerId;
     return Organizers.find({_id: organizerId});
+  });
+
+  Meteor.publish('organizers.forEvents.inGroup', function(abbreviation) {
+    check(abbreviation, String);
+    const group = Groups.findOne({abbreviation: abbreviation}, {fields: {items: 1}});
+    if (!group) throw new Meteor.Error("abbreviation-not-found", "Can't find group with abbreviation " + groupAbbreviation);
+    if (!group.items) return false;
+    const itemIds = _.pluck(group.items, '_id');
+    const events = Events.find({_id: {$in: itemIds}, isPublished: true}, {
+      limit: group.publishLimit,
+      sort: {'dates.dateFrom': 1},
+      fields: {organizerId: 1}
+    }).fetch();
+    const organizerIds = _.uniq(_.pluck(events, 'organizerId'));
+    const organizers = Organizers.find({_id: {$in: organizerIds}});
+    return organizers;
   });
 
   /*
