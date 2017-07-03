@@ -11,13 +11,13 @@ Accounts.emailTemplates.enrollAccount.text = (user, url) => {
 Accounts.emailTemplates.resetPassword.from = () => {
   // Overrides the value set in `Accounts.emailTemplates.from` when resetting
   // passwords.
-  return 'Сброс пароля Открытая психология <no-reply@open-p.ru>';
+  return 'Сброс пароля Открытая психология <anton4488@gmail.com>';
 };
 Accounts.emailTemplates.verifyEmail = {
    subject() {
       return "Активирейте Ваш аккаунт сейчас!";
    },
    text(user, url) {
-      return `Здравствуйте! Подтвердите свой email, перейдя по ссылке: ${url}`;
+      return `Здравствуйте! Подтвердите свой email, перейдя по ссылке:\n\n${url}`;
    }
 };

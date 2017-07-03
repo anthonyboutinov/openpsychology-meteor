@@ -4,5 +4,6 @@
     "secret": "***REMOVED***",
     "bucket": "openpsychology",
     "region": "us-east-2"
-  }
+  },
+  "MAIL_URL": "smtps://***REMOVED***"
 }

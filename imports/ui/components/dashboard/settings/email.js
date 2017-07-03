@@ -12,7 +12,7 @@ Template.settingsEmailForm.helpers({
 Template.settingsEmailForm.events({
   'click [mo-action="sendVerificationEmail"]'(event, template) {
     event.preventDefault();
-    Meteor.call("sendVerificationEmail");
+    Meteor.call("accounts.sendVerificationEmail");
     swal("Выполнено", "На Ваш email адрес отправлено письмо с инструкцией.", "success");
   }
 });

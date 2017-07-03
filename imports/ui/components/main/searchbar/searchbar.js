@@ -85,7 +85,7 @@ Template.searchbar.onRendered(function() {
     todayHighlight: true,
     autoclose: true,
     beforeShowYear: function (date){
-      if (date.getFullYear() < 2016) {
+      if (date.getFullYear() < 2017) {
         return false;
       }
     }
@@ -101,7 +101,7 @@ Template.searchbar.onRendered(function() {
     todayHighlight: true,
     autoclose: true,
     beforeShowYear: function (date){
-      if (date.getFullYear() < 2016) {
+      if (date.getFullYear() < 2017) {
         return false;
       }
     }
