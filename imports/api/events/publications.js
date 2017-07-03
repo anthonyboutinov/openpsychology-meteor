@@ -1,6 +1,6 @@
 import { check } from 'meteor/check';
 import { Events } from './collection.js';
-import * as EventsPublishFunctions from './publishCommonFunctions.js';
+import { EventsPublishFunctions } from './publishCommonFunctions.js';
 import * as queryByDate from '/both/queryByDate.js';
 import { Categories } from '/imports/api/categories';
 import { Organizers } from '/imports/api/organizers/collection.js';
@@ -57,26 +57,7 @@ if (Meteor.isServer) {
   }
   */
   Meteor.publish('events.userRegistered', function(params) {
-    check(params.userId, String);
-    if (params.timeframe) {
-      check(params.timeframe, String);
-    }
-
-    let findParams = {
-      'registeredForEvent': params.userId
-    };
-
-    if (params.timeframe == "past") {
-      findParams = queryByDate.setFindPast(findParams);
-    } else if (params.timeframe == "ongoing") {
-      findParams = queryByDate.setFindOngoing(findParams);
-    } else if (params.timeframe == "upcoming") {
-      findParams = queryByDate.setFindUpcoming(findParams);
-    }
-
-    // console.log(JSON.stringify(findParams));
-    const events = Events.find(findParams, params.options);
-    return events;
+    return EventsPublishFunctions.eventsUserRegistered(params);
   });
 
 
