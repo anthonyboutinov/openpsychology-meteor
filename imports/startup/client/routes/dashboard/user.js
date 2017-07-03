@@ -64,10 +64,10 @@ Router.route("/dashboard/user", function() {
         return this.ready();
       },
       ongoingEvents: () => {
-        return Events.find(findParamsOngoingEvents);
+        return Events.find(findParamsOngoingEvents, {sort: {'dates.dateFrom': 1}});
       },
       upcomingEvents: () => {
-        return Events.find(findParamsUpcomingEvents);
+        return Events.find(findParamsUpcomingEvents, {sort: {'dates.dateFrom': 1}});
       },
       gotMoreOngoingEvents: () => {
         return Counter.get('events.userRegistered.counts.ongoing') > Events.find(findParamsOngoingEvents).count();
