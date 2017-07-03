@@ -7,12 +7,12 @@
           {{#if organizer.managedByUser}}
           <div class="fulldescription-editor">
 
-            <a href="{{pathFor 'dashboard.organizer' _id=organizer._id}}" class="btn btn-sm btn-primary">
+            <a role="button" href="{{pathFor 'dashboard.organizer' _id=organizer._id}}" class="btn btn-sm btn-primary">
               <i class="fa fa-fw fa-dashboard" aria-hidden="true"></i>
               Панель управления
             </a>
 
-            <a href="{{pathFor 'dashboard.organizer.update' _id=organizer._id}}" class="btn btn-sm btn-primary">
+            <a role="button" href="{{pathFor 'dashboard.organizer.update' _id=organizer._id}}" class="btn btn-sm btn-primary">
               <i class="fa fa-fw fa-edit" aria-hidden="true"></i>
               Редактировать
             </a>
