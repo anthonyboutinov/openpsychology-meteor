@@ -43,6 +43,7 @@ if(Meteor.isServer){
 }
 
 const storagePath = Meteor.isDevelopment ? "/data/Meteor/uploads/openpsychology-meteor/" : 'assets/app/uploads/UserFiles';
+const bucketStoragePath = Meteor.isDevelopment ? "dev-userfiles" : "userfiles";
 
 // Declare the Meteor file collection on the Server
 export const UserFiles = new FilesCollection({
@@ -72,10 +73,10 @@ export const UserFiles = new FilesCollection({
     return !~res.indexOf(false);
   },
   onBeforeUpload() {
-    if (this.file.size <= 1024 * 1024 * 128) {
+    if (this.file.size <= 1024 * 1024 * 3) {
       return true;
     }
-    return "Max. file size is 128MB you've tried to upload " + (filesize(this.file.size));
+    return "Max. file size is 3MB! You've tried to upload " + (filesize(this.file.size));
   },
   downloadCallback(fileObj) {
     if (this.params && this.params.query && this.params.query.download === 'true') {
@@ -156,7 +157,7 @@ if(Meteor.isServer){
         // to secure files from reverse engineering
         // As after viewing this code it will be easy
         // to get access to unlisted and protected files
-        const filePath = 'files/' + (Random.id()) + '-' + version + '.' + fileRef.extension;
+        const filePath = bucketStoragePath + '/' + (Random.id()) + '-' + version + '.' + fileRef.extension;
 
         client.putObject({
           StorageClass: 'STANDARD',
@@ -188,16 +189,16 @@ if(Meteor.isServer){
       });
     };
 
-    if (/png|jpe?g/i.test(fileRef.extension || '')) {
-      _app.createThumbnails(this, fileRef, (error, fileRef) => {
-        if (error) {
-          console.error(error);
-        }
-        sendToStorage(this.collection.findOne(fileRef._id));
-      });
-    } else {
+    // if (/png|jpe?g/i.test(fileRef.extension || '')) {
+    //   _app.createThumbnails(this, fileRef, (error, fileRef) => {
+    //     if (error) {
+    //       console.error(error);
+    //     }
+    //     sendToStorage(this.collection.findOne(fileRef._id));
+    //   });
+    // } else {
       sendToStorage(fileRef);
-    }
+    // }
   });
 
   // This line now commented due to Heroku usage
@@ -236,13 +237,13 @@ if(Meteor.isServer){
   // Remove files along with MongoDB records two minutes before expiration date
   // If we have 'expireAfterSeconds' index on 'meta.expireAt' field,
   // it won't remove files themselves.
-  Meteor.setInterval(() => {
-    UserFiles.remove({
-      'meta.expireAt': {
-        $lte: new Date(+new Date() + 120000)
-      }
-    }, _app.NOOP);
-  }, 120000);
+  // Meteor.setInterval(() => {
+  //   UserFiles.remove({
+  //     'meta.expireAt': {
+  //       $lte: new Date(+new Date() + 120000)
+  //     }
+  //   }, _app.NOOP);
+  // }, 120000);
 
 }
 
