@@ -188,6 +188,12 @@ p.small {
 
 .col-max-vk-cover {
   max-width: 795px;
+
+  &-push-center {
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+  }
 }
 .col-aside-vk-cover {
   max-width: calc(100% - 795px);

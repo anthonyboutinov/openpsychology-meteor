@@ -2,7 +2,7 @@ import { check } from 'meteor/check';
 import { Organizers } from './collection.js';
 import { Events } from '/imports/api/events/collection.js';
 import { Groups } from '/imports/api/groups/collection.js';
-import * as EventsPublishFunctions from '/imports/api/events/publishCommonFunctions.js';
+import { EventsPublishFunctions } from '/imports/api/events/publishCommonFunctions.js';
 
 if (Meteor.isServer) {
 
@@ -70,6 +70,27 @@ if (Meteor.isServer) {
       }
     });
     const events = Events.find(findParams, params.options);
+    const organizerIds = events.map((event)=>{return event.organizerId});
+    return Organizers.find({_id: {$in: organizerIds}});
+  });
+
+
+  /*
+  params: {
+    userId - ID,
+    timeframe - "past" || "ongoing" || "upcoming",
+    options - Collection.find options dictionary
+  }
+  */
+  Meteor.publish('organizers.forEvents.userRegistered', function(params) {
+    // const findParams = EventsPublishFunctions.getFindParams(params);
+    // Make return only organizerId fields
+    _.extend(params.options, {
+      fields: {
+        organizerId: 1
+      }
+    });
+    const events = EventsPublishFunctions.eventsUserRegistered(params);
     const organizerIds = events.map((event)=>{return event.organizerId});
     return Organizers.find({_id: {$in: organizerIds}});
   });

@@ -12,14 +12,16 @@ Router.route("/dashboard/events/:timeframe", function() {
   this.subscribe('organizers.managedByUser').wait();
 
   const userId = Meteor.userId();
-  this.subscribe('events.userRegistered', {
+  const params = {
     userId: userId,
     timeframe: this.params.timeframe,
     options: {
       limit: 100,
       sort: {'dates.dateFrom': 1}
     }
-  }).wait();
+  }
+  this.subscribe('events.userRegistered', params).wait();
+  this.subscribe('organizers.forEvents.userRegistered', params).wait();
 
   this.layout('mergedLayout', {
     data: {
