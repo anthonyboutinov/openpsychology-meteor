@@ -32,6 +32,14 @@ Template.event.helpers({
            organizer.phoneNum != null ||
            organizer.email != null;
   },
+
+  socialLinksContactInfromationHolder() {
+    if (this.event.useCustomSocialLinks) {
+      return this.event;
+    } else {
+      return this.organizer;
+    }
+  },
 });
 
 Template.event.events({
