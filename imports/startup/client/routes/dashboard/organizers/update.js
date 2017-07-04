@@ -28,7 +28,11 @@ Router.route("/dashboard/organizer/:_id/update/:specialFormType?", function() {
         return Organizers.find({}, {sort: {'name': 1}});
       },
       organizer: () => {
-        return Organizers.findOne({_id: this.params._id});
+        const organizer = Organizers.findOne(this.params._id);
+        if (!organizer) {
+          this.redirect("/dashboard/organizers");
+        }
+        return organizer;
       },
       specialFormType: this.params.specialFormType,
       pageTitle: pageTitle,
