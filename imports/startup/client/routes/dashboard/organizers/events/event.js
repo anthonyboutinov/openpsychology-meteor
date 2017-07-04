@@ -24,7 +24,11 @@ Router.route("/dashboard/organizer/:organizerId/event/:eventId", function() {
         return Organizers.find({}, {sort: {'name': 1}});
       },
       organizer: () => {
-        return Organizers.findOne({_id: this.params.organizerId});
+        const organizer = Organizers.findOne(this.params.organizerId);
+        if (!organizer) {
+          this.redirect("/dashboard/organizers");
+        }
+        return organizer;
       },
       event: () => {
         return Events.findOne(this.params.eventId);
