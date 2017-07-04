@@ -27,7 +27,7 @@ Router.route("/event/:_id", function() {
   this.subscribe('users.registeredForEvent', this.params._id).wait();
 
   const event = Events.findOne(this.params._id);
-  const organizer = Organizers.findOne();
+  const organizer = Organizers.findOne(event.organizerId);
 
   this.layout('mergedLayout', {
     data() {

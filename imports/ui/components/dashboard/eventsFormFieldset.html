@@ -33,22 +33,35 @@
 
     <legend>Контактная информация</legend>
     <div class="row">
-      <div class="col-md-7">
+      <div class="col-md-6">
         {{> afQuickField name="location"}}
       </div>
-      <div class="col-md-5">
-        <p class="text-muted">
-          <small>
-            <div class="visible-md-block visible-lg-block m-t-15"></div>
-            <p>Остальные данные для&nbsp;контактов берутся из&nbsp;данных Организации.</p>
-            <a href="{{pathFor 'dashboard.organizer.update' _id=organizerId}}" class="btn btn-link btn-sm" target="_blank">
-              Изменить контактные данные
-              <i class="fa fa-external-link" aria-hidden="true"></i>
-            </a>
-        </small>
-        </p>
+      <div class="col-md-6">
+        <p class="text-muted">Номер телефона и email отображаются те, которые указаны в данных Организации.</p>
       </div>
     </div>
+
+    <legend>Ссылки на социальные сети</legend>
+    {{> afQuickField name="useCustomSocialLinks"}}
+    {{#if currentFieldValue "useCustomSocialLinks"}}
+      <div class="row">
+        <div class="col-md-6">
+          {{> afQuickField name="socialLinkVK"}}
+        </div>
+        <div class="col-md-6">
+          {{> afQuickField name="socialLinkOdnoklassniki"}}
+        </div>
+        <div class="col-md-6">
+          {{> afQuickField name="socialLinkFacebook"}}
+        </div>
+        <div class="col-md-6">
+          {{> afQuickField name="socialLinkYouTube"}}
+        </div>
+        <div class="col-md-6">
+          {{> afQuickField name="socialLinkTwitter"}}
+        </div>
+      </div>
+    {{/if}}
 
   </fieldset>
 </template>

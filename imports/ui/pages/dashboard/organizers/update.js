@@ -14,7 +14,7 @@ let hooksObject = {
     update(doc) {
       console.log(this);
       console.log("before: ", doc);
-      if (doc.$set.phoneNum) {
+      if (doc.$set && doc.$set.phoneNum) {
         doc.$set.phoneNum = Phoneformat.cleanPhone(doc.$set.phoneNum);
       }
       if (doc.$set.ownerId && doc.$set.ownerId != this.currentDoc.ownerId) {
