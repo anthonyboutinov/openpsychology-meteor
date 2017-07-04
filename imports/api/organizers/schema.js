@@ -130,4 +130,4 @@ export const OrganizersSchema = new SimpleSchema(_.extend({
     }
   },
 
-}), socialLinksProperties);
+}, socialLinksProperties));
