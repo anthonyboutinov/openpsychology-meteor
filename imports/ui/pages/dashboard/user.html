@@ -26,26 +26,30 @@
           </div>
           {{/if}}
 
-          {{#if showNotification SystemNotifications.showConfirmEmailNotification}}
+          <!-- {{#if showNotification SystemNotifications.showConfirmEmailNotification}}
           <div class="alert alert-warning alert-closable" role="alert">
             <p>Пожалуйста, подтвердите свой email. Для этого перейдите по ссылке в высланном на почту письме.</p>
           </div>
-          {{/if}}
+          {{/if}} -->
 
-          {{#if showNotification SystemNotifications.showCalendarSubscriptionFunctionalityNotification}}
+          <!-- {{#if showNotification SystemNotifications.showCalendarSubscriptionFunctionalityNotification}}
           <div class="alert alert-info alert-closable" role="alert" id="myCalendarContainer">
             <a href="#" alert-close="{{SystemNotifications.showCalendarSubscriptionFunctionalityNotification}}" role="button" class="pull-right link-hoverreveal alert-close"><i class="fa fa-times" aria-hidden="true"></i><span class="sr-only">Закрыть</span></a>
             <p>Чтобы не пропустить встречи, подпишитесь на Ваш личный календарь, и&nbsp;информация о&nbsp;встречах будет автоматически загружаться в&nbsp;приложение Календарь на&nbsp;вашем смартфоне и/или компьютере.</p>
-            <p>Если Вы закроете это уведомление, Вы сможете найти этот функционал в&nbsp;<em>Настройках</em>.</p>
+            <p>Скопируйте ссылку и создайте новую подписку в вашем приложении-календаре, указав эту ссылку как источник.</p> -->
+            <!-- <p>Если Вы закроете это уведомление, Вы сможете найти этот функционал в&nbsp;<em>Настройках</em>.</p> -->
 
-            <span class="btn btn-default btn-sm m-t-10 position-relative"
-            data-toggle="popover" data-placement="bottom" data-container="#myCalendarContainer" data-viewport=".page-container > .container-fluid > .panel-section" data-html="true" data-content="http://localhost:3000/files/ics/user/{{currentUser._id}}<a class='m-l-char' href='/files/ics/user/{{currentUser._id}}' target='_blank'><i class='fa fa-fw fa-external-link' aria-hidden='true'></i><span class='sr-only'>Перейти по ссылке</span>">
+            <!-- <span class="btn btn-default btn-sm m-t-10 position-relative"
+            data-toggle="popover" data-placement="bottom" data-container="#myCalendarContainer" data-viewport=".page-container > .container-fluid > .panel-section" data-html="true" data-content="http://localhost:3000/files/ics/user/{{currentUser._id}}<a class='m-l-char' href='/files/ics/user/{{currentUser._id}}' target='_blank'><i class='fa fa-fw fa-external-link' aria-hidden='true'></i><span class='sr-only'>Перейти по ссылке</span>"> -->
+            <!-- <span class="btn btn-default btn-sm m-t-10 position-relative">
               <i class="fa fa-fw fa-calendar" aria-hidden="true"></i>
-              Мой календарь
-            </span>
-            <a href="#" class="btn btn-info-alt btn-sm m-t-10"><i class="fa fa-fw fa-info" aria-hidden="true"></i> Инструкция</a>
-          </div>
-          {{/if}}
+              Мой календарь: <a href="http://localhost:3000/files/ics/user/{{currentUser._id}}" download="open-p-ru- -personal-calendar.ics">http://localhost:3000/files/ics/user/{{currentUser._id}}</a>
+            </span> -->
+
+
+            <!-- <a href="#" class="btn btn-info-alt btn-sm m-t-10"><i class="fa fa-fw fa-info" aria-hidden="true"></i> Инструкция</a> -->
+          <!-- </div>
+          {{/if}} -->
 
         </div>
       </div>
