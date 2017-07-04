@@ -18,7 +18,7 @@
     if (!organizer) return false;
     const userIds = organizer.managedBy;
     userIds.push(organizer.ownerId);
-    console.log("users.whoManageOrganizer: ", userIds);
+    // console.log("users.whoManageOrganizer: ", userIds);
     return Meteor.users.find({_id: {$in: userIds}}, {fields: userFieldsToSendToCliens});
   });
 
@@ -26,11 +26,7 @@
     check(eventId, String);
     const event = Events.findOne(eventId);
     if (!event) return false;
-    const userIds = event.registeredForEvent;
-    console.log("users.registeredForEvent userIds:", userIds);
-    const users = Meteor.users.find({_id: {$in: userIds}}, {fields: userFieldsToSendToCliens});
-    console.log("users.registeredForEvent.count=",users.count());
-    return users;
+    return Meteor.users.find({_id: {$in: event.registeredForEvent}}, {fields: userFieldsToSendToCliens});
   });
 
   Meteor.publish('users.admins', function() {

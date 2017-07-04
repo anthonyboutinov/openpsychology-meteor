@@ -1,8 +1,9 @@
 import { LocationSchema } from '../schemas/location.js';
+import { socialLinksProperties } from '../schemas/socialLinksProperties.js';
 import { Events } from '../events/collection.js';
 
 
-export const OrganizersSchema = new SimpleSchema({
+export const OrganizersSchema = new SimpleSchema(_.extend({
   name: {
     type: String,
     label: "Название",
@@ -84,52 +85,6 @@ export const OrganizersSchema = new SimpleSchema({
     }
   },
 
-  socialLinkVK: {
-    type: 'String',
-    label: "Ссылка ВКонтакте",
-    optional: true,
-    autoform: {
-      group: "Ссылки на социальные сети",
-      'data-prefix': "http://vk.com/",
-    },
-  },
-  socialLinkOdnoklassniki: {
-    type: 'String',
-    label: "Ссылка Одноклассники",
-    optional: true,
-    autoform: {
-      group: "Ссылки на социальные сети",
-      'data-prefix': "http://ok.ru/",
-    },
-  },
-  socialLinkFacebook: {
-    type: 'String',
-    label: "Ссылка Facebook",
-    optional: true,
-    autoform: {
-      group: "Ссылки на социальные сети",
-      'data-prefix': "http://facebook.com/",
-    },
-  },
-  socialLinkYouTube: {
-    type: 'String',
-    label: "Ссылка YouTube",
-    optional: true,
-    autoform: {
-      group: "Ссылки на социальные сети",
-      'data-prefix': "http://youtube.com/",
-    },
-  },
-  socialLinkTwitter: {
-    type: 'String',
-    label: "Ссылка Twitter",
-    optional: true,
-    autoform: {
-      group: "Ссылки на социальные сети",
-      'data-prefix': "http://twitter.com/",
-    },
-  },
-
   managedBy: {
     type: [String],
     label: "Участники организации",
@@ -175,4 +130,4 @@ export const OrganizersSchema = new SimpleSchema({
     }
   },
 
-});
+}), socialLinksProperties);
