@@ -18,8 +18,8 @@ systemNotifications: {
   label: "Системные уведомления",
   defaultValue: [
     SystemNotifications.showWelcomeNotification,
-    SystemNotifications.showConfirmEmailNotification,
-    SystemNotifications.showCalendarSubscriptionFunctionalityNotification
+    // SystemNotifications.showConfirmEmailNotification,
+    // SystemNotifications.showCalendarSubscriptionFunctionalityNotification
   ],
 },
 settings: {
