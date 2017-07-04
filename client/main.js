@@ -1,5 +1,6 @@
-T9n.setLanguage("ru")
+T9n.setLanguage("ru");
 moment.locale('ru');
+i18n.setLanguage('ru');
 
 import 'jquery';
 import 'sweetalert';

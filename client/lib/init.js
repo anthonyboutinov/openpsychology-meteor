@@ -11,6 +11,3 @@ global.Buffer = global.Buffer || require("buffer").Buffer; // eslint-disable-lin
 
 //
 /////
-
-
-i18n.setLanguage('ru');
