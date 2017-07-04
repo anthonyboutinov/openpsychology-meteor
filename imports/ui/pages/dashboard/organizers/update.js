@@ -17,7 +17,7 @@ let hooksObject = {
       if (doc.$set && doc.$set.phoneNum) {
         doc.$set.phoneNum = Phoneformat.cleanPhone(doc.$set.phoneNum);
       }
-      if (doc.$set.ownerId && doc.$set.ownerId != this.currentDoc.ownerId) {
+      if (doc.$set && doc.$set.ownerId && doc.$set.ownerId != this.currentDoc.ownerId) {
         // If we set new owner to be someone from the list of managedBy users, then remove this id from the list
         if (this.currentDoc.managedBy.includes(doc.$set.ownerId)) {
           if (doc.$set.managedBy === undefined) {
@@ -44,7 +44,7 @@ let hooksObject = {
   onSuccess(formType, result) {
     console.log(this);
 
-    if (this.updateDoc.$set.ownerId && this.updateDoc.$set.ownerId !=this.currentDoc.ownerId) {
+    if (this.updateDoc.$set && this.updateDoc.$set.ownerId && this.updateDoc.$set.ownerId !=this.currentDoc.ownerId) {
       swal("Успешно!", "Права на огранизацию «" + this.currentDoc.name + "» переданы другому пользователю!", "success");
     }
 

@@ -30,7 +30,11 @@ Router.route("/dashboard/organizer/:_id", function() {
         return Organizers.find({}, {sort: {'name': 1}});
       },
       organizer: () => {
-        return Organizers.findOne(this.params._id);
+        const organizer = Organizers.findOne(this.params._id);
+        if (!organizer) {
+          this.redirect("/dashboard/organizers");
+        }
+        return organizer;
       },
 
     }
