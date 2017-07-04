@@ -54,6 +54,7 @@ export const UserProfileSchema = new SimpleSchema({
       "Челябинск",
       "Омск",
       "Самара",
+      "Санкт-Петербург",
     ],
     autoform: {
       options: "allowed",

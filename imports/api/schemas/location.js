@@ -11,6 +11,7 @@ export const LocationSchema = new SimpleSchema({
       "Челябинск",
       "Омск",
       "Самара",
+      "Санкт-Петербург",
     ], (v)=>{return v}),
     autoform: {
       group: null,
