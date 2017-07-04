@@ -4,6 +4,7 @@ import { LocationSchema } from '../schemas/location.js';
 import { EventDatesSchema } from '../schemas/eventDates.js';
 import { LikeSchema } from '../schemas/like.js';
 import { BookmarkSchema } from '../schemas/bookmark.js';
+import { socialLinksProperties } from '../schemas/socialLinksProperties.js';
 import { Coaches } from '/imports/api/coaches/collection.js';
 
 const PriceSchema = new SimpleSchema({
@@ -28,7 +29,7 @@ const PriceSchema = new SimpleSchema({
   },
 });
 
-export const EventsSchema = new SimpleSchema({
+export const EventsSchema = new SimpleSchema(_.extend({
   categoryId: {
     type: String,
     label: "Категория",
@@ -180,7 +181,6 @@ export const EventsSchema = new SimpleSchema({
   bookingOpen: {
     type: Boolean,
     label: "Регистрация пользователей",
-    optional: true,
     autoform: {
       group: "Основная информация",
       template: "bootstrap3",
@@ -190,6 +190,20 @@ export const EventsSchema = new SimpleSchema({
       'data-defaultValue': true,
     },
     defaultValue: true,
+  },
+
+  useCustomSocialLinks: {
+    type: Boolean,
+    defaultValue: false,
+    label: "Персонализация данных социальных сетей для мероприятия",
+    autoform: {
+      group: "Ссылки на социальные сети",
+      template: "bootstrap3",
+      type: "boolean-radios-optimized",
+      trueLabel: "<i class='fa fa-fw fa-ellipsis-h' aria-hidden='true'></i> Использовать индивидуальные ссылки на социальные сети",
+      falseLabel: "<i class='fa fa-fw fa-clone' aria-hidden='true'></i> Использовать данные Организации",
+      'data-defaultValue': false,
+    }
   },
 
   registeredForEvent: {
@@ -216,4 +230,4 @@ export const EventsSchema = new SimpleSchema({
     },
     defaultValue: [],
   }
-});
+}, socialLinksProperties));

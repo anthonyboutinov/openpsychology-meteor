@@ -59,3 +59,7 @@ Template.registerHelper("equals", function(a, b) {
   console.log(a, b);
   return a === b;
 });
+
+Template.registerHelper('currentFieldValue', function (fieldName) {
+  return AutoForm.getFieldValue(fieldName) || false;
+});
