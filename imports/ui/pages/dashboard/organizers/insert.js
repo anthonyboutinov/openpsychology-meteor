@@ -14,7 +14,6 @@ let hooksObject = {
   before: {
     insert: function(doc) {
       doc.ownerId = Meteor.userId();
-      doc.phoneNum = Phoneformat.cleanPhone(doc.phoneNum);
       console.log(doc);
       return doc;
     },
