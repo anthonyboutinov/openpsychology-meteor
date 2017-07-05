@@ -10,11 +10,15 @@ Template.registerHelper("nbsp", function (string) {
 });
 
 Template.registerHelper("phoneNumHref", function (string) {
-  return "tel:" + Phoneformat.formatE164('RU', string);
+  // Phoneformat TAKES UP 412kB  (12% of tha code) in production! Remove this dependency, write a simple function instead!
+  // return "tel:" + Phoneformat.formatE164('RU', string);
+  return "tel:+7" + string;
 });
 
 Template.registerHelper("phoneNumLabel", function (string) {
-  return Phoneformat.formatLocal('RU', string);
+  // FIXME: Phoneformat TAKES UP 412kB  (12% of tha code) in production! Remove this dependency, write a simple function instead!
+  // return Phoneformat.formatLocal('RU', string);
+  return "8 (" + string.substr(0, 3) + ") " + string.substr(3, 3) + "-" + string.substr(6, 2) + "-" + string.substr(8);
 });
 
 Template.registerHelper("formatedDate", function (date) {

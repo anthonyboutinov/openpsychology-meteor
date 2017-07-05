@@ -31,7 +31,7 @@
     },
 
     // @secure
-    'user.remove'(_id) {
+    'user.remove'(_id = this.userId) {
       Security.can(this.userId).remove(_id).for(Meteor.users).throw();
 
       if (this.userId === _id) {
