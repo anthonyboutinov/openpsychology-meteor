@@ -16,7 +16,10 @@
     check(organizerId, String);
     const organizer = Organizers.findOne(organizerId, {fields: {managedBy: 1, ownerId: 1}});
     if (!organizer) return false;
-    const userIds = organizer.managedBy;
+    var userIds = organizer.managedBy;
+    if (!userIds) {
+      var userIds = [];
+    }
     userIds.push(organizer.ownerId);
     // console.log("users.whoManageOrganizer: ", userIds);
     return Meteor.users.find({_id: {$in: userIds}}, {fields: userFieldsToSendToCliens});
