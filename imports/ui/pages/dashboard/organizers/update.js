@@ -14,9 +14,6 @@ let hooksObject = {
     update(doc) {
       console.log(this);
       console.log("before: ", doc);
-      if (doc.$set && doc.$set.phoneNum) {
-        doc.$set.phoneNum = Phoneformat.cleanPhone(doc.$set.phoneNum);
-      }
       if (doc.$set && doc.$set.ownerId && doc.$set.ownerId != this.currentDoc.ownerId) {
         // If we set new owner to be someone from the list of managedBy users, then remove this id from the list
         if (this.currentDoc.managedBy && this.currentDoc.managedBy.includes(doc.$set.ownerId)) {
