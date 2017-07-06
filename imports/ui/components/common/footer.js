@@ -3,17 +3,13 @@ import './footer.html';
 Template.footer.helpers({
   footerClass: function() {
     if (this.type == "dashboardLayout" || this.ultraCompact) {
-      return "footer-light";
+      return "light";
     } else {
-      return "footer-dark";
+      return "dark";
     }
   },
-  logoAsset: function() {
-    if (this.type == "dashboardLayout" || this.ultraCompact) {
-      return "logo-dark.png";
-    } else {
-      return "logo.png";
-    }
+  footerIsLight: function() {
+    return (this.type == "dashboardLayout" || this.ultraCompact);
   },
   containerClass: function() {
     if (this.type == "dashboardLayout") {
