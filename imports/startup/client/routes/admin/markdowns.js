@@ -10,7 +10,7 @@ Router.route("/admin/markdowns", function() {
   }
 
   this.subscribe('categories').wait();
-  this.subscribe('markdowns.all', {fields: {name: 1, title: 1}}).wait();
+  this.subscribe('markdowns.all', {fields: {name: 1, title: 1, updatedAt: 1, updatedBy: 1}}).wait();
   this.subscribe('users.admins').wait();
 
   this.layout('mergedLayout', {
