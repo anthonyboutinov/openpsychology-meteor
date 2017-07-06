@@ -1,13 +1,12 @@
 import { Mongo } from 'meteor/mongo';
+import { MarkdownsSchema } from './schema.js';
 
 export const Markdowns = new Mongo.Collection("markdowns");
 
+Markdowns.attachSchema(MarkdownsSchema);
+Markdowns.attachBehaviour('timestampable');
+
 if (Meteor.isServer) {
-
-  Meteor.publish('markdown', function(name) {
-    const mds = Markdowns.find({name: name}, {limit: 1});
-    console.log(mds.fetch());
-    return mds;
-  });
-
+  import './security.js';
+  import './publications.js';
 }
