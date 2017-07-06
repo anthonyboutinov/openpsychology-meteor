@@ -8,13 +8,13 @@ Markdown route
 ----------------------------
 */
 Router.route('/md/:name', function () {
-  // this.subscribe('categories').wait();
-  // if (Meteor.userId()) {
-  //   this.subscribe('organizers.managedByUser').wait();
-  // }
+  this.subscribe('categories').wait();
   this.subscribe('markdown', this.params.name).wait();
+  if (Meteor.userId()) {
+    this.subscribe('organizers.managedByUser').wait();
+  }
 
-  this.layout('accountsLayout', {
+  this.layout('mergedLayout', {
     data: {
       subscriptionsReady: () => {
         return this.ready();
