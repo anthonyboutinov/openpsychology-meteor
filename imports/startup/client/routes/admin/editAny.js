@@ -2,6 +2,7 @@ import { Categories }  from '/imports/api/categories/index.js';
 import { Events }      from '/imports/api/events/collection.js';
 import { Organizers } from '/imports/api/organizers/collection.js';
 import { Groups } from '/imports/api/groups/collection.js';
+import { Markdowns } from '/imports/api/markdowns/index.js';
 
 /*
 ----------------------------
@@ -23,9 +24,10 @@ Router.route("/admin/editany/:collectionName/:_id/:prevPageTitle/:prevPageIsDeep
       collection = Groups;
       this.subscribe("group", _id).wait();
       break;
-    // case "events":
-    //   collection = Events;
-    //   break;
+    case "markdowns":
+      collection = Markdowns;
+      this.subscribe("markdown", _id).wait();
+      break;
     case "organizers":
       collection = Organizers;
       this.subscribe("users.all").wait();

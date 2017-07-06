@@ -9,7 +9,6 @@ Template.adminGroups.helpers({
       collection: Groups,
       fields: [
         { fieldId: 'name', key: 'name', label: 'Название', fn: (value, object)=>{
-          console.log(object);
           if (_.has(object, 'link')) {
             return new Spacebars.SafeString("<a href=\"" + object.link + " \">" + value + "</a>");
           } else {

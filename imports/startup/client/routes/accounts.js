@@ -28,7 +28,7 @@ AccountsTemplates.configure({
 
     // Privacy Policy and Terms of Use
     privacyUrl: 'md/privacy',
-    termsUrl: 'md/terms-of-use',
+    termsUrl: 'md/terms',
 
     // Redirects
     redirectTimeout: 0,

@@ -9,7 +9,7 @@ Markdown route
 */
 Router.route('/md/:name', function () {
   this.subscribe('categories').wait();
-  this.subscribe('markdown', this.params.name).wait();
+  this.subscribe('markdown.byName', this.params.name).wait();
   if (Meteor.userId()) {
     this.subscribe('organizers.managedByUser').wait();
   }
