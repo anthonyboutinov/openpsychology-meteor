@@ -11,7 +11,6 @@ if (Markdowns.find().count() == 0) {
     {
       name: "terms",
       title: "Условия пользования",
-      description: "[Описание для результатов поисковых запросов]",
       data: Assets.getText("terms.md"),
     },
   ];
