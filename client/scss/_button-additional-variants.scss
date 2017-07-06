@@ -124,6 +124,10 @@ $btn-alt-bg-activehover-transparecy:  0.6;
   @include btn-alt($brand-success);
 }
 
+.btn-default-alt {
+  @include btn-alt(#fff);
+}
+
 
 
 
