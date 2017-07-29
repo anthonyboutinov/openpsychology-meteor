@@ -4,7 +4,7 @@
 
 To run the project, execute
 ```
-meteor
+meteor --settings ./dev-settings.json
 ```
 
 If /node_modules folder is missing, run
