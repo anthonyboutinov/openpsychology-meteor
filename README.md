@@ -12,6 +12,12 @@ If /node_modules folder is missing, run
 meteor npm install
 ```
 
+To deploy to Heroku, run (after commiting to master)
+```
+git push heroku master
+```
+
+
 ## Directory layout
 
 Basic project structure looks like this:
