@@ -16,16 +16,7 @@ To run the project, execute
 ```
 meteor --settings ./dev-settings.json
 ```
-
-To deploy to Heroku, run (after commiting to master)
-```
-git push heroku master
-```
-
-To deploy to Heroku, run (after commiting to master)
-```
-git push heroku master
-```
+Note: all secrects have been removed using BFG repo-cleaner so that this repo could go public. To run the project, you would have to provide your own AWS S3 credentials in `.dev-settings.json`.
 
 
 ## Directory layout
