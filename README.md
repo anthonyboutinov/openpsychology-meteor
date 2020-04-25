@@ -1,4 +1,14 @@
-# Открытая психология (проект на Meteor)
+# Open Psychology
+This is a MeteorJS (https://meteor.com) project.
+
+You can read about the project here: https://boutinov.website/work/open-psychology
+
+
+## Install
+```
+meteor npm install
+```
+
 
 ## Usage
 
@@ -7,9 +17,9 @@ To run the project, execute
 meteor --settings ./dev-settings.json
 ```
 
-If /node_modules folder is missing, run
+To deploy to Heroku, run (after commiting to master)
 ```
-meteor npm install
+git push heroku master
 ```
 
 To deploy to Heroku, run (after commiting to master)
