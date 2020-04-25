@@ -1,5 +1,5 @@
 # Open Psychology
-This is a MeteorJS (meteor.com) project.
+This is a MeteorJS (https://meteor.com) project.
 
 You can read about the project here: https://boutinov.website/work/open-psychology
 

@@ -1,9 +1,9 @@
 {
   "s3": {
-    "key": "***REMOVED***",
-    "secret": "***REMOVED***",
+    "key": "AKIAI4NZMGEROGLI5EWA",
+    "secret": "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",
     "bucket": "openpsychology",
     "region": "us-east-2"
   },
-  "MAIL_URL": "smtps://***REMOVED***"
+  "MAIL_URL": "smtps://anton4488:8Hn-GJC-CTm-BwK@gmail.com:465"
 }
