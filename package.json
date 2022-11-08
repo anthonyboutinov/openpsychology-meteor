@@ -15,7 +15,7 @@
     "fixtures.js": "^2.1.0",
     "fs-extra": "^3.0.1",
     "gm": "^1.23.0",
-    "jquery": "^2.2.4",
+    "jquery": "^3.5.0",
     "jquery.scrollbar": "^0.2.11",
     "meteor-node-stubs": "~0.2.0",
     "slideout": "^1.0.1",
