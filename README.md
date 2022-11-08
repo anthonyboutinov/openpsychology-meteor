@@ -1,7 +1,9 @@
-# Open Psychology
+# Open Psychology (Открытая психология)
 This is a MeteorJS (https://meteor.com) project.
 
-You can read about the project here: https://boutinov.website/work/open-psychology
+👉 **Case study: https://boutinov.com/work/open-psychology**
+
+<img src="readme-images/open-p-wide-website-preview@0.5x.jpg" alt="Открытая Психология — preview" />
 
 
 ## Install
@@ -16,16 +18,7 @@ To run the project, execute
 ```
 meteor --settings ./dev-settings.json
 ```
-
-To deploy to Heroku, run (after commiting to master)
-```
-git push heroku master
-```
-
-To deploy to Heroku, run (after commiting to master)
-```
-git push heroku master
-```
+Note: all secrects have been removed using BFG repo-cleaner so that this repo could go public. To be able to upload images in the Dashboard, you would have to provide your own AWS S3 credentials in `.dev-settings.json`.
 
 
 ## Directory layout
