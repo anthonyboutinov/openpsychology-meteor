@@ -14,7 +14,7 @@
     "colorify.js": "^1.0.3",
     "fixtures.js": "^2.1.0",
     "fs-extra": "^3.0.1",
-    "gm": "^1.23.0",
+    "gm": "^1.25.0",
     "jquery": "^2.2.4",
     "jquery.scrollbar": "^0.2.11",
     "meteor-node-stubs": "~0.2.0",
