@@ -22,7 +22,7 @@ To run the project, execute
 NODE_TLS_REJECT_UNAUTHORIZED=0 meteor --settings ./dev-settings.json
 ```
 
-Note: all secrects have been removed using BFG repo-cleaner so that this repo could go public. To be able to upload images in the Dashboard, you would have to provide your own AWS S3 credentials in `.dev-settings.json`.
+To be able to upload images in the Dashboard, you would have to provide your own AWS S3 credentials in `.dev-settings.json`.
 
 The project uses a very old version of Meteor--1.5--, which causes expired certificates errors. A workaround, for now, is to run all the meteor commands with the following environment variable NODE_TLS_REJECT_UNAUTHORIZED. (https://docs.meteor.com/expired-certificate.html)
 
