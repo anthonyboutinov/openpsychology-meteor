@@ -1,14 +1,12 @@
 # Open Psychology (Открытая психология)
 
-This is a MeteorJS (https://meteor.com) project.
-
 👉 **Case study: https://boutinov.com/work/open-psychology**
 
 <img src="readme-images/open-p-wide-website-preview@0.5x.jpg" alt="Открытая Психология — preview" />
 
 ## Install
 
-Make sure you have Meteor and NodeJS installed first.
+Make sure you have MeteorJS (and NodeJS) installed first.
 
 ```
 meteor npm install
@@ -22,7 +20,7 @@ To run the project, execute
 NODE_TLS_REJECT_UNAUTHORIZED=0 meteor --settings ./dev-settings.json
 ```
 
-To be able to upload images in the Dashboard, you would have to provide your own AWS S3 credentials in `.dev-settings.json`.
+Note: all secrects have been removed using BFG repo-cleaner so that this repo could go public. To be able to upload images in the Dashboard, you would have to provide your own AWS S3 credentials in `.dev-settings.json`.
 
 The project uses a very old version of Meteor--1.5--, which causes expired certificates errors. A workaround, for now, is to run all the meteor commands with the following environment variable NODE_TLS_REJECT_UNAUTHORIZED. (https://docs.meteor.com/expired-certificate.html)
 
@@ -36,7 +34,9 @@ git push heroku master
 
 ## Directory layout
 
-Basic project structure looks like this:
+<a href="https://guide.meteor.com/structure.html#special-directories">Special directories—MeteorJS docs</a>
+
+The project structure follows the standard MeteorJS (1.5) layout:
 
 ```
 imports/
@@ -71,5 +71,3 @@ client/
 server/
   main.js                      # server entry point, imports all server code
 ```
-
-[Special directories|https://guide.meteor.com/structure.html#special-directories].
