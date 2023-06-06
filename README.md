@@ -6,7 +6,7 @@
 
 ## Install
 
-Make sure you have MeteorJS (and NodeJS) installed first.
+Make sure you have MeteorJS (and NodeJS) installed first. Then install dependencies:
 
 ```
 meteor npm install
